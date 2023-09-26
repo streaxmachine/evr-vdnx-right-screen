@@ -1,0 +1,47 @@
+{
+  "name": "mreclaim-your-dna-htmly-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^2.9.11",
+    "@next/font": "13.1.6",
+    "@react-three/drei": "^9.56.20",
+    "@react-three/fiber": "^8.11.0",
+    "@react-three/postprocessing": "^2.15.0",
+    "add-zero": "^1.0.0",
+    "axios": "^1.4.0",
+    "clsx": "^1.2.1",
+    "cookie": "^0.5.0",
+    "eslint": "8.33.0",
+    "eslint-config-next": "13.1.6",
+    "framer-motion": "^10.12.21",
+    "fs": "^0.0.1-security",
+    "gl-noise": "^1.6.1",
+    "gsap": "^3.11.4",
+    "immer": "^9.0.19",
+    "lodash": "^4.17.21",
+    "maath": "^0.6.0",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.1",
+    "react-icons": "^4.10.1",
+    "react-toastify": "^9.1.3",
+    "react-transition-group": "^4.4.5",
+    "sass": "^1.58.0",
+    "three": "^0.149.0",
+    "three-custom-shader-material": "^5.4.0",
+    "virtual-scroll": "^2.2.1",
+    "yup": "^1.0.0",
+    "zustand": "^4.3.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.3"
+  }
+}
