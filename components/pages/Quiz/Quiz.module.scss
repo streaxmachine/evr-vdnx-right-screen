@@ -1,0 +1,168 @@
+.app {
+  background-color: #252d4a;
+  background-image: url("/images/background.png");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.scoreSection {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  font-size: 24px;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.scoreText {
+  color: #21262d;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.scoreButton {
+  width: 300px;
+  height: 120px;
+  font-size: 32px;
+  color: #21262d;
+  background-color: #f0f5f9;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.4);
+}
+
+.score-button:active {
+  background-color: #0072bb;
+  color: white;
+  box-shadow: none;
+}
+
+/* QUESTION/TIMER/LEFT SECTION */
+.quizContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.questionSection {
+  display: flex;
+  flex-direction: column;
+  padding-left: 14%;
+  font-size: 28px;
+}
+.questionCategory {
+  padding-top: 4%;
+  color: #21262d;
+
+  font-weight: bold;
+}
+.questionCount {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.questionCount span {
+  font-size: 18px;
+  color: #21262d;
+  font-weight: bold;
+}
+
+.questionText {
+  margin-top: 6%;
+  margin-bottom: 6%;
+  font-size: 48px;
+  color: #37b3f1;
+}
+
+.questionPicture {
+  margin-bottom: 12px;
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* ANSWERS/RIGHT SECTION */
+.answerSection {
+  display: grid;
+  grid-template-columns: repeat(2, 450px);
+  grid-gap: 48px;
+  gap: 48px;
+  justify-content: space-around;
+  justify-items: center;
+  padding-bottom: 6%;
+}
+
+
+@media screen and (min-width: 321px) and (max-width: 1181px) {
+  .question-section {
+    padding-left: 6%;
+    font-size: 28px;
+  }
+}
+
+.btn {
+  width: 400px;
+  height: 160px;
+  font-size: 32px;
+  border-radius: 6px;
+  // justify-content: flex-start;
+  // align-items: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.4);
+
+  padding: 25px 80px;
+  margin: 15px 30px;
+
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+
+.btn:after {
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn:before {
+  line-height: 1;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Icon separator */
+.btnSep {
+  padding: 25px 60px 25px 120px;
+}
+
+.btnSep:before {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Button 1 */
+.btnOne {
+  background: #0072bb;
+  color: #fff;
+}
+
+.btnOne:active {
+  background: #2980b9;
+  top: 2px;
+}
+
+.btnOne:before {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
