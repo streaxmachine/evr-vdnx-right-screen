@@ -28,11 +28,11 @@
 .title {
   z-index: 1;
   font-weight: 700;
-  font-size: 80px;
+  font-size: 64px;
   text-align: left;
   vertical-align: bottom;
   letter-spacing: 1.6px;
-  line-height: 84px;
+  line-height: 64px;
 }
 .text {
   font-weight: 400;
@@ -63,19 +63,22 @@
 
 .img1 {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: -130px;
+  right: -44px;
   z-index: 1;
+  width: 70%;
 }
 .img2 {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 0px;
+  right: 173px;
   z-index: 2;
+  width: 55%;
 }
 .img3 {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: -58px;
   z-index: 3;
+  width: 50%;
 }

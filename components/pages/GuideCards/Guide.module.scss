@@ -38,7 +38,7 @@
 }
 .title {
   font-weight: 700;
-  font-size: 80px;
+  font-size: 64px;
   text-align: left;
   vertical-align: top;
   letter-spacing: 1.6px;
@@ -83,8 +83,8 @@
   justify-content: space-between;
 }
 .card {
-  width: 502px;
-  height: 700px;
+  width: 340px;
+  height: 530px;
   border-radius: 12px;
   background-color: rgba(240, 245, 249, 1);
   display: flex;
@@ -94,60 +94,63 @@
 
 .cardTitle {
   color: black;
-  font-size: 50px;
+  font-size: 36px;
   font-weight: 500;
   line-height: 50px;
   letter-spacing: -0.04em;
   text-align: left;
   margin-top: 50px;
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
 .cardText {
   color: rgba(69, 153, 255, 1);
   font-size: 24px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 22px;
   letter-spacing: 0em;
   text-align: left;
-  padding-left: 50px;
+  padding-left: 30px;
   margin-top: 25px;
   width: 377px;
   z-index: 2;
 }
 .cardPic {
   z-index: 1;
+  width: 65%;
   position: relative;
-  bottom: 230px;
-  left: 120px;
+  bottom: 94px;
+  left: 119px;
 }
 .cardPicMuseum {
   z-index: 1;
   position: relative;
-  bottom: 159px;
-  left: -15px;
+  bottom: 72px;
+  left: 16px;
+  width: 95%;
 }
 .cardPicSoldier {
   z-index: 1;
   position: relative;
-  bottom: 85px;
-  left: 10px;
+  bottom: 23px;
+  left: 52px;
+  width: 85%;
 }
 .cardZigZag {
   z-index: 2;
   position: relative;
   left: 0;
-  bottom: 330px;
+  bottom: 155px;
 }
 .cardZigZagMuseum {
   z-index: 2;
   position: relative;
   left: 0;
-  bottom: 270px;
+  bottom: 135px;
 }
 .cardZigZagSoldier {
   z-index: 2;
   position: relative;
   left: 0;
-  bottom: 195px;
+  bottom: 86px;
 }
