@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useControls } from "leva";
 
 import s from "./OnWay.module.scss";
-import FactIcons from "./factIcons";
+import FactIcons from "./FactIcons";
 import { facts } from "./facts";
 
 const OnWay = () => {
@@ -60,7 +60,7 @@ const OnWay = () => {
   return (
     <>
       <main className={s.page}>
-        <Link href={"/guide"} className={s.navigationBack}>
+        <Link href={"/cards"} className={s.navigationBack}>
           <img src="/images/arrow.png" alt="Назад" />{" "}
           <span className={s.textBack}>Изменить маршрут</span>
         </Link>
