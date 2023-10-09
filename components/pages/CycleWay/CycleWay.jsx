@@ -10,19 +10,20 @@ import { useSocket } from "components/common/SocketManager/SocketManager";
 
 import s from "./CycleWay.module.scss";
 
-
 const CycleWay = () => {
   const [state, setState] = React.useState(1);
+  const [speed, setSpeed] = React.useState(0);
   const [isBack, setisBack] = React.useState(false);
+  const socket = useSocket([setSpeed]);
 
-  const socket = useSocket();
   return (
     <>
-      {state === 1 && <Hero setState={setState} socket={socket} />}
+ {state === 1 && <Hero setState={setState} socket={socket} />}
       {state === 2 && <Cards setState={setState} socket={socket} setisBack={setisBack}/>}
       {state === 3 && <ProgressBar setState={setState} socket={socket} isBack={isBack} />}
-      {state === 4 && <OnWay setState={setState} socket={socket} setisBack={setisBack}/>}
+      {state === 4 && <OnWay setState={setState} socket={socket} speedSocket={speed} setisBack={setisBack}/>}
       {state === 5 && <LastStep setState={setState} socket={socket} setisBack={setisBack}/>}
+
     </>
   );
 };

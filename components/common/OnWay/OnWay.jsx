@@ -6,7 +6,7 @@ import { facts } from "./facts";
 
 import s from "./OnWay.module.scss";
 
-const OnWay = ({ setState, socket, setisBack }) => {
+const OnWay = ({ setState, socket, speedSocket, setisBack }) => {
   const [filledCells, setFilledCells] = useState(0);
 
 
@@ -126,7 +126,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
           </div>
           <div className={s.speed}>
             <p className={s.dataTitle}>Расстояние</p>
-            <p className={s.speedNumber}>{speed}</p>
+            <p className={s.speedNumber}>{speedSocket}</p>
             <p className={s.dataMeasure}>км/ч</p>
           </div>
           <div className={s.dist}>
