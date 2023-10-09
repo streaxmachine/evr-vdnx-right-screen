@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./Guide.module.scss";
 
-const Guide = ({ setState }) => {
+const Guide = ({ socket, setState }) => {
   return (
     <>
       <main className={s.page}></main>
@@ -21,6 +21,13 @@ const Guide = ({ setState }) => {
         <button
           onClick={() => {
             setState(2);
+            socket.send(
+              JSON.stringify({
+                installation: "velo",
+                type: "level",
+                data: "splashscreen",
+              })
+            );
           }}
           className={s.button}
         >

@@ -22,7 +22,7 @@ export const useSocket = (props) => {
         }
       } else {
         console.log("here");
-        socket2.send(JSON.stringify("pong"));
+        socket2.send("pong");
       }
     };
 
