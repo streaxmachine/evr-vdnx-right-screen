@@ -1,23 +1,35 @@
 @font-face {
-  font-family: "Regular";
-  src: url("/fonts/NeueMachina-Regular.woff2") format("woff2");
-  font-weight: normal;
+  font-family: "ALS Hauss";
+  src: url("/fonts/ALSHauss-Regular.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
-  font-family: "Medium";
-  src: url("/fonts/NeueMachina-Medium.woff2") format("woff2");
-  font-weight: normal;
+  font-family: "ALS Hauss";
+  src: url("/fonts/ALSHauss-Medium.woff") format("woff");
+  font-weight: 500;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
-  font-family: "Light";
-  src: url("/fonts/NeueMachina-Light.woff2") format("woff2");
-  font-weight: normal;
+  font-family: "ALS Hauss";
+  src: url("/fonts/ALSHauss-Hairline.woff") format("woff");
+  font-weight: 200;
   font-style: normal;
-  font-display: swap;
 }
+
+@font-face {
+  font-family: 'ALS Hauss';
+  src: url("/fonts/ALSHauss-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+html,
+body {
+  font-family: 'ALS Hauss', sans-serif ;
+
+  color: aliceblue;
+}
+
