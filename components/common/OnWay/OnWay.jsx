@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import FactIcons from "./FactIcons";
 import { facts } from "./facts";
 import { useControls } from "leva";
 
-import { useSocket } from "components/common/SocketManager/SocketManager";
-
 import s from "./OnWay.module.scss";
 
-const OnWay = ({ setState }) => {
-  const socket = useSocket();
+const OnWay = ({ setState, socket }) => {
   const [filledCells, setFilledCells] = useState(0);
   const { progress, calories, speed } = useControls({
     progress: {

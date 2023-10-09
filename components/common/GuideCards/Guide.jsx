@@ -5,9 +5,7 @@ import { useSocket } from "components/common/SocketManager/SocketManager";
 
 import s from "./Guide.module.scss";
 
-const GuideSecond = ({ setState }) => {
-  const socket = useSocket();
-
+const GuideSecond = ({ setState, socket }) => {
   return (
     <>
       <main className={s.page}>
