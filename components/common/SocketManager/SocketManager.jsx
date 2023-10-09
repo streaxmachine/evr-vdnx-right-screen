@@ -15,6 +15,10 @@ export const useSocket = (props) => {
         const info = JSON.parse(event.data);
         if (info.type === "speed") {
           props[0](info.data);
+        } else if (info.type === "distance") {
+          props[1](info.data);
+        } else if (info.type === "calories") {
+          props[2](info.data);
         }
       } else {
         console.log("here");
