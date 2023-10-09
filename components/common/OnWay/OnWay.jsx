@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useControls } from "leva";
-
-import s from "./OnWay.module.scss";
 import FactIcons from "./FactIcons";
 import { facts } from "./facts";
+import { useControls } from "leva";
 
-const OnWay = () => {
+import { useSocket } from "components/common/SocketManager/SocketManager";
+
+import s from "./OnWay.module.scss";
+
+const OnWay = ({ setState }) => {
+  const socket = useSocket();
   const [filledCells, setFilledCells] = useState(0);
   const { progress, calories, speed } = useControls({
     progress: {
@@ -57,13 +60,25 @@ const OnWay = () => {
   const progressBarStyle = {
     "--progress-width": `${(progress / 320) * 100}%`, //progress MAx нужно ввести
   };
+
   return (
     <>
       <main className={s.page}>
-        <Link href={"/cards"} className={s.navigationBack}>
+        <div
+          className={s.navigationBack}
+          onClick={() => {
+            socket.send(
+              JSON.stringify({
+                installation: "velo",
+                type: "level",
+                data: "splashscreen",
+              })
+            );
+          }}
+        >
           <img src="/images/arrow.png" alt="Назад" />{" "}
           <span className={s.textBack}>Изменить маршрут</span>
-        </Link>
+        </div>
 
         {isSlow && (
           <div className={s.notification}>

@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useControls } from "leva";
 
+import { useSocket } from "components/common/SocketManager/SocketManager";
+
 import s from "./LastStep.module.scss";
 
 const OnWay = () => {
+  const socket = useSocket();
   const { progress, calories, speed } = useControls({
     progress: {
       value: 1,
@@ -28,7 +31,6 @@ const OnWay = () => {
   return (
     <>
       <main className={s.page}>
-
         <section className={s.content}>
           <span className={s.textBack}>Поздравляем!</span>
           <span className={s.text}>
@@ -41,7 +43,7 @@ const OnWay = () => {
         </section>
 
         <div className={s.data}>
-        <span className={s.dataText}>Средние данные о вашей поездке</span>
+          <span className={s.dataText}>Средние данные о вашей поездке</span>
           <div className={s.speed}>
             <p className={s.dataTitle}>Скорость</p>
             <p className={s.dataNumber}>{speed}</p>
@@ -60,16 +62,25 @@ const OnWay = () => {
         </div>
 
         <div className={s.imgContainer}>
-        <img
-          className={s.img}
-          src="/images/360deg.png"
-          alt="Degrees"
-        />
+          <img className={s.img} src="/images/360deg.png" alt="Degrees" />
         </div>
 
-        <Link className={s.bottom} href={"/cards"}>
-          <button className={s.button}>Завершить поездку</button>
-        </Link>
+        <div className={s.bottom}>
+          <button
+            onClick={() => {
+              socket.send(
+                JSON.stringify({
+                  installation: "velo",
+                  type: "level",
+                  data: "splashscreen",
+                })
+              );
+            }}
+            className={s.button}
+          >
+            Завершить поездку
+          </button>
+        </div>
       </main>
     </>
   );

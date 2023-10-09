@@ -18,7 +18,7 @@ export const useSocket = () => {
     };
 
     setTimeout(() => {
-      socket2.send(JSON.stringify({ hello: "fffffff" }));
+      // socket2.send(JSON.stringify({ hello: "fffffff" }));
     }, 2000);
 
     socket2.onerror = function (error) {

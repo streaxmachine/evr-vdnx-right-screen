@@ -67,6 +67,7 @@
   right: -44px;
   z-index: 1;
   width: 70%;
+  object-fit: cover;
 }
 .img2 {
   position: absolute;
@@ -74,6 +75,8 @@
   right: 173px;
   z-index: 2;
   width: 55%;
+  object-fit: cover;
+
 }
 .img3 {
   position: absolute;
@@ -81,4 +84,6 @@
   right: -58px;
   z-index: 3;
   width: 50%;
+  object-fit: cover;
+
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import Link from "next/link";
+
 import s from "./Guide.module.scss";
 
-const Guide = () => {
+const Guide = ({ setState }) => {
   return (
     <>
       <main className={s.page}></main>
@@ -18,9 +18,14 @@ const Guide = () => {
           </p>{" "}
           и богатое наследие. Приключение ждет тебя! Давай начнем!
         </span>
-        <Link href={"/cards"}>
-          <button className={s.button}>Поехали</button>
-        </Link>
+        <button
+          onClick={() => {
+            setState(2);
+          }}
+          className={s.button}
+        >
+          Поехали
+        </button>
       </div>
       <section>
         <img

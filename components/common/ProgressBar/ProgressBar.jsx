@@ -2,24 +2,31 @@ import React from "react";
 import { useControls } from "leva";
 import s from "./ProgressBar.module.scss";
 
-const ProgressBar = () => {
-  const { progress } = useControls({
-    progress: {
-      value: 1,
-      step: 1,
-      min: 0,
-      max: 100,
-    },
-  });
+const ProgressBar = ({ setState }) => {
+  const [progress, setProgress] = React.useState(0);
+  const rootRef = React.useRef();
 
-  const progressBarStyle = {
-    "--progress-width": `${progress}%`, 
-  };
+  React.useEffect(() => {
+    rootRef.current.style.setProperty("--progress-width", progress + "%");
+  }, [progress]);
+
+  React.useEffect(() => {
+    if (progress !== 100) {
+      const interval = setInterval(() => {
+        setProgress(progress + 1);
+      }, 150);
+      return () => {
+        clearInterval(interval);
+      };
+    } else {
+      setState(4);
+    }
+  }, [progress]);
 
   return (
     <>
       <main className={s.page}></main>
-      <div className={s.textblock}>
+      <div ref={rootRef} className={s.textblock}>
         <h2 className={s.title}>{progress}%</h2>
         <span className={s.text}>Подождите, идет загрузка маршрута...</span>
 
@@ -31,7 +38,7 @@ const ProgressBar = () => {
           />
           <div
             className={s.overlayimage}
-            style={progressBarStyle}
+            // style={progressBarStyle}
           ></div>
         </div>
 
