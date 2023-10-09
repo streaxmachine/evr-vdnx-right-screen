@@ -6,8 +6,9 @@ import { facts } from "./facts";
 
 import s from "./OnWay.module.scss";
 
-const OnWay = ({ setState, socket }) => {
+const OnWay = ({ setState, socket, setisBack }) => {
   const [filledCells, setFilledCells] = useState(0);
+
 
   const { progress, calories, speed } = useControls({
     progress: {
@@ -41,6 +42,7 @@ const OnWay = ({ setState, socket }) => {
   React.useEffect(() => {
     if (progress === 320) {
       setState(5);
+
     }
   }, [progress]);
 
@@ -71,6 +73,8 @@ const OnWay = ({ setState, socket }) => {
         <div
           className={s.navigationBack}
           onClick={() => {
+            setisBack(true)
+            setState(3)
             socket.send(
               JSON.stringify({
                 installation: "velo",

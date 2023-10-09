@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./ProgressBar.module.scss";
 
-const ProgressBar = ({ setState }) => {
+const ProgressBar = ({ setState, isBack }) => {
   const [progress, setProgress] = React.useState(0);
   const rootRef = React.useRef();
 
@@ -19,7 +19,11 @@ const ProgressBar = ({ setState }) => {
         clearInterval(interval);
       };
     } else {
-      setState(4);
+      if (isBack === false) {
+        setState(4);
+      } else {
+        setState(2);
+      }
     }
   }, [progress]);
 

@@ -3,7 +3,8 @@ import { useControls } from "leva";
 
 import s from "./LastStep.module.scss";
 
-const OnWay = ({ setState, socket} ) => {
+const OnWay = ({ setState, socket, setisBack } ) => {
+
   const { progress, calories, speed } = useControls({
     progress: {
       value: 1,
@@ -65,7 +66,8 @@ const OnWay = ({ setState, socket} ) => {
         <div className={s.bottom}>
           <button
             onClick={() => {
-              setState(1);
+              setisBack(true)
+              setState(3)
               socket.send(
                 JSON.stringify({
                   installation: "velo",

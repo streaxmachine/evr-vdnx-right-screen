@@ -62,19 +62,19 @@
   bottom: -15%;
   right: -5%;
   z-index: 1;
-  width: 70%;
+  max-width: 70%;
 }
 .img2 {
   position: absolute;
   bottom: 0%;
   right: 8%;
   z-index: 2;
-  width: 55%;
+  max-width: 55%;
 }
 .img3 {
   position: absolute;
   bottom: 0;
   right: -10%;
   z-index: 3;
-  width: 50%;
+  max-width: 50%;
 }

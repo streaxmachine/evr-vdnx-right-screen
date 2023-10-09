@@ -25,7 +25,7 @@ const Guide = ({ setState }) => {
           className={s.button}
         >
           Поехали
-        </button> 
+        </button>
       </div>
       <section>
         <img
