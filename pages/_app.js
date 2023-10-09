@@ -3,7 +3,7 @@ import React from "react";
 
 gsap.defaults({ ease: "linear" });
 
-import Preloader from "components/common/Preloader";
+import Preloader from "/components/common/Preloader";
 
 import useCalcVh from "hooks/useCalcVh";
 import useFoucFix from "hooks/useFoucFix";
@@ -17,7 +17,7 @@ import "styles/globals.css";
 import "styles/colors.css";
 import "styles/locomotive.css";
 import "styles/fonts.css";
-import PageTransition from "components/common/PageTransition/PageTransition";
+import PageTransition from "/components/common/PageTransition/PageTransition";
 
 export default function App({ Component, router, pageProps }) {
   const store = useHydrate(pageProps.cms);
@@ -33,17 +33,15 @@ export default function App({ Component, router, pageProps }) {
 
   return (
     <StoreProvider store={store}>
-      <SoundProvider>
-        <PageTransition route={router.route}>
-          <Component {...pageProps} />
-        </PageTransition>
-        {/* {!isLoaded && (
+      <PageTransition route={router.route}>
+        <Component {...pageProps} />
+      </PageTransition>
+      {/* {!isLoaded && (
           <Preloader
             // preloadedImages={pageProps.preloadedImages}
             onLoaded={handleLoaded}
           />
         )} */}
-      </SoundProvider>
     </StoreProvider>
   );
 }
