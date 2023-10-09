@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import { useControls } from "leva";
 
 import s from "./LastStep.module.scss";
@@ -67,9 +66,9 @@ const OnWay = () => {
         />
         </div>
 
-        <Link className={s.bottom} href={"/cards"}>
+        <div className={s.bottom}>
           <button className={s.button}>Завершить поездку</button>
-        </Link>
+        </div>
       </main>
     </>
   );

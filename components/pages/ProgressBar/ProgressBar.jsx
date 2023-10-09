@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useControls } from "leva";
 import s from "./ProgressBar.module.scss";
 
 const ProgressBar = () => {
-  const { progress } = useControls({
-    progress: {
-      value: 1,
-      step: 1,
-      min: 0,
-      max: 100,
-    },
-  });
+  const [progress, setProgress] = useState(0);
 
   const progressBarStyle = {
-    "--progress-width": `${progress}%`, 
+    "--progress-width": `${progress}%`,
   };
+
+  useEffect(() => {
+    const targetProgress = 100; 
+    const duration = 15000; 
+
+    const interval = duration / targetProgress;
+    let currentProgress = 0;
+
+    const timer = setInterval(() => {
+      currentProgress++;
+      setProgress(currentProgress);
+
+      if (currentProgress >= targetProgress) {
+        clearInterval(timer);
+      }
+    }, interval);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <>
@@ -29,10 +43,7 @@ const ProgressBar = () => {
             alt="Progress Bar"
             className={s.baseimage}
           />
-          <div
-            className={s.overlayimage}
-            style={progressBarStyle}
-          ></div>
+          <div className={s.overlayimage} style={progressBarStyle}></div>
         </div>
 
         <span className={s.fact}>Fun Fact</span>

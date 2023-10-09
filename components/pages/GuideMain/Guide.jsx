@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import s from "./Guide.module.scss";
 
 const Guide = () => {
@@ -18,9 +17,8 @@ const Guide = () => {
           </p>{" "}
           и богатое наследие. Приключение ждет тебя! Давай начнем!
         </span>
-        <Link href={"/cards"}>
-          <button className={s.button}>Поехали</button>
-        </Link>
+
+        <button className={s.button}>Поехали</button>
       </div>
       <section>
         <img
