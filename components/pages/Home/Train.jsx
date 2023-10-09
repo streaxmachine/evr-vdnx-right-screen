@@ -4,10 +4,9 @@ import {
   OrbitControls,
   useGLTF,
   Html,
-  Stage,
   Grid,
-  ContactShadows,
   Environment,
+  Preload,
 } from "@react-three/drei";
 import * as THREE from "three";
 import { useDrag } from "@use-gesture/react";
@@ -134,6 +133,7 @@ const Train = ({ count, setCount }) => {
         <planeGeometry args={[200, 200]} />
         <meshStandardMaterial transparent={true} color="gray" />
       </mesh>
+      <Preload all />
     </>
   );
 };
