@@ -5,7 +5,7 @@ import { useControls } from "leva";
 
 import s from "./OnWay.module.scss";
 
-const OnWay = ({ setState, socket }) => {
+const OnWay = ({ setState, socket, speedSocket }) => {
   const [filledCells, setFilledCells] = useState(0);
   const { progress, calories, speed } = useControls({
     progress: {
@@ -114,7 +114,7 @@ const OnWay = ({ setState, socket }) => {
           </div>
           <div className={s.speed}>
             <p className={s.dataTitle}>Расстояние</p>
-            <p className={s.speedNumber}>{speed}</p>
+            <p className={s.speedNumber}>{speedSocket}</p>
             <p className={s.dataMeasure}>км/ч</p>
           </div>
           <div className={s.dist}>

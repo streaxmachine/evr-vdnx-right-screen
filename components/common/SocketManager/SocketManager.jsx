@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-export const useSocket = () => {
+export const useSocket = (props) => {
   const [socket, setSocket] = React.useState();
   useEffect(() => {
     const socket2 = new WebSocket("wss://wsdmxtest.herokuapp.com:443");
@@ -11,6 +11,15 @@ export const useSocket = () => {
 
     socket2.onmessage = function (event) {
       console.log(`Получено сообщение: ${event.data}`);
+      if (event.data !== "ping") {
+        const info = JSON.parse(event.data);
+        if (info.type === "speed") {
+          props[0](info.data);
+        }
+      } else {
+        console.log("here");
+        socket2.send(JSON.stringify("pong"));
+      }
     };
 
     socket2.onclose = function (event) {
