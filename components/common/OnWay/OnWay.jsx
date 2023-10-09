@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useControls } from "leva";
+
 import FactIcons from "./FactIcons";
 import { facts } from "./facts";
-import { useControls } from "leva";
 
 import s from "./OnWay.module.scss";
 
@@ -32,11 +33,16 @@ const OnWay = ({ setState, socket }) => {
   const isSlow = speed < 20;
   const isFast = speed > 40;
 
-
   React.useEffect(() => {
     const newFilledCells = Math.floor((speed / 48) * 28); // 48 - максимальное значение speed, 28 - количество ячеек
     setFilledCells(newFilledCells);
   }, [speed]);
+
+  React.useEffect(() => {
+    if (progress === 320) {
+      setState(5);
+    }
+  }, [progress]);
 
   const rays = Array.from({ length: 28 }, (_, index) => {
     const isFilled = index < filledCells;

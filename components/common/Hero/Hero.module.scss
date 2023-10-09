@@ -2,7 +2,7 @@
 
 .page {
   width: 100vw;
-  height: 100svh;
+  height: 100vh;
   background-image: url('/images/guide_bg.png');
   background-size: cover;
   border: none;
@@ -13,45 +13,41 @@
   z-index: 2;
   color: white;
   position: fixed;
-  top: 100px;
-  left: 64px;
-  width: 1312px;
-  height: 560px;
+  top: 5%;
+  left: 5%;
+  width: 75%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   box-sizing: border-box;
   flex-wrap: wrap;
-  gap: 44px;
+  gap: 20rem;
 }
 .title {
   z-index: 1;
   font-weight: 700;
-  font-size: 64px;
+  font-size: 64rem;
   text-align: left;
   vertical-align: bottom;
-  letter-spacing: 1.6px;
-  line-height: 64px;
 }
 .text {
   font-weight: 400;
-  font-size: 24px;
+  font-size: 32rem;
+  line-height: 36rem;
   text-align: left;
   vertical-align: top;
-  letter-spacing: 0px;
-  line-height: 34px;
 }
 .button {
   background-color: white;
   color: rgba(69.0625025331974, 153.3154347538948, 255, 1);
-  width: 229px;
-  height: 68px;
-  border-radius: 48px;
+  width: 22%;
+  border-radius: 36rem;
   border: none;
-  padding: 20px 64px 20px 64px;
+  padding: 18rem 4.2rem 18rem 4.2rem;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 26rem;
   cursor: pointer;
   transition: 0.25s;
 
@@ -63,27 +59,22 @@
 
 .img1 {
   position: absolute;
-  bottom: -130px;
-  right: -44px;
+  bottom: -15%;
+  right: -5%;
   z-index: 1;
   width: 70%;
-  object-fit: cover;
 }
 .img2 {
   position: absolute;
-  bottom: 0px;
-  right: 173px;
+  bottom: 0%;
+  right: 8%;
   z-index: 2;
   width: 55%;
-  object-fit: cover;
-
 }
 .img3 {
   position: absolute;
   bottom: 0;
-  right: -58px;
+  right: -10%;
   z-index: 3;
   width: 50%;
-  object-fit: cover;
-
 }

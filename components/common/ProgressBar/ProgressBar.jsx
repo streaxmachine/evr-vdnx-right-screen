@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useControls } from "leva";
+import React from "react";
+
 import s from "./ProgressBar.module.scss";
 
 const ProgressBar = ({ setState }) => {
@@ -22,27 +22,6 @@ const ProgressBar = ({ setState }) => {
       setState(4);
     }
   }, [progress]);
-
-  useEffect(() => {
-    const targetProgress = 100; 
-    const duration = 15000; 
-
-    const interval = duration / targetProgress;
-    let currentProgress = 0;
-
-    const timer = setInterval(() => {
-      currentProgress++;
-      setProgress(currentProgress);
-
-      if (currentProgress >= targetProgress) {
-        clearInterval(timer);
-      }
-    }, interval);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
 
   return (
     <>

@@ -2,7 +2,7 @@
 
 .page {
   width: 100vw;
-  height: 100svh;
+  height: 100vh;
   background-image: url("/images/guide_bg.png");
   background-size: cover;
   border: none;
@@ -12,9 +12,9 @@
 .navigationBack {
   color: white;
   position: fixed;
-  top: 40px;
-  left: 64px;
-  width: 200px;
+  top: 5%;
+  left: 5%;
+  width: 18%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,7 +29,7 @@
 .textBack {
   z-index: 1;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 26rem;
 }
 
 .notification {
@@ -37,17 +37,17 @@
   top: 4%;
   left: 35%;
   right: 35%;
-  height: 68px;
-  border-radius: 4px;
+  height: 10%;
+  border-radius: 12rem;
   background-color: white;
   color: black;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 16rem;
+
   text-align: left;
-  padding: 10px;
-  padding-left: 60px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 1%;
+  padding-left: 5%;
+  box-shadow: 0 0 2% rgba(0, 0, 0, 0.2);
   z-index: 9999;
   transition: width 0.5s ease-in-out;
 }
@@ -55,13 +55,14 @@
 .notificationText {
   color: gray;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 18rem;
+  margin-top: 2%;
 }
 
 .notificationImage {
   position: absolute;
   transform: translateX(-200%);
+  padding-top: 5%;
 }
 
 .data {
@@ -69,7 +70,7 @@
   top: 10%;
   left: 10%;
   width: 80%;
-  height: 55%;
+  height: 50%;
 
   display: flex;
   flex-direction: row;
@@ -78,21 +79,20 @@
 }
 
 .dataTitle {
-  font-size: 18px;
+  font-size: 32rem;
   font-weight: 700;
-  margin: 24px;
+  margin: 38rem;
 }
 
 .dataNumber {
-  font-size: 48px;
+  font-size: 68rem;
   font-weight: 700;
-  letter-spacing: 0em;
 }
 
 .dataMeasure {
-  font-size: 36px;
+  font-size: 40rem;
   font-weight: 700;
-  margin: 24px;
+  margin: 12rem;
 }
 
 .ccal {
@@ -114,33 +114,31 @@
 }
 
 .speedNumber {
-  font-size: 128px;
+  font-size: 126rem;
   font-weight: 700;
-  letter-spacing: 0em;
 }
 
 .speedometer {
   display: flex;
-  align-items: flex-start;
   justify-content: center;
-  width: 80%;
+  width: 50%;
   position: fixed;
-  left: 17%;
+  left: 28%;
   top: 40%;
 }
 
 .sunRays {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 22%;
+  height: 60%;
 }
 
 .ray {
   position: absolute;
-  width: 12px;
-  height: 60px;
+  width: 12%;
+  height: 56rem;
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
+  border-radius: 6rem;
   transform-origin: 50% 100%;
   transition: all 0.2s;
 }
@@ -154,11 +152,11 @@
 }
 
 .progressContainer {
-  position: fixed;
+  position: absolute;
   width: 76%;
   left: 12%;
   bottom: 5%;
-  height: 50px;
+  height: 6.6%;
   overflow: hidden;
 }
 
@@ -166,16 +164,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 898px;
-  height: 100%;
+  width: 100%;
+  height: 48px;
   z-index: 1;
 }
 
 .overlayimage {
   position: absolute;
-  left: 0;
   width: var(--progress-width);
-  height: 96%;
+  height: 48px;
   max-width: 100%;
   z-index: 2;
   background-image: url("/images/on_way_progress_white.png");
@@ -193,9 +190,9 @@
 
 .icon {
   position: absolute;
-  top: 0;
-  width: 48px;
-  height: 48px;
+  margin-top: 0.1%;
+  width: 60rem;
+  height: 60rem;
   z-index: 3;
   transform: translateX(-50%);
   transition: all 0.5s ease-in-out;
@@ -203,22 +200,20 @@
 
 .textStart {
   position: absolute;
-  left: 0.7%;
-  bottom: 6%;
-  width: 130px;
+  left: 3.2%;
+  bottom: 6.4%;
+  width: 8%;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 24rem;
   text-align: center;
 }
 .textEnd {
   position: absolute;
-  right: 0.7%;
-  bottom: 6%;
-  width: 130px;
+  right:3.2%;
+  bottom: 6.4%;
+  width: 8%;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 24rem;
   text-align: center;
 }
 
@@ -228,8 +223,8 @@
   width: 70%;
   left: 15%;
   right: 15%;
-  bottom: 12%;
-  height: 140px;
+  bottom: 10%;
+  height: 20%;
   overflow: hidden;
 
   display: flex;
@@ -240,15 +235,15 @@
   position: absolute;
   margin: auto;
   top: 0;
-  width: 24px;
-  height: 24px;
+  width: 50rem;
+  height: 50rem;
   transform: translateX(-50%);
   transition: all 0.5s ease-in-out;
 }
 
 .activeFact {
   position: absolute;
-  min-width: 200px;
+  min-width: 24%;
   transform: translateX(-50%) translateY(200%);
   transition: all 0.5s ease-in-out;
   cursor: pointer;
@@ -256,10 +251,11 @@
 
 .factText {
   position: relative;
-  top: -28px;
+  top: -200%;
+  bottom: 100%;
   background-color: rgba(255, 255, 255, 0.7);
   color: rgba(69, 153, 255, 1);
-  border-radius: 4px;
-  padding: 4px 8px;
-  font-size: 14px;
+  border-radius: 4rem;
+  padding: 6rem 6rem;
+  font-size: 20rem;
 }

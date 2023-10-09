@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { useControls } from "leva";
 
-import { useSocket } from "components/common/SocketManager/SocketManager";
-
 import s from "./LastStep.module.scss";
 
-const OnWay = () => {
-  const socket = useSocket();
+const OnWay = ({ setState, socket} ) => {
   const { progress, calories, speed } = useControls({
     progress: {
       value: 1,
@@ -27,6 +24,7 @@ const OnWay = () => {
       max: 60,
     },
   });
+  
   return (
     <>
       <main className={s.page}>
@@ -67,6 +65,7 @@ const OnWay = () => {
         <div className={s.bottom}>
           <button
             onClick={() => {
+              setState(1);
               socket.send(
                 JSON.stringify({
                   installation: "velo",

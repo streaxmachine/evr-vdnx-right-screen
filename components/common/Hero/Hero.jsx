@@ -1,6 +1,6 @@
 import React from "react";
 
-import s from "./Guide.module.scss";
+import s from "./Hero.module.scss";
 
 const Guide = ({ setState }) => {
   return (
@@ -25,7 +25,7 @@ const Guide = ({ setState }) => {
           className={s.button}
         >
           Поехали
-        </button>
+        </button> 
       </div>
       <section>
         <img
