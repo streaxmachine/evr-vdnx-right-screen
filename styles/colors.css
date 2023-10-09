@@ -1,0 +1,22 @@
+html {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-ebony: #020103;
+  --color-grey:  #B9B4AB;
+  --color-mid-gold: #BF9955;
+  --color-deep-gold: #AC8007;
+  --color-hard-grey: #20201E;
+  --color-maroon: #170408;
+  --color-red: #E4002B;
+  --color-light-grey: #d3d3d3;
+  --color-reef-gold: #b29237;
+  --color-friar-grey: #8c877e;
+  --color-ironside-grey: #736f68;
+  --color-twine: #bf9955;
+  --color-grey-nickel: #b9b4ab;
+  --color-dark-goldenrod: #ac8007;
+  --color-torch-red: #e4002b;
+
+  --accent-color: #b9b4ab;
+  --cursor-color: #b9b4ab;
+}
