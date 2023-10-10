@@ -12,11 +12,15 @@ import * as THREE from "three";
 import { useDrag } from "@use-gesture/react";
 import { animated, useSpring } from "@react-spring/three";
 import { useThree } from "@react-three/fiber";
+
+import { useSocket } from "components/common/SocketManager/SocketManager";
+
 import s from "./Home.module.scss";
 
 const Train = ({ count, setCount }) => {
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+  const socket = useSocket();
   const train = useGLTF("/models/trainTestrazbor.glb");
   // console.log(train);
   const parts = React.useMemo(() => {
@@ -119,6 +123,7 @@ const Train = ({ count, setCount }) => {
           posX={index}
           count={count}
           setCount={setCount}
+          socket={socket}
           setIsDragging={setIsDragging}
           floorPlane={floorPlane}
         />
@@ -152,7 +157,14 @@ function ShowTrain({ part, number, value, isDragging }) {
     <group>
       <mesh
         geometry={part.geometry}
-        material={new THREE.MeshStandardMaterial({ color: "green" })}
+        material={
+          new THREE.MeshStandardMaterial({
+            color: "green",
+            wireframe: true,
+            transparent: true,
+            opacity: 0.5,
+          })
+        }
         position={part.position}
         visible={isShow}
       ></mesh>
@@ -166,6 +178,7 @@ function Obj({
   value,
   posX,
   part,
+  socket,
   count,
   setCount,
 }) {
@@ -178,6 +191,18 @@ function Obj({
   const vector = new THREE.Vector3(0, 0, 0);
 
   const dragMeshRef = useRef();
+
+  React.useEffect(() => {
+    if (isRightPosition) {
+      socket.send(
+        JSON.stringify({
+          instalяation: "ivolga",
+          detail: count - 1,
+          correct: "true",
+        })
+      );
+    }
+  }, [isRightPosition]);
 
   const [spring, api] = useSpring(() => ({
     position: pos,
@@ -206,6 +231,13 @@ function Obj({
         if (active === false) {
           if (value !== count) {
             finalValue = [posX * 1.35, 0, posX * 2 - 13];
+            socket.send(
+              JSON.stringify({
+                instalяation: "ivolga",
+                detail: value,
+                correct: "false",
+              })
+            );
             dragMeshRef.current.material = new THREE.MeshStandardMaterial({
               color: "white",
             });
