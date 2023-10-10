@@ -27,7 +27,7 @@ const Guide = ({ setState }) => {
           Поехали
         </button>
       </div>
-      <section>
+      <section className={s.imgContainer}>
         <img
           className={s.img1}
           src="/images/Group 24.png"

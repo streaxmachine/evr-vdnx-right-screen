@@ -1,14 +1,13 @@
 @import "styles/mixins";
-
 .page {
   width: 100vw;
   height: 100vh;
-  background-image: url('/images/guide_bg.png');
+  background-image: url("/images/guide_bg.png");
   background-size: cover;
   border: none;
-  font-family: 'ALS Hauss', sans-serif
+  font-family: "ALS Hauss", sans-serif;
+  overflow: hidden;
 }
-
 .textblock {
   z-index: 2;
   color: white;
@@ -41,7 +40,7 @@
 }
 .button {
   background-color: white;
-  color: rgba(69.0625025331974, 153.3154347538948, 255, 1);
+  color: rgb(69.0625025331974, 153.3154347538948, 255, 1);
   width: 22%;
   border-radius: 36rem;
   border: none;
@@ -50,11 +49,15 @@
   font-size: 26rem;
   cursor: pointer;
   transition: 0.25s;
+}
 
-  &:hover {
-    color: white;
-    background-color: rgba(69.0625025331974, 153.3154347538948, 255, 1);
-  }
+.imgContainer {
+  position: absolute;
+  width: 1280px;
+  height: 800px;
+  left: 0;
+  top: 0;
+  overflow: hidden;
 }
 
 .img1 {
@@ -63,6 +66,7 @@
   right: -5%;
   z-index: 1;
   max-width: 70%;
+  overflow: hidden;
 }
 .img2 {
   position: absolute;
