@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useControls } from "leva";
 
 import s from "./LastStep.module.scss";
 
-const OnWay = ({ setState, socket, setisBack } ) => {
-
+const OnWay = ({ setState, socket, setisBack }) => {
   const { progress, calories, speed } = useControls({
     progress: {
       value: 1,
@@ -25,7 +24,51 @@ const OnWay = ({ setState, socket, setisBack } ) => {
       max: 60,
     },
   });
-  
+
+  const [inactiveTime, setInactiveTime] = useState(0);
+
+  const resetInactiveTime = () => {
+    setInactiveTime(0);
+  };
+
+  useEffect(() => {
+    const touchStartHandler = () => {
+      resetInactiveTime();
+    };
+
+    const touchMoveHandler = () => {
+      resetInactiveTime();
+    };
+
+    const timer = setInterval(() => {
+      setInactiveTime(inactiveTime + 1);
+    }, 1000);
+
+    window.addEventListener("touchstart", touchStartHandler);
+    window.addEventListener("touchmove", touchMoveHandler);
+
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("touchstart", touchStartHandler);
+      window.removeEventListener("touchmove", touchMoveHandler);
+    };
+  }, [inactiveTime]);
+
+  useEffect(() => {
+    if (inactiveTime >= 40) {
+      console.log('nobody`s here')
+      setisBack(true);
+      setState(3);
+      socket.send(
+        JSON.stringify({
+          installation: "velo",
+          type: "level",
+          data: "splashscreen",
+        })
+      );
+    }
+  }, [inactiveTime]);
+
   return (
     <>
       <main className={s.page}>
@@ -66,8 +109,8 @@ const OnWay = ({ setState, socket, setisBack } ) => {
         <div className={s.bottom}>
           <button
             onClick={() => {
-              setisBack(true)
-              setState(3)
+              setisBack(true);
+              setState(3);
               socket.send(
                 JSON.stringify({
                   installation: "velo",

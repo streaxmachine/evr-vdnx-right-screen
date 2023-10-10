@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { cards } from "./cardInformation";
 
 import s from "./Cards.module.scss";
 
 const Cards = ({ setState, socket, setisBack }) => {
+  const [inactiveTime, setInactiveTime] = useState(0);
+
+  const resetInactiveTime = () => {
+    setInactiveTime(0);
+  };
+
+  useEffect(() => {
+    const touchStartHandler = () => {
+      resetInactiveTime();
+    };
+
+    const touchMoveHandler = () => {
+      resetInactiveTime();
+    };
+
+    const timer = setInterval(() => {
+      setInactiveTime(inactiveTime + 1);
+    }, 1000);
+
+    window.addEventListener("touchstart", touchStartHandler);
+    window.addEventListener("touchmove", touchMoveHandler);
+
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("touchstart", touchStartHandler);
+      window.removeEventListener("touchmove", touchMoveHandler);
+    };
+  }, [inactiveTime]);
+
+  useEffect(() => {
+    if (inactiveTime >= 20) {
+      console.log("nobody`s here");
+      setState(1);
+    }
+  }, [inactiveTime]);
+
   return (
     <>
       <main className={s.page}>
