@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+
+import { facts } from "./facts";
+
 import s from "./OnWay.module.scss";
 
-const FactIcons = ({ progress, facts }) => {
+const FactIcons = ({ progress }) => {
   const [activeFactIndex, setActiveFactIndex] = useState(null);
   const [icons, setIcons] = useState([]);
   const n = 320; // ProgressMax
@@ -21,7 +24,10 @@ const FactIcons = ({ progress, facts }) => {
           key={index}
         >
           {activeFactIndex === index ? (
-            <div className={s.factText}>{fact}</div>
+            <div className={s.factDiv}>
+              <div className={s.factText}>{fact.text}</div>
+              <img src={fact.image} alt={`Fact ${index + 1}`} className={s.factImg} />
+            </div>
           ) : (
             <>
               <img src="/images/info-point.png" alt={`Fact ${index + 1}`} />
@@ -32,7 +38,7 @@ const FactIcons = ({ progress, facts }) => {
     });
 
     setIcons(factIcons);
-  }, [progress, facts, activeFactIndex]);
+  }, [progress, activeFactIndex]);
 
   useEffect(() => {
     const numberOfFacts = facts.length;
@@ -46,7 +52,7 @@ const FactIcons = ({ progress, facts }) => {
         break;
       }
     }
-  }, [progress, facts]);
+  }, [progress]);
 
   return <div className={s.factIcons}>{icons}</div>;
 };

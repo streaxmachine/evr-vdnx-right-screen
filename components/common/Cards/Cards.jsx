@@ -44,6 +44,7 @@ const Cards = ({ setState, socket, setisBack }) => {
   return (
     <>
       <main className={s.page}>
+        <div className={s.pageLayer}></div>
         <div
           onClick={() => {
             setState(1);
@@ -54,8 +55,8 @@ const Cards = ({ setState, socket, setisBack }) => {
           <span className={s.textBack}>Главное меню</span>
         </div>
         <div className={s.textblock}>
-          <h2 className={s.title}>Прокатись по Тверскому региону</h2>
-          <span className={s.text}>Выберите маршрут</span>
+          <h2 className={s.title}>Куда поедем?</h2>
+          <span className={s.text}>Выбери маршрут</span>
         </div>
         <section className={s.cards}>
           {cards.map((card, id) => (
@@ -68,8 +69,10 @@ const Cards = ({ setState, socket, setisBack }) => {
                 socket.send(JSON.stringify(card.info));
               }}
             >
-              <h4 className={s.cardTitle}>{card.title}</h4>
-              <p className={s.cardText}>{card.text}</p>
+              <div className={s.cardTextBlock}>
+                <h4 className={s.cardTitle}>{card.title}</h4>
+                <p className={s.cardText}>{card.text}</p>
+              </div>
               <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
               <img className={s.cardZigZag} src={card.zigZagSrc} />
             </div>

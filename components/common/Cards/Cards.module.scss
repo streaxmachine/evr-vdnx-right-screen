@@ -3,16 +3,21 @@
 .page {
   width: 100vw;
   height: 100vh;
-  background-image: url("/images/guide_bg.png");
-  background-size: cover;
-  border: none;
+  background: linear-gradient(rgba(0, 70, 154, 1), rgba(183, 214, 251, 1));
+}
+
+.pageLayer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url("/images/clouds.png");
 }
 .navigationBack {
   color: white;
   position: fixed;
   top: 5%;
   left: 5%;
-  width: 14%;
+  width: 11%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +28,7 @@
 .textBack {
   z-index: 1;
   font-weight: 400;
-  font-size: 26rem;
+  font-size: 22rem;
 }
 
 .textblock {
@@ -42,10 +47,11 @@
 }
 .text {
   font-weight: 500;
-  font-size: 48rem;
+  font-size: 42rem;
   vertical-align: top;
   line-height: 56rem;
   text-align: left;
+  color: rgba(240, 245, 249, 0.6);
 }
 
 .cards {
@@ -73,20 +79,27 @@
   cursor: pointer;
 }
 
+.cardTextBlock{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  height: 50%;
+  margin-top: 5%;
+}
 .cardTitle {
   color: black;
-  font-size: 48rem;
-  font-weight: 600;
+  font-size: 38rem;
+  font-weight: 500;
   letter-spacing: -0.04em;
   text-align: left;
-  margin-top: 10%;
   margin-left: 8%;
 }
 
 .cardText {
   color: rgba(69, 153, 255, 1);
-  font-size: 32rem;
-  font-weight: 400;
+  font-size: 22rem;
+  font-weight: 500;
   line-height: 26rem;
   letter-spacing: 0em;
   text-align: left;
@@ -98,13 +111,14 @@
 .cardPic {
   z-index: 1;
   position: inherit;
-  width: 60%;
-  margin-left: 40%;
+  width: 70%;
+  margin-left: 30%;
+  margin-top: -60%;
 }
 
 .cardZigZag {
   position: absolute;
   bottom: 5%;
   z-index: 2;
+  margin-left: -1.5%;
 }
-

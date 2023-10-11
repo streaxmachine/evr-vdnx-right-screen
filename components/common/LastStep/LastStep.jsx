@@ -84,11 +84,11 @@ const OnWay = ({ setState, socket, setisBack }) => {
         <section className={s.content}>
           <span className={s.textBack}>Поздравляем!</span>
           <span className={s.text}>
-            Вы прибыли <p>к Путевому дворцу </p>
+            Вы прибыли к Тверскому <p> императорскому дворцу! </p>
           </span>
           <span className={s.notion}>
-            Покрутите модель чтобы
-            <p>рассмотреть детальней</p>
+            Покрутите модель чтобы рассмотреть
+            <p> детальней</p>
           </span>
         </section>
 
