@@ -19,6 +19,7 @@ const ProgressBar = ({ setState, isBack }) => {
         clearInterval(interval);
       };
     } else {
+      null
       if (isBack === false) {
         setState(4);
       } else {
@@ -30,13 +31,14 @@ const ProgressBar = ({ setState, isBack }) => {
   return (
     <>
       <main className={s.page}></main>
+      <div className={s.pageLayer}></div>
       <div ref={rootRef} className={s.textblock}>
         <h2 className={s.title}>{progress}%</h2>
         <span className={s.text}>Подождите, идет загрузка маршрута...</span>
 
         <div className={s.progressContainer}>
           <img
-            src="/images/progress_bar.png"
+            src="/images/progress_bar2.png"
             alt="Progress Bar"
             className={s.baseimage}
           />
@@ -46,7 +48,7 @@ const ProgressBar = ({ setState, isBack }) => {
           ></div>
         </div>
 
-        <span className={s.fact}>Fun Fact</span>
+        <span className={s.fact}>А вы знали, что Великая княгиня Екатерина Павловна устраивала во дворце такие балы, что однажды Александр I назвал его "маленьким Петергофом"?</span>
       </div>
       <section>
         <img

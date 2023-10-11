@@ -2,7 +2,7 @@
 .page {
   width: 100vw;
   height: 100vh;
-  background-image: url("/images/guide_bg.png");
+  background-image: url("/images/guide_bg_with_clouds.png");
   background-size: cover;
   border: none;
   font-family: "ALS Hauss", sans-serif;
@@ -27,7 +27,8 @@
 .title {
   z-index: 1;
   font-weight: 700;
-  font-size: 64rem;
+  font-size: 80rem;
+  line-height: 84rem;
   text-align: left;
   vertical-align: bottom;
 }
@@ -42,11 +43,11 @@
   background-color: white;
   color: rgb(69.0625025331974, 153.3154347538948, 255, 1);
   width: 22%;
-  border-radius: 36rem;
+  border-radius: 100px;
   border: none;
-  padding: 18rem 4.2rem 18rem 4.2rem;
+  padding: 20px 64px;
   font-weight: 700;
-  font-size: 26rem;
+  font-size: 24rem;
   cursor: pointer;
   transition: 0.25s;
 }
@@ -60,25 +61,33 @@
   overflow: hidden;
 }
 
+.img0{
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  z-index: 1;
+  overflow: hidden;
+}
+
 .img1 {
   position: absolute;
-  bottom: -15%;
-  right: -5%;
+  bottom: 0%;
+  right: 0%;
   z-index: 1;
-  max-width: 70%;
+  max-width: 55%;
   overflow: hidden;
 }
 .img2 {
   position: absolute;
   bottom: 0%;
-  right: 8%;
+  right: 5%;
   z-index: 2;
-  max-width: 55%;
+  max-width: 50%;
 }
 .img3 {
   position: absolute;
   bottom: 0;
-  right: -10%;
+  right: 0;
   z-index: 3;
-  max-width: 50%;
+  max-width: 40%;
 }

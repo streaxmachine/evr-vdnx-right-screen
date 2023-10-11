@@ -30,7 +30,7 @@
 .textBack {
   z-index: 1;
   font-weight: 700;
-  font-size: 26rem;
+  font-size: 28rem;
 }
 
 .textblock {
@@ -44,7 +44,7 @@
 }
 
 .text {
-  font-size: 48rem;
+  font-size: 58rem;
   font-weight: 700;
   // line-height: 1.2rem;
   text-align: left;
@@ -52,7 +52,7 @@
 
 .notion {
   color: rgba(255, 255, 255, 0.6);
-  font-size: 32rem;
+  font-size: 40rem;
   font-weight: 400;
   letter-spacing: 0em;
   text-align: left;
@@ -64,36 +64,34 @@
   height: 30%;
   top: 5%;
   right: 5%;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .dataText {
   position: absolute;
-  font-size: 26rem;
+  font-size: 28rem;
   font-weight: 700;
-  top: 14%;
-  left: 0;
+  top: 9%;
 }
 
 .dataTitle {
-  font-size: 26rem;
-  font-weight: 700;
-  margin-bottom: 22rem;
+  font-size: 28rem;
+  font-weight: 500;
+  margin-bottom: 28rem;
 }
 
 .dataNumber {
-  font-size: 48rem;
+  font-size: 60rem;
   font-weight: 700;
   letter-spacing: 0rem;
 }
 
 .dataMeasure {
-  font-size: 26rem;
-  font-weight: 700;
+  font-size: 28rem;
+  font-weight: 500;
   margin: 12rem;
 }
 

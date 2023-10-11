@@ -8,15 +8,12 @@ const Guide = ({ setState }) => {
       <main className={s.page}></main>
       <div className={s.textblock}>
         <h2 className={s.title}>
-          Сядь на велосипед <p>и прокатись по Тверскому </p>региону
+          Прокатитесь по Тверской <p>области!</p>
         </h2>
         <span className={s.text}>
-          Готовы отправиться в увлекательное путешествие? Сядь на велосипед
-          <p>
-            {" "}
-            и прокатись по Тверскому региону, исследуя его удивительные места
-          </p>{" "}
-          и богатое наследие. Приключение ждет тебя! Давай начнем!
+          Посетите важные культурные достопримечательности и узнайте
+          <p>интересные факты. После выбора маршрута, держитесь за руль</p>
+          и крутите педали.
         </span>
         <button
           onClick={() => {
@@ -28,6 +25,7 @@ const Guide = ({ setState }) => {
         </button>
       </div>
       <section className={s.imgContainer}>
+        <img className={s.img0} src="/images/hero_zig.png" alt="Зигзаг" />
         <img
           className={s.img1}
           src="/images/Group 24.png"

@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import { useControls } from "leva";
 
 import FactIcons from "./FactIcons";
-import { facts } from "./facts";
 
 import s from "./OnWay.module.scss";
 
 const OnWay = ({ setState, socket, setisBack }) => {
   const [filledCells, setFilledCells] = useState(0);
-
 
   const { progress, calories, speed } = useControls({
     progress: {
@@ -32,17 +30,20 @@ const OnWay = ({ setState, socket, setisBack }) => {
   });
 
   const isSlow = speed < 20;
+  const isOkay = speed > 20 && speed < 40;
   const isFast = speed > 40;
+
+  
 
   React.useEffect(() => {
     const newFilledCells = Math.floor((speed / 48) * 28); // 48 - максимальное значение speed, 28 - количество ячеек
     setFilledCells(newFilledCells);
+
   }, [speed]);
 
   React.useEffect(() => {
     if (progress === 320) {
       setState(5);
-
     }
   }, [progress]);
 
@@ -73,8 +74,8 @@ const OnWay = ({ setState, socket, setisBack }) => {
         <div
           className={s.navigationBack}
           onClick={() => {
-            setisBack(true)
-            setState(3)
+            setisBack(true);
+            setState(3);
             socket.send(
               JSON.stringify({
                 installation: "velo",
@@ -91,30 +92,33 @@ const OnWay = ({ setState, socket, setisBack }) => {
         {isSlow && (
           <div className={s.notification}>
             <img
-              src="/images/Icon2.png"
+              src="/images/warning.png"
               alt="Progress Bar"
               className={s.notificationImage}
             />
-            Ускорься.
-            <p className={s.notificationText}>
-              К ближайшей достопримечательности 3 км, давай ускоримся, чтобы
-              рассмотреть ее ближе.
-            </p>
+            <span className={s.notificationText}>Ускорься</span>
           </div>
         )}
 
         {isFast && (
           <div className={s.notification}>
             <img
-              src="/images/Icon2.png"
+              src="/images/warning.png"
               alt="Progress Bar"
               className={s.notificationImage}
             />
-            Cбавь скорость.
-            <p className={s.notificationText}>
-              Насладитесь красотой вокруг, рядом есть места, которые вам могут
-              понравиться.
-            </p>
+            <span className={s.notificationText}>Cбавь скорость</span>
+          </div>
+        )}
+
+        {isOkay && (
+          <div className={s.notification}>
+            <img
+              src="/images/tick.png"
+              alt="Progress Bar"
+              className={s.notificationImage}
+            />
+            <span className={s.notificationText}>Идеальная скорость</span>
           </div>
         )}
 
@@ -142,7 +146,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
 
         <div className={s.route}>
           <span className={s.textStart}>Начало маршрута</span>
-          <span className={s.textEnd}>Путевой дворец</span>
+          <span className={s.textEnd}>Тверской императорский дворец</span>
         </div>
 
         <div className={s.progressContainer}>
@@ -161,7 +165,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
             />
           </div>
 
-          <FactIcons progress={progress} facts={facts} />
+          <FactIcons progress={progress} />
         </div>
       </main>
     </>
