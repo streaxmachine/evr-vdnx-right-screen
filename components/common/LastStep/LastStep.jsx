@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useControls } from "leva";
 
 import s from "./LastStep.module.scss";
+import { Environment, OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 
 const OnWay = ({ setState, socket, setisBack }) => {
   const { progress, calories, speed } = useControls({
@@ -56,7 +58,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
 
   useEffect(() => {
     if (inactiveTime >= 40) {
-      console.log('nobody`s here')
+      console.log("nobody`s here");
       setisBack(true);
       setState(3);
       socket.send(
@@ -71,6 +73,13 @@ const OnWay = ({ setState, socket, setisBack }) => {
 
   return (
     <>
+      <div className={s.canvasWrapper}>
+        <Canvas>
+          <Environment background preset="city" />
+          <OrbitControls />
+        </Canvas>
+      </div>
+
       <main className={s.page}>
         <section className={s.content}>
           <span className={s.textBack}>Поздравляем!</span>

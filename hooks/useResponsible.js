@@ -29,12 +29,17 @@ const useResponsible = () => {
   React.useEffect(() => {
     handleResize();
 
+    const timer = setTimeout(() => {
+      handleResize();
+    }, 1000);
+
     window.addEventListener("resize", handleResize);
     window.addEventListener("orientationchange", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("orientationchange", handleResize);
+      clearTimeout(timer);
     };
   }, []);
 
