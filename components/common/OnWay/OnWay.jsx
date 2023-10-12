@@ -11,7 +11,7 @@ const OnWay = ({
   speedSocket,
   caloriesSocket,
   distanceSocket,
-  setisBack
+  setisBack,
 }) => {
   const [filledCells, setFilledCells] = useState(0);
 
@@ -40,12 +40,9 @@ const OnWay = ({
   const isOkay = speed > 20 && speed < 40;
   const isFast = speed > 40;
 
-  
-
   React.useEffect(() => {
     const newFilledCells = Math.floor((speed / 48) * 28); // 48 - максимальное значение speed, 28 - количество ячеек
     setFilledCells(newFilledCells);
-
   }, [speed]);
 
   React.useEffect(() => {
@@ -71,8 +68,43 @@ const OnWay = ({
     );
   });
 
+  const progressPercent = (progress / 320) * 100;
+  const calculateManualYPosition = (progressPercent) => {
+    const intervals = [
+      { start: 0, end: 9, value: "0rem" },
+      { start: 9, end: 12, value: "12rem" },
+      { start: 12, end: 16, value: "-4rem" },
+      { start: 16, end: 20, value: "12rem" },
+      { start: 20, end: 24, value: "-4rem" },
+      { start: 24, end: 28, value: "12rem" },
+      { start: 28, end: 32, value: "-4rem" },
+      { start: 32, end: 36, value: "12rem" },
+      { start: 36, end: 40, value: "-4rem" },
+      { start: 40, end: 44, value: "12rem" },
+      { start: 44, end: 48, value: "-4rem" },
+      { start: 48, end: 52, value: "12rem" },
+      { start: 52, end: 56, value: "-4rem" },
+      { start: 56, end: 60, value: "12rem" },
+      { start: 60, end: 64, value: "-4rem" },
+      { start: 64, end: 68, value: "12rem" },
+      { start: 68, end: 72, value: "-4rem" },
+      { start: 72, end: 76, value: "12rem" },
+      { start: 76, end: 80, value: "-4rem" },
+      { start: 80, end: 82, value: "12rem" },
+      { start: 82, end: 100, value: "0rem" },
+    ];
+  
+    for (const interval of intervals) {
+      if (progressPercent >= interval.start && progressPercent < interval.end) {
+        return interval.value;
+      }
+    }
+    return "0rem"; // По умолчанию
+  };
+
   const progressBarStyle = {
-    "--progress-width": `${(progress / 320) * 100}%`, //progress MAx нужно ввести
+    "--progress-width": `${(progress / 320) * 100}%`,
+    "--y-position": calculateManualYPosition(progressPercent),
   };
 
   return (
@@ -163,12 +195,16 @@ const OnWay = ({
             className={s.baseimage}
           />
           <div className={s.overlayimage} style={progressBarStyle}></div>
+
           <div className={s.iconContainer}>
             <img
               src="/images/on_way_point.png"
               alt="Icon"
               className={s.icon}
-              style={{ left: progressBarStyle["--progress-width"] }}
+              style={{
+                left: progressBarStyle["--progress-width"],
+                marginTop: progressBarStyle["--y-position"],
+              }}
             />
           </div>
 

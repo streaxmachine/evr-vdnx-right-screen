@@ -1,10 +1,16 @@
 import React from "react";
+import gsap from "gsap";
+
+import { phrases } from "./phrases";
 
 import s from "./ProgressBar.module.scss";
 
 const ProgressBar = ({ setState, isBack }) => {
   const [progress, setProgress] = React.useState(0);
   const rootRef = React.useRef();
+
+  const [text, setText] = React.useState(phrases[0]);
+  const randomPhraseRef = React.useRef();
 
   React.useEffect(() => {
     rootRef.current.style.setProperty("--progress-width", progress + "%");
@@ -19,7 +25,7 @@ const ProgressBar = ({ setState, isBack }) => {
         clearInterval(interval);
       };
     } else {
-      null
+      // null;
       if (isBack === false) {
         setState(4);
       } else {
@@ -28,6 +34,26 @@ const ProgressBar = ({ setState, isBack }) => {
     }
   }, [progress]);
 
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      const randomPhrase = Math.floor(Math.random() * phrases.length );
+
+      gsap.to(randomPhraseRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => setText(phrases[randomPhrase]),
+      });
+      gsap.to(randomPhraseRef.current, {
+        opacity: 1,
+        duration: 1,
+        delay: 0.5,
+      });
+    }, 4000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <>
       <main className={s.page}></main>
@@ -48,7 +74,7 @@ const ProgressBar = ({ setState, isBack }) => {
           ></div>
         </div>
 
-        <span className={s.fact}>А вы знали, что Великая княгиня Екатерина Павловна устраивала во дворце такие балы, что однажды Александр I назвал его "маленьким Петергофом"?</span>
+        <span className={s.fact} ref={randomPhraseRef}>{text}</span>
       </div>
       <section>
         <img

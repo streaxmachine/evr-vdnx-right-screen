@@ -24,7 +24,7 @@ export const cards = [
   {
     title: "Ржевский мемориал Советскому солдату",
     text: "Великий подвиг советских воинов, увековеченный в монументальном мемориале. Это стоит увидеть.",
-    picSrc: "/images/soldier.png",
+    picSrc: "/images/soldier2.png",
     alt: "Ржевский мемориал Советскому солдату",
     zigZagSrc: "/images/zigzag.png",
     info: { installation: "velo",
