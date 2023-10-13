@@ -3,7 +3,7 @@
 .page {
   width: 100vw;
   height: 100vh;
-  background-image: url("/images/guide_bg.png");
+  background-image: url("/images/background/guide_bg.png");
   background-size: cover;
   border: none;
   font-family: "ALS Hauss", sans-serif;
@@ -150,7 +150,6 @@
   left: 12%;
   bottom: 5%;
   height: 6.6%;
-  overflow: hidden;
 }
 
 .baseimage {
@@ -167,7 +166,7 @@
   height: 48px;
   max-width: 100%;
   z-index: 2;
-  background-image: url("/images/on_way_progress_white.png");
+  background-image: url("/images/onway/on_way_progress_white.png");
   background-size: none;
   transition: width 0.5s ease-in-out;
 }

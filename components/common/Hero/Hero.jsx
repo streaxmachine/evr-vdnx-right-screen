@@ -25,16 +25,16 @@ const Guide = ({ setState }) => {
         </button>
       </div>
       <section className={s.imgContainer}>
-        <img className={s.img0} src="/images/hero_zig.png" alt="Зигзаг" />
+        <img className={s.img0} src="/images/background/hero_zig.png" alt="Зигзаг" />
         <img
           className={s.img1}
-          src="/images/Group 24.png"
+          src="/images/background/Group 24.png"
           alt="Ржевский солдат"
         />
-        <img className={s.img2} src="/images/Group 25.png" alt="Музей Россим" />
+        <img className={s.img2} src="/images/background/Group 25.png" alt="Музей Россим" />
         <img
           className={s.img3}
-          src="/images/Group 27.png"
+          src="/images/background/Group 27.png"
           alt="Путевой дворец"
         />
       </section>

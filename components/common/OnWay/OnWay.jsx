@@ -131,7 +131,7 @@ const OnWay = ({
         {isSlow && (
           <div className={s.notification}>
             <img
-              src="/images/warning.png"
+              src="/images/onway/warning.png"
               alt="Progress Bar"
               className={s.notificationImage}
             />
@@ -142,7 +142,7 @@ const OnWay = ({
         {isFast && (
           <div className={s.notification}>
             <img
-              src="/images/warning.png"
+              src="/images/onway/warning.png"
               alt="Progress Bar"
               className={s.notificationImage}
             />
@@ -153,7 +153,7 @@ const OnWay = ({
         {isOkay && (
           <div className={s.notification}>
             <img
-              src="/images/tick.png"
+              src="/images/onway/tick.png"
               alt="Progress Bar"
               className={s.notificationImage}
             />
@@ -190,7 +190,7 @@ const OnWay = ({
 
         <div className={s.progressContainer}>
           <img
-            src="/images/on_way_progress.png"
+            src="/images/onway/on_way_progress.png"
             alt="Progress Bar"
             className={s.baseimage}
           />
@@ -198,7 +198,7 @@ const OnWay = ({
 
           <div className={s.iconContainer}>
             <img
-              src="/images/on_way_point.png"
+              src="/images/onway/on_way_point.png"
               alt="Icon"
               className={s.icon}
               style={{

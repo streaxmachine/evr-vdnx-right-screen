@@ -15,7 +15,7 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  background-image: url("/images/clouds.png");
+  background-image: url("/images/background/clouds.png");
 }
 
 .textblock {
@@ -88,7 +88,7 @@
   max-width: 538px;
   height: 28px;
   z-index: 2;
-  background-image: url('/images/progress_bar_blue2.png');
+  background-image: url('/images/progress/progress_bar_blue2.png');
   transition: width 0.3s ease-in-out;
 }
 

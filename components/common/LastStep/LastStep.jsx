@@ -112,7 +112,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
         </div>
 
         <div className={s.imgContainer}>
-          <img className={s.img} src="/images/360deg.png" alt="Degrees" />
+          <img className={s.img} src="/images/lastpage/360deg.png" alt="Degrees" />
         </div>
 
         <div className={s.bottom}>

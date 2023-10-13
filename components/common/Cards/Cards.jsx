@@ -5,6 +5,7 @@ import { cards } from "./cardInformation";
 import s from "./Cards.module.scss";
 
 const Cards = ({ setState, socket, setisBack }) => {
+  const [card, setCard] = useState(null);
   const [inactiveTime, setInactiveTime] = useState(0);
 
   const resetInactiveTime = () => {
@@ -60,22 +61,7 @@ const Cards = ({ setState, socket, setisBack }) => {
         </div>
         <section className={s.cards}>
           {cards.map((card, id) => (
-            <div
-              key={id}
-              className={s.card}
-              onClick={() => {
-                setisBack(false);
-                setState(3);
-                socket.send(JSON.stringify(card.info));
-              }}
-            >
-              <div className={s.cardTextBlock}>
-                <h4 className={s.cardTitle}>{card.title}</h4>
-                <p className={s.cardText}>{card.text}</p>
-              </div>
-              <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
-              <img className={s.cardZigZag} src={card.zigZagSrc} />
-            </div>
+            <Card card={card} key={id} setState={setState} socket={socket} setisBack={setisBack} setCard={setCard} />
           ))}
         </section>
       </main>
@@ -83,3 +69,25 @@ const Cards = ({ setState, socket, setisBack }) => {
   );
 };
 export default Cards;
+
+function Card({ setState, setisBack, setCard,socket, card}) {
+  return (
+    <div
+      className={s.card}
+      onClick={() => {
+        setisBack(false);
+        setState(3);
+        setCard(card.cardNumber)
+        console.log(card.cardNumber)
+        socket.send(JSON.stringify(card.info));
+      }}
+    >
+      <div className={s.cardTextBlock}>
+        <h4 className={s.cardTitle}>{card.title}</h4>
+        <p className={s.cardText}>{card.text}</p>
+      </div>
+      <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
+      <img className={s.cardZigZag} src={card.zigZagSrc} />
+    </div>
+  );
+}

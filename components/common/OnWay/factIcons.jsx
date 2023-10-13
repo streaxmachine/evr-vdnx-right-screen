@@ -30,7 +30,7 @@ const FactIcons = ({ progress }) => {
             </div>
           ) : (
             <>
-              <img src="/images/info-point.png" alt={`Fact ${index + 1}`} />
+              <img src="/images/onway/info-point.png" alt={`Fact ${index + 1}`} />
             </>
           )}
         </div>
