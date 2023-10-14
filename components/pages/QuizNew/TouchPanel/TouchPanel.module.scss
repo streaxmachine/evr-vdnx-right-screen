@@ -1,0 +1,301 @@
+.root {
+    width: 100vw;
+    height: 100vh;
+    font-size: 50rem;
+    color: white;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 34%;
+    height: 100%;
+    padding: 84rem;
+    padding-top: 0rem;
+    gap: 80rem;
+}
+
+.backMenu {
+    width: 212rem;
+    height: 48rem;
+    font-size: 18rem;
+    margin-top: 64rem;
+    background-color: rgba(69, 153, 255, 0.2);
+    border-radius: 12rem;
+    color: rgba(69, 153, 255, 1);
+    font-weight: 500;
+    border: none;
+}
+
+.right {
+    width: 66%;
+    height: 100%;
+    background-image: url('/images/img.png');
+    background-color: #4599FF;
+    background-size: contain;
+}
+
+.rightDone {
+    width: 100%;
+}
+
+.questionRoot{
+    padding: 64rem;
+    position: relative;
+}
+
+.category {
+    font-size: 32rem;
+    line-height: 36rem;
+    opacity: 0.6;
+}
+
+.questionNumber {
+    font-size: 24rem;
+    line-height: 28rem;
+    opacity: 0.6;
+    margin-top: 10rem;
+}
+
+.questionText {
+    margin-top: 20rem;
+    line-height: 50rem;
+    width: 972rem;
+    max-width: 100%;
+}
+
+.answersWrapper {
+    margin-top: 108rem;
+    gap: 32rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.answerButton {
+    color: #4599FF;
+    cursor: pointer;
+    width: 520rem;
+    height: 104rem;
+    font-size: 40rem;
+    line-height: 40rem;
+    border-radius: 10rem;
+    border: none;
+    transition: all 0.5s;
+    padding: 32rem 64rem 32rem 64rem;
+}
+
+.completeRoot {
+    width: 100%;
+    height: 100%;
+}
+
+.completeContainer {
+    display: flex;
+    margin-top: 88rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 44rem;
+
+}
+
+.completeTitle {
+    font-size: 52rem;
+    line-height: 52rem;
+}
+
+.completeText {
+    text-align: center;
+    font-size: 24rem;
+    line-height: 28rem;
+    max-width: 806rem;
+    width: 100%;
+}
+
+.completeResults {
+    width: 661rem;
+    height: 170rem;
+    border-radius: 10rem;
+    border: none;
+    align-items: center;
+    background-color: white;
+    color: #4599FF;
+    margin-top: 44rem;
+    display: flex;
+    padding: 44rem;
+    justify-content: space-between;
+}
+
+.completeRectangle{
+    width: 1.72rem;
+    height: 82rem;
+    background-color: #0C0C0C1A;
+}
+
+.completeValue {
+    font-size: 52rem;
+    line-height: 52rem;
+    margin-top: 10rem;
+    font-weight: 700;
+}
+
+.completeOtherGameBtn {
+    width: 271rem;
+    border-radius: 100rem;
+    border: none;
+    font-size: 24rem;
+    line-height: 28rem;
+    height: 60rem;
+}
+
+.completeStatistick {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16rem;
+    line-height: 20rem;
+}
+
+.click {
+    pointer-events: none;
+}
+
+.trueIndex {
+    color: white !important;
+    background-color: #3185EB !important;
+    transition: all 0.5s;
+}
+
+.falseIndex {
+    color: white !important;
+    background-color: #B42F2F  !important;
+    opacity: 0.7;
+    transition: all 0.5s;
+}
+
+.base_timer {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    color: red;
+
+  }
+  
+  .base_timer__svg {
+    transform: scaleX(-1);
+    color: red;
+
+  }
+  
+  .base_timer__circle {
+    fill: none;
+    stroke: none;
+    color: red;
+
+  }
+  
+  .base_timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+    color: red;
+
+  }
+  
+  .base_timer__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+    color: red;
+  }
+  
+  
+  .base_timer__label {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: red;
+  }
+
+.wayMenuRoot {
+    display: flex;
+    height: 313rem;
+    flex-direction: row;
+}
+
+.wayMenu {
+    height: 100%;
+}
+
+.wayMenuPlaces {
+    margin-top: 3rem;
+    margin-left: 15rem;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.way{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+    font-size: 20rem;
+    color: black;
+}
+
+.wayContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22rem;
+}
+
+.line {
+    background-color: rgba(189, 189, 189, 1);
+    width: 3rem;
+    height: 83rem;
+}
+
+.circle {
+    border: solid 4rem rgba(69, 153, 255, 1);
+    width: 16rem;
+    border-radius: 50%;
+    height: 16rem;
+}
+
+.active {
+    background-color: rgba(69, 153, 255, 1);
+}
+
+.activeText {
+    color: rgba(69, 153, 255, 1);
+}
+
+  
+
+  

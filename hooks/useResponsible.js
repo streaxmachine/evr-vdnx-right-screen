@@ -8,7 +8,7 @@ const getBreakpoint = () => {
   if (window.innerWidth <= 1024) {
     return { width: 1024, height: 768 };
   }
-  return { width: 1728, height: 1043 };
+  return { width: 1440, height: 960 };
 };
 
 const getFontRatio = () => {
