@@ -1,0 +1,201 @@
+@import "styles/mixins";
+
+.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 70, 154, 1), rgba(183, 214, 251, 1));
+}
+
+.wrapper {
+  margin-top: 64rem;
+  max-width: 1350rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.clouds {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url("/images/background/clouds.png");
+  background-size: cover;
+  z-index: 0;
+}
+
+.backBtn {
+  color: white;
+  width: 214rem;
+  height: 48rem;
+  gap: 12rem;
+  border: none;
+  border-radius: 10rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  z-index: 1;
+}
+.backText {
+  z-index: 1;
+  font-weight: 400;
+  font-size: 22rem;
+}
+
+
+.textblock {
+  color: white;
+  margin-top: 28rem;
+}
+.title {
+  font-weight: 700;
+  font-size: 52rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 52rem;
+  letter-spacing: 0.02rem;
+}
+.text {
+  margin-top: 4rem;
+  font-weight: 500;
+  font-size: 36rem;
+  vertical-align: top;
+  line-height: 36rem;
+  text-align: left;
+  color: rgba(240, 245, 249, 0.6);
+}
+
+.cardsWrapper {
+  width: 100%;
+  border: none;
+  display: flex;
+  margin-top: 24rem;
+  color: white;
+  justify-content: space-between;
+}
+
+.card {
+  width: 305rem;
+  height: 520rem;
+  border-radius: 1em;
+  background-color: rgb(240, 245, 249);
+  display: flex;
+  position: relative;
+
+}
+
+.clickedCard {
+  background: linear-gradient(
+    159.2deg,
+    #3f96ff 1.78%,
+    #125ab1 63.86%,
+    #125ab1 92.48%
+  );
+  transition: all 0.3s ease-in-out;
+  .cardpreTitle {
+    color: white;
+  }
+  .cardTitle {
+    color: white;
+  }
+  .cardText {
+    color: white;
+  }
+}
+
+
+.cardTextBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24rem;
+  position: relative;
+}
+
+.cardpreTitle {
+  color: rgba(0, 0, 0, 0.555);
+  font-size: 16rem;
+  font-weight: 500;
+}
+.cardTitle {
+  margin-top: 8rem;
+  color: black;
+  font-size: 40rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.cardText {
+  position: absolute;
+  top: 160rem;
+  color: var(--light-blue);
+  font-weight: 500;
+  margin-top: 24rem;
+  max-width: 240rem;
+  font-size: 16rem;
+  line-height: 16rem;
+  letter-spacing: 0em;
+  z-index: 2;
+}
+
+.cardPic {
+  z-index: 1;
+  position: absolute;
+  bottom: -170rem;
+  left: -40rem;
+  width: 500rem;
+}
+
+// /* AI */
+// .aiSection {
+//   width: 100%;
+//   height: 15%;
+//   position: absolute;
+//   bottom: 30rem;
+// }
+
+// .aiChat {
+//   width: 184px;
+//   height: 184px;
+//   background-image: url("/images/aiChat.gif");
+//   background-size: 100%;
+//   position: absolute;
+//   margin-top: 20rem;
+//   right: 0;
+//   mix-blend-mode: multiply;
+// }
+
+// .speechBubble {
+//   position: absolute;
+//   font-family: sans-serif;
+//   font-size: 18rem;
+//   font-weight: 500;
+//   line-height: 24rem;
+//   width: 340px;
+//   background: #fff;
+//   border-radius: 10px;
+//   padding: 12px;
+//   text-align: center;
+//   color: var(--light-blue);
+//   right: 9%;
+//   bottom: 5%;
+//   z-index: 2;
+// }
+
+// .speechBubble:before {
+//   content: "";
+//   width: 0px;
+//   height: 0px;
+//   position: absolute;
+//   border-top: 19px solid transparent;
+//   border-bottom: 10px solid transparent;
+//   border-right: 10px solid #fff;
+//   border-left: 18px solid transparent;
+//   right: -25px;
+//   top: 60%;
+//   transform: translateY(-50%) scaleX(-1);
+// }

@@ -1,5 +1,5 @@
 @import "styles/mixins";
-.page {
+.root {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(99.13deg, #00469a 5.73%, #b7d6fb 96.89%);
@@ -7,19 +7,26 @@
   overflow: hidden;
 }
 
-.clouds{
+.wrapper {
+  margin: 64rem;
+  max-width: 1350rem;
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+}
+
+.clouds {
   width: 100vw;
   height: 100vh;
   background-image: url("/images/background/clouds.png");
   background-size: cover;
+  position: absolute;
+  top: 0;
 }
 
 .textblock {
   z-index: 2;
   color: white;
-  position: fixed;
-  top: 25rem;
-  left: 65rem;
   width: 1200rem;
   height: 500rem;
   display: flex;
@@ -47,15 +54,21 @@
 }
 .button {
   background-color: white;
-  color: rgb(69.0625025331974, 153.3154347538948, 255, 1);
+  color: var(--light-blue);
   width: 22%;
   border-radius: 100px;
   border: none;
   padding: 22rem 22rem;
   font-weight: 700;
   font-size: 24rem;
+
   cursor: pointer;
   transition: 0.25s;
+
+  &:hover {
+    color: white;
+    background-color: var(--light-blue);
+  }
 }
 
 .imgContainer {
@@ -98,7 +111,7 @@
   border-radius: 10px;
   padding: 12px;
   text-align: center;
-  color: rgb(69, 153, 255);
+  color: var(--light-blue);
   right: 9%;
   bottom: 31rem;
   z-index: 2;
