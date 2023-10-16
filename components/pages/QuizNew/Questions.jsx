@@ -4,14 +4,14 @@ import {
   questionsRecords,
   questionsStars,
   questionsVolga,
-} from "../questions";
+} from "./questions";
 
 import useData from "hooks/useData";
 import clsx from "clsx";
 
 import CompleteQuiz from "./CompleteQuiz";
 
-import s from "./TouchPanel.module.scss";
+import s from "./TouchPanel/TouchPanel.module.scss";
 
 const Questions = React.memo(
   ({

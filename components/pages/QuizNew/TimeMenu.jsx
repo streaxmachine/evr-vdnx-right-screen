@@ -1,6 +1,6 @@
 import React from "react";
 
-import s from "./TouchPanel.module.scss";
+import s from "./TouchPanel/TouchPanel.module.scss";
 
 const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
     const FULL_DASH_ARRAY = 283;

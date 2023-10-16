@@ -3,8 +3,8 @@ import React from "react";
 import clsx from "clsx";
 
 
-import TimeMenu from "./TimeMenu";
-import Questions from "./Questions";
+import TimeMenu from "../TimeMenu";
+import Questions from "../Questions.jsx";
 
 import s from "./TouchPanel.module.scss";
 

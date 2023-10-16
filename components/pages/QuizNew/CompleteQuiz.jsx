@@ -1,4 +1,4 @@
-import s from "./TouchPanel.module.scss";
+import s from "./TouchPanel/TouchPanel.module.scss";
 
 const CompleteQuiz = ({
   score,
