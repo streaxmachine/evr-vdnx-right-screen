@@ -45,14 +45,14 @@ const QuizCards = ({ setGlobalState }) => {
 export default QuizCards;
 
 function Card({ setGlobalState, card }) {
-  const [isClicked, setIsClicked] = useState(false);
+  // const [isClicked, setIsClicked] = useState(false);
   return (
     <div
-      className={`${s.card} ${isClicked ? s.clickedCard : ""}`}
+      className={`${s.card} ${s.clickedCard}`}
       onClick={() => {
-        setIsClicked(!isClicked);
+        // setIsClicked(!isClicked);
         // setGlobalState(card.cardGlobalState)};
-        setTimeout(() => {setGlobalState(card.cardGlobalState)}, 1000);
+        setGlobalState(card.cardGlobalState);
       }}
     >
       <div className={s.cardTextBlock}>

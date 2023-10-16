@@ -21,7 +21,11 @@ const Train = ({ count, setCount }) => {
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   const socket = useSocket();
-  const train = useGLTF("/models/trainTestrazbor.glb");
+  // const train2 = useGLTF("/models/testTrainTest.glb");
+
+  const train = useGLTF("/models/testTrainTest.glb");
+  // console.log("here", train2);s
+
   // console.log(train);
   const parts = React.useMemo(() => {
     const part1 = train.scene.getObjectByName("1");
@@ -34,9 +38,9 @@ const Train = ({ count, setCount }) => {
     const part8 = train.scene.getObjectByName("8");
     const part9 = train.scene.getObjectByName("9");
     const part10 = train.scene.getObjectByName("10");
-    const part11 = train.scene.getObjectByName("11");
-    const part12 = train.scene.getObjectByName("12");
-    const part13 = train.scene.getObjectByName("13");
+    // const part11 = train.scene.getObjectByName("11");
+    // const part12 = train.scene.getObjectByName("12");
+    // const part13 = train.scene.getObjectByName("13");
 
     const parts = [];
     parts.push(
@@ -53,6 +57,9 @@ const Train = ({ count, setCount }) => {
         object: part4,
       },
       {
+        object: part6,
+      },
+      {
         object: part5,
       },
       {
@@ -66,18 +73,6 @@ const Train = ({ count, setCount }) => {
       },
       {
         object: part10,
-      },
-      {
-        object: part11,
-      },
-      {
-        object: part12,
-      },
-      {
-        object: part13,
-      },
-      {
-        object: part6,
       }
     );
     return parts;
@@ -138,7 +133,7 @@ const Train = ({ count, setCount }) => {
         <planeGeometry args={[200, 200]} />
         <meshStandardMaterial transparent={true} color="gray" />
       </mesh>
-      <Preload all />
+      {/* <Preload all /> */}
     </>
   );
 };

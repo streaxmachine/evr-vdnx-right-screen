@@ -18,7 +18,7 @@ const ExperienceTrain = () => {
       >
         {count}
       </div>
-      <Canvas shadows>
+      <Canvas shadows gl={{ antialias: false }}>
         <Train count={count} setCount={setCount} />
         <PerspectiveCamera makeDefault position-y={5} position-z={-10} />
       </Canvas>

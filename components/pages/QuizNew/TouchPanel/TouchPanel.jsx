@@ -1,26 +1,24 @@
 import React from "react";
-
 import clsx from "clsx";
-
 
 import TimeMenu from "../TimeMenu";
 import Questions from "../Questions.jsx";
 
 import s from "./TouchPanel.module.scss";
 
-
-
-
 const TouchPanel = ({ setGlobalState }) => {
   const [currentCategory, setCurrentCategory] = React.useState(0);
   const [isQuizDone, setQuizDone] = React.useState(false);
-  const [time, setTime] = React.useState();
+  const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   return (
     <div className={s.root}>
       <div className={s.container}>
         {!isQuizDone && (
           <div className={s.left}>
-            <button onClick={() => setGlobalState('quizCards')} className={s.backMenu}>
+            <button
+              onClick={() => setGlobalState("quizCards")}
+              className={s.backMenu}
+            >
               {"<  "}Главное меню
             </button>
             <TimeMenu
@@ -126,5 +124,3 @@ const WayMenu = React.memo(({ currentCategory }) => {
     </>
   );
 });
-
-

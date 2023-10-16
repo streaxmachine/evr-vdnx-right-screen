@@ -63,7 +63,7 @@ const Page = ({
           name="twitter:image"
           content={removeQueries(image) || seo.image}
         />
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       {/* <Header /> */}
       {children}

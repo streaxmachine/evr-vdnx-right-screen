@@ -5,6 +5,8 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  padding: 30rem;
+  padding-top: 0rem;
   background: linear-gradient(rgba(0, 70, 154, 1), rgba(183, 214, 251, 1));
 }
 
@@ -14,6 +16,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  // margin: 15rem;
 }
 
 .clouds {
@@ -22,6 +25,7 @@
   position: absolute;
   background-image: url("/images/background/clouds.png");
   background-size: cover;
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -85,27 +89,30 @@
   background-color: rgb(240, 245, 249);
   display: flex;
   position: relative;
+  transition: all 0.5s;
+
+  &:hover {
+    background: linear-gradient(
+      159.2deg,
+      #3f96ff 1.78%,
+      #125ab1 63.86%,
+      #125ab1 92.48%
+    );
+    transition: all 0.3s ease-in-out;
+    
+    .cardpreTitle {
+      color: white;
+    }
+    .cardTitle {
+      color: white;
+    }
+    .cardText {
+      color: white;
+    }
+  }
 
 }
 
-.clickedCard {
-  background: linear-gradient(
-    159.2deg,
-    #3f96ff 1.78%,
-    #125ab1 63.86%,
-    #125ab1 92.48%
-  );
-  transition: all 0.3s ease-in-out;
-  .cardpreTitle {
-    color: white;
-  }
-  .cardTitle {
-    color: white;
-  }
-  .cardText {
-    color: white;
-  }
-}
 
 
 .cardTextBlock {

@@ -24,6 +24,16 @@
   gap: 80rem;
 }
 
+.starImg {
+  position: absolute;
+  height: 100%;
+  transform: translateX(-100%);
+  width: 34%;
+  object-fit: cover;
+  z-index: 101;
+  left: 0;
+}
+
 .backMenu {
   width: 212rem;
   height: 48rem;
@@ -73,6 +83,11 @@
   max-width: 100%;
 }
 
+.bigText {
+  font-size: 30rem;
+  line-height: 30rem;
+}
+
 .answersWrapper {
   margin-top: 108rem;
   gap: 32rem;
@@ -92,8 +107,12 @@
   border-radius: 10rem;
   background-color: var(--light-blue);
   border: none;
-  transition: all 0.5s;
-  padding: 32rem 64rem 32rem 64rem;
+  transition: background-color 0.5s;
+  // padding: 32rem 64rem 32rem 64rem;
+}
+
+.bigBtnText {
+  font-size: 20rem;
 }
 
 .completeRoot {

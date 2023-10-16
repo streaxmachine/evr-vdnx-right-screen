@@ -12,6 +12,7 @@ import clsx from "clsx";
 import CompleteQuiz from "./CompleteQuiz";
 
 import s from "./TouchPanel/TouchPanel.module.scss";
+import gsap from "gsap";
 
 const Questions = React.memo(
   ({
@@ -22,7 +23,9 @@ const Questions = React.memo(
     setQuizDone,
     setGlobalState,
   }) => {
+    const buttonRef = React.useRef();
     const audioRef = React.useRef();
+    const imgRef = React.useRef();
     const finalQuestions = React.useMemo(() => {
       const questions = [];
 
@@ -36,7 +39,7 @@ const Questions = React.memo(
       return questions;
     }, [isQuizDone]);
 
-    const buttonRef = React.useRef();
+    const [imgUrl, setImgUrl] = React.useState("");
     const [score, setScore] = React.useState(0);
     const [currentQuestionNumber, setCurrentQuestionNumber] = React.useState(0);
     const [currentQuestion, setCurrentQuestion] = React.useState(
@@ -104,13 +107,34 @@ const Questions = React.memo(
 
     const handleClickAnswer = (question, event, index) => {
       event.preventDefault();
+      event.stopPropagation();
       sucessNumber.value += 1;
+
+      const isImg = currentQuestion.isImg;
+      if (isImg) {
+        setImgUrl(currentQuestion.imgUrl);
+      }
 
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
         audioRef.current.play();
+        if (isImg) {
+          gsap.to(imgRef.current, {
+            x: "0%",
+            duration: 0.75,
+            ease: "expo.out",
+          });
+
+          gsap.to(imgRef.current, {
+            x: "-100%",
+            duration: 0.75,
+            delay: 4.25,
+            ease: "expo.out",
+          });
+        }
+
         setTimeout(() => {
           setIsClickable(true);
           setQuestionNumber(questionNumber + 1);
@@ -122,6 +146,21 @@ const Questions = React.memo(
 
       if (!twoMisstakesState) {
         if (question.isCorrect === true) {
+          if (isImg) {
+            gsap.to(imgRef.current, {
+              x: "0%",
+              duration: 0.75,
+              ease: "expo.out",
+            });
+
+            gsap.to(imgRef.current, {
+              x: "-100%",
+              duration: 0.75,
+              delay: 1.5,
+              ease: "expo.out",
+            });
+          }
+
           if (sucessNumber.value === 1) {
             sucessNumber.test += 1;
             sucessNumber.value = 0;
@@ -132,13 +171,16 @@ const Questions = React.memo(
           event.target.style.backgroundColor = "green";
           // event.target.style.color = "white";
 
-          const timeout = setTimeout(() => {
-            setQuestionNumber(questionNumber + 1);
-            handleCheck();
-            setIsClickable(true);
-            event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
-            // event.target.style.color = "white";
-          }, 550);
+          const timeout = setTimeout(
+            () => {
+              setQuestionNumber(questionNumber + 1);
+              handleCheck();
+              setIsClickable(true);
+              event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
+              // event.target.style.color = "white";
+            },
+            isImg ? 2000 : 550
+          );
         } else {
           setIsClickable(false);
           event.target.style.backgroundColor = "rgb(180, 47, 47)";
@@ -167,6 +209,7 @@ const Questions = React.memo(
     return (
       <>
         <audio ref={audioRef} src="/music/phrase.mp3" />
+        <img ref={imgRef} className={s.starImg} src={imgUrl} alt="" />
         {!isQuizDone && (
           <>
             <div className={s.questionRoot}>
@@ -178,7 +221,11 @@ const Questions = React.memo(
                 <div className={s.questionNumber}>
                   Вопрос {questionNumber + 1}/12
                 </div>
-                <div className={s.questionText}>
+                <div
+                  className={clsx(s.questionText, {
+                    [s.bigText]: currentCategory === 3,
+                  })}
+                >
                   {currentQuestion.questionText}
                 </div>
               </div>
@@ -196,6 +243,7 @@ const Questions = React.memo(
                             twoMisstakesState && index === rightVariant,
                           [s.falseIndex]:
                             twoMisstakesState && index !== rightVariant,
+                          [s.bigBtnText]: currentCategory === 3,
                         }
                       )}
                       onClick={(e) => handleClickAnswer(item, e, index)}
