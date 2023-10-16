@@ -39,7 +39,6 @@
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2",
     "three": "^0.149.0",
-    "three-custom-shader-material": "^5.4.0",
     "virtual-scroll": "^2.2.1",
     "yup": "^1.0.0",
     "zustand": "^4.3.2"
