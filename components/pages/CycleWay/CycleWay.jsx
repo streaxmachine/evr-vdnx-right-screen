@@ -11,7 +11,7 @@ import { useSocket } from "components/common/SocketManager/SocketManager";
 import s from "./CycleWay.module.scss";
 
 const CycleWay = () => {
-  const [state, setState] = React.useState(1);
+  const [state, setState] = React.useState(5);
   const [speed, setSpeed] = React.useState(0);
   const [calories, setCalories] = React.useState(0);
   const [distance, setDistance] = React.useState(0);
@@ -37,7 +37,14 @@ const CycleWay = () => {
         />
       )}
       {state === 5 && (
-        <LastStep setState={setState} socket={socket} setisBack={setisBack} />
+        <LastStep
+          setState={setState}
+          speedSocket={speed}
+          distanceSocket={distance}
+          caloriesSocket={calories}
+          socket={socket}
+          setisBack={setisBack}
+        />
       )}
     </>
   );

@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: #4599FF;
     width: 34%;
     height: 100%;
     padding: 84rem;
@@ -40,7 +41,8 @@
     width: 66%;
     height: 100%;
     background-image: url('/images/img.png');
-    background-color: #4599FF;
+    background-color: white;
+    color: #4599FF;
     background-size: contain;
 }
 
@@ -56,13 +58,12 @@
 .category {
     font-size: 32rem;
     line-height: 36rem;
-    opacity: 0.6;
+
 }
 
 .questionNumber {
     font-size: 24rem;
     line-height: 28rem;
-    opacity: 0.6;
     margin-top: 10rem;
 }
 
@@ -70,6 +71,7 @@
     margin-top: 20rem;
     line-height: 50rem;
     width: 972rem;
+    color: black;
     max-width: 100%;
 }
 
@@ -83,13 +85,14 @@
 }
 
 .answerButton {
-    color: #4599FF;
+    color: white;
     cursor: pointer;
     width: 520rem;
     height: 104rem;
     font-size: 40rem;
     line-height: 40rem;
     border-radius: 10rem;
+    background-color: #4599FF;
     border: none;
     transition: all 0.5s;
     padding: 32rem 64rem 32rem 64rem;
@@ -265,7 +268,12 @@
     position: relative;
     z-index: 100;
     font-size: 20rem;
-    color: black;
+    color: white;
+    // opacity: 0.5;
+}
+
+.nonActiveText{
+    opacity: 0.6;
 }
 
 .wayContainer {
@@ -282,18 +290,18 @@
 }
 
 .circle {
-    border: solid 4rem rgba(69, 153, 255, 1);
+    border: solid 4rem white;
     width: 16rem;
     border-radius: 50%;
     height: 16rem;
 }
 
 .active {
-    background-color: rgba(69, 153, 255, 1);
+    background-color: white;
 }
 
 .activeText {
-    color: rgba(69, 153, 255, 1);
+    color: white;
 }
 
   

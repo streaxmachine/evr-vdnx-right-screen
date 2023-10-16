@@ -11,7 +11,7 @@ import clsx from "clsx";
 
 import s from "./TouchPanel.module.scss";
 
-const TouchPanel = () => {
+const TouchPanel = ({ setGlobalState }) => {
   const [currentCategory, setCurrentCategory] = React.useState(0);
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [time, setTime] = React.useState();
@@ -20,7 +20,9 @@ const TouchPanel = () => {
       <div className={s.container}>
         {!isQuizDone && (
           <div className={s.left}>
-            <button className={s.backMenu}>{"<  "}Главное меню</button>
+            <button onClick={() => setGlobalState(2)} className={s.backMenu}>
+              {"<  "}Главное меню
+            </button>
             <TimeMenu
               time={time}
               setTime={setTime}
@@ -35,6 +37,7 @@ const TouchPanel = () => {
             isQuizDone={isQuizDone}
             time={time}
             setQuizDone={setQuizDone}
+            setGlobalState={setGlobalState}
             setCurrentCategory={setCurrentCategory}
             currentCategory={currentCategory}
           />
@@ -111,6 +114,7 @@ const WayMenu = React.memo(({ currentCategory }) => {
               <div
                 className={clsx(s.way, {
                   [s.activeText]: item.id <= currentCategory,
+                  [s.nonActiveText]: item.id > currentCategory,
                 })}
               >
                 {item.name}
@@ -165,7 +169,7 @@ const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
         const dashArray = setCircleDasharray(timeLeft);
 
         if (dashArray > 256) {
-          ref.current.setAttribute("color", "rgba(69, 153, 255, 1)");
+          ref.current.setAttribute("color", "white");
         }
         if (dashArray < 120) {
           ref.current.setAttribute("color", "purple");
@@ -207,6 +211,7 @@ const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
               ref={ref}
               id="base-timer-path-remaining"
               strokeDasharray="283"
+              color="white"
               className="base-timer__path-remaining"
               d="
           M 50, 50
@@ -227,7 +232,14 @@ const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
 });
 
 const Questions = React.memo(
-  ({ currentCategory, setCurrentCategory, time, isQuizDone, setQuizDone }) => {
+  ({
+    currentCategory,
+    setCurrentCategory,
+    time,
+    isQuizDone,
+    setQuizDone,
+    setGlobalState,
+  }) => {
     const audioRef = React.useRef();
     const finalQuestions = React.useMemo(() => {
       const questions = [];
@@ -309,6 +321,7 @@ const Questions = React.memo(
     };
 
     const handleClickAnswer = (question, event, index) => {
+      event.preventDefault();
       sucessNumber.value += 1;
 
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
@@ -334,24 +347,24 @@ const Questions = React.memo(
             sucessNumber.value = 0;
           }
           setIsClickable(false);
-          event.target.style.backgroundColor = "#3185EB";
-          event.target.style.color = "white";
+          event.target.style.backgroundColor = "green";
+          // event.target.style.color = "white";
 
           const timeout = setTimeout(() => {
             setQuestionNumber(questionNumber + 1);
             handleCheck();
             setIsClickable(true);
-            event.target.style.backgroundColor = "white";
-            event.target.style.color = "#3185EB";
+            event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
+            // event.target.style.color = "white";
           }, 550);
         } else {
           setIsClickable(false);
-          event.target.style.backgroundColor = "#B42F2F";
-          event.target.style.color = "white";
+          event.target.style.backgroundColor = "red";
+          // event.target.style.color = "white";
           setTimeout(() => {
             setIsClickable(true);
-            event.target.style.backgroundColor = "white";
-            event.target.style.color = "#4599FF";
+            event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
+            // event.target.style.color = "white";
           }, 550);
         }
       }
@@ -418,6 +431,7 @@ const Questions = React.memo(
           <CompleteQuiz
             time={time}
             score={score}
+            setGlobalState={setGlobalState}
             questionNumber={questionNumber}
             handleReset={handleResetGame}
           />
@@ -446,6 +460,7 @@ const getRandomObjectsFromArray = (arr, count = 3) => {
 const CompleteQuiz = ({
   score,
   time = "04:00",
+  setGlobalState,
   handleReset,
   questionNumber,
 }) => {
@@ -495,7 +510,7 @@ const CompleteQuiz = ({
         </div>
         <button className={s.completeOtherGameBtn}>
           {percent > 50 ? (
-            <p>Другая игра</p>
+            <p onClick={() => setGlobalState(2)}>Другая игра</p>
           ) : (
             <p onClick={() => handleReset()}>Начать заново</p>
           )}

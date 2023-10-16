@@ -12,8 +12,8 @@ const Guide = ({ setState }) => {
         </h2>
         <span className={s.text}>
           Посетите важные культурные достопримечательности и узнайте
-          <p>интересные факты. После выбора маршрута, держитесь за руль</p>
-          и крутите педали.
+          <p>интересные факты. После выбора маршрута, держитесь за руль</p>и
+          крутите педали.
         </span>
         <button
           onClick={() => {
@@ -25,18 +25,7 @@ const Guide = ({ setState }) => {
         </button>
       </div>
       <section className={s.imgContainer}>
-        <img className={s.img0} src="/images/background/hero_zig.png" alt="Зигзаг" />
-        <img
-          className={s.img1}
-          src="/images/background/Group 24.png"
-          alt="Ржевский солдат"
-        />
-        <img className={s.img2} src="/images/background/Group 25.png" alt="Музей Россим" />
-        <img
-          className={s.img3}
-          src="/images/background/Group 27.png"
-          alt="Путевой дворец"
-        />
+        <img className={s.img0} src="/images/cards/most.png" alt="Зигзаг" />
       </section>
     </>
   );

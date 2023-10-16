@@ -7,7 +7,7 @@ import Quiz from "components/pages/Quiz";
 function QuizPage({}) {
   return (
     <Page title="Quiz">
-      <QuizFirstPage />
+      <QuizCards />
     </Page>
   );
 }

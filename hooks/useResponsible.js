@@ -5,8 +5,8 @@ const getBreakpoint = () => {
   if (window.innerWidth <= 414) {
     return { width: 375, height: 748 };
   }
-  if (window.innerWidth <= 1024) {
-    return { width: 1024, height: 768 };
+  if (window.innerWidth <= 1280) {
+    return { width: 1280, height: 800 };
   }
   return { width: 1440, height: 960 };
 };

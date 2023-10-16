@@ -137,6 +137,7 @@ body {
 
 .base-timer__label {
   position: absolute;
+  color: rgba(241, 245, 249, 1);
   width: 206rem;
   height: 206rem;
   top: 0;

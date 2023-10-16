@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./QuizFirstPage.module.scss";
 
-const Guide = ({ setState }) => {
+const Guide = ({ setGlobalState }) => {
   return (
     <>
       <main className={s.page}>
@@ -13,12 +13,12 @@ const Guide = ({ setState }) => {
             <p>в игровой зоне!</p>
           </h2>
           <span className={s.text}>
-          Знакомьтесь с проектами Тверской области в игровом формате 
-          <p> и получите возможность выиграть приз!</p>
+            Знакомьтесь с проектами Тверской области в игровом формате
+            <p> и получите возможность выиграть приз!</p>
           </span>
           <button
             onClick={() => {
-              setState(2);
+              setGlobalState(2);
             }}
             className={s.button}
           >

@@ -3,7 +3,9 @@ import { useControls } from "leva";
 
 import s from "./LastStep.module.scss";
 import { Environment, OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
+
+let cursor = {};
 
 const OnWay = ({ setState, socket, setisBack }) => {
   const { progress, calories, speed } = useControls({
@@ -28,10 +30,23 @@ const OnWay = ({ setState, socket, setisBack }) => {
   });
 
   const [inactiveTime, setInactiveTime] = useState(0);
+  const [size, setSize] = useState([1280, 800]);
 
   const resetInactiveTime = () => {
     setInactiveTime(0);
   };
+
+  const handleResize = (e) => {
+    setSize([window.innerHeight, window.innerWidth]);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [size]);
 
   useEffect(() => {
     const touchStartHandler = () => {
@@ -71,10 +86,26 @@ const OnWay = ({ setState, socket, setisBack }) => {
     }
   }, [inactiveTime]);
 
+  const handleSendTouchToSocket = (e) => {
+    cursor.x = (e.clientX / size[0]) * 2 - 1;
+    cursor.y = -(e.clientY / size[1]) * 2 + 1;
+    console.log(cursor.x);
+    socket.send(
+      JSON.stringify({
+        installation: "velo",
+        type: "rotation",
+        data: {
+          x: cursor.x,
+          y: cursor.y,
+        },
+      })
+    );
+  };
+
   return (
     <>
       <div className={s.canvasWrapper}>
-        <Canvas>
+        <Canvas onPointerMove={(e) => handleSendTouchToSocket(e)}>
           <Environment background preset="city" />
           <OrbitControls />
         </Canvas>
@@ -112,7 +143,11 @@ const OnWay = ({ setState, socket, setisBack }) => {
         </div>
 
         <div className={s.imgContainer}>
-          <img className={s.img} src="/images/lastpage/360deg.png" alt="Degrees" />
+          <img
+            className={s.img}
+            src="/images/lastpage/360deg.png"
+            alt="Degrees"
+          />
         </div>
 
         <div className={s.bottom}>
