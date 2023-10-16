@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useControls } from "leva";
 
-import FactIcons from "./FactIcons";
-
 import s from "./OnWay.module.scss";
+import FactIcons from "./factIcons";
 
 const OnWay = ({
   setState,
@@ -48,7 +47,7 @@ const OnWay = ({
   React.useEffect(() => {
     if (progress === 320) {
       // setState(5);
-      null
+      null;
     }
   }, [progress]);
 
