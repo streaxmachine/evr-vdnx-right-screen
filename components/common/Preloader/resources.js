@@ -1,3 +1,46 @@
 export const models = ["/models/testTrainTest.glb"];
 
-export const images = [];
+export const images = [
+  "/images/background/q_zig.png",
+  "/images/background/clouds.png",
+  "/images/aiChat.gif",
+  "/images/arrow.png",
+  "/images/QuizCards/e5065ee379a684fec367ed0338938ea3.png",
+  "/images/QuizCards/57fddd1342fb684ec641252d6de345e5.png",
+  "/images/QuizCards/b364b2dcb07b219f03cbb4cc67d8fbdc.png",
+  "/images/QuizCards/img.png",
+  "/images/QuizRules/41eacde781964cd3526f61c6c997df7a.png",
+  "/images/QuizRules/314fab03555fec43bbe0177227e8f63a.png",
+  "/images/QuizRules/b364b2dcb07b219f03cbb4cc67d8fbdc.png",
+  "/images/img.png",
+  "/images/stars/question_25_photo.png",
+  "/images/completeSuccess/lose.svg",
+  "/images/completeSuccess/win.svg",
+];
+
+export const imagesCycleWay = [
+  "/images/background/clouds.png",
+  "/images/arrow.png",
+  "/images/cards/most.png",
+  "/images/background/q_zig.png",
+  "/images/cards/putevoi.png",
+  "/images/cards/museum2.png",
+  "/images/cards/soldier2.png",
+  "/images/cards/zigzag.png",
+  "/images/progress/progress_bar2.png",
+  "/images/progress/progress_bar_blue2.png",
+  "/images/progress/progress_putevoi.png",
+  "/images/onway/warning.png",
+  "/images/onway/tick.png",
+  "/images/onway/on_way_progress.png",
+  "/images/onway/on_way_progress_white.png",
+  "/images/onway/original.jpg",
+  "/images/onway/on_way_point.png",
+  "/images/onway/info-point.png",
+  "/images/onway/facts/afanasiy.png",
+  "/images/onway/facts/bridge.png",
+  "/images/onway/facts/krug.png",
+  "/images/onway/facts/tverskoy.png",
+  "/images/onway/facts/pushkin.png",
+  "/images/lastpage/360deg.png"
+];
