@@ -1,11 +1,8 @@
 @import "styles/mixins";
 
-.page {
+.root {
   width: 100vw;
   height: 100vh;
-  // background-image: url("/images/guide_bg.png");
-  background-size: cover;
-  border: none;
   font-family: "ALS Hauss", sans-serif;
   color: white;
   pointer-events: none;
@@ -15,63 +12,62 @@
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: red;
+  background-color: var(--light-blue);
+}
+
+.rootWrapper {
+  display: flex;
+  max-width: 1280rem;
+  width: 100%;
+  flex-direction: column;
 }
 
 .content {
-  position: fixed;
-  width: 50%;
-  height: 30%;
-  top: 5%;
-  left: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-}
-.navigationBack {
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.textBack {
-  z-index: 1;
-  font-weight: 700;
-  font-size: 28rem;
-}
-
-.textblock {
   z-index: 2;
-  position: fixed;
-  width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
+  margin: 64rem;
+}
+
+.leftText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  z-index: 1;
+  font-size: 28rem;
+  font-weight: 700;
 }
 
 .text {
-  font-size: 58rem;
+  font-size: 46rem;
   font-weight: 700;
-  // line-height: 1.2rem;
   text-align: left;
+  margin-top: 36rem;
 }
 
 .notion {
   color: rgba(255, 255, 255, 0.6);
-  font-size: 40rem;
+  font-size: 26rem;
   font-weight: 400;
   letter-spacing: 0em;
   text-align: left;
+  margin-top: 36rem;
 }
 
 .data {
-  position: fixed;
-  width: 35%;
-  height: 30%;
-  top: 5%;
-  right: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dataTable {
+  margin-top: 26rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -79,10 +75,8 @@
 }
 
 .dataText {
-  position: absolute;
   font-size: 28rem;
   font-weight: 700;
-  top: 9%;
 }
 
 .dataTitle {
@@ -92,7 +86,7 @@
 }
 
 .dataNumber {
-  font-size: 60rem;
+  font-size: 42rem;
   font-weight: 700;
   letter-spacing: 0rem;
 }
@@ -100,22 +94,25 @@
 .dataMeasure {
   font-size: 28rem;
   font-weight: 500;
-  margin: 12rem;
+  margin: 28rem;
 }
 
 .ccal {
+  margin: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .speed {
+  margin: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .dist {
+  margin: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,18 +145,28 @@
 
 .button {
   background-color: white;
-  color: rgba(69.0625025331974, 153.3154347538948, 255, 1);
-  width: 28%;
+  color: var(--light-blue);
   border-radius: 36rem;
   border: none;
-  padding: 22rem 2.2rem 22rem 2.2rem;
+  padding: 22rem 32rem 22rem 32rem;
   font-weight: 700;
-  font-size: 26rem;
+  font-size: 18rem;
   cursor: pointer;
   transition: 0.25s;
 
   &:hover {
     color: white;
-    background-color: rgba(69.0625025331974, 153.3154347538948, 255, 1);
+    background-color: var(--light-blue);
   }
+}
+
+
+.backgroundGradient{
+  background-size: cover;
+  opacity: 0.6;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(92deg, #004394 1.52%, #489AFF 98.16%);
 }
