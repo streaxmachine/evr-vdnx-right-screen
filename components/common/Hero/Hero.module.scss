@@ -2,8 +2,7 @@
 .page {
   width: 100vw;
   height: 100vh;
-  background-image: url("/images/background/guide_bg_with_clouds.png");
-  background-size: cover;
+  background: linear-gradient(99deg, #00469a 5.73%, #b7d6fb 96.89%);
   border: none;
   font-family: "ALS Hauss", sans-serif;
   overflow: hidden;
@@ -23,7 +22,6 @@
   box-sizing: border-box;
   flex-wrap: wrap;
   gap: 10rem;
-
 }
 .title {
   z-index: 1;
@@ -57,10 +55,9 @@
   position: relative;
   width: 100%;
   height: 100%;
- 
 }
 
-.img0{
+.img0 {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -70,22 +67,17 @@
 
 .img1 {
   position: absolute;
-
-  z-index: 1;
-  max-width: 55%;
-  overflow: hidden;
+  max-width: 90%;
+  bottom: 50rem;
+  left: 64rem;
 }
-.img2 {
-  position: absolute;
-  bottom: 0%;
-  right: 5%;
-  z-index: 2;
-  max-width: 50%;
-}
-.img3 {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 3;
-  max-width: 40%;
+.clouds {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-image: url("/images/background/clouds.png");
+  background-size: cover;
+  z-index: 0;
+  opacity: 0.4;
+  top:0;
 }

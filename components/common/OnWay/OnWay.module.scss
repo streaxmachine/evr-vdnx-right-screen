@@ -1,39 +1,43 @@
 @import "styles/mixins";
 
-.page {
+.root {
   width: 100vw;
   height: 100vh;
-  background-image: url("/images/background/guide_bg.png");
-  background-size: cover;
-  border: none;
-  font-family: "ALS Hauss", sans-serif;
-  color: white;
+  background: linear-gradient(92deg, #004394 1.52%, #489aff 98.16%);
+  display: flex;
+  justify-content: center;
 }
-.navigationBack {
+
+.rootWrapper {
+  margin-top: 44rem;
+  display: flex;
+  max-width: 1200rem;
+  width: 100%;
+  flex-direction: column;
+}
+.backBtn {
   color: white;
-  position: fixed;
-  top: 5%;
-  left: 5%;
-  width: 14%;
+  width: 200rem;
+  height: 48rem;
+  gap: 12rem;
+  border: none;
+  border-radius: 10rem;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  transition: 0.25s;
 }
-.textBack {
+.backText {
   z-index: 1;
   font-weight: 400;
-  font-size: 22rem;
+  font-size: 18rem;
 }
 
 .notification {
-  position: fixed;
-  top: 22%;
-  left: 9%;
-  width: 80%;
-  height: 12%;
+
+  height: 100rem;
   color: white;
   font-weight: 600;
   font-size: 16rem;
@@ -42,14 +46,15 @@
   align-items: center;
   z-index: 9999;
   transition: width 0.5s ease-in-out;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin-top: 90rem;
+  margin-right: 23rem;
 }
 
 .notificationText {
   color: rgb(255, 255, 255);
   font-weight: 500;
-  font-size: 32rem;
-  // margin-top: 2%;
+  font-size: 28rem;
 }
 
 .notificationImage {
@@ -59,31 +64,25 @@
 }
 
 .data {
-  position: fixed;
-  top: 15%;
-  left: 10%;
-  width: 80%;
-  height: 50%;
-
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 2;
 }
 
 .dataTitle {
-  font-size: 30rem;
+  font-size: 24rem;
   font-weight: 700;
-  margin: 38rem;
+  margin: 26rem;
 }
 
 .dataNumber {
-  font-size: 76rem;
+  font-size: 66rem;
   font-weight: 700;
 }
 
 .dataMeasure {
-  font-size: 44rem;
+  font-size: 36rem;
   font-weight: 700;
   margin: 12rem;
 }
@@ -107,17 +106,16 @@
 }
 
 .speedNumber {
-  font-size: 156rem;
+  font-size: 126rem;
   font-weight: 700;
 }
 
 .speedometer {
-  display: flex;
-  justify-content: center;
+  z-index: 2;
   width: 50%;
   position: fixed;
-  left: 28%;
-  top: 40%;
+  left: 621rem;
+  top: 344rem;
 }
 
 .sunRays {
@@ -128,13 +126,34 @@
 
 .ray {
   position: absolute;
-  width: 12%;
+  width: 12rem;
   height: 56rem;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 4rem;
   transform-origin: 50% 100%;
   transition: all 0.2s;
 }
+
+.route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 160rem;
+}
+
+.textStart {
+  width: 120rem;
+  font-weight: 500;
+  font-size: 18rem;
+  text-align: center;
+}
+.textEnd {
+  width: 120rem;
+  font-weight: 500;
+  font-size: 18rem;
+  text-align: center;
+}
+
 
 .filled {
   background-color: white;
@@ -146,10 +165,10 @@
 
 .progressContainer {
   position: absolute;
-  width: 76%;
-  left: 12%;
-  bottom: 5%;
-  height: 6.6%;
+  width: 1000rem;
+  left: 190rem;
+  bottom: 46rem;
+  height: 50rem;
 }
 
 .baseimage {
@@ -168,7 +187,7 @@
   z-index: 2;
   background-image: url("/images/onway/on_way_progress_white.png");
   background-size: none;
-  transition: width 0.5s ease-in-out;
+  transition: width 0.25s ease-in-out;
 }
 
 .iconContainer {
@@ -189,24 +208,6 @@
   transition: all 0.25s ease-out;
 }
 
-.textStart {
-  position: absolute;
-  left: 3.2%;
-  bottom: 6.4%;
-  width: 8%;
-  font-weight: 500;
-  font-size: 24rem;
-  text-align: center;
-}
-.textEnd {
-  position: absolute;
-  right: 5%;
-  bottom: 6.4%;
-  width: 10%;
-  font-weight: 500;
-  font-size: 24rem;
-  text-align: center;
-}
 
 //Fact-Icons
 
@@ -262,7 +263,20 @@
 
 .factText {
   color: rgb(69, 153, 255);
-  font-size: 18rem;
+  font-size: 14rem;
   font-weight: 500;
   transition: color 0.5s ease-in-out;
+}
+
+//background img
+.backgroundImg {
+  background-image: url('/images/onway/original.jpg');
+  background-size: cover;
+  opacity: 0.2;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
 }
