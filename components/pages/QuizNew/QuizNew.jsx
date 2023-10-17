@@ -26,6 +26,9 @@ const QuizNew = () => {
       {globalState === "touchPanel" && (
         <TouchPanel setGlobalState={setGlobalState} socket={socket} />
       )}
+      <div className={s.aiSection}>
+        <div className={s.aiChat} />
+      </div>
     </>
   );
 };
