@@ -10,15 +10,18 @@ import useData from "hooks/useData";
 
 import sc from "utils/stringToClass";
 import delayer from "utils/delayer";
-import { images, models } from "./resources";
+import { images, models, imagesCycleWay } from "./resources";
 import imgs from "./imgs";
 
 import s from "./Preloader.module.scss";
+import { useRouter } from "next/router";
 
 const Preloader = ({ onLoaded }) => {
   const frontRef = React.useRef(null);
   const backRef = React.useRef(null);
   const valueRef = React.useRef(null);
+
+  const { asPath } = useRouter();
 
   const data = useData({ timeline: null, curr: 0, prev: imgs.length - 1 });
 
@@ -48,9 +51,15 @@ const Preloader = ({ onLoaded }) => {
     }
   });
 
-  useLoader({ extraModels: models, extraImages: [...images] }, (loader) => {
-    handleLoader(loader);
-  });
+  useLoader(
+    {
+      extraModels: models,
+      extraImages: asPath === "/quizNew" ? [...images] : [...imagesCycleWay],
+    },
+    (loader) => {
+      handleLoader(loader);
+    }
+  );
 
   React.useEffect(() => {
     gsap.to(".preloader-cup", { opacity: 1 });
