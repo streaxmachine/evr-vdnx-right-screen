@@ -6,7 +6,7 @@ import Questions from "../Questions.jsx";
 
 import s from "./TouchPanel.module.scss";
 
-const TouchPanel = ({ setGlobalState }) => {
+const TouchPanel = ({ setGlobalState, socket }) => {
   const [currentCategory, setCurrentCategory] = React.useState(0);
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
@@ -33,6 +33,7 @@ const TouchPanel = ({ setGlobalState }) => {
         <div className={clsx(s.right, isQuizDone && s.rightDone)}>
           <Questions
             isQuizDone={isQuizDone}
+            socket={socket}
             time={time}
             setQuizDone={setQuizDone}
             setGlobalState={setGlobalState}

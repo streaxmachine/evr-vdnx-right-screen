@@ -4,7 +4,7 @@ import { cards } from "./cardInformation";
 
 import s from "./QuizRules.module.scss";
 
-const QuizRules = ({ setGlobalState }) => {
+const QuizRules = ({ setGlobalState, socket }) => {
   return (
     <>
       <main className={s.root}>
@@ -12,7 +12,14 @@ const QuizRules = ({ setGlobalState }) => {
           <button
             className={s.backBtn}
             onClick={() => {
-              setGlobalState('firstPage');
+              setGlobalState("firstPage");
+              socket.send(
+                JSON.stringify({
+                  installation: "right",
+                  type: "mode",
+                  data: "victorina_start",
+                })
+              );
             }}
           >
             <img src="/images/arrow.png" alt="Назад" />
@@ -37,7 +44,7 @@ const QuizRules = ({ setGlobalState }) => {
           <button
             className={s.playBtn}
             onClick={() => {
-              setGlobalState('touchPanel');
+              setGlobalState("touchPanel");
               console.log("clicked");
             }}
           >

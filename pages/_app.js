@@ -16,6 +16,7 @@ import "styles/colors.css";
 import "styles/locomotive.css";
 import "styles/fonts.css";
 import PageTransition from "/components/common/PageTransition/PageTransition";
+import Preloader from "components/common/Preloader";
 
 export default function App({ Component, router, pageProps }) {
   const store = useHydrate(pageProps.cms);
@@ -35,11 +36,11 @@ export default function App({ Component, router, pageProps }) {
         <Component {...pageProps} />
       </PageTransition>
       {/* {!isLoaded && (
-          <Preloader
-            // preloadedImages={pageProps.preloadedImages}
-            onLoaded={handleLoaded}
-          />
-        )} */}
+        <Preloader
+          // preloadedImages={pageProps.preloadedImages}
+          onLoaded={handleLoaded}
+        />
+      )} */}
     </StoreProvider>
   );
 }

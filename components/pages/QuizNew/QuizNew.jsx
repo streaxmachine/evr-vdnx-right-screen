@@ -15,16 +15,16 @@ const QuizNew = () => {
   return (
     <>
       {globalState === "firstPage" && (
-        <QuizFirstPage setGlobalState={setGlobalState} />
+        <QuizFirstPage setGlobalState={setGlobalState} socket={socket} />
       )}
       {globalState === "quizCards" && (
-        <QuizCards setGlobalState={setGlobalState} />
+        <QuizCards setGlobalState={setGlobalState} socket={socket} />
       )}
       {globalState === "quizRules" && (
-        <QuizRules setGlobalState={setGlobalState} />
+        <QuizRules setGlobalState={setGlobalState} socket={socket} />
       )}
       {globalState === "touchPanel" && (
-        <TouchPanel setGlobalState={setGlobalState} />
+        <TouchPanel setGlobalState={setGlobalState} socket={socket} />
       )}
     </>
   );

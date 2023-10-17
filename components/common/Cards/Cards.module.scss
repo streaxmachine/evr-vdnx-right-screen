@@ -1,9 +1,22 @@
 @import "styles/mixins";
 
-.page {
+.root {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(rgba(0, 70, 154, 1), rgba(183, 214, 251, 1));
+  // padding: 44rem;
+  display: flex;
+  justify-content: center;
+}
+
+.rootWrapper {
+  // padding: 44rem;
+  // margin: 44rem;
+  margin-top: 44rem;
+  display: flex;
+  max-width: 1200rem;
+  width: 100%;
+  flex-direction: column;
 }
 
 .pageLayer {
@@ -11,19 +24,31 @@
   height: 100vh;
   position: absolute;
   background-image: url("/images/background/clouds.png");
+  background-size: cover;
+  pointer-events: none;
 }
+
 .navigationBack {
+  height: 50rem;
   color: white;
-  position: fixed;
-  top: 5%;
-  left: 5%;
   width: 180rem;
+  border-radius: 10rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 5rem;
 
-  cursor: pointer;
-  transition: 0.25s;
+  span {
+    margin-top: 5rem;
+    font-size: 18rem;
+  }
+
+  img {
+    width: 8rem;
+  }
+  // transition: 0.25s;
 }
 .textBack {
   z-index: 1;
@@ -32,47 +57,47 @@
 }
 
 .textblock {
+  margin-top: 15rem;
   color: white;
-  position: fixed;
-  top: 10%;
-  left: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  // position: fixed;
+
 }
 .title {
   font-weight: 700;
-  font-size: 80rem;
-  text-align: left;
-  vertical-align: top;
-  line-height: 98rem;
+  font-size: 50rem;
+  line-height: 50rem;
   letter-spacing: 0.02rem;
 }
 .text {
   font-weight: 500;
-  font-size: 42rem;
-  vertical-align: top;
-  line-height: 56rem;
+  font-size: 25rem;
+  line-height: 25rem;
   text-align: left;
   color: rgba(240, 245, 249, 0.6);
 }
 
 .cards {
-  position: fixed;
-  top: 30%;
-  left: 5%;
   border: none;
-
   display: flex;
+  align-items: center;
   color: white;
-  width: calc(100% - 5% * 2);
+  width: 100%;
+  margin-top: 20rem;
   justify-content: space-between;
 }
+
 .card {
-  width: 32%;
-  height: 530px;
-  border-radius: 2em;
+  width: 380rem;
+  height: 550rem;
+  border-radius: 10rem;
   background-color: rgba(240, 245, 249, 1);
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden;
+  position: relative;
+  padding: 20rem;
 }
 
 .cardLink {
@@ -84,40 +109,42 @@
   flex-direction: column;
   align-content: center;
   justify-content: flex-start;
-  height: 50%;
-  margin-top: 5%;
 }
+
 .cardTitle {
   color: black;
-  font-size: 38rem;
+  font-size: 27rem;
+  margin-top: 25rem;
   font-weight: 500;
   letter-spacing: -0.04em;
   text-align: left;
-  margin-left: 8%;
+ 
 }
 
 .cardText {
   color: rgba(69, 153, 255, 1);
-  font-size: 22rem;
+  position: absolute;
+  top: 150rem;
+  font-size: 18rem;
   font-weight: 500;
-  line-height: 26rem;
+  line-height: 18rem;
   letter-spacing: 0em;
   text-align: left;
-  padding-left: 8%;
-  margin-top: 8%;
   width: 90%;
   z-index: 2;
 }
 .cardPic {
   z-index: 1;
-  position: inherit;
-  width: 70%;
-  margin-left: 30%;
-  margin-top: -60%;
+  position: absolute;
+  width: 220rem;
+  bottom: 0;
+  right: 0;
+
 }
 
 .cardZigZag {
   position: absolute;
-  bottom: 5%;
-  z-index: 2;
+  bottom: 20rem;
+  left: 0;
+  z-index: 1;
 }

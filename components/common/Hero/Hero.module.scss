@@ -15,27 +15,28 @@
   top: 5rem;
   left: 5%;
   width: 1200rem;
-  height: 600rem;
+  height: 485rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
   box-sizing: border-box;
   flex-wrap: wrap;
-  gap: 20rem;
+  gap: 10rem;
+
 }
 .title {
   z-index: 1;
   font-weight: 700;
-  font-size: 80rem;
-  line-height: 84rem;
+  font-size: 60rem;
+  line-height: 60rem;
   text-align: left;
   vertical-align: bottom;
 }
 .text {
   font-weight: 400;
-  font-size: 32rem;
-  line-height: 36rem;
+  font-size: 25rem;
+  line-height: 25rem;
   text-align: left;
   vertical-align: top;
 }

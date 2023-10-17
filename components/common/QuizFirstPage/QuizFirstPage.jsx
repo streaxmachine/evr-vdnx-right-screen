@@ -2,11 +2,10 @@ import React from "react";
 
 import s from "./QuizFirstPage.module.scss";
 
-const Guide = ({ setGlobalState }) => {
+const Guide = ({ setGlobalState, socket }) => {
   return (
     <>
       <main className={s.root}>
-      
         <div className={s.wrapper}>
           <div className={s.textblock}>
             <h2 className={s.title}>
@@ -19,7 +18,14 @@ const Guide = ({ setGlobalState }) => {
             </span>
             <button
               onClick={() => {
-                setGlobalState('quizCards');
+                setGlobalState("quizCards");
+                socket.send(
+                  JSON.stringify({
+                    installation: "right",
+                    type: "mode",
+                    data: "menu",
+                  })
+                );
               }}
               className={s.button}
             >

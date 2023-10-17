@@ -1,13 +1,29 @@
+import React from "react";
+
 import s from "./TouchPanel/TouchPanel.module.scss";
 
 const CompleteQuiz = ({
   score,
+  socket,
   time = "04:00",
   setGlobalState,
   handleReset,
   questionNumber,
 }) => {
   const percent = Math.round((score / 12) * 100);
+
+  React.useEffect(() => {
+    socket.send(
+      JSON.stringify({
+        installation: "right",
+        type: "victorina",
+        data: `final`,
+        true_answers: percent,
+        time: time,
+        score: questionNumber + "/12",
+      })
+    );
+  }, []);
 
   return (
     <div className={s.completeRoot}>
@@ -53,7 +69,20 @@ const CompleteQuiz = ({
         </div>
         <button className={s.completeOtherGameBtn}>
           {percent > 50 ? (
-            <p onClick={() => setGlobalState("quizCards")}>Другая игра</p>
+            <p
+              onClick={() => {
+                setGlobalState("quizCards");
+                socket.send(
+                  JSON.stringify({
+                    installation: "right",
+                    type: "mode",
+                    data: `splashscreen`,
+                  })
+                );
+              }}
+            >
+              Другая игра
+            </p>
           ) : (
             <p onClick={() => handleReset()}>Начать заново</p>
           )}

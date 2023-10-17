@@ -20,6 +20,7 @@ const Questions = React.memo(
     setCurrentCategory,
     time,
     isQuizDone,
+    socket,
     setQuizDone,
     setGlobalState,
   }) => {
@@ -110,6 +111,16 @@ const Questions = React.memo(
       event.stopPropagation();
       sucessNumber.value += 1;
 
+      socket.send(
+        JSON.stringify({
+          installation: "right",
+          type: "victorina",
+          data: `question_${questionNumber}`,
+          state: question.isCorrect,
+          variant: question.answerText,
+        })
+      );
+
       const isImg = currentQuestion.isImg;
       if (isImg) {
         setImgUrl(currentQuestion.imgUrl);
@@ -156,7 +167,7 @@ const Questions = React.memo(
             gsap.to(imgRef.current, {
               x: "-100%",
               duration: 0.75,
-              delay: 1.5,
+              delay: 2.5,
               ease: "expo.out",
             });
           }
@@ -179,7 +190,7 @@ const Questions = React.memo(
               event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
               // event.target.style.color = "white";
             },
-            isImg ? 2000 : 550
+            isImg ? 3000 : 550
           );
         } else {
           setIsClickable(false);
@@ -260,6 +271,7 @@ const Questions = React.memo(
         {isQuizDone && (
           <CompleteQuiz
             time={time}
+            socket={socket}
             score={score}
             setGlobalState={setGlobalState}
             questionNumber={questionNumber}

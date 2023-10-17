@@ -36,7 +36,7 @@ const ProgressBar = ({ setState, isBack }) => {
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      const randomPhrase = Math.floor(Math.random() * phrases.length );
+      const randomPhrase = Math.floor(Math.random() * phrases.length);
 
       gsap.to(randomPhraseRef.current, {
         opacity: 0,
@@ -56,33 +56,38 @@ const ProgressBar = ({ setState, isBack }) => {
   }, []);
   return (
     <>
-      <main className={s.page}></main>
+      <div className={s.page}></div>
       <div className={s.pageLayer}></div>
-      <div ref={rootRef} className={s.textblock}>
-        <h2 className={s.title}>{progress}%</h2>
-        <span className={s.text}>Подождите, идет загрузка маршрута...</span>
+      <div className={s.root}>
+        <div className={s.wrapper}>
+          <div ref={rootRef} className={s.textblock}>
+            <h2 className={s.title}>{progress}%</h2>
+            <span className={s.text}>Подождите, идет загрузка маршрута...</span>
 
-        <div className={s.progressContainer}>
-          <img
-            src="/images/progress/progress_bar2.png"
-            alt="Progress Bar"
-            className={s.baseimage}
-          />
-          <div
-            className={s.overlayimage}
-            // style={progressBarStyle}
-          ></div>
+            <div className={s.progressContainer}>
+              <img
+                src="/images/progress/progress_bar2.png"
+                alt="Progress Bar"
+                className={s.baseimage}
+              />
+              <div
+                className={s.overlayimage}
+                // style={progressBarStyle}
+              ></div>
+            </div>
+            <span className={s.fact} ref={randomPhraseRef}>
+              {text}
+            </span>
+          </div>
+          <div className={s.imgWrapper}>
+            <img
+              className={s.img}
+              src="/images/progress/progress_putevoi.png"
+              alt="Путевой дворец"
+            />
+          </div>
         </div>
-
-        <span className={s.fact} ref={randomPhraseRef}>{text}</span>
       </div>
-      <section>
-        <img
-          className={s.img}
-          src="/images/progress/progress_putevoi.png"
-          alt="Путевой дворец"
-        />
-      </section>
     </>
   );
 };

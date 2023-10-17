@@ -4,7 +4,7 @@ import { cards } from "./cardInformation";
 
 import s from "./QuizCards.module.scss";
 
-const QuizCards = ({ setGlobalState }) => {
+const QuizCards = ({ setGlobalState, socket }) => {
   return (
     <>
       <main className={s.root}>
@@ -24,6 +24,7 @@ const QuizCards = ({ setGlobalState }) => {
             {cards.map((card, id) => (
               <Card
                 card={card}
+                socket={socket}
                 key={id}
                 id={id}
                 setGlobalState={setGlobalState}
@@ -44,7 +45,7 @@ const QuizCards = ({ setGlobalState }) => {
 };
 export default QuizCards;
 
-function Card({ setGlobalState, card }) {
+function Card({ setGlobalState, card, socket }) {
   // const [isClicked, setIsClicked] = useState(false);
   return (
     <div
@@ -53,6 +54,13 @@ function Card({ setGlobalState, card }) {
         // setIsClicked(!isClicked);
         // setGlobalState(card.cardGlobalState)};
         setGlobalState(card.cardGlobalState);
+        socket.send(
+          JSON.stringify({
+            installation: "right",
+            type: "mode",
+            data: "victorina",
+          })
+        );
       }}
     >
       <div className={s.cardTextBlock}>
