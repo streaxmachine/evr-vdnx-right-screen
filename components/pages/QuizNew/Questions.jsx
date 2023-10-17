@@ -85,6 +85,23 @@ const Questions = React.memo(
       });
     }, [currentQuestion, rightVariant]);
 
+    React.useEffect(() => {
+      console.log("question", currentQuestion);
+
+      //// Тут у каждого вопроса должен быть айди соответствующий списку пиши
+
+      socket.send(
+        JSON.stringify({
+          installation: "right",
+          type: "victorina",
+          data: `question_${questionNumber}`,
+          state: null,
+          // state: question.isCorrect,
+          // variant: question.answerText,
+        })
+      );
+    }, [currentQuestion]);
+
     const handleCheck = () => {
       if ((questionNumber + 1) % 3 === 0) {
         if (questionNumber <= 11) {
