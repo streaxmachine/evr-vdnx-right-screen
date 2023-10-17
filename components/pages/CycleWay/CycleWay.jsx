@@ -6,7 +6,7 @@ import ProgressBar from "components/common/ProgressBar";
 import OnWay from "components/common/OnWay";
 import LastStep from "components/common/LastStep";
 
-import { useSocket } from "components/common/SocketManager/SocketManager";
+import { useSocket } from "hooks/useSocket";
 
 import s from "./CycleWay.module.scss";
 

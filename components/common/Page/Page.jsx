@@ -2,8 +2,6 @@ import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import Header from "components/common/Header";
-
 import { removeQueries } from "utils/string";
 // import Header from "../Header/Header";
 

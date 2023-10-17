@@ -1,65 +1,55 @@
 @import "styles/mixins";
 
-.root {
+.page {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(92deg, #004394 1.52%, #489aff 98.16%);
-  display: flex;
-  justify-content: center;
-}
-
-.rootWrapper {
-  margin-top: 44rem;
-  display: flex;
-  max-width: 1200rem;
-  width: 100%;
-  flex-direction: column;
-}
-
-.backBtn {
-  color: white;
-  width: 200rem;
-  height: 48rem;
-  gap: 12rem;
+  background-image: url("/images/background/guide_bg.png");
+  background-size: cover;
   border: none;
-  border-radius: 10rem;
-
+  font-family: "ALS Hauss", sans-serif;
+  color: white;
+}
+.navigationBack {
+  color: white;
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 14%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  z-index: 1;
-}
-.backText {
-  z-index: 1;
-  font-weight: 400;
-  font-size: 18rem;
-}
+  justify-content: space-between;
 
+  cursor: pointer;
+  transition: 0.25s;
+}
 .textBack {
   z-index: 1;
   font-weight: 400;
-  font-size: 18rem;
+  font-size: 22rem;
 }
 
 .notification {
+  position: fixed;
+  top: 22%;
+  left: 9%;
+  width: 80%;
+  height: 12%;
   color: white;
-  height: 100rem;
+  font-weight: 600;
+  font-size: 16rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 9999;
   transition: width 0.5s ease-in-out;
-  justify-content: space-between;
-  margin-top: 90rem;
-  margin-right: 23rem;
+  justify-content: space-evenly;
 }
 
 .notificationText {
   color: rgb(255, 255, 255);
   font-weight: 500;
-  font-size: 28rem;
+  font-size: 32rem;
+  // margin-top: 2%;
 }
 
 .notificationImage {
@@ -69,24 +59,31 @@
 }
 
 .data {
+  position: fixed;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  height: 50%;
+
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .dataTitle {
-  font-size: 24rem;
+  font-size: 30rem;
   font-weight: 700;
-  margin: 26rem;
+  margin: 38rem;
 }
 
 .dataNumber {
-  font-size: 66rem;
+  font-size: 76rem;
   font-weight: 700;
 }
 
 .dataMeasure {
-  font-size: 36rem;
+  font-size: 44rem;
   font-weight: 700;
   margin: 12rem;
 }
@@ -110,15 +107,17 @@
 }
 
 .speedNumber {
-  font-size: 126rem;
+  font-size: 156rem;
   font-weight: 700;
 }
 
 .speedometer {
+  display: flex;
+  justify-content: center;
   width: 50%;
   position: fixed;
-  left: 621rem;
-  top: 344rem;
+  left: 28%;
+  top: 40%;
 }
 
 .sunRays {
@@ -129,7 +128,7 @@
 
 .ray {
   position: absolute;
-  width: 12rem;
+  width: 12%;
   height: 56rem;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 4rem;
@@ -145,32 +144,12 @@
   background-color: rgba(180, 47, 47, 1);
 }
 
-.route {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 160rem;
-}
-
-.textStart {
-  width: 120rem;
-  font-weight: 500;
-  font-size: 18rem;
-  text-align: center;
-}
-.textEnd {
-  width: 120rem;
-  font-weight: 500;
-  font-size: 18rem;
-  text-align: center;
-}
-
 .progressContainer {
   position: absolute;
-  width: 1000rem;
-  left: 190rem;
-  bottom: 46rem;
-  height: 50rem;
+  width: 76%;
+  left: 12%;
+  bottom: 5%;
+  height: 6.6%;
 }
 
 .baseimage {
@@ -185,17 +164,18 @@
   position: absolute;
   width: var(--progress-width);
   height: 48px;
-  max-width: 90%;
+  max-width: 100%;
   z-index: 2;
   background-image: url("/images/onway/on_way_progress_white.png");
   background-size: none;
-  transition: width 0.25s ease-in-out;
+  transition: width 0.5s ease-in-out;
 }
 
 .iconContainer {
   position: absolute;
   width: 95%;
-  left: 2%;
+  left: 2.5%;
+  right: 2.5%;
   display: flex;
 }
 
@@ -207,6 +187,25 @@
   z-index: 3;
   transform: translateX(-50%);
   transition: all 0.25s ease-out;
+}
+
+.textStart {
+  position: absolute;
+  left: 3.2%;
+  bottom: 6.4%;
+  width: 8%;
+  font-weight: 500;
+  font-size: 24rem;
+  text-align: center;
+}
+.textEnd {
+  position: absolute;
+  right: 5%;
+  bottom: 6.4%;
+  width: 10%;
+  font-weight: 500;
+  font-size: 24rem;
+  text-align: center;
 }
 
 //Fact-Icons
@@ -263,19 +262,7 @@
 
 .factText {
   color: rgb(69, 153, 255);
-  font-size: 14rem;
+  font-size: 18rem;
   font-weight: 500;
   transition: color 0.5s ease-in-out;
-}
-
-//background img
-.backgroundImg {
-  background-image: url('/images/onway/original.jpg');
-  background-size: cover;
-  opacity: 0.2;
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  /* left: 0; */
-  width: 100%;
 }

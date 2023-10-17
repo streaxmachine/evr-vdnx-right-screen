@@ -174,7 +174,6 @@ const OnWay = ({ setState, socket, setisBack }) => {
               Завершить поездку
             </button>
           </div>
-          
         </div>
       </main>
     </>

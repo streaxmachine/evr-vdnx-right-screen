@@ -5,7 +5,7 @@ import QuizFirstPage from "components/common/QuizFirstPage";
 import QuizCards from "components/common/QuizCards";
 import QuizRules from "components/common/QuizRules";
 
-import { useSocket } from "components/common/SocketManager/SocketManager";
+import { useSocket } from "hooks/useSocket";
 
 import s from "./QuizNew.module.scss";
 

@@ -69,10 +69,6 @@ a {
   width: 100vw;
   height: 100vh;
   background-color: black;
-  -ms-user-select: none; 
-		-moz-user-select: none; 
-		-webkit-user-select: none; 
-		user-select: none; 
 }
 
 body {
@@ -148,3 +144,4 @@ body {
   font-size: 32rem;
   line-height: 36rem;
 }
+

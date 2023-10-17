@@ -3,6 +3,7 @@ import clsx from "clsx";
 import gsap from "gsap";
 import addZero from "add-zero";
 
+import MaskCup from "components/common/MaskCup";
 import useLoader from "hooks/useLoader";
 import useStore from "hooks/useStore";
 import useData from "hooks/useData";

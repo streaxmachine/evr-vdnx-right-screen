@@ -26,8 +26,6 @@ const Guide = ({ setState }) => {
       </div>
       <section className={s.imgContainer}>
         <img className={s.img0} src="/images/cards/most.png" alt="Зигзаг" />
-        <img className={s.img1} src="/images/background/q_zig.png"></img>
-        <div className={s.clouds}></div>
       </section>
     </>
   );

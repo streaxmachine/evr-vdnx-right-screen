@@ -6,8 +6,9 @@
   left: 0;
   width: 100vw;
   height: get-real-vh(100) !important;
-  background: var(--color-ebony);
-  z-index: var(--layout-preloader);
+background-color: black;
+  z-index: 1000;
+  // z-index: var(--layout-preloader);
 }
 
 .header {
