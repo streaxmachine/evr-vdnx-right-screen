@@ -20,7 +20,7 @@ const Home = () => {
       >
         {count}
       </div>
-      <Canvas shadows gl={{ antialias: false }}>
+      <Canvas shadows gl={{ antialias: false }} frameloop="demand">
         <Train count={count} setCount={setCount} />
         <PerspectiveCamera makeDefault position-y={5} position-z={-10} />
       </Canvas>
