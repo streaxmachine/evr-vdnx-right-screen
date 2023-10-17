@@ -27,9 +27,9 @@ const ProgressBar = ({ setState, isBack }) => {
     } else {
       // null;
       if (isBack === false) {
-        setState(4);
+        setState('onway');
       } else {
-        setState(2);
+        setState('cards');
       }
     }
   }, [progress]);

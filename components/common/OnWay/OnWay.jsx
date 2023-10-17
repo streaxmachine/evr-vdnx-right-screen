@@ -46,7 +46,7 @@ const OnWay = ({
 
   React.useEffect(() => {
     if (progress === 320) {
-      setState(5);
+      setState('lastStep');
     }
   }, [progress]);
 
@@ -131,7 +131,7 @@ const OnWay = ({
             className={s.backBtn}
             onClick={() => {
               setisBack(true);
-              setState(3);
+              setState('progressBar');
               socket.send(
                 JSON.stringify({
                   installation: "velo",

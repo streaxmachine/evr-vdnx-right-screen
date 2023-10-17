@@ -75,7 +75,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
     if (inactiveTime >= 40) {
       console.log("nobody`s here");
       setisBack(true);
-      setState(3);
+      setState('progressBar');
       socket.send(
         JSON.stringify({
           installation: "velo",
@@ -160,7 +160,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
             <button
               onClick={() => {
                 setisBack(true);
-                setState(3);
+                setState('progressBar');
                 socket.send(
                   JSON.stringify({
                     installation: "velo",

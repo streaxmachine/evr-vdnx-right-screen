@@ -17,7 +17,7 @@ const Guide = ({ setState }) => {
         </span>
         <button
           onClick={() => {
-            setState(2);
+            setState('cards');
           }}
           className={s.button}
         >

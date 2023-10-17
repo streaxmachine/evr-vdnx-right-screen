@@ -38,7 +38,7 @@ const Cards = ({ setState, socket, setisBack }) => {
   // useEffect(() => {
   //   // if (inactiveTime >= 20) {
   //   //   console.log("nobody`s here");
-  //   //   setState(1);
+  //   //   setState('hero');
   //   // }
   // }, [inactiveTime]);
 
@@ -49,7 +49,7 @@ const Cards = ({ setState, socket, setisBack }) => {
         <div className={s.rootWrapper}>
           <div
             onClick={() => {
-              setState(1);
+              setState('hero');
             }}
             className={s.navigationBack}
           >
@@ -85,7 +85,7 @@ function Card({ setState, setisBack, setCard, socket, card }) {
       className={s.card}
       onClick={() => {
         setisBack(false);
-        setState(3);
+        setState('progressBar');
         setCard(card.cardNumber);
         console.log(card.cardNumber);
         socket.send(JSON.stringify(card.info));
