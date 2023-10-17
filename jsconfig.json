@@ -3,10 +3,10 @@
     "baseUrl": ".",
     "paths": {
       "contexts/*": ["contexts/*"],
-      "components/*": ["client/components/*"],
+      "components/*": ["components/*"],
       "constants/*": ["constants/*"],
       "hooks/*": ["hooks/*"],
-      "pages/*": ["client/pages/*"],
+      "pages/*": ["pages/*"],
       "public/*": ["public/*"],
       "images/*": ["public/images/*"],
       "styles/*": ["styles/*"],

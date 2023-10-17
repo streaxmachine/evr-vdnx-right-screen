@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 
-import Train from "./Train";
+import Train from "../Train/Train";
 
-const ExperienceTrain = () => {
+import s from "./Home.module.scss";
+
+const Home = () => {
   const [count, setCount] = React.useState(1);
   return (
     <div className="canvasTrain">
@@ -26,4 +28,4 @@ const ExperienceTrain = () => {
   );
 };
 
-export default ExperienceTrain;
+export default React.memo(Home);

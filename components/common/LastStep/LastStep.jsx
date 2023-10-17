@@ -111,62 +111,69 @@ const OnWay = ({ setState, socket, setisBack }) => {
         </Canvas>
       </div>
 
-      <main className={s.page}>
-        <section className={s.content}>
-          <span className={s.textBack}>Поздравляем!</span>
-          <span className={s.text}>
-            Вы прибыли к Тверскому <p> императорскому дворцу! </p>
-          </span>
-          <span className={s.notion}>
-            Покрутите модель чтобы рассмотреть
-            <p> детальней</p>
-          </span>
-        </section>
+      <main className={s.root}>
+        <div className={s.rootWrapper}>
+          <section className={s.content}>
+            <div className={s.leftText}>
+              <span className={s.title}>Поздравляем!</span>
+              <span className={s.text}>
+                Вы прибыли к Тверскому <p> императорскому дворцу! </p>
+              </span>
+              <span className={s.notion}>
+                Покрутите модель чтобы рассмотреть
+                <p> детальней</p>
+              </span>
+            </div>
 
-        <div className={s.data}>
-          <span className={s.dataText}>Средние данные о вашей поездке</span>
-          <div className={s.speed}>
-            <p className={s.dataTitle}>Скорость</p>
-            <p className={s.dataNumber}>{speed}</p>
-            <p className={s.dataMeasure}>км/ч</p>
-          </div>
-          <div className={s.dist}>
-            <p className={s.dataTitle}>Расстояние</p>
-            <p className={s.dataNumber}>{progress}</p>
-            <p className={s.dataMeasure}>км</p>
-          </div>
-          <div className={s.ccal}>
-            <p className={s.dataTitle}>Калории</p>
-            <p className={s.dataNumber}>{calories}</p>
-            <p className={s.dataMeasure}>ккал</p>
-          </div>
-        </div>
+            <div className={s.data}>
+              <span className={s.dataText}>Средние данные о вашей поездке</span>
+              <div className={s.dataTable}>
+                <div className={s.speed}>
+                  <p className={s.dataTitle}>Скорость</p>
+                  <p className={s.dataNumber}>{speed}</p>
+                  <p className={s.dataMeasure}>км/ч</p>
+                </div>
+                <div className={s.dist}>
+                  <p className={s.dataTitle}>Расстояние</p>
+                  <p className={s.dataNumber}>{progress}</p>
+                  <p className={s.dataMeasure}>км</p>
+                </div>
+                <div className={s.ccal}>
+                  <p className={s.dataTitle}>Калории</p>
+                  <p className={s.dataNumber}>{calories}</p>
+                  <p className={s.dataMeasure}>ккал</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
-        <div className={s.imgContainer}>
-          <img
-            className={s.img}
-            src="/images/lastpage/360deg.png"
-            alt="Degrees"
-          />
-        </div>
+          <div className={s.imgContainer}>
+            <img
+              className={s.img}
+              src="/images/lastpage/360deg.png"
+              alt="Degrees"
+            />
+          </div>
+          <div className={s.backgroundGradient}></div>
 
-        <div className={s.bottom}>
-          <button
-            onClick={() => {
-              setisBack(true);
-              setState(3);
-              socket.send(
-                JSON.stringify({
-                  installation: "velo",
-                  type: "level",
-                  data: "splashscreen",
-                })
-              );
-            }}
-            className={s.button}
-          >
-            Завершить поездку
-          </button>
+          <div className={s.bottom}>
+            <button
+              onClick={() => {
+                setisBack(true);
+                setState(3);
+                socket.send(
+                  JSON.stringify({
+                    installation: "velo",
+                    type: "level",
+                    data: "splashscreen",
+                  })
+                );
+              }}
+              className={s.button}
+            >
+              Завершить поездку
+            </button>
+          </div>
         </div>
       </main>
     </>
