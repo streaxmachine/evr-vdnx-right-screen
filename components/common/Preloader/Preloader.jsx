@@ -54,7 +54,7 @@ const Preloader = ({ onLoaded }) => {
   useLoader(
     {
       extraModels: models,
-      extraImages: asPath === "/quizNew" ? [...images] : [...imagesCycleWay],
+      extraImages: [...images],
     },
     (loader) => {
       handleLoader(loader);
