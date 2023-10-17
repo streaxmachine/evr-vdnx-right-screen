@@ -31,12 +31,9 @@ const QuizCards = ({ setGlobalState, socket }) => {
               />
             ))}
           </section>
-          {/* <div className={s.aiSection}>
-          <div className={s.aiChat} />
-          <div className={s.speechBubble}>
-            AI comment AI comment AI comment AI comment AI comment{" "}
+          <div className={s.aiSection}>
+            <div className={s.aiChat} />
           </div>
-        </div> */}
         </div>
         <div className={s.clouds}></div>
       </main>
