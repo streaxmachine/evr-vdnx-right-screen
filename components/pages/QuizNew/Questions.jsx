@@ -143,6 +143,9 @@ const Questions = React.memo(
         setImgUrl(currentQuestion.imgUrl);
       }
 
+      const isLong = currentQuestion.isLong;
+
+
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
@@ -251,7 +254,7 @@ const Questions = React.memo(
                 </div>
                 <div
                   className={clsx(s.questionText, {
-                    [s.bigText]: currentCategory === 3,
+                    [s.bigText]: currentQuestion.isLong,
                   })}
                 >
                   {currentQuestion.questionText}
@@ -271,7 +274,7 @@ const Questions = React.memo(
                             twoMisstakesState && index === rightVariant,
                           [s.falseIndex]:
                             twoMisstakesState && index !== rightVariant,
-                          [s.bigBtnText]: currentCategory === 3,
+                          [s.bigBtnText]: item.isBigBtn ,
                         }
                       )}
                       onClick={(e) => handleClickAnswer(item, e, index)}
