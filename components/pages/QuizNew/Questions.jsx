@@ -145,7 +145,6 @@ const Questions = React.memo(
 
       const isLong = currentQuestion.isLong;
 
-
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
@@ -257,7 +256,16 @@ const Questions = React.memo(
                     [s.bigText]: currentQuestion.isLong,
                   })}
                 >
-                  {currentQuestion.questionText}
+                  {currentQuestion.questionText.includes("\n")
+                    ? currentQuestion.questionText
+                        .split("\n")
+                        .map((line, index) => (
+                          <React.Fragment key={index}>
+                            {line}
+                            <br />
+                          </React.Fragment>
+                        ))
+                    : currentQuestion.questionText}
                 </div>
               </div>
 
@@ -274,7 +282,7 @@ const Questions = React.memo(
                             twoMisstakesState && index === rightVariant,
                           [s.falseIndex]:
                             twoMisstakesState && index !== rightVariant,
-                          [s.bigBtnText]: item.isBigBtn ,
+                          [s.bigBtnText]: item.isBigBtn,
                         }
                       )}
                       onClick={(e) => handleClickAnswer(item, e, index)}
