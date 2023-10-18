@@ -238,7 +238,7 @@ const Questions = React.memo(
 
     return (
       <>
-        <audio ref={audioRef} src="/music/phrase.mp3" />
+        <audio ref={audioRef} src="/music/phrase.mp3" autoPlay={false} />
         <img ref={imgRef} className={s.starImg} src={imgUrl} alt="" />
         {!isQuizDone && (
           <>

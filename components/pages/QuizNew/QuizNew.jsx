@@ -6,21 +6,30 @@ import QuizCards from "components/common/QuizCards";
 import QuizRules from "components/common/QuizRules";
 
 import { useSocket } from "hooks/useSocket";
+import useStore from "hooks/useStore";
 
 import s from "./QuizNew.module.scss";
 
 const QuizNew = () => {
   const socket = useSocket();
-  const [globalState, setGlobalState] = React.useState("firstPage");
+  const { isLoaded } = useStore();
+  // console.log(isLoaded);
+  const [globalState, setGlobalState] = React.useState("all");
+  console.log(globalState);
+  React.useEffect(() => {
+    if (isLoaded) {
+      setGlobalState("firstPage");
+    }
+  }, [isLoaded]);
   return (
     <>
-      {globalState === "firstPage" && (
+      {(globalState === "firstPage" || globalState === "all") && (
         <QuizFirstPage setGlobalState={setGlobalState} socket={socket} />
       )}
-      {globalState === "quizCards" && (
+      {(globalState === "quizCards" || globalState === "all") && (
         <QuizCards setGlobalState={setGlobalState} socket={socket} />
       )}
-      {globalState === "quizRules" && (
+      {(globalState === "quizRules" || globalState === "all") && (
         <QuizRules setGlobalState={setGlobalState} socket={socket} />
       )}
       {globalState === "touchPanel" && (

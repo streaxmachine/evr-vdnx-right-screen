@@ -1,5 +1,5 @@
 const imageLoader = (url) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const image = new Image();
 
     image.src = url;
