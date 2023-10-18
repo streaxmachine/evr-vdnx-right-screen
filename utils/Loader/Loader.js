@@ -1,4 +1,3 @@
-import modelLoader from "./loaders/modelLoader";
 import imageLoader from "./loaders/imageLoader";
 import videoLoader from "./loaders/videoLoader";
 import Observer from "./observer";
@@ -6,7 +5,6 @@ import Observer from "./observer";
 const loaders = {
   image: imageLoader,
   video: videoLoader,
-  model: modelLoader,
 };
 
 class Loader {
@@ -71,7 +69,9 @@ class Loader {
     this.data.progress = 0;
 
     return new Promise((resolve) => {
-      if (total === 0) resolve();
+      if (total === 0) {
+        return resolve({ progress: 1 });
+      }
 
       list.forEach((item) => {
         item.loader(item.url).then((result) => {
@@ -88,7 +88,7 @@ class Loader {
 
           item.resolve(result);
 
-          if (total === this.data.count) resolve();
+          if (total === this.data.count) resolve({ progress: 1 });
         });
       });
     });
