@@ -38,7 +38,7 @@ const Guide = ({ setGlobalState, socket }) => {
               src="/images/background/q_zig.png"
               alt="Зигзаг"
             />
-            <div className={s.aiChat} />
+            {/* <div className={s.aiChat} /> */}
             <div className={s.speechBubble}>
               AI comment AI comment AI comment AI comment AI comment{" "}
             </div>
