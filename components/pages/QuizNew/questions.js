@@ -488,7 +488,12 @@ export const questionsStars = [
   {
     questionCategory: "Звезды в Твери",
     questionText:
-      "Строки «Ты знаешь, я томлюсь в неволе,  О смерти Господа моля.  Но всё мне памятна до боли  Тверская скудная земля»навеяны пребыванием в имении Слепнёво Бежецкого уезда Тверской губернии.  Кто автор?",
+    "Строки «Ты знаешь, я томлюсь в неволе,\n" +
+    "О смерти Господа моля.\n" +
+    "Но всё мне памятна до боли\n" +
+    "Тверская скудная земля»\n" +
+    "навеяны пребыванием в имении Слепнёво Бежецкого уезда Тверской губернии.\n" +
+    "Кто автор?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/question_25_photo.png",
@@ -719,7 +724,7 @@ export const questionsNumbers = [
     answerOptions: [
       { answerText: "30", isBigBtn: false, isCorrect: true },
       { answerText: "5", isBigBtn: false, isCorrect: false },
-      { answerText: "7", isBigBtn: false, isCorrect: false },
+      { answerText: "17", isBigBtn: false, isCorrect: false },
     ],
   },
   {
