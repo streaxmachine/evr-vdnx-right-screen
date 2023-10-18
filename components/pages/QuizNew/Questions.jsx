@@ -134,7 +134,7 @@ const Questions = React.memo(
           type: "victorina",
           data: `question_${questionNumber}`,
           state: question.isCorrect,
-          variant: question.answerText,
+          variant: index,
         })
       );
 
