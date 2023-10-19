@@ -16,7 +16,16 @@ const TouchPanel = ({ setGlobalState, socket }) => {
         {!isQuizDone && (
           <div className={s.left}>
             <button
-              onClick={() => setGlobalState("quizCards")}
+              onClick={() => {
+                setGlobalState("firstPage");
+                socket.send(
+                  JSON.stringify({
+                    installation: "right",
+                    type: "mode",
+                    data: "victorina_start",
+                  })
+                );
+              }}
               className={s.backMenu}
             >
               {"<  "}Главное меню

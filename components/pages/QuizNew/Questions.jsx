@@ -96,13 +96,11 @@ const Questions = React.memo(
           type: "victorina",
           data: `question_${questionNumber}`,
           state: null,
-          id: (Number(currentQuestion.id))
+          id: Number(currentQuestion.id),
           // state: question.isCorrect,
           // variant: question.answerText,
         })
       );
-
-  
     }, [currentQuestion]);
 
     const handleCheck = () => {
@@ -166,6 +164,23 @@ const Questions = React.memo(
             delay: 4.25,
             ease: "expo.out",
           });
+        }
+
+        const correctAnswerIndex = currentQuestion.answerOptions.findIndex(
+          (answer) => answer.isCorrect
+        );
+
+        if (correctAnswerIndex !== -1) {
+          console.log(correctAnswerIndex);
+          socket.send(
+            JSON.stringify({
+              installation: "right",
+              type: "victorina",
+              data: `question_${questionNumber}`,
+              state: correctAnswerIndex,
+              // variant: index,
+            })
+          );
         }
 
         setTimeout(() => {
