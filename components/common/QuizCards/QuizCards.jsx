@@ -11,7 +11,16 @@ const QuizCards = ({ setGlobalState, socket }) => {
         <div className={s.wrapper}>
           <button
             className={s.backBtn}
-            onClick={() => setGlobalState("firstPage")}
+            onClick={() => {
+              setGlobalState("firstPage");
+              socket.send(
+                JSON.stringify({
+                  installation: "right",
+                  type: "mode",
+                  data: "victorina_start",
+                })
+              );
+            }}
           >
             <img src="/images/arrow.png" alt="Назад" />
             <span className={s.backText}>Главное меню</span>

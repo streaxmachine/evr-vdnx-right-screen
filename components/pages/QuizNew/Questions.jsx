@@ -96,10 +96,13 @@ const Questions = React.memo(
           type: "victorina",
           data: `question_${questionNumber}`,
           state: null,
+          id: (Number(currentQuestion.id))
           // state: question.isCorrect,
           // variant: question.answerText,
         })
       );
+
+  
     }, [currentQuestion]);
 
     const handleCheck = () => {
