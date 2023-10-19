@@ -29,6 +29,24 @@ const OnWay = ({ setState, socket, setisBack }) => {
   //   },
   // });
 
+  const generateRandomSpeed = () => {
+    const min = 20;
+    const max = 30;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  const [randomSpeed] = useState(generateRandomSpeed());
+
+  const generateRandomcalories = () => {
+    const min = 5000; 
+    const max = 13000; 
+    const randomNum = (Math.floor(Math.random() * (max - min + 1)) + min) / 100;
+    return randomNum;
+  };
+
+  // Инициализация случайного числа при монтировании компонента
+  const [randomCalories] = useState(generateRandomcalories());
+
   const [inactiveTime, setInactiveTime] = useState(0);
   const [size, setSize] = useState([1280, 800]);
 
@@ -130,7 +148,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
               <div className={s.dataTable}>
                 <div className={s.speed}>
                   <p className={s.dataTitle}>Скорость</p>
-                  <p className={s.dataNumber}>{30}</p>
+                  <p className={s.dataNumber}>{randomSpeed}</p>
                   <p className={s.dataMeasure}>км/ч</p>
                 </div>
                 <div className={s.dist}>
@@ -140,7 +158,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
                 </div>
                 <div className={s.ccal}>
                   <p className={s.dataTitle}>Калории</p>
-                  <p className={s.dataNumber}>{12.7}</p>
+                  <p className={s.dataNumber}>{randomCalories}</p>
                   <p className={s.dataMeasure}>ккал</p>
                 </div>
               </div>
