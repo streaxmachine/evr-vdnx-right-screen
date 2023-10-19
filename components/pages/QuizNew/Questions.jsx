@@ -166,22 +166,20 @@ const Questions = React.memo(
           });
         }
 
-        const correctAnswerIndex = currentQuestion.answerOptions.findIndex(
-          (answer) => answer.isCorrect
-        );
-
-        if (correctAnswerIndex !== -1) {
-          console.log(correctAnswerIndex);
-          socket.send(
-            JSON.stringify({
-              installation: "right",
-              type: "victorina",
-              data: `question_${questionNumber}`,
-              state: correctAnswerIndex,
-              // variant: index,
-            })
-          );
-        }
+        currentQuestion.answerOptions.forEach((answer) => {
+          if (answer.isCorrect) {
+              console.log(`question_${questionNumber}`);
+            socket.send(
+              JSON.stringify({
+                installation: "right",
+                type: "victorina",
+                data: `question_${questionNumber}`,
+                state: answer.isCorrect,
+                variant: index,
+              })
+            );
+          }
+        });
 
         setTimeout(() => {
           setIsClickable(true);
