@@ -14,13 +14,7 @@ const OnWay = ({
 }) => {
   const [filledCells, setFilledCells] = useState(0);
 
-  const { progress, calories, speed } = useControls({
-    progress: {
-      value: 1,
-      step: 1,
-      min: 0,
-      max: 100,
-    },
+  const { calories, speed } = useControls({
     calories: {
       value: 3.5,
       step: 1,
@@ -35,6 +29,24 @@ const OnWay = ({
     },
   });
 
+  const [ progress, setProgress] = useState(0);
+
+  const handleSliderChange = (event) => {
+    const newValue = parseInt(event.target.value);
+    setProgress(newValue);
+  };
+
+  React.useEffect(() => {
+    if (progress === 100) {
+      const timeout = setTimeout(() => {
+        setProgress(0);
+      }, 500); 
+      setState('lastStep');
+      return () => clearTimeout(timeout);
+    }
+  }, [progress]);
+
+
   const isSlow = speed < 20;
   const isOkay = speed > 19 && speed < 41;
   const isFast = speed > 40;
@@ -44,11 +56,6 @@ const OnWay = ({
     setFilledCells(newFilledCells);
   }, [speed]);
 
-  React.useEffect(() => {
-    if (progress === 100) {
-      setState('lastStep');
-    }
-  }, [progress]);
 
   const rays = Array.from({ length: 28 }, (_, index) => {
     const isFilled = index < filledCells;
@@ -144,6 +151,18 @@ const OnWay = ({
             <img className={s.arrow} src="/images/arrow.png" alt="Назад" />{" "}
             <span className={s.backText}>Главное меню</span>
           </button>
+
+          <div className={s.slider}>
+            <input
+              type="range"
+              min={0}
+              max={100}
+              value={progress}
+              onChange={handleSliderChange}
+              style={{ width: "100%" }}
+            />
+            <p style={{ textAlign: "center" }}>Progress</p>
+          </div>
           {isSlow && (
             <div className={s.notification}>
               <img
