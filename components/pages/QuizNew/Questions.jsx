@@ -168,7 +168,7 @@ const Questions = React.memo(
 
         currentQuestion.answerOptions.forEach((answer) => {
           if (answer.isCorrect) {
-              console.log(`question_${questionNumber}`);
+              // console.log(`question_${questionNumber}`);
             socket.send(
               JSON.stringify({
                 installation: "right",

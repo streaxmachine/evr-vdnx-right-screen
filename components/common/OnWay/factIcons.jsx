@@ -7,7 +7,7 @@ import s from "./OnWay.module.scss";
 const FactIcons = ({ progress }) => {
   const [activeFactIndex, setActiveFactIndex] = useState(null);
   const [icons, setIcons] = useState([]);
-  const n = 320; // ProgressMax
+  const n = 100; // ProgressMax
 
   useEffect(() => {
     const numberOfFacts = facts.length;

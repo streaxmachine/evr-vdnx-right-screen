@@ -12,35 +12,35 @@ const Cards = ({ setState, socket, setisBack }) => {
     setInactiveTime(0);
   };
 
-  // useEffect(() => {
-  //   const touchStartHandler = () => {
-  //     resetInactiveTime();
-  //   };
+  useEffect(() => {
+    const touchStartHandler = () => {
+      resetInactiveTime();
+    };
 
-  //   const touchMoveHandler = () => {
-  //     resetInactiveTime();
-  //   };
+    const touchMoveHandler = () => {
+      resetInactiveTime();
+    };
 
-  //   const timer = setInterval(() => {
-  //     setInactiveTime(inactiveTime + 1);
-  //   }, 1000);
+    const timer = setInterval(() => {
+      setInactiveTime(inactiveTime + 1);
+    }, 1000);
 
-  //   window.addEventListener("touchstart", touchStartHandler);
-  //   window.addEventListener("touchmove", touchMoveHandler);
+    window.addEventListener("touchstart", touchStartHandler);
+    window.addEventListener("touchmove", touchMoveHandler);
 
-  //   return () => {
-  //     clearInterval(timer);
-  //     window.removeEventListener("touchstart", touchStartHandler);
-  //     window.removeEventListener("touchmove", touchMoveHandler);
-  //   };
-  // }, [inactiveTime]);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("touchstart", touchStartHandler);
+      window.removeEventListener("touchmove", touchMoveHandler);
+    };
+  }, [inactiveTime]);
 
-  // useEffect(() => {
-  //   // if (inactiveTime >= 20) {
-  //   //   console.log("nobody`s here");
-  //   //   setState('hero');
-  //   // }
-  // }, [inactiveTime]);
+  useEffect(() => {
+    if (inactiveTime >= 30) {
+      console.log("nobody`s here");
+      setState("hero");
+    }
+  }, [inactiveTime]);
 
   return (
     <>
@@ -49,7 +49,14 @@ const Cards = ({ setState, socket, setisBack }) => {
         <div className={s.rootWrapper}>
           <div
             onClick={() => {
-              setState('hero');
+              setState("hero");
+              socket.send(
+                JSON.stringify({
+                  installation: "velo",
+                  type: "level",
+                  data: "start_menu",
+                })
+              );
             }}
             className={s.navigationBack}
           >
@@ -85,7 +92,7 @@ function Card({ setState, setisBack, setCard, socket, card }) {
       className={s.card}
       onClick={() => {
         setisBack(false);
-        setState('progressBar');
+        setState("progressBar");
         setCard(card.cardNumber);
         console.log(card.cardNumber);
         socket.send(JSON.stringify(card.info));

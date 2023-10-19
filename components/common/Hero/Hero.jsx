@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./Hero.module.scss";
 
-const Guide = ({ setState }) => {
+const Hero = ({ setState, socket }) => {
   return (
     <>
       <main className={s.page}></main>
@@ -17,7 +17,14 @@ const Guide = ({ setState }) => {
         </span>
         <button
           onClick={() => {
-            setState('cards');
+            setState("cards");
+            socket.send(
+              JSON.stringify({
+                installation: "velo",
+                type: "level",
+                data: "splashscreen",
+              })
+            );
           }}
           className={s.button}
         >
@@ -32,4 +39,4 @@ const Guide = ({ setState }) => {
     </>
   );
 };
-export default Guide;
+export default Hero;

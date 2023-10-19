@@ -19,7 +19,7 @@ const OnWay = ({
       value: 1,
       step: 1,
       min: 0,
-      max: 320,
+      max: 100,
     },
     calories: {
       value: 3.5,
@@ -45,7 +45,7 @@ const OnWay = ({
   }, [speed]);
 
   React.useEffect(() => {
-    if (progress === 320) {
+    if (progress === 100) {
       setState('lastStep');
     }
   }, [progress]);
@@ -67,7 +67,7 @@ const OnWay = ({
     );
   });
 
-  const progressPercent = (progress / 320) * 100;
+  const progressPercent = (progress / 100) * 100;
   const calculateManualYPosition = (progressPercent) => {
     const intervals = [
       { start: 0, end: 9, value: "0rem" },
@@ -119,7 +119,7 @@ const OnWay = ({
   };
 
   const progressBarStyle = {
-    "--progress-width": `${(progress / 320) * 100}%`,
+    "--progress-width": `${(progress / 100) * 100}%`,
     "--y-position": calculateManualYPosition(progressPercent),
   };
 
@@ -131,7 +131,7 @@ const OnWay = ({
             className={s.backBtn}
             onClick={() => {
               setisBack(true);
-              setState('progressBar');
+              setState("progressBar");
               socket.send(
                 JSON.stringify({
                   installation: "velo",

@@ -8,26 +8,26 @@ import { Canvas, useThree } from "@react-three/fiber";
 let cursor = {};
 
 const OnWay = ({ setState, socket, setisBack }) => {
-  const { progress, calories, speed } = useControls({
-    progress: {
-      value: 1,
-      step: 1,
-      min: 0,
-      max: 320,
-    },
-    calories: {
-      value: 3.5,
-      step: 1,
-      min: 0,
-      max: 100,
-    },
-    speed: {
-      value: 30,
-      step: 1,
-      min: 0,
-      max: 60,
-    },
-  });
+  // const { progress, calories, speed } = useControls({
+  //   progress: {
+  //     value: 1,
+  //     step: 1,
+  //     min: 0,
+  //     max: 320,
+  //   },
+  //   calories: {
+  //     value: 3.5,
+  //     step: 1,
+  //     min: 0,
+  //     max: 100,
+  //   },
+  //   speed: {
+  //     value: 30,
+  //     step: 1,
+  //     min: 0,
+  //     max: 60,
+  //   },
+  // });
 
   const [inactiveTime, setInactiveTime] = useState(0);
   const [size, setSize] = useState([1280, 800]);
@@ -130,17 +130,17 @@ const OnWay = ({ setState, socket, setisBack }) => {
               <div className={s.dataTable}>
                 <div className={s.speed}>
                   <p className={s.dataTitle}>Скорость</p>
-                  <p className={s.dataNumber}>{speed}</p>
+                  <p className={s.dataNumber}>{30}</p>
                   <p className={s.dataMeasure}>км/ч</p>
                 </div>
                 <div className={s.dist}>
                   <p className={s.dataTitle}>Расстояние</p>
-                  <p className={s.dataNumber}>{progress}</p>
+                  <p className={s.dataNumber}>{100}</p>
                   <p className={s.dataMeasure}>км</p>
                 </div>
                 <div className={s.ccal}>
                   <p className={s.dataTitle}>Калории</p>
-                  <p className={s.dataNumber}>{calories}</p>
+                  <p className={s.dataNumber}>{12.7}</p>
                   <p className={s.dataMeasure}>ккал</p>
                 </div>
               </div>
