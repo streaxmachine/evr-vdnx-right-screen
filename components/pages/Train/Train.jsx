@@ -14,7 +14,7 @@ import { animated, useSpring } from "@react-spring/three";
 import { useThree } from "@react-three/fiber";
 import { useSocket } from "hooks/useSocket";
 
-// import s from "../Home.module.scss";
+import s from "../Home/Home.module.scss";
 
 const Train = ({ count, setCount }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -91,9 +91,9 @@ const Train = ({ count, setCount }) => {
         sectionSize={10.3}
         sectionThickness={5.5}
         sectionColor={[0.5, 0.5, 10]}
-        fadeDistance={80}
+        fadeDistance={150}
       />
-      <fog attach="fog" args={["#95a8c7", 55, 70.5]} />
+      {/* <fog attach="fog" args={["#95a8c7", 90, 140.5]} /> */}
       {parts.map((part, index) => (
         <ShowTrain
           key={index}
@@ -117,13 +117,13 @@ const Train = ({ count, setCount }) => {
         />
       ))}
 
-      <OrthographicCamera makeDefault zoom={50} position={[0, 40, 200]} />
+      {/* <OrthographicCamera makeDefault zoom={50} position={[0, 40, 200]} /> */}
 
       <OrbitControls minZoom={10} maxZoom={50} enabled={!isDragging} />
       <ambientLight intensity={0.5} />
       <Environment preset="sunset" blur={0.8} />
       <mesh position-y={-0.1} receiveShadow rotation-x={-Math.PI * 0.5}>
-        <planeGeometry args={[200, 200]} />
+        <planeGeometry args={[400, 400]} />
         <meshStandardMaterial transparent={true} color="gray" />
       </mesh>
       {/* <Preload all /> */}
@@ -170,7 +170,7 @@ function Obj({
   count,
   setCount,
 }) {
-  const [pos, setPos] = useState([posX * 1.35, 0, posX * 2 - 13]);
+  const [pos, setPos] = useState([posX * -10 + 50, part.position.y, 10]);
   const [isRightPosition, setIsRightPosition] = React.useState(false);
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
@@ -218,7 +218,7 @@ function Obj({
 
         if (active === false) {
           if (value !== count) {
-            finalValue = [posX * 1.35, 0, posX * 2 - 13];
+            finalValue = [posX * -10 + 50, part.position.y, 10];
             socket.send(
               JSON.stringify({
                 instalяation: "ivolga",
@@ -272,11 +272,11 @@ function Obj({
           {...spring}
           {...bind()}
         >
-          {/* {!isRightPosition && (
+          {!isRightPosition && (
             <Html>
               <div className={s.value}>{value}</div>
             </Html>
-          )} */}
+          )}
           <meshStandardMaterial attach="material" />
         </animated.mesh>
       </group>

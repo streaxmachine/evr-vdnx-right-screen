@@ -3,6 +3,11 @@ import React from "react";
 
 gsap.defaults({ ease: "linear" });
 
+import { Globals } from "@react-spring/shared";
+Globals.assign({
+  frameLoop: "always",
+});
+
 import Preloader from "components/common/Preloader";
 
 import useCalcVh from "hooks/useCalcVh";
