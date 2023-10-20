@@ -11,7 +11,7 @@ import { useSocket } from "hooks/useSocket";
 import s from "./CycleWay.module.scss";
 
 const CycleWay = () => {
-  const [state, setState] = React.useState("onway");
+  const [state, setState] = React.useState("hero");
   const [speed, setSpeed] = React.useState(0);
   const [calories, setCalories] = React.useState(0);
   const [distance, setDistance] = React.useState(0);
