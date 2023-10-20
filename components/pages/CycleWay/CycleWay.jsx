@@ -11,7 +11,7 @@ import { useSocket } from "hooks/useSocket";
 import s from "./CycleWay.module.scss";
 
 const CycleWay = () => {
-  const [state, setState] = React.useState('hero');
+  const [state, setState] = React.useState("onway");
   const [speed, setSpeed] = React.useState(0);
   const [calories, setCalories] = React.useState(0);
   const [distance, setDistance] = React.useState(0);
@@ -19,16 +19,18 @@ const CycleWay = () => {
   const socket = useSocket([setSpeed, setCalories, setDistance]);
   return (
     <>
-      {state === 'hero' && <Hero setState={setState} socket={socket} />}
-      {state === 'cards' && (
+      {state === "hero" && <Hero setState={setState} socket={socket} />}
+      {state === "cards" && (
         <Cards setState={setState} socket={socket} setisBack={setisBack} />
       )}
-      {state === 'progressBar' && (
+      {state === "progressBar" && (
         <ProgressBar setState={setState} socket={socket} isBack={isBack} />
       )}
-      {state === 'onway' && (
+      {state === "onway" && (
         <OnWay
           setState={setState}
+          setDistance={setDistance}
+          setSpeed={setSpeed}
           socket={socket}
           speedSocket={speed}
           distanceSocket={distance}
@@ -36,7 +38,7 @@ const CycleWay = () => {
           setisBack={setisBack}
         />
       )}
-      {state === 'lastStep' && (
+      {state === "lastStep" && (
         <LastStep
           setState={setState}
           speedSocket={speed}

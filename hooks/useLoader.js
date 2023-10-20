@@ -18,11 +18,11 @@ const useLoader = (extras, callback, delayMs = 0) => {
     vars.callback(data);
   }, []);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     vars.callback = callback;
   }, [callback]);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     let loader = null;
 
     nextFrame(() => {
