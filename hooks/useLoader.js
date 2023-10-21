@@ -31,11 +31,11 @@ const useLoader = (extras, callback, delayMs = 0) => {
       console.log(images);
 
       extraImages.forEach((url) => {
-        loader.add("image", url);
+        loader.add("image", url, true);
       });
 
       images.forEach((image) => {
-        loader.add("image", image.src);
+        loader.add("image", image.src, true);
       });
 
       loader.on(handleCallback);

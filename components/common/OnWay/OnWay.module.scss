@@ -39,15 +39,18 @@
 
 .notification {
   height: 100rem;
+  // position: absolute;
+  width: 100%;
+  margin-right: 30rem;
   color: white;
   font-weight: 600;
   font-size: 16rem;
+  top: 200rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: width 0.5s ease-in-out;
   justify-content: space-between;
-  margin-top: 90rem;
 }
 
 .notificationText {
@@ -67,7 +70,7 @@
   bottom: 120rem;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   z-index: 2;

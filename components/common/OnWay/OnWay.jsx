@@ -64,6 +64,27 @@ const OnWay = ({
     );
   });
 
+  // {isFast && (
+  //   <div className={s.notification}>
+  //     <img
+  //       src="/images/onway/warning.png"
+  //       alt="Progress Bar"
+  //       className={s.notificationImage}
+  //     />
+  //     <span className={s.notificationText}>Cбавь скорость</span>
+  //   </div>
+  // )}
+  // {isOkay && (
+  //   <div className={s.notification}>
+  //     <img
+  //       src="/images/onway/tick.png"
+  //       alt="Progress Bar"
+  //       className={s.notificationImage}
+  //     />
+  //     <span className={s.notificationText}>Идеальная скорость</span>
+  //   </div>
+  // )}
+
   return (
     <>
       <main ref={rootRef} className={s.root}>
@@ -85,38 +106,17 @@ const OnWay = ({
             <img className={s.arrow} src="/images/arrow.png" alt="Назад" />{" "}
             <span className={s.backText}>Главное меню</span>
           </button>
-
-          {isSlow && (
-            <div className={s.notification}>
-              <img
-                src="/images/onway/warning.png"
-                alt="Progress Bar"
-                className={s.notificationImage}
-              />
-              <span className={s.notificationText}>Ускорься</span>
-            </div>
-          )}
-          {isFast && (
-            <div className={s.notification}>
-              <img
-                src="/images/onway/warning.png"
-                alt="Progress Bar"
-                className={s.notificationImage}
-              />
-              <span className={s.notificationText}>Cбавь скорость</span>
-            </div>
-          )}
-          {isOkay && (
-            <div className={s.notification}>
-              <img
-                src="/images/onway/tick.png"
-                alt="Progress Bar"
-                className={s.notificationImage}
-              />
-              <span className={s.notificationText}>Идеальная скорость</span>
-            </div>
-          )}
           <div className={s.dataRoot}>
+            {isSlow && (
+              <div className={s.notification}>
+                <img
+                  src="/images/onway/warning.png"
+                  alt="Progress Bar"
+                  className={s.notificationImage}
+                />
+                <span className={s.notificationText}>Ускорься</span>
+              </div>
+            )}
             <div className={s.dataWrapper}>
               <div className={s.ccal}>
                 <p className={s.dataTitle}>Калории</p>
@@ -166,14 +166,14 @@ const OnWay = ({
                     rx="28"
                     ry="27"
                     fill="#58B9FF"
-                    fill-opacity="0.4"
+                    fillOpacity="0.4"
                   />
                   <circle
                     cx="28"
                     cy="27"
                     r="20"
                     fill="white"
-                    fill-opacity="0.6"
+                    fillOpacity="0.6"
                   />
                   <circle cx="28" cy="27" r="11" fill="#4599FF" />
                 </svg>
