@@ -1,4 +1,8 @@
 import React, { useState, useRef } from "react";
+import { Globals } from "@react-spring/shared";
+Globals.assign({
+  frameLoop: "always",
+});
 import {
   OrbitControls,
   useGLTF,
@@ -13,11 +17,6 @@ import * as THREE from "three";
 import { useDrag } from "@use-gesture/react";
 import { animated, useSpring } from "@react-spring/three";
 import { useThree } from "@react-three/fiber";
-
-// import { Globals } from "@react-spring/shared";
-// Globals.assign({
-//   frameLoop: "always",
-// });
 
 import s from "../Home/Home.module.scss";
 
@@ -91,6 +90,7 @@ const Train = ({ count, setCount }) => {
         enabled={!isDragging}
         autoRotateSpeed={-0.1}
         zoomSpeed={0.25}
+        minZoom={30}
         maxZoom={140}
         enablePan={false}
         dampingFactor={0.05}
@@ -240,7 +240,7 @@ function Obj({
   count,
   setCount,
 }) {
-  const [pos, setPos] = useState([posX * -10 + 50, part.position.y, 10]);
+  const [pos, setPos] = useState([posX * 1.3, part.position.y, 10]);
   const [isRightPosition, setIsRightPosition] = React.useState(false);
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
