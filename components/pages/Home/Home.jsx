@@ -19,8 +19,11 @@ const Home = () => {
       <div className={s.buttonBack}>
         <p>Главное меню</p>
       </div>
+      <StarterMessage />
       <DetailsVisualization currentNumber={count} />
-      {touchedDetail !== 0 && <DetailInfo detailNumber={touchedDetail} />}
+      {touchedDetail !== 0 && (
+        <DetailInfo detailNumber={touchedDetail} count={count} />
+      )}
       <Canvas
         shadows
         orthographic
@@ -70,7 +73,7 @@ const detailsCounter = [
   { name: 6, id: 6 },
 ];
 
-const DetailsVisualization = ({ currentNumber }) => {
+const DetailsVisualization = ({ currentNumber, count }) => {
   return (
     <div className={s.detailsRoot}>
       {detailsCounter.map((item) => {
@@ -98,9 +101,8 @@ const detailsInfo = [
   { name: 6, description: "im 6", id: 6 },
 ];
 
-const DetailInfo = React.memo(({ detailNumber }) => {
+const DetailInfo = React.memo(({ detailNumber, count }) => {
   const rootRef = React.useRef();
-
   const detail = React.useMemo(() => {
     return detailsInfo.filter((item) => item.id === detailNumber);
   }, [detailNumber]);
@@ -127,7 +129,12 @@ const DetailInfo = React.memo(({ detailNumber }) => {
   }, [detailNumber]);
 
   return (
-    <div ref={rootRef} className={s.detailInfoRoot}>
+    <div
+      ref={rootRef}
+      // className={clsx(s.detailInfoRoot, {
+      //   [s.correct]: Number(detailNumber) === Number(count - 1),
+      // })}
+    >
       <div>{detail[0].name}</div>
       <div>{detail[0].description}</div>
     </div>
