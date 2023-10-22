@@ -1,8 +1,4 @@
 import React, { useState, useRef } from "react";
-import { Globals } from "@react-spring/shared";
-Globals.assign({
-  frameLoop: "always",
-});
 import {
   OrbitControls,
   useGLTF,
@@ -17,10 +13,17 @@ import * as THREE from "three";
 import { useDrag } from "@use-gesture/react";
 import { animated, useSpring } from "@react-spring/three";
 import { useThree } from "@react-three/fiber";
+import { Globals } from "@react-spring/shared";
 
 import s from "../Home/Home.module.scss";
 
 const Train = ({ count, setCount }) => {
+  React.useEffect(() => {
+    Globals.assign({
+      frameLoop: "demand",
+    });
+  }, []);
+
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   // const socket = useSocket();
@@ -31,8 +34,8 @@ const Train = ({ count, setCount }) => {
     const part1 = train.scene.getObjectByName("1");
     const part2 = train.scene.getObjectByName("2");
     const part3 = train.scene.getObjectByName("3");
-    const part4 = train.scene.getObjectByName("4");
-    const part5 = train.scene.getObjectByName("5");
+    // const part4 = train.scene.getObjectByName("4");
+    // const part5 = train.scene.getObjectByName("5");
     // const part6 = train.scene.getObjectByName("6");
     // const part7 = train.scene.getObjectByName("7");
     // const part8 = train.scene.getObjectByName("8");
@@ -49,13 +52,13 @@ const Train = ({ count, setCount }) => {
       },
       {
         object: part3,
-      },
-      {
-        object: part4,
-      },
-      {
-        object: part5,
       }
+      // {
+      //   object: part4,
+      // },
+      // {
+      //   object: part5,
+      // }
       // {
       //   object: part6,
       // },
@@ -154,23 +157,12 @@ const Train = ({ count, setCount }) => {
             scale={10}
           />
         </group>
-
-        <AccumulativeShadows
-          frames={100}
-          // color={shadow}
-          colorBlend={5}
-          toneMapped={true}
-          alphaTest={0.9}
-          opacity={1}
-          scale={30}
-          position={[0, -1.01, 0]}
-        ></AccumulativeShadows>
       </Environment>
 
       <Grid />
       <mesh position-y={0} receiveShadow rotation-x={-Math.PI * 0.5}>
         <planeGeometry args={[400, 400]} />
-        <meshStandardMaterial transparent={true} opacity={0.1} color="white" />
+        <meshStandardMaterial transparent={true} opacity={0.3} color="white" />
       </mesh>
       {/* <Preload all /> */}
     </>

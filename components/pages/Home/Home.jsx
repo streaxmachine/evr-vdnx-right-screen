@@ -23,7 +23,12 @@ const Home = () => {
       <Canvas
         shadows
         orthographic
-        camera={{ position: [10, 20, 20], zoom: 50 }}
+        // frameloop="demand"
+        camera={{
+          position: [10, 20, 20],
+          rotation: [Math.PI, 0, 0],
+          zoom: 30,
+        }}
         gl={{ preserveDrawingBuffer: true }}
       >
         <Train count={count} setCount={setCount} />
