@@ -35,9 +35,12 @@ const Train = ({ count, setCount }) => {
     const part2 = train.scene.getObjectByName("2");
     const part3 = train.scene.getObjectByName("3");
     // const part4 = train.scene.getObjectByName("4");
-    // const part5 = train.scene.getObjectByName("5");
-    // const part6 = train.scene.getObjectByName("6");
-    // const part7 = train.scene.getObjectByName("7");
+    const part5 = train.scene.getObjectByName("5");
+    part5.name = "4";
+    const part6 = train.scene.getObjectByName("6");
+    part6.name = "5";
+    const part7 = train.scene.getObjectByName("7");
+    part7.name = "6";
     // const part8 = train.scene.getObjectByName("8");
     // const part9 = train.scene.getObjectByName("9");
     // const part10 = train.scene.getObjectByName("10");
@@ -52,19 +55,19 @@ const Train = ({ count, setCount }) => {
       },
       {
         object: part3,
-      }
+      },
       // {
       //   object: part4,
       // },
-      // {
-      //   object: part5,
-      // }
-      // {
-      //   object: part6,
-      // },
-      // {
-      //   object: part7,
-      // },
+      {
+        object: part5,
+      },
+      {
+        object: part6,
+      },
+      {
+        object: part7,
+      }
       // {
       //   object: part8,
       // },
@@ -114,7 +117,7 @@ const Train = ({ count, setCount }) => {
           key={index}
           value={Number(part.object.name)}
           part={part.object}
-          posX={index}
+          posX={index * 1.5}
           count={count}
           setCount={setCount}
           // socket={socket}
@@ -232,11 +235,14 @@ function Obj({
   count,
   setCount,
 }) {
-  const [pos, setPos] = useState([posX * 1.3, part.position.y, 10]);
+  const [pos, setPos] = useState([
+    posX,
+    part.position.y,
+    value > 2 ? -1.5 * value * 2 : 10 * value,
+  ]);
   const [isRightPosition, setIsRightPosition] = React.useState(false);
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
-
   let planeIntersectPoint = new THREE.Vector3();
   const vector = new THREE.Vector3(0, 0, 0);
 
@@ -264,7 +270,7 @@ function Obj({
   const bind = useDrag(
     ({ active, movement: [x, y], timeStamp, event }) => {
       const distance = vector.distanceTo(dragMeshRef.current.position);
-      const isdragable = distance > 3;
+      const isdragable = distance > 8;
 
       if (active) {
         event.ray.intersectPlane(floorPlane, planeIntersectPoint);
@@ -288,24 +294,18 @@ function Obj({
             //     correct: "false",
             //   })
             // );
-            dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-              color: "white",
-            });
+            dragMeshRef.current.material = part.material;
           } else {
             finalValue = [part.position.x, part.position.y, part.position.z];
             setCount(count + 1);
             setIsRightPosition(true);
-            dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-              color: "white",
-            });
+            dragMeshRef.current.material = part.material;
           }
         } else {
           finalValue = pos;
         }
       } else {
-        dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-          color: "white",
-        });
+        dragMeshRef.current.material = part.material;
       }
 
       if (!isRightPosition) {
@@ -339,7 +339,6 @@ function Obj({
               <div className={s.value}>{value}</div>
             </Html>
           )}
-          <meshStandardMaterial attach="material" />
         </animated.mesh>
       </group>
     </>
