@@ -21,8 +21,11 @@ const TrainContainer = ({
     const part2 = train.scene.getObjectByName("2");
     const part3 = train.scene.getObjectByName("3");
     const part5 = train.scene.getObjectByName("5");
+    part5.name = 4;
     const part6 = train.scene.getObjectByName("6");
+    part6.name = 5;
     const part7 = train.scene.getObjectByName("7");
+    part7.name = 6;
 
     const parts = [];
     parts.push(
