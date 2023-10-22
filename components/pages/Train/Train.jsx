@@ -11,17 +11,20 @@ import {
 } from "@react-three/drei";
 import * as THREE from "three";
 import { useDrag } from "@use-gesture/react";
-import { animated, useSpring } from "@react-spring/three";
+import {
+  animated,
+  useSpring,
+} from "@react-three/drei/node_modules/@react-spring/three";
 import { useThree } from "@react-three/fiber";
-import { Globals } from "@react-spring/shared";
+// import { Globals } from "@react-spring/shared";
 
 import s from "../Home/Home.module.scss";
 
 const Train = ({ count, setCount }) => {
   React.useEffect(() => {
-    Globals.assign({
-      frameLoop: "demand",
-    });
+    // Globals.assign({
+    //   frameLoop: "demand",
+    // });
   }, []);
 
   const [isDragging, setIsDragging] = useState(false);
