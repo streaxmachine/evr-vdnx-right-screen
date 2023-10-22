@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { Canvas } from "@react-three/fiber";
+import { Preload } from "@react-three/drei";
 import gsap from "gsap";
 
 import TrainContainer from "./TrainContainer/TrainContainer";
@@ -41,6 +42,7 @@ const Home = () => {
           touchedDetail={touchedDetail}
           setTouchedDetail={setTouchedDetail}
         />
+        <Preload all />
       </Canvas>
       <Timer
         time={time}
@@ -131,9 +133,9 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
   return (
     <div
       ref={rootRef}
-      // className={clsx(s.detailInfoRoot, {
-      //   [s.correct]: Number(detailNumber) === Number(count - 1),
-      // })}
+      className={clsx(s.detailInfoRoot, {
+        [s.correct]: Number(detailNumber) === Number(count - 1),
+      })}
     >
       <div>{detail[0].name}</div>
       <div>{detail[0].description}</div>
