@@ -20,15 +20,13 @@ const Home = () => {
       >
         {count}
       </div>
-      <Canvas shadows gl={{ antialias: false }}>
+      <Canvas
+        shadows
+        orthographic
+        camera={{ position: [10, 20, 20], zoom: 80 }}
+        gl={{ preserveDrawingBuffer: true }}
+      >
         <Train count={count} setCount={setCount} />
-        <PerspectiveCamera
-          near={1}
-          far={1000}
-          makeDefault
-          position-y={5}
-          position-z={-10}
-        />
       </Canvas>
     </div>
   );

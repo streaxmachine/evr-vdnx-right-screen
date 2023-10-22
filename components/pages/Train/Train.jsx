@@ -1,25 +1,30 @@
 import React, { useState, useRef } from "react";
 import {
-  OrthographicCamera,
   OrbitControls,
   useGLTF,
   Html,
-  Grid,
   Environment,
-  Preload,
+  Lightformer,
+  AccumulativeShadows,
+  Instances,
+  Instance,
 } from "@react-three/drei";
 import * as THREE from "three";
 import { useDrag } from "@use-gesture/react";
 import { animated, useSpring } from "@react-spring/three";
 import { useThree } from "@react-three/fiber";
-import { useSocket } from "hooks/useSocket";
+
+// import { Globals } from "@react-spring/shared";
+// Globals.assign({
+//   frameLoop: "always",
+// });
 
 import s from "../Home/Home.module.scss";
 
 const Train = ({ count, setCount }) => {
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  const socket = useSocket();
+  // const socket = useSocket();
 
   const train = useGLTF("/models/testTrainTest.glb");
 
@@ -29,11 +34,11 @@ const Train = ({ count, setCount }) => {
     const part3 = train.scene.getObjectByName("3");
     const part4 = train.scene.getObjectByName("4");
     const part5 = train.scene.getObjectByName("5");
-    const part6 = train.scene.getObjectByName("6");
-    const part7 = train.scene.getObjectByName("7");
-    const part8 = train.scene.getObjectByName("8");
-    const part9 = train.scene.getObjectByName("9");
-    const part10 = train.scene.getObjectByName("10");
+    // const part6 = train.scene.getObjectByName("6");
+    // const part7 = train.scene.getObjectByName("7");
+    // const part8 = train.scene.getObjectByName("8");
+    // const part9 = train.scene.getObjectByName("9");
+    // const part10 = train.scene.getObjectByName("10");
 
     const parts = [];
     parts.push(
@@ -50,30 +55,30 @@ const Train = ({ count, setCount }) => {
         object: part4,
       },
       {
-        object: part6,
-      },
-      {
         object: part5,
-      },
-      {
-        object: part7,
-      },
-      {
-        object: part8,
-      },
-      {
-        object: part9,
-      },
-      {
-        object: part10,
       }
+      // {
+      //   object: part6,
+      // },
+      // {
+      //   object: part7,
+      // },
+      // {
+      //   object: part8,
+      // },
+      // {
+      //   object: part9,
+      // },
+      // {
+      //   object: part10,
+      // }
     );
     return parts;
   }, []);
 
   return (
     <>
-      <color attach={"background"} args={["#95a8c7"]} />
+      <color attach="background" args={["#f2f2f5"]} />
       <pointLight
         position={[0, 30, 3]}
         intensity={1.5}
@@ -81,19 +86,17 @@ const Train = ({ count, setCount }) => {
         castShadow
         shadow-mapSize={[2048, 2048]}
       />
-      <Grid
-        renderOrder={-1}
-        position={[0, -0.05, 0]}
-        infiniteGrid
-        cellSize={0.1}
-        scale={15}
-        cellThickness={0.6}
-        sectionSize={10.3}
-        sectionThickness={5.5}
-        sectionColor={[0.5, 0.5, 10]}
-        fadeDistance={150}
+      <OrbitControls
+        // autoRotate={autoRotate}
+        enabled={!isDragging}
+        autoRotateSpeed={-0.1}
+        zoomSpeed={0.25}
+        maxZoom={140}
+        enablePan={false}
+        dampingFactor={0.05}
+        minPolarAngle={Math.PI / 3}
+        maxPolarAngle={Math.PI / 3}
       />
-      {/* <fog attach="fog" args={["#95a8c7", 90, 140.5]} /> */}
       {parts.map((part, index) => (
         <ShowTrain
           key={index}
@@ -111,20 +114,63 @@ const Train = ({ count, setCount }) => {
           posX={index}
           count={count}
           setCount={setCount}
-          socket={socket}
+          // socket={socket}
           setIsDragging={setIsDragging}
           floorPlane={floorPlane}
         />
       ))}
 
-      {/* <OrthographicCamera makeDefault zoom={50} position={[0, 40, 200]} /> */}
+      <Environment resolution={32}>
+        <group rotation={[-Math.PI / 4, -0.3, 0]}>
+          <Lightformer
+            intensity={20}
+            rotation-x={Math.PI / 2}
+            position={[0, 5, -9]}
+            scale={[10, 10, 1]}
+          />
+          <Lightformer
+            intensity={2}
+            rotation-y={Math.PI / 2}
+            position={[-5, 1, -1]}
+            scale={[10, 2, 1]}
+          />
+          <Lightformer
+            intensity={2}
+            rotation-y={Math.PI / 2}
+            position={[-5, -1, -1]}
+            scale={[10, 2, 1]}
+          />
+          <Lightformer
+            intensity={2}
+            rotation-y={-Math.PI / 2}
+            position={[10, 1, 0]}
+            scale={[20, 2, 1]}
+          />
+          <Lightformer
+            type="ring"
+            intensity={2}
+            rotation-y={Math.PI / 2}
+            position={[-0.1, -1, -5]}
+            scale={10}
+          />
+        </group>
 
-      <OrbitControls minZoom={10} maxZoom={50} enabled={!isDragging} />
-      <ambientLight intensity={0.5} />
-      <Environment preset="sunset" blur={0.8} />
-      <mesh position-y={-0.1} receiveShadow rotation-x={-Math.PI * 0.5}>
+        <AccumulativeShadows
+          frames={100}
+          // color={shadow}
+          colorBlend={5}
+          toneMapped={true}
+          alphaTest={0.9}
+          opacity={1}
+          scale={30}
+          position={[0, -1.01, 0]}
+        ></AccumulativeShadows>
+      </Environment>
+
+      <Grid />
+      <mesh position-y={0} receiveShadow rotation-x={-Math.PI * 0.5}>
         <planeGeometry args={[400, 400]} />
-        <meshStandardMaterial transparent={true} color="gray" />
+        <meshStandardMaterial transparent={true} opacity={0.1} color="white" />
       </mesh>
       {/* <Preload all /> */}
     </>
@@ -132,6 +178,30 @@ const Train = ({ count, setCount }) => {
 };
 
 export default Train;
+
+const Grid = ({ number = 23, lineWidth = 0.026, height = 0.5 }) => (
+  // Renders a grid and crosses as instances
+  <Instances position={[0, -1.02, 0]}>
+    <planeGeometry args={[lineWidth, height]} />
+    <meshBasicMaterial color="#999" />
+    {Array.from({ length: number }, (_, y) =>
+      Array.from({ length: number }, (_, x) => (
+        <group
+          key={x + ":" + y}
+          position={[
+            x * 2 - Math.floor(number / 2) * 2,
+            -0.01,
+            y * 2 - Math.floor(number / 2) * 2,
+          ]}
+        >
+          <Instance rotation={[-Math.PI / 2, 0, 0]} />
+          <Instance rotation={[-Math.PI / 2, 0, Math.PI / 2]} />
+        </group>
+      ))
+    )}
+    <gridHelper args={[100, 100, "#bbb", "#bbb"]} position={[0, -0.01, 0]} />
+  </Instances>
+);
 
 function ShowTrain({ part, number, value, isDragging }) {
   const isShow = React.useMemo(() => {
@@ -166,7 +236,7 @@ function Obj({
   value,
   posX,
   part,
-  socket,
+  // socket,
   count,
   setCount,
 }) {
@@ -180,17 +250,17 @@ function Obj({
 
   const dragMeshRef = useRef();
 
-  React.useEffect(() => {
-    if (isRightPosition) {
-      socket.send(
-        JSON.stringify({
-          instalяation: "ivolga",
-          detail: count - 1,
-          correct: "true",
-        })
-      );
-    }
-  }, [isRightPosition]);
+  // React.useEffect(() => {
+  //   if (isRightPosition) {
+  //     socket.send(
+  //       JSON.stringify({
+  //         instalяation: "ivolga",
+  //         detail: count - 1,
+  //         correct: "true",
+  //       })
+  //     );
+  //   }
+  // }, [isRightPosition]);
 
   const [spring, api] = useSpring(() => ({
     position: pos,
@@ -219,13 +289,13 @@ function Obj({
         if (active === false) {
           if (value !== count) {
             finalValue = [posX * -10 + 50, part.position.y, 10];
-            socket.send(
-              JSON.stringify({
-                instalяation: "ivolga",
-                detail: value,
-                correct: "false",
-              })
-            );
+            // socket.send(
+            //   JSON.stringify({
+            //     instalяation: "ivolga",
+            //     detail: value,
+            //     correct: "false",
+            //   })
+            // );
             dragMeshRef.current.material = new THREE.MeshStandardMaterial({
               color: "white",
             });
