@@ -89,12 +89,6 @@ a {
   left: auto !important;
 }
 
-.canvasTrain {
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-}
-
 body {
   background: var(--page-background);
 

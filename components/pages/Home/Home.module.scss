@@ -9,6 +9,39 @@
   background-color: black;
 }
 
+.canvasTrain {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  -ms-user-select: none; 
+		-moz-user-select: none; 
+		-webkit-user-select: none; 
+		user-select: none; 
+
+    .count {
+      position: absolute;
+      z-index: 1;
+      color: gray;
+      font-size: 50rem;
+    }
+}
+
+.buttonBack {
+  position: absolute;
+  top: 64rem;
+  left: 64rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--light-blue);
+  border-radius: 10rem;
+  z-index: 10;
+  height: 48rem;
+  font-size: 18rem;
+  width: 214rem;
+}
+
 .value {
   border-radius: 50%;
   background-color: black;
@@ -17,5 +50,66 @@
   align-items: center;
   text-align: center;
   padding: 5rem;
+}
+
+.detailsRoot {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  padding: 10rem;
+  align-items: center;
+  flex-direction: row;
+  z-index: 1;
+  top: 64rem;
+  right: 64rem;
+  width: 440rem;
+  height: 152rem;
+  background-color: var(--light-blue);
+
+  div {
+    width: 20rem;
+    height: 80%;
+    background-color: red;
+  }
+
+  .current {
+    background-color: rgb(12, 216, 97);
+  }
+}
+
+.detailInfoRoot {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  gap: 35rem;
+  padding: 10rem;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  // transform: translateX(calc(100% + 64rem));
+  top: 240rem;
+  right: -100%;
+  width: 440rem;
+  height: 152rem;
+  background-color: var(--light-blue);
+}
+
+.starterMessageRoot {
+  position: absolute;
+  top: 136rem;
+  left: 64rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 16rem;
+  padding: 24rem;
+  padding-left: 56rem;
+  border-radius: 10rem;
+  width: 332rem;
+  height: 196rem;
+  color: white;
+  z-index: 10;
+  background-color: var(--light-blue);
+
 }
 
