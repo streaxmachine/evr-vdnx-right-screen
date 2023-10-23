@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import * as THREE from "three";
 
-import { Html } from "@react-three/drei";
+import { Html, Preload } from "@react-three/drei";
 import { useDrag } from "@use-gesture/react";
 import { animated, useSpring } from "@react-spring/three";
 import { useThree } from "@react-three/fiber";
@@ -116,6 +116,7 @@ const MakeTrain = ({
           )}
         </animated.mesh>
       </group>
+      <Preload all />
     </>
   );
 };

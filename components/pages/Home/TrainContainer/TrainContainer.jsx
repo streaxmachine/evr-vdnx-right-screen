@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import * as THREE from "three";
-import { useGLTF } from "@react-three/drei";
+import { Preload, useGLTF } from "@react-three/drei";
 
 import Lights from "../Lights";
 import ShowTrain from "../TrainPlaceholder";
@@ -21,11 +21,17 @@ const TrainContainer = ({
     const part2 = train.scene.getObjectByName("2");
     const part3 = train.scene.getObjectByName("3");
     const part5 = train.scene.getObjectByName("5");
-    part5.name = 4;
+    // if (part5.name) {
+    //   part5.name = 4;
+    // }
     const part6 = train.scene.getObjectByName("6");
-    part6.name = 5;
+    // if (part6.name) {
+    //   part6.name = 5;
+    // }
     const part7 = train.scene.getObjectByName("7");
-    part7.name = 6;
+    // if (part7.name) {
+    //   part7.name = 6;
+    // }
 
     const parts = [];
     parts.push(
@@ -37,7 +43,7 @@ const TrainContainer = ({
       { object: part7} //prettier-ignore
     );
     return parts;
-  }, []);
+  }, [train]);
 
   return (
     <>
@@ -66,6 +72,7 @@ const TrainContainer = ({
           setTouchedDetail={setTouchedDetail}
         />
       ))}
+      <Preload all />
     </>
   );
 };

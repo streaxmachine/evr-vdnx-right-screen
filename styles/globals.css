@@ -90,7 +90,7 @@ a {
 }
 
 body {
-  background: var(--page-background);
+  background: black;
 
   color: #fff;
 }

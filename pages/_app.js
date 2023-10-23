@@ -32,9 +32,9 @@ export default function App({ Component, router, pageProps }) {
 
   return (
     <StoreProvider store={store}>
-      <PageTransition route={router.route}>
-        <Component {...pageProps} />
-      </PageTransition>
+      {/* <PageTransition route={router.route}> */}
+      <Component {...pageProps} />
+      {/* </PageTransition> */}
       {!isLoaded && (
         <Preloader
           // preloadedImages={pageProps.preloadedImages}

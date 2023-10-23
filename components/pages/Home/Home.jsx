@@ -1,7 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 import { Canvas } from "@react-three/fiber";
-import { Preload } from "@react-three/drei";
+import { Preload, useProgress } from "@react-three/drei";
+import Link from "next/link";
 import gsap from "gsap";
 
 import TrainContainer from "./TrainContainer/TrainContainer";
@@ -15,42 +16,47 @@ const Home = () => {
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   return (
-    <div className={s.canvasTrain}>
-      <div className={s.count}>{count}</div>
-      <div className={s.buttonBack}>
-        <p>Главное меню</p>
-      </div>
-      <StarterMessage />
-      <DetailsVisualization currentNumber={count} />
-      {touchedDetail !== 0 && (
-        <DetailInfo detailNumber={touchedDetail} count={count} />
-      )}
-      <Canvas
-        shadows
-        orthographic
-        // frameloop="demand"
-        camera={{
-          position: [10, 20, 20],
-          rotation: [Math.PI, 0, 0],
-          zoom: 30,
-        }}
-        gl={{ preserveDrawingBuffer: true }}
-      >
-        <TrainContainer
-          count={count}
-          setCount={setCount}
-          touchedDetail={touchedDetail}
-          setTouchedDetail={setTouchedDetail}
+    <>
+      <Preloader />
+      <div className={s.canvasTrain}>
+        <div className={s.count}>{count}</div>
+        <Link href={"/quizNew"}>
+          <div className={s.buttonBack}>
+            <p>Главное меню</p>
+          </div>
+        </Link>
+
+        <StarterMessage />
+        <DetailsVisualization currentNumber={count} />
+        {touchedDetail !== 0 && (
+          <DetailInfo detailNumber={touchedDetail} count={count} />
+        )}
+        <Canvas
+          shadows
+          orthographic
+          // frameloop="demand"
+          camera={{
+            position: [10, 20, 20],
+            rotation: [Math.PI, 0, 0],
+            zoom: 30,
+          }}
+          gl={{ preserveDrawingBuffer: true }}
+        >
+          <TrainContainer
+            count={count}
+            setCount={setCount}
+            touchedDetail={touchedDetail}
+            setTouchedDetail={setTouchedDetail}
+          />
+        </Canvas>
+        <Timer
+          time={time}
+          setTime={setTime}
+          setQuizDone={setQuizDone}
+          isQuizDone={isQuizDone}
         />
-        <Preload all />
-      </Canvas>
-      <Timer
-        time={time}
-        setTime={setTime}
-        setQuizDone={setQuizDone}
-        isQuizDone={isQuizDone}
-      />
-    </div>
+      </div>
+    </>
   );
 };
 
@@ -142,3 +148,24 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
     </div>
   );
 });
+
+const Preloader = () => {
+  const { progress } = useProgress();
+  const [isPreloader, setPreloader] = React.useState(true);
+
+  React.useEffect(() => {
+    if (progress === 100) {
+      const timer = setTimeout(() => {
+        setPreloader(false);
+      }, 1500);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [progress]);
+
+  return (
+    <>{isPreloader && <div className={s.preloader}>Загружаемся ...</div>}</>
+  );
+};
