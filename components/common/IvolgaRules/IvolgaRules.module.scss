@@ -1,0 +1,193 @@
+@import "styles/mixins";
+
+.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(99deg, #00469a 5.73%, #b7d6fb 96.89%), #fff;
+}
+
+.wrapper {
+  margin-top: 64rem;
+  margin-bottom: 64rem;
+  max-width: 1350rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 1;
+}
+
+.clouds {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url("/images/background/clouds.png");
+  background-size: cover;
+  z-index: 0;
+}
+
+.backBtn {
+  color: white;
+  width: 214rem;
+  height: 48rem;
+  gap: 12rem;
+  border: none;
+  border-radius: 10rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+.backText {
+  z-index: 1;
+  font-weight: 400;
+  font-size: 22rem;
+  // line-height: 30rem;
+}
+
+.textblock {
+  color: white;
+  margin-top: 28rem;
+}
+.title {
+  font-weight: 700;
+  font-size: 52rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 52rem;
+  letter-spacing: 0.02rem;
+  margin-bottom: 20rem;
+}
+.text {
+  top: 20rem;
+  font-weight: 400;
+  font-size: 26rem;
+  line-height: 36rem;
+  text-align: left;
+  color: rgba(240, 245, 249, 1);
+}
+
+.imgContainer {
+  width: 100%;
+  border: none;
+  display: flex;
+  margin-top: 25rem;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.ivolgaImg {
+  width: 1160rem;
+  margin-top: 220rem;
+  position: absolute;
+}
+
+.lineWithcircles {
+  position: relative;
+  z-index: 5;
+  width: 6rem;
+  height: 200rem;
+  background-color: white;
+  margin: 0 auto;
+  transform: translateX(-390rem);
+}
+
+.circle {
+  position: absolute;
+  width: 20rem; /* Диаметр кругов */
+  height: 20rem;
+  background-color: white;
+  border-radius: 50%; /* Создает круглую форму */
+}
+
+.circleTop {
+  position: absolute;
+  width: 70rem; 
+  height: 70rem;
+  background-color: white;
+  border-radius: 50%; 
+}
+
+.circleNumber {
+  color: var(--light-blue);
+  font-size: 40rem;
+  font-weight: 600;
+  transform: translateX(23rem) translateY(15rem);
+}
+
+.top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom {
+  bottom: 0;
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.playBtn {
+  background-color: white;
+  color: var(--light-blue);
+  width: 400rem;
+  border-radius: 100px;
+  border: none;
+  padding: 20rem 65rem 20rem 64rem;
+  font-weight: 700;
+  font-size: 24rem;
+  z-index: 1;
+  margin-top: 160rem;
+
+  &:hover {
+    color: white;
+    background-color: var(--light-blue);
+  }
+}
+
+// /* AI */
+
+.aiChat {
+  width: 184px;
+  height: 184px;
+  background-image: url('/images/aiChat.gif');
+  background-size: 100%;
+  position: absolute;
+  bottom: -1rem;
+  right: 64rem;
+  mix-blend-mode: multiply;
+}
+
+.speechBubble {
+  position: absolute;
+  font-family: sans-serif;
+  font-size: 18rem;
+  font-weight: 500;
+  width: 420rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 24rem;
+  text-align: center;
+  color: white;
+  right: 752rem;
+  top: 448rem;
+  z-index: 2;
+}
+
+.speechBubble:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-top: 16px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 21px solid rgba(255, 255, 255, 0.2);
+  border-left: 38px solid transparent;
+  right: 590px;
+  top: 60%;
+  transform: translateY(-70%) scaleX(1);
+}
