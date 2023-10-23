@@ -72,6 +72,11 @@ const Lights = ({ isDragging }) => {
         <planeGeometry args={[400, 400]} />
         <meshStandardMaterial transparent={true} opacity={0.3} color="white" />
       </mesh>
+
+      <mesh position-y={0.1} receiveShadow rotation-x={-Math.PI * 0.5}>
+        <planeGeometry args={[30, 5]} />
+        <meshStandardMaterial transparent={false} color="red" />
+      </mesh>
     </>
   );
 };
