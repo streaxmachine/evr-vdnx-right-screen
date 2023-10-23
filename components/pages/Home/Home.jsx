@@ -14,7 +14,14 @@ const Home = () => {
   const [count, setCount] = React.useState(1);
   const [touchedDetail, setTouchedDetail] = React.useState(0);
   const [isQuizDone, setQuizDone] = React.useState(false);
+  const [isFirstTime, setFirstTime] = React.useState(true);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
+
+  React.useEffect(() => {
+    if (count > 1) {
+      setFirstTime(false);
+    }
+  }, [count]);
   return (
     <>
       <Preloader />
@@ -26,7 +33,7 @@ const Home = () => {
           </div>
         </Link>
 
-        <StarterMessage />
+        {isFirstTime && <StarterMessage />}
         <DetailsVisualization currentNumber={count} />
         {touchedDetail !== 0 && (
           <DetailInfo detailNumber={touchedDetail} count={count} />
