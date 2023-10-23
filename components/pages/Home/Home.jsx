@@ -102,7 +102,6 @@ const DetailsVisualization = ({ currentNumber, count }) => {
   );
 };
 
-
 const DetailInfo = React.memo(({ detailNumber, count }) => {
   const rootRef = React.useRef();
   const detail = React.useMemo(() => {
@@ -112,13 +111,14 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
     gsap.to(rootRef.current, {
       right: "64rem",
       duration: 1,
-      ease: "elastic.out(0.3,0.3)",
+      ease: "elastic.out(0.2,0.5)",
     });
 
     const timeout = setTimeout(() => {
       gsap.to(rootRef.current, {
         right: "-100%",
         duration: 0.5,
+        ease: "expo.in",
       });
     }, 3500);
 
@@ -126,6 +126,7 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
       clearTimeout(timeout);
       gsap.set(rootRef.current, {
         right: "-100%",
+        ease: "expo.in",
       });
     };
   }, [detailNumber]);
