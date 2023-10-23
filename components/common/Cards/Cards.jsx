@@ -7,14 +7,7 @@ import s from "./Cards.module.scss";
 
 const Cards = ({ setState, socket, setisBack }) => {
   const [card, setCard] = useState(null);
-  const time = useTimer();
-  useEffect(() => {
-    if (time.inactive) {
-      setState("hero");
-    } else {
-      return;
-    }
-  }, [time]);
+  useTimer(setState, "hero", 10);
   return (
     <>
       <div className={s.root}>

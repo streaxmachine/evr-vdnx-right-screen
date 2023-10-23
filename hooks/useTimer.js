@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useTimer() {
-  const [inactive, setInactive] = useState(false);
+export default function useTimer(setState, state, time = 30) {
   const [inactiveTime, setInactiveTime] = useState(0);
 
   const resetInactiveTime = () => {
@@ -11,12 +10,10 @@ export default function useTimer() {
   useEffect(() => {
     const touchStartHandler = () => {
       resetInactiveTime();
-      setInactive(false)
     };
 
     const touchMoveHandler = () => {
       resetInactiveTime();
-      setInactive(false)
     };
 
     const timer = setInterval(() => {
@@ -34,12 +31,10 @@ export default function useTimer() {
   }, [inactiveTime]);
 
   useEffect(() => {
-    if (inactiveTime >= 30) {
-      setInactive(true)
+    if (inactiveTime >= time) {
+      setState(state)
+      console.log('im hook')
     }
   }, [inactiveTime]);
 
-  return {
-    inactive
-  };
 }
