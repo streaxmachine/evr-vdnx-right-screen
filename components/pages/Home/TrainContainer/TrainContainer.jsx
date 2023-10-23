@@ -49,7 +49,7 @@ const TrainContainer = ({
     <>
       <color attach="background" args={["#f2f2f5"]} />
       <Lights isDragging={isDragging} />
-      {parts.map((part, index) => (
+      {/* {parts.map((part, index) => (
         <ShowTrain
           key={index}
           value={Number(part.object.name)}
@@ -57,7 +57,7 @@ const TrainContainer = ({
           number={count}
           isDragging={isDragging}
         />
-      ))}
+      ))} */}
       {parts.map((part, index) => (
         <MakeTrain
           key={index}
