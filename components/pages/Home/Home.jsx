@@ -8,6 +8,8 @@ import gsap from "gsap";
 import TrainContainer from "./TrainContainer/TrainContainer";
 import Timer from "components/common/Timer";
 
+import { details } from "./details";
+
 import s from "./Home.module.scss";
 
 const Home = () => {
@@ -100,19 +102,11 @@ const DetailsVisualization = ({ currentNumber, count }) => {
   );
 };
 
-const detailsInfo = [
-  { name: 1, description: "im 1 ", id: 1 },
-  { name: 2, description: "im 2", id: 2 },
-  { name: 3, description: "im 3", id: 3 },
-  { name: 4, description: "im 4", id: 4 },
-  { name: 5, description: "im 5", id: 5 },
-  { name: 6, description: "im 6", id: 6 },
-];
 
 const DetailInfo = React.memo(({ detailNumber, count }) => {
   const rootRef = React.useRef();
   const detail = React.useMemo(() => {
-    return detailsInfo.filter((item) => item.id === detailNumber);
+    return details.filter((item) => item.id === detailNumber);
   }, [detailNumber]);
   React.useEffect(() => {
     gsap.to(rootRef.current, {
@@ -143,8 +137,22 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
         [s.correct]: Number(detailNumber) === Number(count - 1),
       })}
     >
-      <div>{detail[0].name}</div>
-      <div>{detail[0].description}</div>
+      <div className={s.detailsName}>{detail[0].name}</div>
+      <div className={s.detailstext}>{detail[0].description}</div>
+      <img
+        className={s.detailsImg}
+        src={detail[0].picSrc}
+        alt={detail[0].alt}
+      />
+      <img
+        className={s.detailZig}
+        alt="zig"
+        src={
+          Number(detailNumber) === Number(count - 1)
+            ? "/images/train/line.png"
+            : "/images/train/line_red.png"
+        }
+      />
     </div>
   );
 });
