@@ -47,6 +47,7 @@ const MakeTrain = ({
     ({ active, movement: [x, y], timeStamp, event }) => {
       const distance = vector.distanceTo(dragMeshRef.current.position);
       const isdragable = distance > 8;
+      let rotation = [0, 0, 0];
 
       if (active) {
         event.ray.intersectPlane(floorPlane, planeIntersectPoint);
@@ -56,9 +57,16 @@ const MakeTrain = ({
       setIsDragging(active);
       let finalValue = pos;
       if (isdragable === false && !isRightPosition) {
-        dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-          color: "green",
-        });
+        if (value === count) {
+          dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+            color: "green",
+          });
+        } else {
+          dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+            color: "red",
+          });
+        }
+
         if (active === false) {
           if (value !== count) {
             setTouchedDetail(value);
@@ -83,11 +91,23 @@ const MakeTrain = ({
         dragMeshRef.current.material = part.material;
       }
 
+      if (!active && !isRightPosition) {
+        if (isdragable) {
+          finalValue = [
+            posX,
+            part.position.y,
+            value > 2 ? -1.5 * value * 2 : 10 * value,
+          ];
+          rotation = [0, 0, 0];
+        }
+      }
+
       if (!isRightPosition) {
         api.start({
           position: finalValue,
           scale: active && isdragable ? 2.2 : 1,
-          rotation: isdragable ? [0, (x / aspect) * 0.1, 0] : [0, 0, 0],
+          rotation:
+            isdragable && active ? [0, (x / aspect) * 0.1, 0] : rotation,
         });
       }
 

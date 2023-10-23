@@ -107,6 +107,7 @@ const detailsInfo = [
   { name: 4, description: "im 4", id: 4 },
   { name: 5, description: "im 5", id: 5 },
   { name: 6, description: "im 6", id: 6 },
+  { name: 7, description: "im 7", id: 7 },
 ];
 
 const DetailInfo = React.memo(({ detailNumber, count }) => {
