@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import s from "./IvolgaRules.module.scss";
 
@@ -68,10 +68,6 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
             Все понятно! Я в игре
           </button>
 
-          {/* <div className={s.aiChat} />
-          <div className={s.speechBubble}>
-            AI comment AI comment AI comment AI comment AI comment
-          </div> */}
         </div>
 
         <div className={s.clouds}></div>
@@ -81,13 +77,4 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
 };
 export default IvolgaRules;
 
-// function Card({ card }) {
-//   return (
-//     <div className={`${s.card}`}>
-//       <div className={s.cardTextBlock}>
-//         <h4 className={s.cardTitle}>{card.title}</h4>
-//       </div>
-//       <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
-//     </div>
-//   );
-// }
+
