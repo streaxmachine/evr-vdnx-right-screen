@@ -62,11 +62,7 @@ function Card({ setGlobalState, card, socket }) {
         // setGlobalState(card.cardGlobalState)};
         setGlobalState(card.cardGlobalState);
         socket.send(
-          JSON.stringify({
-            installation: "right",
-            type: "mode",
-            data: "victorina",
-          })
+          JSON.stringify(card.info)
         );
       }}
     >

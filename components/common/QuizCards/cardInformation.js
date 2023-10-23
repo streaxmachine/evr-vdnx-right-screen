@@ -6,6 +6,10 @@ export const cards = [
     picSrc: "/images/QuizCards/e5065ee379a684fec367ed0338938ea3.png",
     alt: "Разгадай Тверь",
     cardGlobalState: "quizRules",
+    info: {installation: "right",
+    type: "mode",
+    data: "victorina",
+  },
   },
   {
     preTitle: "Конструктор для любителей головоломок.",
@@ -14,6 +18,10 @@ export const cards = [
     picSrc: "/images/QuizCards/57fddd1342fb684ec641252d6de345e5.png",
     alt: "Игра ",
     cardGlobalState: "4",
+    info: {installation: "right",
+    type: "mode",
+    data: "puzzle",
+  },
   },
   {
     preTitle: "Квест для истинных любителей истории.",
@@ -22,6 +30,10 @@ export const cards = [
     picSrc: "/images/QuizCards/b364b2dcb07b219f03cbb4cc67d8fbdc.png",
     alt: "Игра",
     cardGlobalState: "5",
+    info: {installation: "right",
+    type: "mode",
+    data: "game",
+  },
   },
   {
     preTitle: "Квест для истинных любителей истории.",
@@ -30,5 +42,9 @@ export const cards = [
     picSrc: "/images/QuizCards/img.png",
     alt: "Собери Иволгу",
     cardGlobalState: "6 ",
+    info: {installation: "right",
+    type: "mode",
+    data: "ivolga",
+  },
   },
 ];
