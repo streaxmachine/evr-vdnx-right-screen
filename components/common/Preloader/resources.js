@@ -42,5 +42,5 @@ export const imagesCycleWay = [
   "/images/onway/facts/krug.png",
   "/images/onway/facts/tverskoy.png",
   "/images/onway/facts/pushkin.png",
-  "/images/lastpage/360deg.png"
+  "/images/lastpage/360deg.png",
 ];

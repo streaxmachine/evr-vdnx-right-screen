@@ -10,7 +10,7 @@ let initialState = {
   isIntro: true,
   isGallery: true,
   isLoaded: false,
-  isLoadedMusicverse: false ,
+  isLoadedMusicverse: false,
   cart: {
     items: [],
     totalPrice: 0,
@@ -27,7 +27,8 @@ function initStore(preloadedState = initialState) {
       setIntro: (isIntro) => set(() => ({ isIntro })),
       setGallery: (isGallery) => set(() => ({ isGallery })),
       setLoaded: (isLoaded) => set(() => ({ isLoaded })),
-      setIsLoadedMusicverse: (isLoadedMusicverse) => set(()=> ({isLoadedMusicverse})),
+      setIsLoadedMusicverse: (isLoadedMusicverse) =>
+        set(() => ({ isLoadedMusicverse })),
       setCart: (product) => {
         const cart = get().cart.items;
         const cartItem = cart.find((item) => item.slug === product.slug);

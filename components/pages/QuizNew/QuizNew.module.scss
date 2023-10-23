@@ -1,7 +1,7 @@
 .aiChat {
     position: absolute;
     bottom: 0rem;
-    z-index: 1000;
+    z-index: 0;
     width: 200rem;
     height: 200rem;
     background-image: url("/images/aiChat.gif");
@@ -10,4 +10,8 @@
     margin-top: 20rem;
     right: 0;
     mix-blend-mode: multiply;
+  }
+
+  .wrapper {
+    background-color: gray;
   }

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { cards } from "./cardInformation";
 
 import s from "./QuizCards.module.scss";
+import Link from "next/link";
 
 const QuizCards = ({ setGlobalState, socket }) => {
   return (
@@ -69,13 +70,29 @@ function Card({ setGlobalState, card, socket }) {
         );
       }}
     >
-      <div className={s.cardTextBlock}>
-        <p className={s.cardpreTitle}>{card.preTitle}</p>
-        <h4 className={s.cardTitle}>{card.title}</h4>
-        <p className={s.cardText}>{card.text}</p>
-      </div>
-      <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
-      <img className={s.cardZigZag} src={card.zigZagSrc} />
+      {card.title === "Собери Иволгу" ? (
+        <>
+          <Link href="/">
+            <div className={s.cardTextBlock}>
+              <p className={s.cardpreTitle}>{card.preTitle}</p>
+              <h4 className={s.cardTitle}>{card.title}</h4>
+              <p className={s.cardText}>{card.text}</p>
+            </div>
+            <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
+            <img className={s.cardZigZag} src={card.zigZagSrc} />
+          </Link>
+        </>
+      ) : (
+        <>
+          <div className={s.cardTextBlock}>
+            <p className={s.cardpreTitle}>{card.preTitle}</p>
+            <h4 className={s.cardTitle}>{card.title}</h4>
+            <p className={s.cardText}>{card.text}</p>
+          </div>
+          <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
+          <img className={s.cardZigZag} src={card.zigZagSrc} />
+        </>
+      )}
     </div>
   );
 }

@@ -20,16 +20,16 @@ const ProgressBar = ({ setState, isBack }) => {
     if (progress !== 100) {
       const interval = setInterval(() => {
         setProgress(progress + 1);
-      }, 150);
+      }, 30);
       return () => {
         clearInterval(interval);
       };
     } else {
       // null;
       if (isBack === false) {
-        setState('onway');
+        setState("onway");
       } else {
-        setState('cards');
+        setState("cards");
       }
     }
   }, [progress]);
