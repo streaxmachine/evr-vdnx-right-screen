@@ -58,13 +58,13 @@ const MakeTrain = ({
       let finalValue = pos;
       if (isdragable === false && !isRightPosition) {
         if (value === count) {
-          dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-            color: "green",
-          });
+          // dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+          //   color: "green",
+          // });
         } else {
-          dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-            color: "red",
-          });
+          // dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+          //   color: "red",
+          // });
         }
 
         if (active === false) {
@@ -76,19 +76,32 @@ const MakeTrain = ({
               value > 2 ? -1.5 * value * 2 : 10 * value,
             ];
 
-            dragMeshRef.current.material = part.material;
+            dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+              color: "red",
+            });
+            setTimeout(() => {
+              dragMeshRef.current.material = part.material;
+            }, 800);
           } else {
             finalValue = [part.position.x, part.position.y, part.position.z];
             setTouchedDetail(value);
             setCount(count + 1);
             setIsRightPosition(true);
-            dragMeshRef.current.material = part.material;
+            dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+              color: "green",
+            });
+            setTimeout(() => {
+              dragMeshRef.current.material = part.material;
+            }, 800);
           }
         } else {
           finalValue = pos;
         }
       } else {
         dragMeshRef.current.material = part.material;
+        // dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+        //   color: "pink",
+        // });
       }
 
       if (!active && !isRightPosition) {
