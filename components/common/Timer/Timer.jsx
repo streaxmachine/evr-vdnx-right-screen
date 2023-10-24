@@ -5,12 +5,14 @@ import s from "./Timer.module.scss";
 const Timer = React.memo(
   ({ time, setTime, isQuizDone = false, setQuizDone = false }) => {
     const FULL_DASH_ARRAY = 283;
-    const TIME_LIMIT = 60;
+    const TIME_LIMIT = 10;
     const ref = React.useRef();
+    const refCircle = React.useRef();
 
     let timeLeft = TIME_LIMIT;
 
     const [timePassed, setTimePassed] = React.useState(0);
+    const [timeIsUp, setTimeIsUp] = React.useState(false);
 
     function calculateTimeFraction(time_left) {
       return time_left / TIME_LIMIT;
@@ -45,18 +47,24 @@ const Timer = React.memo(
           const dashArray = setCircleDasharray(timeLeft);
 
           if (dashArray > 256) {
-            ref.current.setAttribute("color", "white");
+            ref.current.setAttribute("color", "var(--light-blue)");         
           }
-          if (dashArray < 120) {
+          if (dashArray < 128) {
+            ref.current.setAttribute("color", "#2b47d6");
+          }
+          if (dashArray < 64) {
             ref.current.setAttribute("color", "purple");
           }
-          if (dashArray < 60) {
-            ref.current.setAttribute("color", "red");
+          if (dashArray < 32) {
+            ref.current.setAttribute("color", "var(--maroon)");
           }
           if (timeLeft === 0) {
-            s;
+            ref.current.setAttribute("color", "rgba(255, 255, 255, 0.0)");
+            refCircle.current.setAttribute("fill", "var(--maroon)");
+
             setTimeout(() => {
               setQuizDone(true);
+              setTimeIsUp(true);
             }, 500);
             // setEndQuiz(true);
           }
@@ -66,6 +74,14 @@ const Timer = React.memo(
         };
       }
     }, [time, isQuizDone]);
+
+    React.useEffect(() => {
+      if (isQuizDone && TIME_LIMIT - timePassed > 1 ) {
+        setTimeIsUp(true);
+        ref.current.setAttribute("color", "rgba(255, 255, 255, 0.0)");
+        refCircle.current.setAttribute("fill", "var(--light-blue)");
+      }
+    }, [isQuizDone, time]);
 
     return (
       <>
@@ -77,8 +93,9 @@ const Timer = React.memo(
           >
             <g className={s.circle}>
               <circle
-                fill="lightblue"
-                className="base-timer__path-elapsed"
+                ref={refCircle}
+                fill="rgba(255, 255, 255, 0.4)"
+                className={s.path_elapsed}
                 color="rgba(69, 153, 255, 1)"
                 cx="50"
                 cy="50"
@@ -89,7 +106,7 @@ const Timer = React.memo(
                 id="base-timer-path-remaining"
                 strokeDasharray="283"
                 color="white"
-                className="base-timer__path-remaining"
+                className={s.path_remaining}
                 d="
             M 50, 50
             m -45, 0
@@ -99,7 +116,10 @@ const Timer = React.memo(
               ></path>
             </g>
           </svg>
-          <span id="base-timer-label" className={s.timer__label}>
+          <span
+            id="base-timer-label"
+            className={`${s.timer_label} ${timeIsUp ? s.white_text : ""}`}
+          >
             <p>{time}</p>
             <p className={s.time}>Время</p>
           </span>

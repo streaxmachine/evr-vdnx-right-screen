@@ -61,34 +61,18 @@ function Card({ setGlobalState, card, socket }) {
         // setIsClicked(!isClicked);
         // setGlobalState(card.cardGlobalState)};
         setGlobalState(card.cardGlobalState);
-        socket.send(
-          JSON.stringify(card.info)
-        );
+        socket.send(JSON.stringify(card.info));
       }}
     >
-      {card.title === "Собери Иволгу" ? (
-        <>
-          <Link href="/">
-            <div className={s.cardTextBlock}>
-              <p className={s.cardpreTitle}>{card.preTitle}</p>
-              <h4 className={s.cardTitle}>{card.title}</h4>
-              <p className={s.cardText}>{card.text}</p>
-            </div>
-            <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
-            <img className={s.cardZigZag} src={card.zigZagSrc} />
-          </Link>
-        </>
-      ) : (
-        <>
-          <div className={s.cardTextBlock}>
-            <p className={s.cardpreTitle}>{card.preTitle}</p>
-            <h4 className={s.cardTitle}>{card.title}</h4>
-            <p className={s.cardText}>{card.text}</p>
-          </div>
-          <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
-          <img className={s.cardZigZag} src={card.zigZagSrc} />
-        </>
-      )}
+      <>
+        <div className={s.cardTextBlock}>
+          <p className={s.cardpreTitle}>{card.preTitle}</p>
+          <h4 className={s.cardTitle}>{card.title}</h4>
+          <p className={s.cardText}>{card.text}</p>
+        </div>
+        <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
+        <img className={s.cardZigZag} src={card.zigZagSrc} />
+      </>
     </div>
   );
 }

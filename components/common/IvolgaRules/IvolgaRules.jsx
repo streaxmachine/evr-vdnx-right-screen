@@ -61,8 +61,7 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
           <button
             className={s.playBtn}
             onClick={() => {
-              setGlobalState("touchPanel");
-              console.log("clicked");
+              setGlobalState("ivolgaGame");
             }}
           >
             Все понятно! Я в игре
