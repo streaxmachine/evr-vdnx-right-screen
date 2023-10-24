@@ -220,6 +220,33 @@
   background-color: var(--light-blue);
 }
 
+.failMessageRoot {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  background: transparent;
+  height: 100%;
+  pointer-events: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .failMessageWrapper {
+    width: 80%;
+    height: 80%;
+    font-size: 30rem;
+    gap: 30rem;
+    pointer-events: all;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--light-blue);
+  }
+}
+
 .successMessageRoot {
   position: absolute;
   top: 0;

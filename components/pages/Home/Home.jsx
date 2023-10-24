@@ -94,6 +94,7 @@ const Home = () => {
           isQuizDone={isDone}
         />
         {currentState === "made-train" && <SuccessMessage />}
+        <FailMessage time={time} />
       </div>
     </>
   );
@@ -236,6 +237,25 @@ const SuccessMessage = () => {
       </div>
     </div>
   );
+};
+
+const FailMessage = ({ time = "000:000" }) => {
+  if (time === "000:000") {
+    return (
+      <div className={s.failMessageRoot}>
+        <div className={s.failMessageWrapper}>
+          <p>Игра завершена время вышло</p>
+          <Link href={"/quizNew"}>
+            <div>
+              <button>Главное меню</button>
+            </div>
+          </Link>
+        </div>
+      </div>
+    );
+  } else {
+    return null;
+  }
 };
 
 const Preloader = () => {

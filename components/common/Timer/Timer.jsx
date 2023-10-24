@@ -5,7 +5,7 @@ import s from "./Timer.module.scss";
 const Timer = React.memo(
   ({ time, setTime, isQuizDone = false, setQuizDone = false }) => {
     const FULL_DASH_ARRAY = 283;
-    const TIME_LIMIT = 90;
+    const TIME_LIMIT = 60;
     const ref = React.useRef();
 
     let timeLeft = TIME_LIMIT;
