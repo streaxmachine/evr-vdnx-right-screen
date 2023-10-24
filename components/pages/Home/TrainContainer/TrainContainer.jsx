@@ -10,6 +10,7 @@ const TrainContainer = ({
   count,
   setCount,
   touchedDetail,
+  isDone,
   setTouchedDetail,
 }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -20,27 +21,12 @@ const TrainContainer = ({
     const part1 = train.scene.getObjectByName("1");
     const part2 = train.scene.getObjectByName("2");
     const part3 = train.scene.getObjectByName("3");
-    const part5 = train.scene.getObjectByName("5");
-    // if (part5.name) {
-    //   part5.name = 4;
-    // }
-    const part6 = train.scene.getObjectByName("6");
-    // if (part6.name) {
-    //   part6.name = 5;
-    // }
-    const part7 = train.scene.getObjectByName("7");
-    // if (part7.name) {
-    //   part7.name = 6;
-    // }
 
     const parts = [];
     parts.push(
       { object: part1}, //prettier-ignore
       { object: part2}, //prettier-ignore
-      { object: part3}, //prettier-ignore
-      { object: part5}, //prettier-ignore
-      { object: part6}, //prettier-ignore
-      { object: part7} //prettier-ignore
+      { object: part3} //prettier-ignore
     );
     return parts;
   }, [train]);
@@ -61,6 +47,7 @@ const TrainContainer = ({
       {parts.map((part, index) => (
         <MakeTrain
           key={index}
+          isDone={isDone}
           value={Number(part.object.name)}
           part={part.object}
           posX={index * 1.5}

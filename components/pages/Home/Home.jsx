@@ -15,11 +15,23 @@ import s from "./Home.module.scss";
 const Home = () => {
   const [count, setCount] = React.useState(1);
   const [touchedDetail, setTouchedDetail] = React.useState(0);
-  const [isQuizDone, setQuizDone] = React.useState(false);
+  const [isDone, setIsDone] = React.useState(false);
+  const [currentState, setCurrentState] = React.useState("making-train");
   const [isFirstTime, setFirstTime] = React.useState(true);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
 
   React.useEffect(() => {
+    if (count > 3) {
+      setIsDone(true);
+      const timeout = setTimeout(() => {
+        setCurrentState("made-train");
+      }, 4000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+
     if (count > 1) {
       setFirstTime(false);
     }
@@ -29,14 +41,30 @@ const Home = () => {
       <Preloader />
       <div className={s.canvasTrain}>
         <div className={s.count}>{count}</div>
-        <Link href={"/quizNew"}>
-          <div className={s.buttonBack}>
-            <p>Главное меню</p>
-          </div>
-        </Link>
+        {!isDone && (
+          <Link href={"/quizNew"}>
+            <div className={s.buttonBack}>
+              <p>Главное меню</p>
+            </div>
+          </Link>
+        )}
+
+        {currentState === "made-train" && (
+          <Link href={"/quizNew"}>
+            <div className={s.buttonBackDone}>
+              <p>Главное меню</p>
+            </div>
+          </Link>
+        )}
 
         {isFirstTime && <StarterMessage />}
-        <DetailsVisualization currentNumber={count} />
+        {currentState !== "made-train" && (
+          <DetailsVisualization
+            currentNumber={count}
+            isDone={isDone}
+            currentState={currentState}
+          />
+        )}
         {touchedDetail !== 0 && (
           <DetailInfo detailNumber={touchedDetail} count={count} />
         )}
@@ -52,6 +80,7 @@ const Home = () => {
           gl={{ preserveDrawingBuffer: true }}
         >
           <TrainContainer
+            isDone={isDone}
             count={count}
             setCount={setCount}
             touchedDetail={touchedDetail}
@@ -61,9 +90,10 @@ const Home = () => {
         <Timer
           time={time}
           setTime={setTime}
-          setQuizDone={setQuizDone}
-          isQuizDone={isQuizDone}
+          setQuizDone={setIsDone}
+          isQuizDone={isDone}
         />
+        {currentState === "made-train" && <SuccessMessage />}
       </div>
     </>
   );
@@ -85,26 +115,46 @@ const detailsCounter = [
   { name: 1, id: 1 },
   { name: 2, id: 2 },
   { name: 3, id: 3 },
-  { name: 4, id: 4 },
-  { name: 5, id: 5 },
-  { name: 6, id: 6 },
 ];
 
-const DetailsVisualization = ({ currentNumber, count }) => {
+const DetailsVisualization = ({ currentNumber, isDone }) => {
+  const [currentState, setCurrentState] = React.useState("");
+
+  React.useEffect(() => {
+    if (isDone) {
+      const timeout = setTimeout(() => {
+        setCurrentState("made-train");
+      }, 2500);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [isDone]);
   return (
     <div className={s.detailsRoot}>
-      {detailsCounter.map((item) => {
-        return (
-          <div
-            className={clsx({
-              [s.current]: item.id === currentNumber,
-            })}
-            key={item.id}
-          >
-            {item.name}
-          </div>
-        );
-      })}
+      {currentState !== "made-train" && (
+        <>
+          {detailsCounter.map((item) => {
+            return (
+              <div
+                className={clsx(s.imgsWrapper, {
+                  [s.current]: item.id === currentNumber,
+                  [s.done]: isDone,
+                })}
+                key={item.id}
+              >
+                {item.name}
+              </div>
+            );
+          })}
+        </>
+      )}
+      {currentState === "made-train" && (
+        <div className={s.finalImgWrapper}>
+          <img className={s.finalImg} src="/images/train/finalTrain.png"></img>
+        </div>
+      )}
     </div>
   );
 };
@@ -164,6 +214,29 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
     </div>
   );
 });
+
+const SuccessMessage = () => {
+  return (
+    <div className={s.successMessageRoot}>
+      <div className={s.successLeftWrapper}>
+        <p>Поздравляем!</p>
+        <p>Вы собрали «Иволгу»! </p>
+        <p>Покрутите модель чтобы рассмотреть детальнее.</p>
+      </div>
+      <div className={s.successRightWrapper}>
+        <p>Иволга</p>
+        <div>
+          Тверской вагоностроительный завод стал флагманом городских
+          электропоездов. Всего по состоянию на середину 2020 года произведён 41
+          состав в трёх версиях. Три поколения Иволги заслужили любовь и
+          уважение пассажиров. Опыт и отзывы пассажиров помогают продолжать
+          совершенствовать поезд и создавать инновации в новых поколениях
+          Иволги.
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Preloader = () => {
   const { progress } = useProgress();

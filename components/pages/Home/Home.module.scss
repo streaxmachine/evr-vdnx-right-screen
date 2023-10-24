@@ -57,6 +57,22 @@
   width: 214rem;
 }
 
+.buttonBackDone{
+  position: absolute;
+  left: 50%;
+  // top: 80%;
+  transform: translate(-50%);
+  bottom: 80rem;
+  width: 256rem;
+  height: 54rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rem;
+  z-index: 1;
+  background-color: black;
+}
+
 .value {
   border-radius: 50%;
   background-color: black;
@@ -82,7 +98,7 @@
   background-color: var(--light-blue);
   overflow: hidden;
 
-  div {
+  .imgsWrapper {
     width: 20rem;
     height: 80%;
     background-color: blue;
@@ -90,6 +106,54 @@
 
   .current {
     background-color: white;
+  }
+
+  .done {
+    background-color: rgb(8, 98, 0) !important;
+    animation: fadeInFromNone 2s ease-out;
+  }
+
+  .finalImgWrapper{
+    width: 100%;
+    height: 100%;
+  }
+
+  .finalImg{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes fadeInFromNone {
+  0% {
+  
+      opacity: 0;
+  }
+
+  20% {
+
+      opacity: 1.0;
+  }
+
+  40% {
+
+    opacity: 0;
+  }
+
+  60% {
+
+    opacity: 1.0;
+  }
+
+  80% {
+
+    opacity: 0;
+  }
+
+  100% {
+     
+      opacity: 1.0;
   }
 }
 
@@ -154,4 +218,39 @@
   color: white;
   z-index: 10;
   background-color: var(--light-blue);
+}
+
+.successMessageRoot {
+  position: absolute;
+  top: 0;
+  background: transparent;
+  height: 100%;
+  pointer-events: none;
+  width: 100%;
+}
+
+.successLeftWrapper {
+  position: absolute;
+  display: flex;
+  z-index: 10;
+  flex-direction: column;
+  gap: 20rem;
+  top: 64rem;
+  left: 64rem;
+  background-color: var(--light-blue);
+  z-index: 1;
+}
+
+.successRightWrapper {
+  position: absolute;
+  display: flex;
+  z-index: 10;
+  flex-direction: column;
+  max-width: 370rem;
+  width: 100%;
+  gap: 20rem;
+  top: 64rem;
+  right: 64rem;
+  background-color: var(--light-blue);
+  z-index: 1;
 }

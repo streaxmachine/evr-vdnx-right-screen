@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import * as THREE from "three";
+import gsap from "gsap";
 
 import { Html, Preload } from "@react-three/drei";
 import { useDrag } from "@use-gesture/react";
@@ -12,6 +13,7 @@ const MakeTrain = ({
   setIsDragging,
   floorPlane,
   value,
+  isDone,
   posX,
   part,
   count,
@@ -30,6 +32,10 @@ const MakeTrain = ({
   const vector = new THREE.Vector3(0, 0, 0);
 
   const dragMeshRef = useRef();
+
+  const material = React.useMemo(() => {
+    return part.material;
+  }, []);
 
   React.useEffect(() => {
     if (isRightPosition) {
@@ -81,7 +87,7 @@ const MakeTrain = ({
             });
             setTimeout(() => {
               dragMeshRef.current.material = part.material;
-            }, 800);
+            }, 1300);
           } else {
             finalValue = [part.position.x, part.position.y, part.position.z];
             setTouchedDetail(value);
@@ -92,7 +98,7 @@ const MakeTrain = ({
             });
             setTimeout(() => {
               dragMeshRef.current.material = part.material;
-            }, 800);
+            }, 1300);
           }
         } else {
           finalValue = pos;
