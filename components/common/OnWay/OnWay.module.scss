@@ -196,6 +196,34 @@
   align-items: center;
 }
 
+.point {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  bottom: -15rem;
+
+  .circle{
+    width: 10rem;
+    height: 10rem;
+    background-color: white;
+    border-radius: 15rem;
+  }
+
+  .stick {
+    height: 50rem;
+    width: 5rem;
+    background-color: white;
+  }
+}
+
+.onWayPointsWrapper {
+  position: relative;
+  display: flex;
+  top: 0rem;
+  width: 100%;
+}
+
 .iconContainer {
   position: relative;
 
@@ -207,7 +235,6 @@
   transition: all 1.5s;
   offset-distance: var(--progress);
   top: -15rem;
-  
 }
 
 .baseimage {
@@ -290,17 +317,32 @@
 }
 
 //background img
-.backgroundImg {
-  background-image: url('/images/onway/original.jpg');
-  background-size: cover;
-  opacity: 0.2;
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  pointer-events: none;
+// .backgroundImg {
+//   background-image: url('/images/onway/original.jpg');
+//   background-size: cover;
+//   opacity: 0.2;
+//   position: absolute;
+//   bottom: 0;
+//   top: 0;
+//   left: 0;
+//   pointer-events: none;
+//   width: 100%;
+//   z-index: 0;
+// }
+
+.backgroundImg{
   width: 100%;
-  z-index: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.2;
+  pointer-events: none;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+  
 }
 
 .slider {

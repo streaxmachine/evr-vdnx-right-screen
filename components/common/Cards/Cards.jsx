@@ -5,8 +5,7 @@ import { cards } from "./cardInformation";
 
 import s from "./Cards.module.scss";
 
-const Cards = ({ setState, socket, setisBack }) => {
-  const [card, setCard] = useState(null);
+const Cards = ({ setState, socket, setisBack, setLocation }) => {
   useTimer(setState, "hero", 10);
   return (
     <>
@@ -36,12 +35,12 @@ const Cards = ({ setState, socket, setisBack }) => {
           <div className={s.cards}>
             {cards.map((card, id) => (
               <Card
+                setLocation={setLocation}
                 card={card}
                 key={id}
                 setState={setState}
                 socket={socket}
                 setisBack={setisBack}
-                setCard={setCard}
               />
             ))}
           </div>
@@ -52,15 +51,14 @@ const Cards = ({ setState, socket, setisBack }) => {
 };
 export default Cards;
 
-function Card({ setState, setisBack, setCard, socket, card }) {
+function Card({ setState, setisBack, socket, card, setLocation }) {
   return (
     <div
       className={s.card}
       onClick={() => {
         setisBack(false);
         setState("progressBar");
-        setCard(card.cardNumber);
-        console.log(card.cardNumber);
+        setLocation(card.cardNumber);
         socket.send(JSON.stringify(card.info));
       }}
     >

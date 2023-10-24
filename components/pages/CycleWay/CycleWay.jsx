@@ -16,12 +16,18 @@ const CycleWay = () => {
   const [calories, setCalories] = React.useState(0);
   const [distance, setDistance] = React.useState(0);
   const [isBack, setisBack] = React.useState(false);
+  const [location, setLocation] = React.useState("1");
   const socket = useSocket([setSpeed, setCalories, setDistance]);
   return (
     <>
       {state === "hero" && <Hero setState={setState} socket={socket} />}
       {state === "cards" && (
-        <Cards setState={setState} socket={socket} setisBack={setisBack} />
+        <Cards
+          setState={setState}
+          socket={socket}
+          setisBack={setisBack}
+          setLocation={setLocation}
+        />
       )}
       {state === "progressBar" && (
         <ProgressBar setState={setState} socket={socket} isBack={isBack} />
@@ -35,6 +41,7 @@ const CycleWay = () => {
           speedSocket={speed}
           distanceSocket={distance}
           caloriesSocket={calories}
+          location={location}
           setisBack={setisBack}
         />
       )}

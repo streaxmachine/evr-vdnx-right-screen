@@ -1,12 +1,14 @@
 import React from "react";
 import clsx from "clsx";
 import { Canvas } from "@react-three/fiber";
-import { Preload, useProgress } from "@react-three/drei";
+import { Html, Preload, useProgress } from "@react-three/drei";
 import Link from "next/link";
 import gsap from "gsap";
+import Lottie from "lottie-react";
 
 import TrainContainer from "./TrainContainer/TrainContainer";
 import Timer from "components/common/Timer";
+import handAnimation from "./handAnimation.json";
 
 import { details } from "./details";
 
@@ -49,6 +51,8 @@ const Home = () => {
           </Link>
         )}
 
+        {/* <LottieContainer /> */}
+
         {currentState === "made-train" && (
           <Link href={"/quizNew"}>
             <div className={s.buttonBackDone}>
@@ -86,13 +90,22 @@ const Home = () => {
             touchedDetail={touchedDetail}
             setTouchedDetail={setTouchedDetail}
           />
+          <mesh>
+            <Html className={s.test} scale={100}>
+              <div>
+                {""}
+                <Lottie animationData={handAnimation} />
+              </div>
+            </Html>
+            <boxGeometry />
+          </mesh>
         </Canvas>
-        <Timer
+        {/* <Timer
           time={time}
           setTime={setTime}
           setQuizDone={setIsDone}
           isQuizDone={isDone}
-        />
+        /> */}
         {currentState === "made-train" && <SuccessMessage />}
         <FailMessage time={time} />
       </div>
@@ -256,6 +269,14 @@ const FailMessage = ({ time = "000:000" }) => {
   } else {
     return null;
   }
+};
+
+const LottieContainer = () => {
+  return (
+    <div className={s.lottieAnimation}>
+      <Lottie animationData={handAnimation} />
+    </div>
+  );
 };
 
 const Preloader = () => {

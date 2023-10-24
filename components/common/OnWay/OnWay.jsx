@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { useControls } from "leva";
+
+import { locations } from "./locations";
 
 import s from "./OnWay.module.scss";
-import FactIcons from "./factIcons";
 
 const OnWay = ({
   setState,
   socket,
   speedSocket = 0,
-  caloriesSocket = 0,
+  location,
   distanceSocket = 0,
   setDistance,
   setSpeed,
@@ -17,6 +17,10 @@ const OnWay = ({
   const [filledCells, setFilledCells] = useState(0);
   const rootRef = React.useRef();
   const [progress, setProgress] = useState(0);
+
+  const item = locations.filter((item, id) => {
+    return item.id === location;
+  });
 
   React.useEffect(() => {
     setSpeed(0);
@@ -64,27 +68,6 @@ const OnWay = ({
     );
   });
 
-  // {isFast && (
-  //   <div className={s.notification}>
-  //     <img
-  //       src="/images/onway/warning.png"
-  //       alt="Progress Bar"
-  //       className={s.notificationImage}
-  //     />
-  //     <span className={s.notificationText}>Cбавь скорость</span>
-  //   </div>
-  // )}
-  // {isOkay && (
-  //   <div className={s.notification}>
-  //     <img
-  //       src="/images/onway/tick.png"
-  //       alt="Progress Bar"
-  //       className={s.notificationImage}
-  //     />
-  //     <span className={s.notificationText}>Идеальная скорость</span>
-  //   </div>
-  // )}
-
   return (
     <>
       <main ref={rootRef} className={s.root}>
@@ -117,6 +100,26 @@ const OnWay = ({
                 <span className={s.notificationText}>Ускорься</span>
               </div>
             )}
+            {isFast && (
+              <div className={s.notification}>
+                <img
+                  src="/images/onway/warning.png"
+                  alt="Progress Bar"
+                  className={s.notificationImage}
+                />
+                <span className={s.notificationText}>Cбавь скорость</span>
+              </div>
+            )}
+            {isOkay && (
+              <div className={s.notification}>
+                <img
+                  src="/images/onway/tick.png"
+                  alt="Progress Bar"
+                  className={s.notificationImage}
+                />
+                <span className={s.notificationText}>Идеальная скорость</span>
+              </div>
+            )}
             <div className={s.dataWrapper}>
               <div className={s.ccal}>
                 <p className={s.dataTitle}>Калории</p>
@@ -140,9 +143,12 @@ const OnWay = ({
           </div>
           <div className={s.route}>
             <span className={s.textStart}>Начало маршрута</span>
-            <span className={s.textEnd}>Тверской императорский дворец</span>
+            <span className={s.textEnd}>{item[0].end}</span>
           </div>
           <div className={s.progressRoot}>
+            <div className={s.onWayPointsWrapper}>
+              <OnWayPoints points={item[0].points} />
+            </div>
             <div className={s.progressWrapper}>
               <img
                 src="/images/onway/on_way_progress.png"
@@ -197,9 +203,32 @@ const OnWay = ({
             {/* <FactIcons progress={progress} /> */}
           </div>
         </div>
-        <div className={s.backgroundImg}></div>
+        <div className={s.backgroundImg}>
+          <img src={item[0].url} alt="" />
+        </div>
       </main>
     </>
   );
 };
 export default OnWay;
+
+const OnWayPoints = ({ points }) => {
+  return (
+    <>
+      {points.map((item, id) => {
+        return (
+          <>
+            <div
+              className={s.point}
+              style={{ left: item.percent }}
+              key={item.percent}
+            >
+              <div className={s.circle}></div>
+              <div className={s.stick}></div>
+            </div>
+          </>
+        );
+      })}
+    </>
+  );
+};
