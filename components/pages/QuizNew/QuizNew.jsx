@@ -41,9 +41,7 @@ const QuizNew = () => {
       {(globalState === "ivolgaRules" ) && (
         <IvolgaRules setGlobalState={setGlobalState} socket={socket} />
       )}
-      {(globalState === "ivolgaGame" ) && (
-        <Home setGlobalState={setGlobalState} socket={socket} />
-      )}
+
       <div className={s.aiSection}>
         <div className={s.aiChat} />
       </div>

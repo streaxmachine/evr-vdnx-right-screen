@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import s from "./IvolgaRules.module.scss";
 
@@ -58,15 +59,7 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
             />
           </div>
 
-          <button
-            className={s.playBtn}
-            onClick={() => {
-              setGlobalState("ivolgaGame");
-            }}
-          >
-            Все понятно! Я в игре
-          </button>
-
+          <Link href={"/"}><button className={s.playBtn}>Все понятно! Я в игре</button></Link>
         </div>
 
         <div className={s.clouds}></div>
@@ -75,5 +68,3 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
   );
 };
 export default IvolgaRules;
-
-

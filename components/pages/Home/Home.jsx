@@ -12,7 +12,7 @@ import { details } from "./details";
 
 import s from "./Home.module.scss";
 
-const Home = ({ setGlobalState, socket }) => {
+const Home = () => {
   const [count, setCount] = React.useState(1);
   const [touchedDetail, setTouchedDetail] = React.useState(0);
   const [isDone, setIsDone] = React.useState(false);
@@ -42,48 +42,32 @@ const Home = ({ setGlobalState, socket }) => {
       <div className={s.canvasTrain}>
         <div className={s.count}>{count}</div>
         {!isDone && (
-          <div
-            className={s.buttonBack}
-            onClick={() => {
-              setGlobalState("firstPage");
-              socket.send(
-                JSON.stringify({
-                  installation: "right",
-                  type: "mode",
-                  data: "victorina_start",
-                }))
-            }}
-          >
-            <img src="/images/arrow.png" alt="Назад" />
-            <p className={s.backText}>Главное меню</p>
-          </div>
+          <Link href={"/quizNew"}>
+            <div className={s.buttonBack}>
+              <img src="/images/arrow.png" alt="Назад" />
+              <p className={s.backText}>Главное меню</p>
+            </div>
+          </Link>
         )}
 
-        <div
-          className={`${s.fade_in} ${
-            currentState === "made-train" ? s.fade_in_show : ""
-          }`}
-        >
-          <img
-            src="images/train/360.png"
-            alt="360deg"
-            className={s.buttonBackDone_img}
-          ></img>
-          <div
-            className={s.buttonBackDone}
-            onClick={() => {
-              setGlobalState("firstPage");
-              socket.send(
-                JSON.stringify({
-                  installation: "right",
-                  type: "mode",
-                  data: "victorina_start",
-                }))
-            }}
+        {currentState === "made-train" && (
+          <section
+            className={`${s.fade_in} ${
+              currentState === "made-train" ? s.fade_in_show : ""
+            }`}
           >
-            <p>Главное меню</p>
-          </div>
-        </div>
+            <img
+              src="images/train/360.png"
+              alt="360deg"
+              className={s.buttonBackDone_img}
+            ></img>
+            <Link href={"/quizNew"}>
+              <div className={s.buttonBackDone}>
+                <p>Главное меню</p>
+              </div>
+            </Link>
+          </section>
+        )}
 
         {isFirstTime && <StarterMessage />}
         {currentState !== "made-train" && (
@@ -121,8 +105,8 @@ const Home = ({ setGlobalState, socket }) => {
           setQuizDone={setIsDone}
           isQuizDone={isDone}
         />
-        <SuccessMessage currentState={currentState} />
-        <FailMessage time={time} setGlobalState={setGlobalState} />
+        {currentState === "made-train" && <SuccessMessage />}
+        <FailMessage time={time} />
       </div>
     </>
   );
@@ -250,45 +234,37 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
   );
 });
 
-const SuccessMessage = ({currentState}) => {
+const SuccessMessage = () => {
   return (
-    <div
-      className={`${s.fade_in} ${
-        currentState === "made-train" ? s.fade_in_show : ""
-      }`}
-    >
-      <div className={s.successMessageRoot}>
-        <div className={s.successLeftWrapper}>
-          <p className={s.successLeftWrapper_topText}>Поздравляем!</p>
-          <p className={s.successLeftWrapper_middletext}>
-            Вы собрали «Иволгу»!{" "}
-          </p>
-          <p className={s.successLeftWrapper_bottomText}>
-            Покрутите модель чтобы рассмотреть детальнее.
-          </p>
-        </div>
-        <div className={s.successRightWrapper}>
-          <p className={s.successRightWrapper_title}>«Иволга»</p>
-          <p className={s.successRightWrapper_text}>
-            Тверской вагоностроительный завод стал флагманом городских
-            электропоездов. Всего по состоянию на середину 2020 года произведён
-            41 состав в трёх версиях. Три поколения Иволги заслужили любовь и
-            уважение пассажиров. Опыт и отзывы пассажиров помогают продолжать
-            совершенствовать поезд и создавать инновации в новых поколениях
-            Иволги.
-          </p>
-          <img
-            className={s.successRightWrapper_zig}
-            alt="zig"
-            src={"/images/train/line.png"}
-          />
-        </div>
+    <div className={s.successMessageRoot}>
+      <div className={s.successLeftWrapper}>
+        <p className={s.successLeftWrapper_topText}>Поздравляем!</p>
+        <p className={s.successLeftWrapper_middletext}>Вы собрали «Иволгу»! </p>
+        <p className={s.successLeftWrapper_bottomText}>
+          Покрутите модель чтобы рассмотреть детальнее.
+        </p>
+      </div>
+      <div className={s.successRightWrapper}>
+        <p className={s.successRightWrapper_title}>«Иволга»</p>
+        <p className={s.successRightWrapper_text}>
+          Тверской вагоностроительный завод стал флагманом городских
+          электропоездов. Всего по состоянию на середину 2020 года произведён 41
+          состав в трёх версиях. Три поколения Иволги заслужили любовь и
+          уважение пассажиров. Опыт и отзывы пассажиров помогают продолжать
+          совершенствовать поезд и создавать инновации в новых поколениях
+          Иволги.
+        </p>
+        <img
+          className={s.successRightWrapper_zig}
+          alt="zig"
+          src={"/images/train/line.png"}
+        />
       </div>
     </div>
   );
 };
 
-const FailMessage = ({ setGlobalState, time = "000:000" }) => {
+const FailMessage = ({ time = "000:000" }) => {
   if (time === "000:000") {
     return (
       <div className={s.failMessageRoot}>
@@ -304,28 +280,16 @@ const FailMessage = ({ setGlobalState, time = "000:000" }) => {
             это уже отличный результат! Сыграйте еще раз или выберите другую
             игру. Уверен в следующий раз, результат будет еще лучше!
           </p>
-          <div
-            className={s.failMessageWrapper_button}
-            onClick={() => {
-              setGlobalState("ivolgaRules");
-            }}
-          >
+
+          <div className={s.failMessageWrapper_button}>
             <p>Начать заново</p>
           </div>
-          <div
-            className={`${s.failMessageWrapper_button} ${s.button_blue}`}
-            onClick={() => {
-              setGlobalState("firstPage");
-              socket.send(
-                JSON.stringify({
-                  installation: "right",
-                  type: "mode",
-                  data: "victorina_start",
-                }))
-            }}
-          >
-            <p>Главное меню</p>
-          </div>
+
+          <Link href={"/quizNew"}>
+            <div className={`${s.failMessageWrapper_button} ${s.button_blue}`}>
+              <p>Главное меню</p>
+            </div>
+          </Link>
         </div>
       </div>
     );
