@@ -5,30 +5,15 @@ import s from "./LastStep.module.scss";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
 
+import { locations } from "../OnWay/locations";
+import CanvasPreloader from "../CanvasPreloader";
+
 let cursor = {};
 
-const OnWay = ({ setState, socket, setisBack }) => {
-  // const { progress, calories, speed } = useControls({
-  //   progress: {
-  //     value: 1,
-  //     step: 1,
-  //     min: 0,
-  //     max: 320,
-  //   },
-  //   calories: {
-  //     value: 3.5,
-  //     step: 1,
-  //     min: 0,
-  //     max: 100,
-  //   },
-  //   speed: {
-  //     value: 30,
-  //     step: 1,
-  //     min: 0,
-  //     max: 60,
-  //   },
-  // });
-
+const LastStep = ({ setState, socket, setisBack, location }) => {
+  const currentLocation = locations.filter((item, id) => {
+    return item.id === location;
+  });
   const generateRandomSpeed = () => {
     const min = 20;
     const max = 30;
@@ -38,8 +23,8 @@ const OnWay = ({ setState, socket, setisBack }) => {
   const [randomSpeed] = useState(generateRandomSpeed());
 
   const generateRandomcalories = () => {
-    const min = 5000; 
-    const max = 13000; 
+    const min = 5000;
+    const max = 13000;
     const randomNum = (Math.floor(Math.random() * (max - min + 1)) + min) / 100;
     return randomNum;
   };
@@ -93,7 +78,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
     if (inactiveTime >= 40) {
       console.log("nobody`s here");
       setisBack(true);
-      setState('progressBar');
+      setState("progressBar");
       socket.send(
         JSON.stringify({
           installation: "velo",
@@ -122,9 +107,10 @@ const OnWay = ({ setState, socket, setisBack }) => {
 
   return (
     <>
+      <CanvasPreloader />
       <div className={s.canvasWrapper}>
         <Canvas onPointerMove={(e) => handleSendTouchToSocket(e)}>
-          <Environment background preset="city" />
+          <Environment background files={currentLocation[0].hdri} />
           <OrbitControls />
         </Canvas>
       </div>
@@ -135,7 +121,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
             <div className={s.leftText}>
               <span className={s.title}>Поздравляем!</span>
               <span className={s.text}>
-                Вы прибыли к Тверскому <p> императорскому дворцу! </p>
+                Вы прибыли в {currentLocation[0].end}
               </span>
               <span className={s.notion}>
                 Покрутите модель чтобы рассмотреть
@@ -178,7 +164,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
             <button
               onClick={() => {
                 setisBack(true);
-                setState('progressBar');
+                setState("progressBar");
                 socket.send(
                   JSON.stringify({
                     installation: "velo",
@@ -189,7 +175,7 @@ const OnWay = ({ setState, socket, setisBack }) => {
               }}
               className={s.button}
             >
-              Завершить поездку
+              Завершить
             </button>
           </div>
         </div>
@@ -197,4 +183,4 @@ const OnWay = ({ setState, socket, setisBack }) => {
     </>
   );
 };
-export default OnWay;
+export default React.memo(LastStep);

@@ -8,6 +8,7 @@ import Lottie from "lottie-react";
 
 import TrainContainer from "./TrainContainer/TrainContainer";
 import Timer from "components/common/Timer";
+import CanvasPreloader from "components/common/CanvasPreloader";
 import handAnimation from "./handAnimation.json";
 
 import { details } from "./details";
@@ -40,7 +41,7 @@ const Home = () => {
   }, [count]);
   return (
     <>
-      <Preloader />
+      <CanvasPreloader />
       <div className={s.canvasTrain}>
         <div className={s.count}>{count}</div>
         {!isDone && (
@@ -276,26 +277,5 @@ const LottieContainer = () => {
     <div className={s.lottieAnimation}>
       <Lottie animationData={handAnimation} />
     </div>
-  );
-};
-
-const Preloader = () => {
-  const { progress } = useProgress();
-  const [isPreloader, setPreloader] = React.useState(true);
-
-  React.useEffect(() => {
-    if (progress === 100) {
-      const timer = setTimeout(() => {
-        setPreloader(false);
-      }, 1500);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [progress]);
-
-  return (
-    <>{isPreloader && <div className={s.preloader}>Загружаемся ...</div>}</>
   );
 };

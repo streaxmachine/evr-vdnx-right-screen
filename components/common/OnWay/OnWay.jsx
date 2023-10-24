@@ -147,15 +147,54 @@ const OnWay = ({
           </div>
           <div className={s.progressRoot}>
             <div className={s.onWayPointsWrapper}>
-              <OnWayPoints points={item[0].points} />
+              <OnWayPointsWrapper
+                key={item[0].id}
+                points={item[0].points}
+                distanceSocket={distanceSocket}
+              />
             </div>
             <div className={s.progressWrapper}>
-              <img
-                src="/images/onway/on_way_progress.png"
-                alt="Progress Bar"
-                className={s.baseimage}
-              />
-              {/* <div className={s.overlayimage} style={progressBarStyle}></div> */}
+              <div className={s.baseImage}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="852"
+                  height="47"
+                  viewBox="0 0 852 47"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M159.587 24.9276L119.931 0L82.2703 24.8982L62.4892 12.4638H42.7081L23.5978 12.4494H4.48741L0.067694 12.435L0 34.5073L4.48741 34.5218H23.6874H42.7081L62.7152 34.5073L82.543 46.9711L120.204 22.0729L159.766 46.9418L198.032 22.0722L236.947 46.9414L276.285 22.0133L314.731 47L353.131 22.0435L392.787 46.9711L430.448 22.0729L470.01 46.9418L508.276 22.0722L547.19 46.9414L585.883 22.2138L624.021 47L662.421 22.0435L702.076 46.9711L739.738 22.0729L779.3 46.9418L798 35H852V13H798L779.121 24.9276L739.465 0L701.804 24.8982L662.242 0.029378L624.021 24.8694L585.847 0.0596561L546.4 24.4225L508.185 0.000672113L469.831 24.9276L430.175 0L392.514 24.8982L352.952 0.029378L314.731 24.8694L276.557 0.0596561L236.625 24.7222L197.941 0.000672113L159.587 24.9276Z"
+                    fill="white"
+                    fillOpacity="1.0"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M159.587 24.9276L119.931 0L82.2703 24.8982L62.4892 12.4638H42.7081L23.5978 12.4494H4.48741L0.067694 12.435L0 34.5073L4.48741 34.5218H23.6874H42.7081L62.7152 34.5073L82.543 46.9711L120.204 22.0729L159.766 46.9418L198.032 22.0722L236.947 46.9414L276.285 22.0133L314.731 47L353.131 22.0435L392.787 46.9711L430.448 22.0729L470.01 46.9418L508.276 22.0722L547.19 46.9414L585.883 22.2138L624.021 47L662.421 22.0435L702.076 46.9711L739.738 22.0729L779.3 46.9418L798 35H852V13H798L779.121 24.9276L739.465 0L701.804 24.8982L662.242 0.029378L624.021 24.8694L585.847 0.0596561L546.4 24.4225L508.185 0.000672113L469.831 24.9276L430.175 0L392.514 24.8982L352.952 0.029378L314.731 24.8694L276.557 0.0596561L236.625 24.7222L197.941 0.000672113L159.587 24.9276Z"
+                    fill="url(#paint0_linear_299_9740)"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_299_9740"
+                      x1="-64.1727"
+                      y1="47"
+                      x2="-33.8638"
+                      y2="47"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="white" />
+                      <stop offset="0.989483" stopColor="white" />
+                      <stop
+                        offset="0.989583"
+                        stopColor="white"
+                        stopOpacity="0"
+                      />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
 
               <div className={s.iconContainer}>
                 <svg
@@ -199,8 +238,6 @@ const OnWay = ({
                 />
               </svg>
             </div>
-
-            {/* <FactIcons progress={progress} /> */}
           </div>
         </div>
         <div className={s.backgroundImg}>
@@ -212,23 +249,46 @@ const OnWay = ({
 };
 export default OnWay;
 
-const OnWayPoints = ({ points }) => {
+const OnWayPointsWrapper = ({ points, distanceSocket }) => {
   return (
     <>
       {points.map((item, id) => {
-        return (
-          <>
-            <div
-              className={s.point}
-              style={{ left: item.percent }}
-              key={item.percent}
-            >
-              <div className={s.circle}></div>
-              <div className={s.stick}></div>
-            </div>
-          </>
-        );
+        return <Point key={id} point={item} distanceSocket={distanceSocket} />;
       })}
     </>
+  );
+};
+
+const Point = ({ point, distanceSocket }) => {
+  const [showInfo, setShowInfo] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log("distanceSocket", distanceSocket);
+    if (distanceSocket === point.percent) {
+      setShowInfo(true);
+
+      setTimeout(() => {
+        setShowInfo(false);
+      }, 3500);
+    }
+  }, [distanceSocket, point]);
+
+  return (
+    <div>
+      <div
+        className={s.point}
+        style={{ left: point.percent + "%" }}
+        key={point.percent}
+      >
+        {showInfo && (
+          <div className={s.textWrapper}>
+            <div className={s.text}>{point.name}</div>
+            <div className={s.text}>{point.description}</div>
+          </div>
+        )}
+        <div className={s.circle}></div>
+        <div className={s.stick}></div>
+      </div>
+    </div>
   );
 };

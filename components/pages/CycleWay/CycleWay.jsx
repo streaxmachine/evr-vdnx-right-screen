@@ -47,6 +47,7 @@ const CycleWay = () => {
       )}
       {state === "lastStep" && (
         <LastStep
+          location={location}
           setState={setState}
           speedSocket={speed}
           distanceSocket={distance}

@@ -19,8 +19,8 @@ const ProgressBar = ({ setState, isBack }) => {
   React.useEffect(() => {
     if (progress !== 100) {
       const interval = setInterval(() => {
-        setProgress(progress + 1);
-      }, 30);
+        setProgress(progress + 2);
+      }, 100);
       return () => {
         clearInterval(interval);
       };
