@@ -25,6 +25,7 @@ const Home = () => {
   const [count, setCount] = React.useState(1);
   const [touchedDetail, setTouchedDetail] = React.useState(0);
   const [isDone, setIsDone] = React.useState(false);
+  const [isOutTime, setIsOutTime] = React.useState(false);
   const [disableTimer, setDisableTimer] = React.useState(false);
   const [currentState, setCurrentState] = React.useState("making-train");
   const [isFirstTime, setFirstTime] = React.useState(true);
@@ -45,7 +46,7 @@ const Home = () => {
       const timeout = setTimeout(() => {
         setScenario({ type: "ivolga", place: "successEnd" });
         setCurrentState("made-train");
-      }, 3500);
+      }, 4500);
 
       return () => {
         clearTimeout(timeout);
@@ -135,13 +136,17 @@ const Home = () => {
           setTime={setTime}
           setQuizDone={setIsDone}
           isQuizDone={isDone}
+          isOutTime={isOutTime}
+          setIsOutTime={setIsOutTime}
         />
         {currentState === "made-train" && <SuccessMessage />}
-        <FailMessage
-          time={time}
-          setScenario={setScenario}
-          setDisableTimer={setDisableTimer}
-        />
+        {isOutTime && (
+          <FailMessage
+            time={time}
+            setScenario={setScenario}
+            setDisableTimer={setDisableTimer}
+          />
+        )}
         <FakeAi />
       </div>
     </>
@@ -300,45 +305,55 @@ const SuccessMessage = () => {
   );
 };
 
-const FailMessage = ({ time = "000:000", setScenario, setDisableTimer }) => {
+const FailMessage = ({ setScenario, setDisableTimer }) => {
+  const [isShow, setShow] = React.useState(false);
+
   React.useEffect(() => {
-    if (time === "000:000") {
-      setScenario({ type: "ivolga", place: "timeEnd" });
-      setDisableTimer(true);
-    }
-  }, [time]);
+    setScenario({ type: "ivolga", place: "timeEnd" });
+    setDisableTimer(true);
 
-  if (time === "000:000") {
-    return (
-      <div className={s.failMessageRoot}>
-        <div className={s.failMessageWrapper}>
-          <img
-            src="/images/train/Icon.png"
-            alt="время вышло"
-            className={s.failMessageWrapper_img}
-          />
-          <p className={s.failMessageWrapper_title}>Игра завершена!</p>
-          <p className={s.failMessageWrapper_text}>
-            Вы не успели собрать Иволгу, но не расстраивайтесь, вы попробовали и
-            это уже отличный результат! Сыграйте еще раз или выберите другую
-            игру. Уверен в следующий раз, результат будет еще лучше!
-          </p>
+    const timeout = setTimeout(() => {
+      setShow(true);
+    }, 1500);
 
-          <div className={s.failMessageWrapper_button}>
-            <p>Начать заново</p>
-          </div>
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
 
-          <Link href={"/quizNew"}>
-            <div className={`${s.failMessageWrapper_button} ${s.button_blue}`}>
-              <p>Главное меню</p>
+  return (
+    <>
+      {isShow && (
+        <div className={s.failMessageRoot}>
+          <div className={s.failMessageWrapper}>
+            <img
+              src="/images/train/Icon.png"
+              alt="время вышло"
+              className={s.failMessageWrapper_img}
+            />
+            <p className={s.failMessageWrapper_title}>Игра завершена!</p>
+            <p className={s.failMessageWrapper_text}>
+              Вы не успели собрать Иволгу, но не расстраивайтесь, вы попробовали
+              и это уже отличный результат! Сыграйте еще раз или выберите другую
+              игру. Уверен в следующий раз, результат будет еще лучше!
+            </p>
+
+            <div className={s.failMessageWrapper_button}>
+              <p>Начать заново</p>
             </div>
-          </Link>
+
+            <Link href={"/quizNew"}>
+              <div
+                className={`${s.failMessageWrapper_button} ${s.button_blue}`}
+              >
+                <p>Главное меню</p>
+              </div>
+            </Link>
+          </div>
         </div>
-      </div>
-    );
-  } else {
-    return null;
-  }
+      )}
+    </>
+  );
 };
 
 const LottieContainer = () => {

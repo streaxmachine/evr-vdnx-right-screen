@@ -5,9 +5,16 @@ import useStore from "hooks/useStore";
 import s from "./Timer.module.scss";
 
 const Timer = React.memo(
-  ({ time, setTime, isQuizDone = false, setQuizDone = false }) => {
+  ({
+    time,
+    setTime,
+    isQuizDone = false,
+    setQuizDone = false,
+    setIsOutTime,
+    isOutTime,
+  }) => {
     const FULL_DASH_ARRAY = 283;
-    const TIME_LIMIT = 30;
+    const TIME_LIMIT = 180;
     const ref = React.useRef();
     const refCircle = React.useRef();
     const { setScenario } = useStore();
@@ -42,7 +49,8 @@ const Timer = React.memo(
     };
 
     React.useEffect(() => {
-      if (!isQuizDone) {
+      console.log(isOutTime);
+      if (!isQuizDone && !isOutTime) {
         const timerInterval = setInterval(() => {
           setTimePassed(timePassed + 1);
           timeLeft = TIME_LIMIT - timePassed;
@@ -79,7 +87,8 @@ const Timer = React.memo(
             refCircle.current.setAttribute("fill", "var(--maroon)");
 
             setTimeout(() => {
-              setQuizDone(true);
+              // setQuizDone(true);
+              setIsOutTime(true);
               setTimeIsUp(true);
             }, 500);
             // setEndQuiz(true);
@@ -89,7 +98,7 @@ const Timer = React.memo(
           clearInterval(timerInterval);
         };
       }
-    }, [time, isQuizDone]);
+    }, [time, isQuizDone, isOutTime]);
 
     React.useEffect(() => {
       if (isQuizDone && TIME_LIMIT - timePassed > 1) {
