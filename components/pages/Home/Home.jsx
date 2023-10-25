@@ -99,7 +99,7 @@ const Home = () => {
             rotation: [Math.PI, 0, 0],
             zoom: 30,
           }}
-          gl={{ preserveDrawingBuffer: true }}
+          gl={{ preserveDrawingBuffer: true, antialias: false }}
         >
           <TrainContainer
             isDone={isDone}
