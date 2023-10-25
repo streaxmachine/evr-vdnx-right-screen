@@ -66,7 +66,7 @@ const ProgressBar = ({ setState, isBack }) => {
 
             <div className={s.progressContainer}>
               <img
-                src="/images/progress/progress_bar2.png"
+                src="/images/progress/Union1.svg"
                 alt="Progress Bar"
                 className={s.baseimage}
               />
