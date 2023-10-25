@@ -1,8 +1,15 @@
 import React from "react";
 
+import useStore from "hooks/useStore";
+
 import s from "./QuizFirstPage.module.scss";
 
 const Guide = ({ setGlobalState, socket }) => {
+  const { setScenario } = useStore();
+  React.useEffect(() => {
+    setScenario({ type: "menu", place: "hello" });
+  }, []);
+
   return (
     <>
       <main className={s.root}>
@@ -39,9 +46,6 @@ const Guide = ({ setGlobalState, socket }) => {
               alt="Зигзаг"
             />
             {/* <div className={s.aiChat} /> */}
-            <div className={s.speechBubble}>
-              AI comment AI comment AI comment AI comment AI comment{" "}
-            </div>
           </section>
         </div>
         <div className={s.clouds}></div>

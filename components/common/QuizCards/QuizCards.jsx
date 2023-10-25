@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 import { cards } from "./cardInformation";
 
+import useStore from "hooks/useStore";
+
 import s from "./QuizCards.module.scss";
-import Link from "next/link";
+import useScenarioTimer from "hooks/useScenarioTimer";
 
 const QuizCards = ({ setGlobalState, socket }) => {
+  const { setScenario } = useStore();
+
+  useScenarioTimer("menu", "cards10Sec", 10);
+
+  React.useEffect(() => {
+    setScenario({ type: "menu", place: "cards" });
+  }, []);
+
   return (
     <>
       <main className={s.root}>
@@ -41,9 +52,6 @@ const QuizCards = ({ setGlobalState, socket }) => {
               />
             ))}
           </section>
-          <div className={s.aiSection}>
-            <div className={s.aiChat} />
-          </div>
         </div>
         <div className={s.clouds}></div>
       </main>
@@ -61,9 +69,7 @@ function Card({ setGlobalState, card, socket }) {
         // setIsClicked(!isClicked);
         // setGlobalState(card.cardGlobalState)};
         setGlobalState(card.cardGlobalState);
-        socket.send(
-          JSON.stringify(card.info)
-        );
+        socket.send(JSON.stringify(card.info));
       }}
     >
       {card.title === "Собери Иволгу" ? (

@@ -9,13 +9,12 @@ import { useSocket } from "hooks/useSocket";
 import useStore from "hooks/useStore";
 
 import s from "./QuizNew.module.scss";
+import FakeAi from "components/common/FakeAi";
 
 const QuizNew = () => {
   const socket = useSocket();
   const { isLoaded } = useStore();
-  // console.log(isLoaded);
-  const [globalState, setGlobalState] = React.useState("all");
-  console.log(globalState);
+  const [globalState, setGlobalState] = React.useState("firstPage");
   React.useEffect(() => {
     if (isLoaded) {
       setGlobalState("firstPage");
@@ -23,21 +22,19 @@ const QuizNew = () => {
   }, [isLoaded]);
   return (
     <>
-      {(globalState === "firstPage" || globalState === "all") && (
+      {globalState === "firstPage" && (
         <QuizFirstPage setGlobalState={setGlobalState} socket={socket} />
       )}
-      {(globalState === "quizCards" || globalState === "all") && (
+      {globalState === "quizCards" && (
         <QuizCards setGlobalState={setGlobalState} socket={socket} />
       )}
-      {(globalState === "quizRules" || globalState === "all") && (
+      {globalState === "quizRules" && (
         <QuizRules setGlobalState={setGlobalState} socket={socket} />
       )}
       {globalState === "touchPanel" && (
         <TouchPanel setGlobalState={setGlobalState} socket={socket} />
       )}
-      <div className={s.aiSection}>
-        <div className={s.aiChat} />
-      </div>
+      <FakeAi />
     </>
   );
 };

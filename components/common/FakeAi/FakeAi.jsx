@@ -13,7 +13,7 @@ function getRandomElement(arr) {
 
 const FakeAi = () => {
   const textRef = React.useRef();
-  const [text, setText] = React.useState();
+  const [text, setText] = React.useState("");
   const { scenario } = useStore();
 
   React.useEffect(() => {
