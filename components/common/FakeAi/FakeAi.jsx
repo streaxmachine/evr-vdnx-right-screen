@@ -7,7 +7,7 @@ import { scenaries } from "./scenaries";
 import s from "./FakeAi.module.scss";
 
 function getRandomElement(arr) {
-  if (arr.length) {
+  if (arr?.length) {
     var item = arr[Math.floor(Math.random() * arr.length)];
     return item;
   }

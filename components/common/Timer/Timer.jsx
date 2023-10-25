@@ -58,12 +58,12 @@ const Timer = React.memo(
           }
 
           if (timeLeft === 160) {
-            setScenario({ type: "ivolga", place: "time160" });
+            setScenario({ type: "ivolga", place: "time180" });
           }
 
           // if (timeLeft)
           if (dashArray > 256) {
-            ref.current.setAttribute("color", "var(--light-blue)");         
+            ref.current.setAttribute("color", "var(--light-blue)");
           }
           if (dashArray < 128) {
             ref.current.setAttribute("color", "#2b47d6");
@@ -92,7 +92,7 @@ const Timer = React.memo(
     }, [time, isQuizDone]);
 
     React.useEffect(() => {
-      if (isQuizDone && TIME_LIMIT - timePassed > 1 ) {
+      if (isQuizDone && TIME_LIMIT - timePassed > 1) {
         setTimeIsUp(true);
         ref.current.setAttribute("color", "rgba(255, 255, 255, 0.0)");
         refCircle.current.setAttribute("fill", "var(--light-blue)");
