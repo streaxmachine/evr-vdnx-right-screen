@@ -28,13 +28,7 @@ const CanvasPreloader = () => {
     }
   }, [progress, preloaderProgress]);
 
-  return (
-    <>
-      {isPreloader && (
-        <Preloader progress={preloaderProgress} />
-      )}
-    </>
-  );
+  return <>{isPreloader && <Preloader progress={preloaderProgress} />}</>;
 };
 
 export default React.memo(CanvasPreloader);
@@ -46,7 +40,7 @@ function Preloader({ progress }) {
   }, [progress]);
   return (
     <>
-      <div className={s.root}>
+      <div className={s.preloader}>
         <div className={s.wrapper}>
           <div ref={rootRef} className={s.textblock}>
             <h2 className={s.title}>{progress}%</h2>
@@ -60,7 +54,6 @@ function Preloader({ progress }) {
               />
               <div className={s.overlayimage}></div>
             </div>
-
           </div>
         </div>
       </div>

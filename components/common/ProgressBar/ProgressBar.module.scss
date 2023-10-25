@@ -124,9 +124,10 @@
 
   width: var(--progress-width);
   max-width: 538px;
-  height: 28px;
+  height: 32px;
   z-index: 2;
-  background-image: url('/images/progress/progress_bar_blue2.png');
+  background-image: url('/images/progress/Union2.svg');
+  background-repeat: no-repeat;
   transition: width 0.3s ease-in-out;
 }
 
