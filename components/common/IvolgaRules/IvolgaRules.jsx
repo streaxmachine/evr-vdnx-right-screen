@@ -59,7 +59,11 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
             />
           </div>
 
-          <Link href={"/"}><button className={s.playBtn}>Все понятно! Я в игре</button></Link>
+          <div>
+            <Link href={"/"}>
+              <button className={s.playBtn}>Все понятно! Я в игре</button>
+            </Link>
+          </div>
         </div>
 
         <div className={s.clouds}></div>

@@ -48,6 +48,7 @@ const QuizCards = ({ setGlobalState, socket }) => {
                 socket={socket}
                 key={id}
                 id={id}
+                setScenario={setScenario}
                 setGlobalState={setGlobalState}
               />
             ))}
@@ -60,12 +61,13 @@ const QuizCards = ({ setGlobalState, socket }) => {
 };
 export default QuizCards;
 
-function Card({ setGlobalState, card, socket }) {
+function Card({ setGlobalState, card, socket, setScenario }) {
   // const [isClicked, setIsClicked] = useState(false);
   return (
     <div
       className={`${s.card} ${s.clickedCard}`}
       onClick={() => {
+        setScenario({ type: "menu", place: "chooseGame" });
         // setIsClicked(!isClicked);
         // setGlobalState(card.cardGlobalState)};
         setGlobalState(card.cardGlobalState);

@@ -50,7 +50,6 @@ const QuizRules = ({ setGlobalState, socket }) => {
           >
             Все понятно! Я в игре
           </button>
-
         </div>
 
         <div className={s.clouds}></div>

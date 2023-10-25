@@ -7,7 +7,7 @@ import s from "./Timer.module.scss";
 const Timer = React.memo(
   ({ time, setTime, isQuizDone = false, setQuizDone = false }) => {
     const FULL_DASH_ARRAY = 283;
-    const TIME_LIMIT = 240;
+    const TIME_LIMIT = 30;
     const ref = React.useRef();
     const refCircle = React.useRef();
     const { setScenario } = useStore();
@@ -53,12 +53,12 @@ const Timer = React.memo(
             setScenario({ type: "ivolga", place: "time60" });
           }
 
-          if (timeLeft === 120) {
-            setScenario({ type: "ivolga", place: "time120" });
+          if (timeLeft === 15) {
+            setScenario({ type: "ivolga", place: "time15" });
           }
 
-          if (timeLeft === 160) {
-            setScenario({ type: "ivolga", place: "time180" });
+          if (timeLeft === 120) {
+            setScenario({ type: "ivolga", place: "time120" });
           }
 
           // if (timeLeft)
