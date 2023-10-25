@@ -51,10 +51,6 @@ const QuizRules = ({ setGlobalState, socket }) => {
             Все понятно! Я в игре
           </button>
 
-          {/* <div className={s.aiChat} />
-          <div className={s.speechBubble}>
-            AI comment AI comment AI comment AI comment AI comment
-          </div> */}
         </div>
 
         <div className={s.clouds}></div>

@@ -1,35 +1,74 @@
 .root {
+  position: absolute;
+  bottom: 60rem;
+  right: 30rem;
+  font-size: 50rem;
+  z-index: 1;
+  color: black;
+
+
+  .aiChat {
     position: absolute;
-    bottom: 30rem;
-    right: 30rem;
-    font-size: 50rem;
-    z-index: 1;
-    color: black;
+    bottom: 0rem;
+    z-index: 1000;
+    width: 200rem;
+    height: 200rem;
+    background-image: url("/images/aiChat.gif");
+    background-size: 100%;
+    margin-top: 20rem;
+    right: 0;
+    mix-blend-mode: multiply;
+  }
 
-    .aiChat {
-        position: absolute;
-        bottom: 0rem;
-        z-index: 1000;
-        width: 200rem;
-        height: 200rem;
-        background-image: url("/images/aiChat.gif");
-        background-size: 100%;
-        margin-top: 20rem;
-        right: 0;
-        mix-blend-mode: multiply;
-      }
+  .text {
+    font-size: 25rem;
+    line-height: 22rem;
+    border-radius: 10px;
+    background: rgb(46, 180, 221);
+    padding: 10rem;
+  }
 
-      .text {
-        font-size: 25rem;
-        line-height: 22rem;
-        border-radius: 10px;
-        background:  rgb(46, 180, 221);
-        padding: 10rem;
-      }
-
-      .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    max-width: 658rem;
+  }
 }
+
+.speechBubble {
+  font-size: 18rem;
+  font-weight: 500;
+  line-height: 22rem;
+
+  display: inline-block;
+  white-space: pre-wrap;
+
+  min-width: 420rem; 
+  max-width: 80%; 
+  height: auto;
+
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 24rem;
+  text-align: center;
+  color: var(--light-blue);
+
+  z-index: 2;
+  transform: translateX(-125rem);
+}
+
+.speechBubble:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-top: 16px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 21px solid rgb(255, 255, 255);
+  border-left: 38px solid transparent;
+  right: 590px;
+  top: 60%;
+  transform: translateY(-70%) translateX(515rem) scaleX(-1);
+}
+

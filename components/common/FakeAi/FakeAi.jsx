@@ -27,10 +27,10 @@ const FakeAi = () => {
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <div className={s.text} ref={textRef}>
+        <div className={s.speechBubble} ref={textRef}>
           {text}
         </div>
-        <div className={s.aiChat}></div>
+        {/* <div className={s.aiChat}></div> */}
       </div>
     </div>
   );

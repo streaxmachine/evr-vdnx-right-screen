@@ -45,7 +45,6 @@ const Guide = ({ setGlobalState, socket }) => {
               src="/images/background/q_zig.png"
               alt="Зигзаг"
             />
-            {/* <div className={s.aiChat} /> */}
           </section>
         </div>
         <div className={s.clouds}></div>

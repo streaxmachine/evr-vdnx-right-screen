@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import useTimer from "hooks/useTimer";
 import { cards } from "./cardInformation";
 
 import s from "./Cards.module.scss";
 
 const Cards = ({ setState, socket, setisBack, setLocation }) => {
-  useTimer(setState, "hero", 10);
   return (
     <>
       <div className={s.root}>
