@@ -10,7 +10,7 @@ export const useSocket = (props) => {
     };
 
     socket2.onmessage = function (event) {
-      console.log(`Получено сообщение: ${event.data}`);
+      // console.log(`Получено сообщение: ${event.data}`);
       if (event.data !== "ping") {
         const info = JSON.parse(event.data);
         if (info.type === "speed") {

@@ -7,9 +7,10 @@ import { scenaries } from "./scenaries";
 import s from "./FakeAi.module.scss";
 
 function getRandomElement(arr) {
-  console.log(arr.length);
-  var rand = Math.floor(Math.random() * arr.length);
-  return arr[rand];
+  if (arr.length) {
+    var item = arr[Math.floor(Math.random() * arr.length)];
+    return item;
+  }
 }
 
 const FakeAi = () => {
