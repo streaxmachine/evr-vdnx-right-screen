@@ -54,6 +54,37 @@
   .white_text {
     color: white !important;
   }
+
+  .outTime {
+    opacity: 1 ;
+    animation: fadeInFromNone 2.5s;
+  }
+
+  @keyframes fadeInFromNone {
+    0% {
+      opacity: 0;
+    }
+  
+    20% {
+      opacity: 1;
+    }
+  
+    40% {
+      opacity: 0;
+    }
+  
+    60% {
+      opacity: 1;
+    }
+  
+    80% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
   
 }
 

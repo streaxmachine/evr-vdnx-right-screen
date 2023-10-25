@@ -14,7 +14,7 @@ const Timer = React.memo(
     isOutTime,
   }) => {
     const FULL_DASH_ARRAY = 283;
-    const TIME_LIMIT = 180;
+    const TIME_LIMIT = 15;
     const ref = React.useRef();
     const refCircle = React.useRef();
     const { setScenario } = useStore();
@@ -143,7 +143,9 @@ const Timer = React.memo(
           </svg>
           <span
             id="base-timer-label"
-            className={`${s.timer_label} ${timeIsUp ? s.white_text : ""}`}
+            className={`${s.timer_label} ${timeIsUp ? s.white_text : ""} ${
+              isOutTime && s.outTime
+            }`}
           >
             <p>{time}</p>
             <p className={s.time}>Время</p>

@@ -97,6 +97,7 @@ const Home = () => {
           <DetailsVisualization
             currentNumber={count}
             isDone={isDone}
+            isOutTime={isOutTime}
             currentState={currentState}
           />
         )}
@@ -177,7 +178,7 @@ const detailsCounter = [
   { name: 3, id: 3 },
 ];
 
-const DetailsVisualization = ({ currentNumber, isDone }) => {
+const DetailsVisualization = ({ currentNumber, isDone, isOutTime }) => {
   const [currentState, setCurrentState] = React.useState("");
 
   React.useEffect(() => {
@@ -201,6 +202,7 @@ const DetailsVisualization = ({ currentNumber, isDone }) => {
                 className={clsx(s.imgsWrapper, {
                   [s.current]: item.id === currentNumber,
                   [s.done]: isDone,
+                  [s.timeFail]: isOutTime,
                 })}
                 key={item.id}
               >
@@ -314,7 +316,7 @@ const FailMessage = ({ setScenario, setDisableTimer }) => {
 
     const timeout = setTimeout(() => {
       setShow(true);
-    }, 1500);
+    }, 2500);
 
     return () => {
       clearTimeout(timeout);
