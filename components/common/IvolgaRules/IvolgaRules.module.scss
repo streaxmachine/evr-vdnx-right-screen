@@ -114,9 +114,9 @@
 
 .circleNumber {
   color: var(--light-blue);
-  font-size: 40rem;
+  font-size: 36rem;
   font-weight: 600;
-  transform: translateX(23rem) translateY(15rem);
+  transform: translateX(25rem) translateY(15rem);
 }
 
 .top {
@@ -161,11 +161,19 @@
   right: 64rem;
   mix-blend-mode: multiply;
 }
-
-.speechBubble {
+.speechBubbleContainer{
   position: absolute;
+  width: 510rem;
+  left: 42%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.speechBubble {
   font-family: sans-serif;
-  font-size: 18rem;
+  font-size: 19rem;
   font-weight: 500;
   line-height: 22rem;
   width: 420rem;
@@ -178,17 +186,11 @@
   top: 448rem;
   z-index: 2;
 }
-
-.speechBubble:before {
-  content: "";
-  width: 0px;
-  height: 0px;
-  position: absolute;
+.triangle {
+  width: 10rem;
+  height: 10rem;
   border-top: 16px solid transparent;
   border-bottom: 15px solid transparent;
-  border-right: 21px solid rgba(255, 255, 255, 0.2);
+  border-right: 21px solid rgba(255, 255, 255, 0.2);;
   border-left: 38px solid transparent;
-  right: 590px;
-  top: 60%;
-  transform: translateY(-70%) translateX(53rem) scaleX(1);
 }

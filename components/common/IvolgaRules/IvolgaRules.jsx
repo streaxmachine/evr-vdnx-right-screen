@@ -40,11 +40,15 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
             </span>
           </div>
 
-          <div className={s.imgContainer}>
+          <div className={s.speechBubbleContainer}>
+            <div className={s.triangle}></div>
             <div className={s.speechBubble}>
               Выделенная область и ее порядковый номер помогут вам верно собрать
               поезд.
             </div>
+          </div>
+
+          <div className={s.imgContainer}>
             <div className={s.lineWithcircles}>
               <div className={`${s.circleTop} ${s.top}`}>
                 <p className={s.circleNumber}>1</p>
@@ -59,7 +63,9 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
             />
           </div>
 
-          <Link href={"/"}><button className={s.playBtn}>Все понятно! Я в игре</button></Link>
+          <Link href={"/"}>
+            <button className={s.playBtn}>Все понятно! Я в игре</button>
+          </Link>
         </div>
 
         <div className={s.clouds}></div>
