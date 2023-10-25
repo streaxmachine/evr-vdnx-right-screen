@@ -45,7 +45,7 @@ const Home = () => {
       const timeout = setTimeout(() => {
         setScenario({ type: "ivolga", place: "successEnd" });
         setCurrentState("made-train");
-      }, 4000);
+      }, 3500);
 
       return () => {
         clearTimeout(timeout);
@@ -64,7 +64,8 @@ const Home = () => {
         {!isDone && (
           <Link href={"/quizNew"}>
             <div className={s.buttonBack}>
-              <p>Главное меню</p>
+              <img src="/images/arrow.png" alt="Назад" />
+              <p className={s.backText}>Главное меню</p>
             </div>
           </Link>
         )}
@@ -72,11 +73,22 @@ const Home = () => {
         {/* <LottieContainer /> */}
 
         {currentState === "made-train" && (
-          <Link href={"/quizNew"}>
-            <div className={s.buttonBackDone}>
-              <p>Главное меню</p>
-            </div>
-          </Link>
+          <section
+            className={`${s.fade_in} ${
+              currentState === "made-train" ? s.fade_in_show : ""
+            }`}
+          >
+            <img
+              src="images/train/360.png"
+              alt="360deg"
+              className={s.buttonBackDone_img}
+            ></img>
+            <Link href={"/quizNew"}>
+              <div className={s.buttonBackDone}>
+                <p>Главное меню</p>
+              </div>
+            </Link>
+          </section>
         )}
 
         {isFirstTime && <StarterMessage />}
@@ -142,8 +154,14 @@ const StarterMessage = () => {
   return (
     <div className={s.starterMessageRoot}>
       <p>Выберите правильную деталь. Подсказки на макете "Иволги".</p>
-      <p>Выберите правильную деталь. Подсказки на макете "Иволги".</p>
+      <p>Переместите деталь на рельсы.</p>
       <p>Успейте собрать "Иволгу" за 3 минуты.</p>
+
+      <div className={s.lineWithcircles}>
+        <div className={`${s.circle} ${s.top}`}></div>
+        <div className={`${s.circle} ${s.middle}`}></div>
+        <div className={`${s.circle} ${s.bottom}`}></div>
+      </div>
     </div>
   );
 };
@@ -256,20 +274,27 @@ const SuccessMessage = () => {
   return (
     <div className={s.successMessageRoot}>
       <div className={s.successLeftWrapper}>
-        <p>Поздравляем!</p>
-        <p>Вы собрали «Иволгу»! </p>
-        <p>Покрутите модель чтобы рассмотреть детальнее.</p>
+        <p className={s.successLeftWrapper_topText}>Поздравляем!</p>
+        <p className={s.successLeftWrapper_middletext}>Вы собрали «Иволгу»! </p>
+        <p className={s.successLeftWrapper_bottomText}>
+          Покрутите модель чтобы рассмотреть детальнее.
+        </p>
       </div>
       <div className={s.successRightWrapper}>
-        <p>Иволга</p>
-        <div>
+        <p className={s.successRightWrapper_title}>«Иволга»</p>
+        <p className={s.successRightWrapper_text}>
           Тверской вагоностроительный завод стал флагманом городских
           электропоездов. Всего по состоянию на середину 2020 года произведён 41
           состав в трёх версиях. Три поколения Иволги заслужили любовь и
           уважение пассажиров. Опыт и отзывы пассажиров помогают продолжать
           совершенствовать поезд и создавать инновации в новых поколениях
           Иволги.
-        </div>
+        </p>
+        <img
+          className={s.successRightWrapper_zig}
+          alt="zig"
+          src={"/images/train/line.png"}
+        />
       </div>
     </div>
   );
@@ -287,10 +312,25 @@ const FailMessage = ({ time = "000:000", setScenario, setDisableTimer }) => {
     return (
       <div className={s.failMessageRoot}>
         <div className={s.failMessageWrapper}>
-          <p>Игра завершена время вышло</p>
+          <img
+            src="/images/train/Icon.png"
+            alt="время вышло"
+            className={s.failMessageWrapper_img}
+          />
+          <p className={s.failMessageWrapper_title}>Игра завершена!</p>
+          <p className={s.failMessageWrapper_text}>
+            Вы не успели собрать Иволгу, но не расстраивайтесь, вы попробовали и
+            это уже отличный результат! Сыграйте еще раз или выберите другую
+            игру. Уверен в следующий раз, результат будет еще лучше!
+          </p>
+
+          <div className={s.failMessageWrapper_button}>
+            <p>Начать заново</p>
+          </div>
+
           <Link href={"/quizNew"}>
-            <div>
-              <button>Главное меню</button>
+            <div className={`${s.failMessageWrapper_button} ${s.button_blue}`}>
+              <p>Главное меню</p>
             </div>
           </Link>
         </div>

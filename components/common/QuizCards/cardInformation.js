@@ -41,7 +41,7 @@ export const cards = [
     text: "Используй набор деталей и собери виртуальную модель Иволги.",
     picSrc: "/images/QuizCards/img.png",
     alt: "Собери Иволгу",
-    cardGlobalState: "6 ",
+    cardGlobalState: "ivolgaRules",
     info: {installation: "right",
     type: "mode",
     data: "ivolga",

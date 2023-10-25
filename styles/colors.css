@@ -1,6 +1,7 @@
 html {
-
   --light-blue: #4599ff;
-  --dark-blue: #0055CD;
+  --semi-blue: rgba(69, 153, 255, 0.4);
+  --dark-blue: #0055cd;
   --maroon: rgb(180, 47, 47);
+  --semi-white: rgba(255, 255, 255, 0.2);
 }

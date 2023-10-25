@@ -4,12 +4,15 @@ import TouchPanel from "./TouchPanel";
 import QuizFirstPage from "components/common/QuizFirstPage";
 import QuizCards from "components/common/QuizCards";
 import QuizRules from "components/common/QuizRules";
+import IvolgaRules from "components/common/IvolgaRules";
+import Home from "../Home";
 
 import { useSocket } from "hooks/useSocket";
 import useStore from "hooks/useStore";
 
 import s from "./QuizNew.module.scss";
 import FakeAi from "components/common/FakeAi";
+
 
 const QuizNew = () => {
   const socket = useSocket();
@@ -34,6 +37,13 @@ const QuizNew = () => {
       {globalState === "touchPanel" && (
         <TouchPanel setGlobalState={setGlobalState} socket={socket} />
       )}
+      {(globalState === "ivolgaRules" ) && (
+        <IvolgaRules setGlobalState={setGlobalState} socket={socket} />
+      )}
+
+      <div className={s.aiSection}>
+        <div className={s.aiChat} />
+      </div>
       <FakeAi />
     </>
   );
