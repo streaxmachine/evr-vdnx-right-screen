@@ -1,0 +1,35 @@
+.root {
+    position: absolute;
+    bottom: 30rem;
+    right: 30rem;
+    font-size: 50rem;
+    z-index: 1;
+    color: black;
+
+    .aiChat {
+        position: absolute;
+        bottom: 0rem;
+        z-index: 1000;
+        width: 200rem;
+        height: 200rem;
+        background-image: url("/images/aiChat.gif");
+        background-size: 100%;
+        margin-top: 20rem;
+        right: 0;
+        mix-blend-mode: multiply;
+      }
+
+      .text {
+        font-size: 35rem;
+        line-height: 22rem;
+        border-radius: 10px;
+        background:  rgb(46, 180, 221);
+        padding: 10rem;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+}

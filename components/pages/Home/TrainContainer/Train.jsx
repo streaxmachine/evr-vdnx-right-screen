@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import * as THREE from "three";
-import gsap from "gsap";
-
 import { Html, Preload } from "@react-three/drei";
 import { useDrag } from "@use-gesture/react";
 import { animated, useSpring } from "@react-spring/three";
 import { useThree } from "@react-three/fiber";
+
+import useStore from "hooks/useStore";
 
 import s from "../Home.module.scss";
 
@@ -20,6 +20,7 @@ const MakeTrain = ({
   setCount,
   setTouchedDetail,
 }) => {
+  const { setScenario } = useStore();
   const [pos, setPos] = useState([
     posX,
     part.position.y,
@@ -85,6 +86,8 @@ const MakeTrain = ({
             dragMeshRef.current.material = new THREE.MeshStandardMaterial({
               color: "red",
             });
+            setScenario({ type: "ivolga", place: "failDetail" });
+
             setTimeout(() => {
               dragMeshRef.current.material = part.material;
             }, 1300);
@@ -93,6 +96,7 @@ const MakeTrain = ({
             setTouchedDetail(value);
             setCount(count + 1);
             setIsRightPosition(true);
+            setScenario({ type: "ivolga", place: "trueDetail" });
             dragMeshRef.current.material = new THREE.MeshStandardMaterial({
               color: "green",
             });

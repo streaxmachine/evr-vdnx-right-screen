@@ -5,6 +5,7 @@ import Cards from "components/common/Cards/Cards";
 import ProgressBar from "components/common/ProgressBar";
 import OnWay from "components/common/OnWay";
 import LastStep from "components/common/LastStep";
+import useScenarioTimer from "hooks/useScenarioTimer";
 
 import { useSocket } from "hooks/useSocket";
 
@@ -18,6 +19,9 @@ const CycleWay = () => {
   const [isBack, setisBack] = React.useState(false);
   const [location, setLocation] = React.useState("1");
   const socket = useSocket([setSpeed, setCalories, setDistance]);
+
+  useScenarioTimer("ivolga", "time5", 5);
+  useScenarioTimer("ivolga", "time30", 30);
   return (
     <>
       {state === "hero" && <Hero setState={setState} socket={socket} />}

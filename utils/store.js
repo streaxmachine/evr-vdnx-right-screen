@@ -11,6 +11,7 @@ let initialState = {
   isGallery: true,
   isLoaded: false,
   isLoadedMusicverse: false,
+  scenario: {},
   cart: {
     items: [],
     totalPrice: 0,
@@ -27,6 +28,7 @@ function initStore(preloadedState = initialState) {
       setIntro: (isIntro) => set(() => ({ isIntro })),
       setGallery: (isGallery) => set(() => ({ isGallery })),
       setLoaded: (isLoaded) => set(() => ({ isLoaded })),
+      setScenario: (scenario) => set(() => ({ scenario })),
       setIsLoadedMusicverse: (isLoadedMusicverse) =>
         set(() => ({ isLoadedMusicverse })),
       setCart: (product) => {

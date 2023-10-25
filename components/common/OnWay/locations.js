@@ -32,7 +32,7 @@ export const locations = [
   {
     id: "2",
     end: "Мультимедийный исторический парк «Россия-моя история»",
-    url: "/images/onway/facts/tverskoy.jpg",
+    url: "/images/onway/facts/tverskoy.png",
     hdri: "/images/hdri/lythwood_terrace_1k.hdr",
     points: [
       {

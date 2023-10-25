@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 
-export default function useTimer(setState, state, time = 30) {
+import useStore from "./useStore";
+
+export default function useScenarioTimer(
+  type,
+  place,
+  time = 30,
+  disableTimer = false
+) {
   const [inactiveTime, setInactiveTime] = useState(0);
+  const { setScenario } = useStore();
 
   const resetInactiveTime = () => {
     setInactiveTime(0);
@@ -9,12 +17,10 @@ export default function useTimer(setState, state, time = 30) {
 
   useEffect(() => {
     const touchStartHandler = () => {
-      console.log("reset");
       resetInactiveTime();
     };
 
     const touchMoveHandler = () => {
-      console.log("reset");
       resetInactiveTime();
     };
 
@@ -24,17 +30,21 @@ export default function useTimer(setState, state, time = 30) {
 
     window.addEventListener("touchstart", touchStartHandler);
     window.addEventListener("touchmove", touchMoveHandler);
+    // window.addEventListener("mousemove", touchMoveHandler);
 
     return () => {
       clearInterval(timer);
       window.removeEventListener("touchstart", touchStartHandler);
       window.removeEventListener("touchmove", touchMoveHandler);
+      //   window.addEventListener("mousemove", touchMoveHandler);
     };
   }, [inactiveTime]);
 
   useEffect(() => {
-    if (inactiveTime >= time) {
-      setState(state);
+    if (!disableTimer) {
+      if ((inactiveTime % time) + 1 === time) {
+        setScenario({ type: type, place: place });
+      }
     }
-  }, [inactiveTime]);
+  }, [inactiveTime, disableTimer]);
 }

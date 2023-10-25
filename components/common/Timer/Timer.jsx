@@ -1,12 +1,15 @@
 import React from "react";
 
+import useStore from "hooks/useStore";
+
 import s from "./Timer.module.scss";
 
 const Timer = React.memo(
   ({ time, setTime, isQuizDone = false, setQuizDone = false }) => {
     const FULL_DASH_ARRAY = 283;
-    const TIME_LIMIT = 60;
+    const TIME_LIMIT = 240;
     const ref = React.useRef();
+    const { setScenario } = useStore();
 
     let timeLeft = TIME_LIMIT;
 
@@ -44,6 +47,19 @@ const Timer = React.memo(
           setTime(formatTime(timeLeft));
           const dashArray = setCircleDasharray(timeLeft);
 
+          if (timeLeft === 60) {
+            setScenario({ type: "ivolga", place: "time60" });
+          }
+
+          if (timeLeft === 120) {
+            setScenario({ type: "ivolga", place: "time120" });
+          }
+
+          if (timeLeft === 160) {
+            setScenario({ type: "ivolga", place: "time160" });
+          }
+
+          // if (timeLeft)
           if (dashArray > 256) {
             ref.current.setAttribute("color", "white");
           }

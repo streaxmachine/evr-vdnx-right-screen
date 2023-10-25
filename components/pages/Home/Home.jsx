@@ -9,24 +9,41 @@ import Lottie from "lottie-react";
 import TrainContainer from "./TrainContainer/TrainContainer";
 import Timer from "components/common/Timer";
 import CanvasPreloader from "components/common/CanvasPreloader";
+import FakeAi from "components/common/FakeAi";
+
+import useStore from "hooks/useStore";
+
 import handAnimation from "./handAnimation.json";
 
 import { details } from "./details";
 
 import s from "./Home.module.scss";
+import useScenarioTimer from "hooks/useScenarioTimer";
 
 const Home = () => {
+  // useScenarioTimer("ivolga", "time5", 5);
   const [count, setCount] = React.useState(1);
   const [touchedDetail, setTouchedDetail] = React.useState(0);
   const [isDone, setIsDone] = React.useState(false);
+  const [disableTimer, setDisableTimer] = React.useState(false);
   const [currentState, setCurrentState] = React.useState("making-train");
   const [isFirstTime, setFirstTime] = React.useState(true);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
+  const { setScenario } = useStore();
+
+  useScenarioTimer("ivolga", "time30", 30, disableTimer);
+
+  React.useEffect(() => {
+    setScenario({ type: "ivolga", place: "start" });
+  }, []);
 
   React.useEffect(() => {
     if (count > 3) {
+      setScenario({ type: "ivolga", place: "successLastDetail" });
+      setDisableTimer(true);
       setIsDone(true);
       const timeout = setTimeout(() => {
+        setScenario({ type: "ivolga", place: "successEnd" });
         setCurrentState("made-train");
       }, 4000);
 
@@ -101,14 +118,19 @@ const Home = () => {
             <boxGeometry />
           </mesh>
         </Canvas>
-        {/* <Timer
+        <Timer
           time={time}
           setTime={setTime}
           setQuizDone={setIsDone}
           isQuizDone={isDone}
-        /> */}
+        />
         {currentState === "made-train" && <SuccessMessage />}
-        <FailMessage time={time} />
+        <FailMessage
+          time={time}
+          setScenario={setScenario}
+          setDisableTimer={setDisableTimer}
+        />
+        <FakeAi />
       </div>
     </>
   );
@@ -253,7 +275,14 @@ const SuccessMessage = () => {
   );
 };
 
-const FailMessage = ({ time = "000:000" }) => {
+const FailMessage = ({ time = "000:000", setScenario, setDisableTimer }) => {
+  React.useEffect(() => {
+    if (time === "000:000") {
+      setScenario({ type: "ivolga", place: "timeEnd" });
+      setDisableTimer(true);
+    }
+  }, [time]);
+
   if (time === "000:000") {
     return (
       <div className={s.failMessageRoot}>
