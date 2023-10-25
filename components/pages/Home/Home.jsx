@@ -62,6 +62,7 @@ const Home = () => {
   }, [count]);
   return (
     <>
+      {resetGame && <div className={s.preloader}>Загружаемся ...</div>}
       <CanvasPreloader />
       <div className={s.canvasTrain}>
         <div className={s.count}>{count}</div>
@@ -312,7 +313,12 @@ const SuccessMessage = () => {
   );
 };
 
-const FailMessage = ({ setScenario, setDisableTimer, router }) => {
+const FailMessage = ({
+  setScenario,
+  setDisableTimer,
+  router,
+  setResetGame,
+}) => {
   const [isShow, setShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -347,7 +353,10 @@ const FailMessage = ({ setScenario, setDisableTimer, router }) => {
 
             <div
               className={s.failMessageWrapper_button}
-              onClick={() => router.reload()}
+              onClick={() => {
+                setResetGame(true);
+                router.reload();
+              }}
             >
               <p>Начать заново</p>
             </div>
