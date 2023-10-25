@@ -110,8 +110,10 @@
   position: absolute;
   width: 260rem;
   z-index: 2;
-  left: 720rem;
-  bottom: 180rem;
+  left: 50%;
+  bottom: 198rem;
+  transform: translate(-50%);
+  pointer-events: none;
 }
 
 .value {

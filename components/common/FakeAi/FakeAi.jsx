@@ -32,6 +32,7 @@ const FakeAi = () => {
         <div className={s.speechBubble} ref={textRef}>
           {text}
         </div>
+        <div className={s.triangle}></div>
         {/* <div className={s.aiChat}></div> */}
       </div>
     </div>
