@@ -10,6 +10,7 @@ const Timer = React.memo(
     setTime,
     isQuizDone = false,
     setQuizDone = false,
+    resetGame,
     setIsOutTime,
     isOutTime,
   }) => {
@@ -83,11 +84,10 @@ const Timer = React.memo(
             ref.current.setAttribute("color", "var(--maroon)");
           }
           if (timeLeft === 0) {
-            ref.current.setAttribute("color", "rgba(255, 255, 255, 0.0)");
-            refCircle.current.setAttribute("fill", "var(--maroon)");
-
             setTimeout(() => {
               // setQuizDone(true);
+              ref.current.setAttribute("color", "rgba(255, 255, 255, 0.0)");
+              refCircle.current.setAttribute("fill", "var(--maroon)");
               setIsOutTime(true);
               setTimeIsUp(true);
             }, 500);

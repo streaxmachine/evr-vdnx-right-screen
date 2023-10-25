@@ -57,7 +57,7 @@
 
   .outTime {
     opacity: 1 ;
-    animation: fadeInFromNone 2.5s;
+    animation: fadeInFromNone 3s ease-out;
   }
 
   @keyframes fadeInFromNone {

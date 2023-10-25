@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { Html, Preload, useProgress } from "@react-three/drei";
 import Link from "next/link";
 import gsap from "gsap";
+import { useRouter } from "next/router";
 import Lottie from "lottie-react";
 
 import TrainContainer from "./TrainContainer/TrainContainer";
@@ -22,6 +23,7 @@ import useScenarioTimer from "hooks/useScenarioTimer";
 
 const Home = () => {
   // useScenarioTimer("ivolga", "time5", 5);
+  const router = useRouter();
   const [count, setCount] = React.useState(1);
   const [touchedDetail, setTouchedDetail] = React.useState(0);
   const [isDone, setIsDone] = React.useState(false);
@@ -31,6 +33,7 @@ const Home = () => {
   const [isFirstTime, setFirstTime] = React.useState(true);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   const { setScenario } = useStore();
+  const [resetGame, setResetGame] = React.useState(false);
 
   useScenarioTimer("ivolga", "time30", 30, disableTimer);
 
@@ -143,6 +146,8 @@ const Home = () => {
         {currentState === "made-train" && <SuccessMessage />}
         {isOutTime && (
           <FailMessage
+            setResetGame={setResetGame}
+            router={router}
             time={time}
             setScenario={setScenario}
             setDisableTimer={setDisableTimer}
@@ -307,7 +312,7 @@ const SuccessMessage = () => {
   );
 };
 
-const FailMessage = ({ setScenario, setDisableTimer }) => {
+const FailMessage = ({ setScenario, setDisableTimer, router }) => {
   const [isShow, setShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -316,7 +321,7 @@ const FailMessage = ({ setScenario, setDisableTimer }) => {
 
     const timeout = setTimeout(() => {
       setShow(true);
-    }, 2500);
+    }, 3000);
 
     return () => {
       clearTimeout(timeout);
@@ -340,7 +345,10 @@ const FailMessage = ({ setScenario, setDisableTimer }) => {
               игру. Уверен в следующий раз, результат будет еще лучше!
             </p>
 
-            <div className={s.failMessageWrapper_button}>
+            <div
+              className={s.failMessageWrapper_button}
+              onClick={() => router.reload()}
+            >
               <p>Начать заново</p>
             </div>
 
