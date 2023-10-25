@@ -169,15 +169,17 @@ const Questions = React.memo(
         currentQuestion.answerOptions.forEach((answer, questionIndex) => {
           if (answer.isCorrect) {
             // console.log(`question_${questionNumber}`);
-            socket.send(
-              JSON.stringify({
-                installation: "right",
-                type: "victorina",
-                data: `question_${questionNumber}`,
-                state: answer.isCorrect,
-                variant: questionIndex,
-              })
-            );
+            setTimeout(() => {
+              socket.send(
+                JSON.stringify({
+                  installation: "right",
+                  type: "victorina",
+                  data: `question_${questionNumber}`,
+                  state: answer.isCorrect,
+                  variant: questionIndex,
+                })
+              );
+            }, 300);
           }
         });
 
