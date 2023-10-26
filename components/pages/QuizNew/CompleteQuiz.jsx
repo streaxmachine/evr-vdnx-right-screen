@@ -1,5 +1,7 @@
 import React from "react";
 
+import useStore from "hooks/useStore";
+
 import s from "./TouchPanel/TouchPanel.module.scss";
 
 const CompleteQuiz = ({
@@ -10,6 +12,8 @@ const CompleteQuiz = ({
   handleReset,
   questionNumber,
 }) => {
+  const { setScenario } = useStore();
+
   const percent = Math.round((score / 12) * 100);
 
   React.useEffect(() => {
@@ -23,6 +27,13 @@ const CompleteQuiz = ({
         score: questionNumber + "/12",
       })
     );
+  }, []);
+
+  React.useEffect(() => {
+    console.log(time);
+    time === "000:000"
+      ? setScenario({ type: "quiz", place: "timesUp" })
+      : setScenario({ type: "quiz", place: "gameOver" })
   }, []);
 
   return (
