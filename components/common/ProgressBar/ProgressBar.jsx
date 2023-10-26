@@ -13,7 +13,12 @@ const ProgressBar = ({ setState, isBack }) => {
   const randomPhraseRef = React.useRef();
 
   React.useEffect(() => {
-    rootRef.current.style.setProperty("--progress-width", progress + "%");
+    gsap.to(rootRef.current, {
+      duration: 0.25,
+      "--progress-width": progress + "%",
+      ease: "power2.inOut",
+    });
+    // rootRef.current.style.setProperty("--progress-width", progress + "%");
   }, [progress]);
 
   React.useEffect(() => {
@@ -26,11 +31,17 @@ const ProgressBar = ({ setState, isBack }) => {
       };
     } else {
       // null;
-      if (isBack === false) {
-        setState("onway");
-      } else {
-        setState("cards");
-      }
+      const timeout = setTimeout(() => {
+        if (isBack === false) {
+          setState("onway");
+        } else {
+          setState("cards");
+        }
+      }, 500);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }
   }, [progress]);
 
@@ -70,15 +81,18 @@ const ProgressBar = ({ setState, isBack }) => {
                 alt="Progress Bar"
                 className={s.baseimage}
               />
-              <div
+              <img
+                src="/images/progress/Union2.svg"
+                alt="Progress Bar"
                 className={s.overlayimage}
-                // style={progressBarStyle}
-              ></div>
+              />
             </div>
+
             <span className={s.fact} ref={randomPhraseRef}>
               {text}
             </span>
           </div>
+
           <div className={s.imgWrapper}>
             <img
               className={s.img}

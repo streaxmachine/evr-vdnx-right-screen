@@ -67,11 +67,6 @@ function Preloader({ progress }) {
                 alt="Progress Bar"
                 className={s.overlayImg}
               />
-              {/* <img
-                className={s.overlayImg}
-                src="/images/progress/Union1.svg'"
-                alt=""
-              /> */}
             </div>
           </div>
         </div>
