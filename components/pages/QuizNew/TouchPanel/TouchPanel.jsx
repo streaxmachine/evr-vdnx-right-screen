@@ -4,12 +4,15 @@ import clsx from "clsx";
 import TimeMenu from "../TimeMenu";
 import Questions from "../Questions.jsx";
 
+import useStore from "hooks/useStore";
+
 import s from "./TouchPanel.module.scss";
 
 const TouchPanel = ({ setGlobalState, socket }) => {
   const [currentCategory, setCurrentCategory] = React.useState(0);
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
+  const { setScenario } = useStore();
   return (
     <div className={s.root}>
       <div className={s.container}>
@@ -44,6 +47,7 @@ const TouchPanel = ({ setGlobalState, socket }) => {
             isQuizDone={isQuizDone}
             socket={socket}
             time={time}
+            setScenario={setScenario}
             setQuizDone={setQuizDone}
             setGlobalState={setGlobalState}
             setCurrentCategory={setCurrentCategory}

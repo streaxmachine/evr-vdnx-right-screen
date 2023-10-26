@@ -20,6 +20,7 @@ const Questions = React.memo(
     setCurrentCategory,
     time,
     isQuizDone,
+    setScenario,
     socket,
     setQuizDone,
     setGlobalState,
@@ -86,9 +87,9 @@ const Questions = React.memo(
     }, [currentQuestion, rightVariant]);
 
     React.useEffect(() => {
-      console.log("question", currentQuestion);
-
-      //// Тут у каждого вопроса должен быть айди соответствующий списку пиши
+      const timeout = setTimeout(() => {
+        setScenario({ type: "quiz", place: "asking" });
+      }, 300);
 
       socket.send(
         JSON.stringify({
@@ -97,10 +98,12 @@ const Questions = React.memo(
           data: `question_${questionNumber}`,
           state: null,
           id: Number(currentQuestion.id),
-          // state: question.isCorrect,
-          // variant: question.answerText,
         })
       );
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }, [currentQuestion]);
 
     const handleCheck = () => {
@@ -144,9 +147,9 @@ const Questions = React.memo(
         setImgUrl(currentQuestion.imgUrl);
       }
 
-      const isLong = currentQuestion.isLong;
-
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
+        setScenario({ type: "quiz", place: "falseSecondTry" });
+        sucessNumber.test = 0;
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
@@ -190,6 +193,8 @@ const Questions = React.memo(
           setTwoMisstakesState(false);
           return;
         }, 5000);
+      } else if (sucessNumber.value === 1 && question.isCorrect !== true) {
+        setScenario({ type: "quiz", place: "falseFirstTry" });
       }
 
       if (!twoMisstakesState) {
@@ -210,9 +215,11 @@ const Questions = React.memo(
           }
 
           if (sucessNumber.value === 1) {
+            setScenario({ type: "quiz", place: "succesFirstTry" });
             sucessNumber.test += 1;
             sucessNumber.value = 0;
           } else {
+            setScenario({ type: "quiz", place: "succesFirstTry" });
             sucessNumber.value = 0;
           }
           setIsClickable(false);
