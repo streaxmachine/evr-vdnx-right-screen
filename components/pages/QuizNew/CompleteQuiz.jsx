@@ -23,7 +23,7 @@ const CompleteQuiz = ({
         type: "victorina",
         data: `final`,
         true_answers: percent,
-        time: time,
+        time: formTimeSocket,
         score: questionNumber + "/12",
       })
     );
@@ -53,7 +53,23 @@ const CompleteQuiz = ({
 
   const formTime = formatTime(currentMinutes, currentSeconds);
 
-  // console.log(formTime);
+  const formatTimeSocket = (min, sec) => {
+    let minutes, seconds;
+  
+    if (min === 0 && sec === 0) {
+      minutes = 4;
+      seconds = '00';
+    } else {
+      minutes = 3 - min / 10;
+      seconds = 60 - sec;
+    }
+  
+    return `0${minutes}:${seconds}`;
+  };
+
+  const formTimeSocket = formatTimeSocket(currentMinutes, currentSeconds);
+
+  // console.log(formTime, formTimeSocket);
 
   return (
     <div className={s.completeRoot}>

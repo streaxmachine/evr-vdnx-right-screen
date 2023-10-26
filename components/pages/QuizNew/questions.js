@@ -1,6 +1,6 @@
 export const questionsVolga = [
   {
-    id: '1',
+    id: "1",
     questionCategory: "Тверская область в деталях",
     questionText: "У какой деревни располагается исток Волги?",
     isLong: false,
@@ -12,7 +12,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '2',
+    id: "2",
     questionCategory: "Тверская область в деталях",
     questionText: "Какая особо ценная порода рыб обитает в реке Волга?",
     isLong: false,
@@ -24,7 +24,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '3',
+    id: "3",
     questionCategory: "Тверская область в деталях",
     questionText: "Какой город Тверской области не стоит на берегу Волги?",
     isLong: false,
@@ -36,7 +36,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '4',
+    id: "4",
     questionCategory: "Тверская область в деталях",
     questionText:
       "Иваньковское водохранилище, расположенное на Волге, снабжает водой этот город-миллионник:",
@@ -49,7 +49,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '5',
+    id: "5",
     questionCategory: "Тверская область в деталях",
     questionText: "Какой город является родиной русской балалайки?",
     isLong: false,
@@ -61,7 +61,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '6',
+    id: "6",
     questionCategory: "Тверская область в деталях",
     questionText: "Какой город является сапожной столицей России?",
     isLong: false,
@@ -73,7 +73,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '7',
+    id: "7",
     questionCategory: "Тверская область в деталях",
     questionText: "Родиной российского сыроворения является?",
     isLong: false,
@@ -85,7 +85,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '8',
+    id: "8",
     questionCategory: "Тверская область в деталях",
     questionText: "Как в древности назывался город Торопец?",
     isLong: false,
@@ -97,7 +97,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '9',
+    id: "9",
     questionCategory: "Тверская область в деталях",
     questionText: "Какая из действующих церквей Твери самая древняя?",
     isLong: false,
@@ -117,7 +117,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '10',
+    id: "10",
     questionCategory: "Тверская область в деталях",
     questionText: "Как называлась улица Советская в Твери с 1763 по 1919 годы?",
     isLong: false,
@@ -129,7 +129,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '11',
+    id: "11",
     questionCategory: "Тверская область в деталях",
     questionText:
       "Две трети территории Тверской области являются бассейном какой реки?",
@@ -142,7 +142,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '12',
+    id: "12",
     questionCategory: "Тверская область в деталях",
     questionText:
       "Какие населённые пункты не входят в «Пушкинское кольцо Верхневолжья»?",
@@ -155,7 +155,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '13',
+    id: "13",
     questionCategory: "Тверская область в деталях",
     questionText: "Самое большое озеро Тверской области?",
     isLong: false,
@@ -167,7 +167,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '14',
+    id: "14",
     questionCategory: "Тверская область в деталях",
     questionText:
       "Где в Тверском регионе проводятся ежегодные пушкинские праздники поэзии?",
@@ -180,7 +180,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '15',
+    id: "15",
     questionCategory: "Тверская область в деталях",
     questionText:
       "Какой город в Тверской области имеет статус «Литературный город России»?",
@@ -193,7 +193,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '16',
+    id: "16",
     questionCategory: "Тверская область в деталях",
     questionText: "Какое название носил город Тверь с 1931 по 1990-е гг.?",
     isLong: false,
@@ -205,7 +205,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '17',
+    id: "17",
     questionCategory: "Тверская область в деталях",
     questionText:
       "Город в Тверской области, который называют маленькой Венецией?",
@@ -218,7 +218,7 @@ export const questionsVolga = [
     ],
   },
   {
-    id: '18',
+    id: "18",
     questionCategory: "Тверская область в деталях",
     questionText: "Какая река берёт начало в Тверской области?   ",
     isLong: false,
@@ -233,7 +233,7 @@ export const questionsVolga = [
 
 export const questionsStars = [
   {
-    id: '19',
+    id: "19",
     questionCategory: "Звезды в Твери",
     questionText:
       "По реке Волге этот известный путешественник добрался до берегов  Каспийского моря, Персии и Индии, а затем вернулся обратно?",
@@ -247,7 +247,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '20',
+    id: "20",
     questionCategory: "Звезды в Твери",
     questionText: "Сколько раз Александр Пушкин был проездом в Торжке?",
     isLong: false,
@@ -260,7 +260,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '21',
+    id: "21",
     questionCategory: "Звезды в Твери",
     questionText: "Кто изображен на гербе Старицы?",
     isLong: false,
@@ -273,7 +273,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '22',
+    id: "22",
     questionCategory: "Звезды в Твери",
     questionText:
       "'Тверь - самый хорошенький город после Петербурга...'. Кому принадлежат эти слова?",
@@ -287,7 +287,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '23',
+    id: "23",
     questionCategory: "Звезды в Твери",
     questionText:
       "Этот архитектор участвовал в создании нового облика Твери после пожара 1763 года и спроектировал Императорский путевой дворец",
@@ -301,7 +301,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '24',
+    id: "24",
     questionCategory: "Звезды в Твери",
     questionText:
       "Кто написал эти строки:\n" +
@@ -319,7 +319,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '25',
+    id: "25",
     questionCategory: "Звезды в Твери",
     questionText:
       "Какой русский писатель служил в Твери вице-губернатором с 1860 по 1862 год?",
@@ -333,7 +333,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '26',
+    id: "26",
     questionCategory: "Звезды в Твери",
     questionText: "Какого памятника нет в Твери?",
     isLong: false,
@@ -346,18 +346,18 @@ export const questionsStars = [
     ],
   },
   {
-    id: '27',
+    id: "27",
     questionCategory: "Звезды в Твери",
     questionText:
-    "В какой гостинице А.С. Пушкин останавливался в Торжке?\n" +
-    "Еще осталось шутливое стихотворение об этом визите:\n" +
-    "На досуге отобедай\n" +
-    "У Пожарского в Торжке,\n" +
-    "Жареных котлет отведай\n" +
-    "И отправься налегке",
+      "В какой гостинице А.С. Пушкин останавливался в Торжке?\n" +
+      "Еще осталось шутливое стихотворение об этом визите:\n" +
+      "На досуге отобедай\n" +
+      "У Пожарского в Торжке,\n" +
+      "Жареных котлет отведай\n" +
+      "И отправься налегке",
     isLong: true,
     isImg: true,
-    imgUrl: "/images/stars/27.jpg",//нет картинки
+    imgUrl: "/images/stars/27.jpg",
     answerOptions: [
       { answerText: "Онегиных", isBigBtn: false, isCorrect: false },
       { answerText: "Пожарских", isBigBtn: false, isCorrect: true },
@@ -365,7 +365,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '28',
+    id: "28",
     questionCategory: "Звезды в Твери",
     questionText: "Кого называют «тверским Колумбом»?",
     isLong: false,
@@ -378,7 +378,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '29',
+    id: "29",
     questionCategory: "Звезды в Твери",
     questionText:
       "В каком еще городе мира кроме Твери была использована трёхлучевая система улиц? ",
@@ -396,14 +396,14 @@ export const questionsStars = [
     ],
   },
   {
-    id: '30',
+    id: "30",
     questionCategory: "Звезды в Твери",
     questionText:
-    "Какому городу Тверской области посвящены строки известного стихотворения Александра Трифоновича Твардовского?\n" +
-    "«Фронт горел, не стихая,\n" +
-    "Как на теле рубец.\n" +
-    "Я убит и не знаю,\n" +
-    "Наш ли … наконец?»",
+      "Какому городу Тверской области посвящены строки известного стихотворения Александра Трифоновича Твардовского?\n" +
+      "«Фронт горел, не стихая,\n" +
+      "Как на теле рубец.\n" +
+      "Я убит и не знаю,\n" +
+      "Наш ли … наконец?»",
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/30.jpg",
@@ -414,7 +414,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '31',
+    id: "31",
     questionCategory: "Звезды в Твери",
     questionText:
       "Известный поэт-песенник родом из Твери, в нашем городе есть Дом поэзии, названный его именем?",
@@ -428,7 +428,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '32',
+    id: "32",
     questionCategory: "Звезды в Твери",
     questionText:
       "Какой великий тенор родился в деревне Князево Тверской области?",
@@ -454,7 +454,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '33',
+    id: "33",
     questionCategory: "Звезды в Твери",
     questionText:
       "Какой даме, похороненной на погосте Прутня,  посвятил А. С. Пушкин стихотворение известное по первой строчке «Я помню чудное мгновенье…»?",
@@ -468,7 +468,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '34',
+    id: "34",
     questionCategory: "Звезды в Твери",
     questionText:
       "Этот известный путешественник и натуралист в конце XIX века служил прапорщиком в Полоцком пехотном полку в городе Белом",
@@ -494,15 +494,15 @@ export const questionsStars = [
     ],
   },
   {
-    id: '35',
+    id: "35",
     questionCategory: "Звезды в Твери",
     questionText:
-    "Строки «Ты знаешь, я томлюсь в неволе,\n" +
-    "О смерти Господа моля.\n" +
-    "Но всё мне памятна до боли\n" +
-    "Тверская скудная земля»\n" +
-    "навеяны пребыванием в имении Слепнёво Бежецкого уезда Тверской губернии.\n" +
-    "Кто автор?",
+      "Строки «Ты знаешь, я томлюсь в неволе,\n" +
+      "О смерти Господа моля.\n" +
+      "Но всё мне памятна до боли\n" +
+      "Тверская скудная земля»\n" +
+      "навеяны пребыванием в имении Слепнёво Бежецкого уезда Тверской губернии.\n" +
+      "Кто автор?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/35.png",
@@ -513,7 +513,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '36',
+    id: "36",
     questionCategory: "Звезды в Твери",
     questionText:
       "Композитор (автор гимна России и «Священной войны»), музыкальный педагог и  дирижёр  Александр Васильевич Александров несколько лет прожил в Твери, где работал",
@@ -535,7 +535,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '37',
+    id: "37",
     questionCategory: "Звезды в Твери",
     questionText:
       "Как называлось произведение, созданное путешественником Афанасием Никитиным?",
@@ -553,7 +553,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '38',
+    id: "38",
     questionCategory: "Звезды в Твери",
     questionText: "Кого считают небесным покровителем Твери?",
     isLong: false,
@@ -566,7 +566,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '39',
+    id: "39",
     questionCategory: "Звезды в Твери",
     questionText:
       "Псевдоним писателя Бориса Кампова, который учился в тверской гимназии № 6, а в 1946 г. написал «Повесть о настоящем человеке»?",
@@ -580,7 +580,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '40',
+    id: "40",
     questionCategory: "Звезды в Твери",
     questionText:
       "Где в Тверской области впервые читалась «История Государства Российского» Николая Карамзина?",
@@ -606,7 +606,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '41',
+    id: "41",
     questionCategory: "Звезды в Твери",
     questionText:
       "Как звали святую княгиню, жену Михаила Тверского, чьё имя носят источники лечебной минеральной воды в Тверской области?",
@@ -624,7 +624,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '42',
+    id: "42",
     questionCategory: "Звезды в Твери",
     questionText:
       "Именно этот уроженец Тверской земли, выдающийся математик, учитель, богослов, политик, государственный деятель и поэт первым ввёл в российский обиход понятие «арифметика» и дал определение дроби, арифметической и геометрической прогрессиям.",
@@ -650,7 +650,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '43',
+    id: "43",
     questionCategory: "Звезды в Твери",
     questionText:
       "Какое произведение Александра Николаевича Радищева, по композиции и содержанию связанного с Верхневолжьем, образовательный проект «Полка» назвал «первым русским публицистическим произведением — книгой крупного чиновника, который проехал 600 вёрст и стал диссидентом»?",
@@ -672,7 +672,7 @@ export const questionsStars = [
     ],
   },
   {
-    id: '44',
+    id: "44",
     questionCategory: "Звезды в Твери",
     questionText:
       "Этому писателю, служившему в 1860-1861 гг. вице-губернатором, установлен памятник в Твери",
@@ -701,7 +701,7 @@ export const questionsStars = [
 
 export const questionsNumbers = [
   {
-    id: '45',
+    id: "45",
     questionCategory: "Цифры",
     questionText: "Длина Волги в Тверской области?",
     isLong: false,
@@ -713,7 +713,7 @@ export const questionsNumbers = [
     ],
   },
   {
-    id: '46',
+    id: "46",
     questionCategory: "Цифры",
     questionText:
       "Сколько водохранилищ расположено на реке Волга в Тверской области?",
@@ -726,7 +726,7 @@ export const questionsNumbers = [
     ],
   },
   {
-    id: '47',
+    id: "47",
     questionCategory: "Цифры",
     questionText: "Каким по счету городом на Волге от ее истока является Ржев?",
     isLong: false,
@@ -738,7 +738,7 @@ export const questionsNumbers = [
     ],
   },
   {
-    id: '48',
+    id: "48",
     questionCategory: "Цифры",
     questionText: "Сколько мостов в Вышнем Волочке?",
     isLong: false,
@@ -750,7 +750,7 @@ export const questionsNumbers = [
     ],
   },
   {
-    id: '49',
+    id: "49",
     questionCategory: "Цифры",
     questionText: "Какая высота у колокольни Николаевского собора в Калязине?",
     isLong: false,
@@ -762,7 +762,7 @@ export const questionsNumbers = [
     ],
   },
   {
-    id: '50',
+    id: "50",
     questionCategory: "Цифры",
     questionText: "Какая протяженность береговой линии озера Селигер?",
     isLong: false,
@@ -774,7 +774,7 @@ export const questionsNumbers = [
     ],
   },
   {
-    id: '51',
+    id: "51",
     questionCategory: "Цифры",
     questionText: "Сколько лет существует Тверская Карелия?",
     isLong: false,
@@ -786,7 +786,7 @@ export const questionsNumbers = [
     ],
   },
   {
-    id: '52',
+    id: "52",
     questionCategory: "Цифры",
     questionText: "Сколько лет со дня основания отмечает Тверь в 2024 году?",
     isLong: false,
@@ -798,7 +798,7 @@ export const questionsNumbers = [
     ],
   },
   {
-    id: '53',
+    id: "53",
     questionCategory: "Цифры",
     questionText:
       "Сколько часов занимает путь из Москвы в Тверь на электричке 'Ласточка'?",
@@ -811,7 +811,7 @@ export const questionsNumbers = [
     ],
   },
   {
-    id: '54',
+    id: "54",
     questionCategory: "Цифры",
     questionText: "В каком году Тверь впервые упоминается в летописи?",
     isLong: false,
@@ -826,12 +826,13 @@ export const questionsNumbers = [
 
 export const questionsRecords = [
   {
-    id: '55',
+    id: "55",
     questionCategory: "Рекорды и факты",
     questionText:
       "Рекорд России – самая большая чашка сваренного кофе «Поетти» установлен в 2023 году в Твери в рамках празднования Дня города и 888-летия областной столицы. Сколько литров ароматного напитка было сварено по случаю торжества?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/55.jpg",
     answerOptions: [
       { answerText: "750 литров", isBigBtn: false, isCorrect: false },
       { answerText: " 1 435 литров", isBigBtn: false, isCorrect: true },
@@ -839,12 +840,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '56',
+    id: "56",
     questionCategory: "Рекорды и факты",
     questionText:
       "В 2018 году в городе Конаково на гастрономическом фестивале «ВЕРЕЩАГИН СЫРFEST 2018», который объединил профессионалов сыроварения и любителей сыра, было приготовлен самое большое в России блюдо из сыра весом свыше 122 килограммов. О каком блюде идет речь?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/56.jpg",
     answerOptions: [
       { answerText: "Сырный суп", isBigBtn: false, isCorrect: false },
       { answerText: "Чизкейк", isBigBtn: false, isCorrect: false },
@@ -852,12 +854,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '57',
+    id: "57",
     questionCategory: "Рекорды и факты",
     questionText:
       "Рекорд, который придется по душе всем любителям сладкого, был установлен в Лихославльском районе Тверской области в 2018 году. На фабрике компании «Мармеладная сказка» был изготовлен самый большой в России кусок мармелада. Знаете ли вы, сколько весила эта сладость?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/57.jpg",
     answerOptions: [
       { answerText: "60 килограмм", isBigBtn: false, isCorrect: false },
       { answerText: "281 килограмм", isBigBtn: false, isCorrect: true },
@@ -865,12 +868,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '58',
+    id: "58",
     questionCategory: "Рекорды и факты",
     questionText:
       "Двухэтажный поезд с местами для сидения № 46/45 сообщением «Москва-Воронеж», собранный на Тверском вагоностроительном заводе в 2015 году, установил рекорд, как имеющий наибольшее количество пассажирских мест (1320) среди поездов дальнего следования, и занесен:?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/58.jpg",
     answerOptions: [
       {
         answerText: "В справочник «Железнодорожная техника»",
@@ -890,12 +894,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '59',
+    id: "59",
     questionCategory: "Рекорды и факты",
     questionText:
       "Грузоподъемность крытых 9-метровых вагонов, выпускаемых Тверским вагоностроительным заводом с 1899 года, составляла 12,5 тонн. Что означала надпись на них – «40 человек или 8 лошадей»?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/59.jpeg",
     answerOptions: [
       {
         answerText: "Такая сила необходима для установки вагона на рельсы",
@@ -912,12 +917,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '60',
+    id: "60",
     questionCategory: "Рекорды и факты",
     questionText:
       "В 2023 году тверская компания ДКС – крупнейший производитель электрооборудования в России и Европе, установила рекорд, открыв на территории предприятия первый в России:?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/60.jpg",
     answerOptions: [
       {
         answerText: "Башенный кран высотой 20 метров",
@@ -937,12 +943,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '61',
+    id: "61",
     questionCategory: "Рекорды и факты",
     questionText:
       "В 2022 году на тверском IT-предприятии «Аквариус» начался серийный выпуск компьютерного оборудования. Первым с конвейера предприятия сошел:?",
     isLong: false,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/61.jpg",
     answerOptions: [
       { answerText: "Матричный принтер", isBigBtn: false, isCorrect: false },
       { answerText: " Ноутбук-трансформер", isBigBtn: false, isCorrect: true },
@@ -954,12 +961,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '62',
+    id: "62",
     questionCategory: "Рекорды и факты",
     questionText:
       "Конаковская компания «Авторос» - производитель единственного в своем вездехода «Шаман» 8x8, предназначенного для любого бездорожья. Сколько колес приводят в движение это транспортное средство?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/62.jpeg",
     answerOptions: [
       { answerText: "4", isBigBtn: false, isCorrect: false },
       { answerText: "8", isBigBtn: false, isCorrect: true },
@@ -967,12 +975,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '63',
+    id: "63",
     questionCategory: "Рекорды и факты",
     questionText:
       "Тверская компания «Металл-Тех» производит мини-экскаваторы для земляных работ. На какую глубину может копать такой экскаватор?",
     isLong: false,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/63.jpg",
     answerOptions: [
       { answerText: "1 метр", isBigBtn: false, isCorrect: false },
       { answerText: "2 метра", isBigBtn: false, isCorrect: false },
@@ -980,12 +989,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '64',
+    id: "64",
     questionCategory: "Рекорды и факты",
     questionText:
       "Образованное в 1959 году тверское предприятие «Исток» предлагает уникальные технологические решения в сфере альтернативной энергии. На основе какой энергии работает выпускаемое предприятием оборудование?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/64.jpg",
     answerOptions: [
       { answerText: "Энергия мантии Земли", isBigBtn: false, isCorrect: false },
       { answerText: "Космическая энергия", isBigBtn: false, isCorrect: false },
@@ -997,12 +1007,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '65',
+    id: "65",
     questionCategory: "Рекорды и факты",
     questionText:
       "Какое название носят городские поезда, разработанные Тверским вагоностроительным заводом специально для Московских центральных диаметров?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/65.jpg",
     answerOptions: [
       { answerText: "Таволга", isBigBtn: false, isCorrect: false },
       { answerText: "Иволга", isBigBtn: false, isCorrect: true },
@@ -1010,12 +1021,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '66',
+    id: "66",
     questionCategory: "Рекорды и факты",
     questionText:
       "Ржевские пряники всегда выпекались на меду. Первое упоминание о медовом ржевском прянике встречается в XV веке. Какое знаковое событие в истории СССР помогло возродить ржевский пряник?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/66.jpg",
     answerOptions: [
       { answerText: " Олимпиада 80-х", isBigBtn: false, isCorrect: true },
       { answerText: "Полет Ю.А. Гагарина", isBigBtn: false, isCorrect: false },
@@ -1027,12 +1039,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '67',
+    id: "67",
     questionCategory: "Рекорды и факты",
     questionText:
       "Морозовский городок – уникальный историко-архитектурный комплекс Твери середины 19 века, в котором были объединены лучшие традиции легкой промышленности Российской империи. На Всемирной выставке в Париже в 1900 г. Морозовский городок удостоен Гран-при как:?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/67.jpg",
     answerOptions: [
       { answerText: "Сырный суп", isBigBtn: false, isCorrect: false },
       { answerText: "Чизкейк", isBigBtn: false, isCorrect: false },
@@ -1040,12 +1053,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '68',
+    id: "68",
     questionCategory: "Рекорды и факты",
     questionText:
       "Как называется легендарное   блюдо тверской кухни, придуманное трактирщиками города Торжка в XVIII веке в дожелезнодорожную эпоху и получившее с течением времени общероссийскую известность?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/68.jpg",
     answerOptions: [
       {
         answerText: "Первый электрифицированный промышленный район",
@@ -1065,12 +1079,13 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '69',
+    id: "69",
     questionCategory: "Рекорды и факты",
     questionText:
       "Для каких объектов в 1944 и 1974 годах на стекольном заводе «Красный Май» было изготовлено уникальное по красоте и чистоте четырёхслойное рубиновое стекло?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/69.jpg",
     answerOptions: [
       {
         answerText: "Ёлочные игрушки для Кремлёвской ёлки",
@@ -1090,11 +1105,12 @@ export const questionsRecords = [
     ],
   },
   {
-    id: '70',
+    id: "70",
     questionCategory: "Рекорды и факты",
     questionText: "Каким художественным промыслом славится Торжок?",
     isLong: false,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/70.jpg",
     answerOptions: [
       { answerText: "Золотным шитьём", isBigBtn: false, isCorrect: true },
       { answerText: "Кружевоплетением", isBigBtn: false, isCorrect: false },
