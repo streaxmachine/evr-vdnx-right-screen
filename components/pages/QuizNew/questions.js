@@ -357,7 +357,7 @@ export const questionsStars = [
       "И отправься налегке",
     isLong: true,
     isImg: true,
-    imgUrl: "/images/stars/27.jpg", //нет картинки
+    imgUrl: "/images/stars/27.jpg",
     answerOptions: [
       { answerText: "Онегиных", isBigBtn: false, isCorrect: false },
       { answerText: "Пожарских", isBigBtn: false, isCorrect: true },
@@ -831,7 +831,8 @@ export const questionsRecords = [
     questionText:
       "Рекорд России – самая большая чашка сваренного кофе «Поетти» установлен в 2023 году в Твери в рамках празднования Дня города и 888-летия областной столицы. Сколько литров ароматного напитка было сварено по случаю торжества?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/55.jpg",
     answerOptions: [
       { answerText: "750 литров", isBigBtn: false, isCorrect: false },
       { answerText: " 1 435 литров", isBigBtn: false, isCorrect: true },
@@ -844,7 +845,8 @@ export const questionsRecords = [
     questionText:
       "В 2018 году в городе Конаково на гастрономическом фестивале «ВЕРЕЩАГИН СЫРFEST 2018», который объединил профессионалов сыроварения и любителей сыра, было приготовлен самое большое в России блюдо из сыра весом свыше 122 килограммов. О каком блюде идет речь?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/56.jpg",
     answerOptions: [
       { answerText: "Сырный суп", isBigBtn: false, isCorrect: false },
       { answerText: "Чизкейк", isBigBtn: false, isCorrect: false },
@@ -857,7 +859,8 @@ export const questionsRecords = [
     questionText:
       "Рекорд, который придется по душе всем любителям сладкого, был установлен в Лихославльском районе Тверской области в 2018 году. На фабрике компании «Мармеладная сказка» был изготовлен самый большой в России кусок мармелада. Знаете ли вы, сколько весила эта сладость?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/57.jpg",
     answerOptions: [
       { answerText: "60 килограмм", isBigBtn: false, isCorrect: false },
       { answerText: "281 килограмм", isBigBtn: false, isCorrect: true },
@@ -870,7 +873,8 @@ export const questionsRecords = [
     questionText:
       "Двухэтажный поезд с местами для сидения № 46/45 сообщением «Москва-Воронеж», собранный на Тверском вагоностроительном заводе в 2015 году, установил рекорд, как имеющий наибольшее количество пассажирских мест (1320) среди поездов дальнего следования, и занесен:?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/58.jpg",
     answerOptions: [
       {
         answerText: "В справочник «Железнодорожная техника»",
@@ -895,7 +899,8 @@ export const questionsRecords = [
     questionText:
       "Грузоподъемность крытых 9-метровых вагонов, выпускаемых Тверским вагоностроительным заводом с 1899 года, составляла 12,5 тонн. Что означала надпись на них – «40 человек или 8 лошадей»?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/59.jpeg",
     answerOptions: [
       {
         answerText: "Такая сила необходима для установки вагона на рельсы",
@@ -917,7 +922,8 @@ export const questionsRecords = [
     questionText:
       "В 2023 году тверская компания ДКС – крупнейший производитель электрооборудования в России и Европе, установила рекорд, открыв на территории предприятия первый в России:?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/60.jpg",
     answerOptions: [
       {
         answerText: "Башенный кран высотой 20 метров",
@@ -942,7 +948,8 @@ export const questionsRecords = [
     questionText:
       "В 2022 году на тверском IT-предприятии «Аквариус» начался серийный выпуск компьютерного оборудования. Первым с конвейера предприятия сошел:?",
     isLong: false,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/61.jpg",
     answerOptions: [
       { answerText: "Матричный принтер", isBigBtn: false, isCorrect: false },
       { answerText: " Ноутбук-трансформер", isBigBtn: false, isCorrect: true },
@@ -959,7 +966,8 @@ export const questionsRecords = [
     questionText:
       "Конаковская компания «Авторос» - производитель единственного в своем вездехода «Шаман» 8x8, предназначенного для любого бездорожья. Сколько колес приводят в движение это транспортное средство?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/62.jpeg",
     answerOptions: [
       { answerText: "4", isBigBtn: false, isCorrect: false },
       { answerText: "8", isBigBtn: false, isCorrect: true },
@@ -972,7 +980,8 @@ export const questionsRecords = [
     questionText:
       "Тверская компания «Металл-Тех» производит мини-экскаваторы для земляных работ. На какую глубину может копать такой экскаватор?",
     isLong: false,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/63.jpg",
     answerOptions: [
       { answerText: "1 метр", isBigBtn: false, isCorrect: false },
       { answerText: "2 метра", isBigBtn: false, isCorrect: false },
@@ -985,7 +994,8 @@ export const questionsRecords = [
     questionText:
       "Образованное в 1959 году тверское предприятие «Исток» предлагает уникальные технологические решения в сфере альтернативной энергии. На основе какой энергии работает выпускаемое предприятием оборудование?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/64.jpg",
     answerOptions: [
       { answerText: "Энергия мантии Земли", isBigBtn: false, isCorrect: false },
       { answerText: "Космическая энергия", isBigBtn: false, isCorrect: false },
@@ -1002,7 +1012,8 @@ export const questionsRecords = [
     questionText:
       "Какое название носят городские поезда, разработанные Тверским вагоностроительным заводом специально для Московских центральных диаметров?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/65.jpg",
     answerOptions: [
       { answerText: "Таволга", isBigBtn: false, isCorrect: false },
       { answerText: "Иволга", isBigBtn: false, isCorrect: true },
@@ -1015,7 +1026,8 @@ export const questionsRecords = [
     questionText:
       "Ржевские пряники всегда выпекались на меду. Первое упоминание о медовом ржевском прянике встречается в XV веке. Какое знаковое событие в истории СССР помогло возродить ржевский пряник?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/66.jpg",
     answerOptions: [
       { answerText: " Олимпиада 80-х", isBigBtn: false, isCorrect: true },
       { answerText: "Полет Ю.А. Гагарина", isBigBtn: false, isCorrect: false },
@@ -1032,7 +1044,8 @@ export const questionsRecords = [
     questionText:
       "Морозовский городок – уникальный историко-архитектурный комплекс Твери середины 19 века, в котором были объединены лучшие традиции легкой промышленности Российской империи. На Всемирной выставке в Париже в 1900 г. Морозовский городок удостоен Гран-при как:?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/67.jpg",
     answerOptions: [
       { answerText: "Сырный суп", isBigBtn: false, isCorrect: false },
       { answerText: "Чизкейк", isBigBtn: false, isCorrect: false },
@@ -1045,7 +1058,8 @@ export const questionsRecords = [
     questionText:
       "Как называется легендарное   блюдо тверской кухни, придуманное трактирщиками города Торжка в XVIII веке в дожелезнодорожную эпоху и получившее с течением времени общероссийскую известность?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/68.jpg",
     answerOptions: [
       {
         answerText: "Первый электрифицированный промышленный район",
@@ -1070,7 +1084,8 @@ export const questionsRecords = [
     questionText:
       "Для каких объектов в 1944 и 1974 годах на стекольном заводе «Красный Май» было изготовлено уникальное по красоте и чистоте четырёхслойное рубиновое стекло?",
     isLong: true,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/69.jpg",
     answerOptions: [
       {
         answerText: "Ёлочные игрушки для Кремлёвской ёлки",
@@ -1094,7 +1109,8 @@ export const questionsRecords = [
     questionCategory: "Рекорды и факты",
     questionText: "Каким художественным промыслом славится Торжок?",
     isLong: false,
-    isImg: false,
+    isImg: true,
+    imgUrl: "/images/records/70.jpg",
     answerOptions: [
       { answerText: "Золотным шитьём", isBigBtn: false, isCorrect: true },
       { answerText: "Кружевоплетением", isBigBtn: false, isCorrect: false },
