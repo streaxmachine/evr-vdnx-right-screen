@@ -33,6 +33,7 @@ const Home = () => {
   const [isFirstTime, setFirstTime] = React.useState(true);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   const { setScenario } = useStore();
+  const [isTimeEndGame, setTimeEndGame] = React.useState(false);
   const [resetGame, setResetGame] = React.useState(false);
 
   useScenarioTimer("ivolga", "time30", 30, disableTimer);
@@ -66,7 +67,7 @@ const Home = () => {
       <CanvasPreloader />
       <div className={s.canvasTrain}>
         <div className={s.count}>{count}</div>
-        {!isDone && (
+        {!isDone && !isTimeEndGame && (
           <Link href={"/quizNew"}>
             <div className={s.buttonBack}>
               <img src="/images/arrow.png" alt="Назад" />
@@ -75,9 +76,7 @@ const Home = () => {
           </Link>
         )}
 
-        {/* <LottieContainer /> */}
-
-        {currentState === "made-train" && (
+        {currentState === "made-train" && !isTimeEndGame && (
           <section
             className={`${s.fade_in} ${
               currentState === "made-train" ? s.fade_in_show : ""
@@ -96,8 +95,8 @@ const Home = () => {
           </section>
         )}
 
-        {isFirstTime && <StarterMessage />}
-        {currentState !== "made-train" && (
+        {isFirstTime && !isTimeEndGame && <StarterMessage />}
+        {currentState !== "made-train" && !isTimeEndGame && (
           <DetailsVisualization
             currentNumber={count}
             isDone={isDone}
@@ -136,24 +135,32 @@ const Home = () => {
             <boxGeometry />
           </mesh>
         </Canvas>
-        <Timer
-          time={time}
-          setTime={setTime}
-          setQuizDone={setIsDone}
-          isQuizDone={isDone}
-          isOutTime={isOutTime}
-          setIsOutTime={setIsOutTime}
-        />
+
+        {!isTimeEndGame && (
+          <Timer
+            time={time}
+            setTime={setTime}
+            setQuizDone={setIsDone}
+            isQuizDone={isDone}
+            isOutTime={isOutTime}
+            setIsOutTime={setIsOutTime}
+            setTimeEndGame={setTimeEndGame}
+          />
+        )}
+
         {currentState === "made-train" && <SuccessMessage />}
+
         {isOutTime && (
           <FailMessage
             setResetGame={setResetGame}
             router={router}
             time={time}
+            setTimeEndGame={setTimeEndGame}
             setScenario={setScenario}
             setDisableTimer={setDisableTimer}
           />
         )}
+
         <FakeAi />
       </div>
     </>
@@ -317,6 +324,7 @@ const FailMessage = ({
   setScenario,
   setDisableTimer,
   router,
+  setTimeEndGame,
   setResetGame,
 }) => {
   const [isShow, setShow] = React.useState(false);
@@ -326,6 +334,7 @@ const FailMessage = ({
     setDisableTimer(true);
 
     const timeout = setTimeout(() => {
+      setTimeEndGame(true);
       setShow(true);
     }, 3000);
 

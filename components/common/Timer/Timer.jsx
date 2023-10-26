@@ -11,6 +11,7 @@ const Timer = React.memo(
     isQuizDone = false,
     setQuizDone = false,
     resetGame,
+    setTimeEndGame,
     setIsOutTime,
     isOutTime,
   }) => {
