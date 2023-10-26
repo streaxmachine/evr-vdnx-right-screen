@@ -2,31 +2,41 @@ import React from "react";
 import { useProgress } from "@react-three/drei";
 
 import s from "./CanvasPreloader.module.scss";
+import { setRequestMeta } from "next/dist/server/request-meta";
 
+let fakeProgress = 0;
 const CanvasPreloader = () => {
   const { progress } = useProgress();
   const [isPreloader, setPreloader] = React.useState(true);
-
-  const [preloaderProgress, setPreloaderProgress] = React.useState(
-    progress / 2
-  );
+  const [fakeProgress, setFakeProgress] = React.useState(0);
+  const [preloaderProgress, setPreloaderProgress] = React.useState(0);
 
   React.useEffect(() => {
-    if (progress === 100) {
-      const timer = setTimeout(() => {
-        setPreloader(false);
-      }, 1500);
-
+    if (fakeProgress !== 50) {
       const interval = setInterval(() => {
-        setPreloaderProgress((prev) => Math.min(prev + 2, 100));
-      }, 30);
-
+        setFakeProgress(fakeProgress + 1);
+      }, 25);
       return () => {
-        clearTimeout(timer);
         clearInterval(interval);
       };
     }
-  }, [progress, preloaderProgress]);
+  }, [fakeProgress]);
+
+  React.useEffect(() => {
+    setPreloaderProgress(progress / 2 + fakeProgress);
+
+    if (preloaderProgress === 100) {
+      const timeout = setTimeout(() => {
+        setPreloader(false);
+      }, 500);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [progress, fakeProgress, preloaderProgress]);
+
+  // console.log(isPreloader)
 
   return <>{isPreloader && <Preloader progress={preloaderProgress} />}</>;
 };
@@ -52,7 +62,16 @@ function Preloader({ progress }) {
                 alt="Progress Bar"
                 className={s.baseimage}
               />
-              <div className={s.overlayimage}></div>
+              <img
+                src="/images/progress/Union2.svg"
+                alt="Progress Bar"
+                className={s.overlayImg}
+              />
+              {/* <img
+                className={s.overlayImg}
+                src="/images/progress/Union1.svg'"
+                alt=""
+              /> */}
             </div>
           </div>
         </div>

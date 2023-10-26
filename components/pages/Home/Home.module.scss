@@ -12,10 +12,6 @@
 .lottieAnimation {
   position: absolute;
   z-index: 1;
-  
-  div{
-    
-  }
 }
 
 .test{
@@ -38,7 +34,16 @@
   height: 100vh;
   width: 100vw;
   position: fixed;
-  background-color: black;
+  background-color: linear-gradient(
+    110deg,
+    rgba(0, 70, 154, 1),
+    rgba(183, 214, 251, 1)
+  );;
+  background: linear-gradient(
+    110deg,
+    rgba(0, 70, 154, 1),
+    rgba(183, 214, 251, 1)
+  );
   z-index: 100;
   display: flex;
   align-items: center;

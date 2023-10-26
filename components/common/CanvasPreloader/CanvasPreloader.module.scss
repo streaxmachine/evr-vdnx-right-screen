@@ -52,29 +52,28 @@
 .progressContainer {
   margin-top: 40rem;
   position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .baseimage {
-  z-index: 101;
+  width: 75%;
+  position: absolute;
 }
 
-.overlayimage {
+.overlayImg {
+  width: 75%;
   position: absolute;
-  top: 15rem;
-  left: 0;
-  background-repeat: no-repeat;
-  width: var(--progress-width);
-  max-width: 700rem;
-  height: 32rem;
-  z-index: 102;
-  background-image: url('/images/progress/Union2.svg');
-  transition: width 0.1s ease-in-out;
+  clip-path: polygon(0 0, var(--progress-width) 0, var(--progress-width) 100%, 0% 100%);
 }
 
 .clouds {
   z-index: 101;
   bottom: 0%;
   width: 100%;
+  max-width: 100%;
   height: 100%;
   position: absolute;
   background-image: url("/images/background/clouds.png");

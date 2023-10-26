@@ -63,7 +63,7 @@ const Home = () => {
   }, [count]);
   return (
     <>
-      {resetGame && <div className={s.preloader}>Загружаемся ...</div>}
+      {resetGame && <div className={s.preloader}></div>}
       <CanvasPreloader />
       <div className={s.canvasTrain}>
         <div className={s.count}>{count}</div>

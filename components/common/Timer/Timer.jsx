@@ -16,7 +16,7 @@ const Timer = React.memo(
     isOutTime,
   }) => {
     const FULL_DASH_ARRAY = 283;
-    const TIME_LIMIT = 60;
+    const TIME_LIMIT = 30;
     const ref = React.useRef();
     const refCircle = React.useRef();
     const { setScenario } = useStore();
