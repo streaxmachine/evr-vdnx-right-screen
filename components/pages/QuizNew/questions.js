@@ -265,7 +265,7 @@ export const questionsStars = [
     questionText: "Кто изображен на гербе Старицы?",
     isLong: false,
     isImg: true,
-    imgUrl: "/images/stars/21.jpg",
+    imgUrl: "/images/stars/21.png",
     answerOptions: [
       { answerText: "Старик", isBigBtn: false, isCorrect: false },
       { answerText: "Пожилая женщина", isBigBtn: false, isCorrect: true },
@@ -279,7 +279,7 @@ export const questionsStars = [
       "'Тверь - самый хорошенький город после Петербурга...'. Кому принадлежат эти слова?",
     isLong: false,
     isImg: true,
-    imgUrl: "/images/stars/22.jpg",
+    imgUrl: "/images/stars/22.png",
     answerOptions: [
       { answerText: "А.С. Пушкину", isBigBtn: false, isCorrect: false },
       { answerText: "Екатерине II", isBigBtn: false, isCorrect: true },
@@ -338,7 +338,7 @@ export const questionsStars = [
     questionText: "Какого памятника нет в Твери?",
     isLong: false,
     isImg: true,
-    imgUrl: "/images/stars/26.jpg",
+    imgUrl: "/images/stars/26.png",
     answerOptions: [
       { answerText: "Памятника Рыбаку", isBigBtn: false, isCorrect: false },
       { answerText: "Памятника Козлу", isBigBtn: false, isCorrect: true },
@@ -505,7 +505,7 @@ export const questionsStars = [
     "Кто автор?",
     isLong: true,
     isImg: true,
-    imgUrl: "/images/stars/35.jpg",
+    imgUrl: "/images/stars/35.png",
     answerOptions: [
       { answerText: "Марина Цветаева", isBigBtn: false, isCorrect: false },
       { answerText: "Анна Ахматова", isBigBtn: false, isCorrect: true },
@@ -656,7 +656,7 @@ export const questionsStars = [
       "Какое произведение Александра Николаевича Радищева, по композиции и содержанию связанного с Верхневолжьем, образовательный проект «Полка» назвал «первым русским публицистическим произведением — книгой крупного чиновника, который проехал 600 вёрст и стал диссидентом»?",
     isLong: true,
     isImg: true,
-    imgUrl: "/images/stars/43.jpg",
+    imgUrl: "/images/stars/43.png",
     answerOptions: [
       {
         answerText: "«Путешествие из Петербурга в Москву»",
@@ -678,7 +678,7 @@ export const questionsStars = [
       "Этому писателю, служившему в 1860-1861 гг. вице-губернатором, установлен памятник в Твери",
     isLong: false,
     isImg: true,
-    imgUrl: "/images/stars/44.jpg",
+    imgUrl: "/images/stars/44.jpeg",
     answerOptions: [
       {
         answerText: "Александр Ефимович Измайлов",
