@@ -7,7 +7,7 @@ import s from "./Timer.module.scss";
 const Timer = React.memo(
   ({ time, setTime, isQuizDone = false, setIsOutTime, isOutTime }) => {
     const FULL_DASH_ARRAY = 283;
-    const TIME_LIMIT = 30;
+    const TIME_LIMIT = 180;
     const ref = React.useRef();
     const refCircle = React.useRef();
     const { setScenario } = useStore();
@@ -42,7 +42,6 @@ const Timer = React.memo(
     };
 
     React.useEffect(() => {
-      console.log(isOutTime);
       if (!isQuizDone && !isOutTime) {
         const timerInterval = setInterval(() => {
           setTimePassed(timePassed + 1);

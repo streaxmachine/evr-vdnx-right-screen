@@ -13,40 +13,30 @@ const MakeTrain = ({
   setIsDragging,
   floorPlane,
   value,
+  finalData,
   isDone,
-  posX,
   part,
   count,
   setCount,
   setTouchedDetail,
 }) => {
   const { setScenario } = useStore();
+  console.log("here");
   const [pos, setPos] = useState([
-    posX,
+    part.position.x,
     part.position.y,
-    value > 2 ? -1.5 * value * 2 : 10 * value,
+    part.position.z,
   ]);
   const [isRightPosition, setIsRightPosition] = React.useState(false);
-  const { size, viewport } = useThree();
-  const aspect = size.width / viewport.width;
   let planeIntersectPoint = new THREE.Vector3();
   const vector = new THREE.Vector3(0, 0, 0);
 
   const dragMeshRef = useRef();
 
-  const material = React.useMemo(() => {
-    return part.material;
-  }, []);
-
-  React.useEffect(() => {
-    if (isRightPosition) {
-    }
-  }, [isRightPosition]);
-
   const [spring, api] = useSpring(() => ({
     position: pos,
     scale: 1,
-    rotation: [0, 0, 0],
+    rotation: [part.rotation.x, part.rotation.y, part.rotation.z],
     config: { friction: 15 },
   }));
 
@@ -54,84 +44,83 @@ const MakeTrain = ({
     ({ active, movement: [x, y], timeStamp, event }) => {
       const distance = vector.distanceTo(dragMeshRef.current.position);
       const isdragable = distance > 8;
-      let rotation = [0, 0, 0];
+      let rotation = [part.rotation.x, part.rotation.y, part.rotation.z];
 
-      if (active) {
-        event.ray.intersectPlane(floorPlane, planeIntersectPoint);
-        setPos([planeIntersectPoint.x, part.position.y, planeIntersectPoint.z]);
-      }
-
-      setIsDragging(active);
-      let finalValue = pos;
-      if (isdragable === false && !isRightPosition) {
-        if (value === count) {
-          // dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-          //   color: "green",
-          // });
-        } else {
-          // dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-          //   color: "red",
-          // });
+      if (!isDone) {
+        if (active) {
+          event.ray.intersectPlane(floorPlane, planeIntersectPoint);
+          setPos([
+            planeIntersectPoint.x,
+            part.position.y,
+            planeIntersectPoint.z,
+          ]);
         }
 
-        if (active === false) {
-          if (value !== count) {
-            setTouchedDetail(value);
-            finalValue = [
-              posX,
-              part.position.y,
-              value > 2 ? -1.5 * value * 2 : 10 * value,
-            ];
+        setIsDragging(active);
+        let finalValue = pos;
+        if (isdragable === false && !isRightPosition) {
+          if (active === false) {
+            if (value !== count) {
+              setTouchedDetail(value);
+              finalValue = [part.position.x, part.position.y, part.position.z];
 
-            dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-              color: "red",
-            });
-            setScenario({ type: "ivolga", place: "failDetail" });
+              dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+                color: "red",
+              });
+              setScenario({ type: "ivolga", place: "failDetail" });
 
-            setTimeout(() => {
-              dragMeshRef.current.material = part.material;
-            }, 1300);
+              setTimeout(() => {
+                dragMeshRef.current.material = part.material;
+              }, 1300);
+              if (value > 10) {
+                setScenario({ type: "ivolga", place: "wrongDetail" });
+              }
+            } else {
+              setTouchedDetail(value);
+              setCount(count + 1);
+              setIsRightPosition(true);
+              setScenario({ type: "ivolga", place: "trueDetail" });
+              dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+                color: "green",
+              });
+              setTimeout(() => {
+                dragMeshRef.current.material = part.material;
+              }, 1300);
+              finalValue = [
+                finalData.position[0],
+                finalData.position[1],
+                finalData.position[2],
+              ];
+              rotation = [
+                finalData.rotation[0],
+                finalData.rotation[1],
+                finalData.rotation[2],
+              ];
+            }
           } else {
-            finalValue = [part.position.x, part.position.y, part.position.z];
-            setTouchedDetail(value);
-            setCount(count + 1);
-            setIsRightPosition(true);
-            setScenario({ type: "ivolga", place: "trueDetail" });
-            dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-              color: "green",
-            });
-            setTimeout(() => {
-              dragMeshRef.current.material = part.material;
-            }, 1300);
+            finalValue = pos;
           }
         } else {
-          finalValue = pos;
+          dragMeshRef.current.material = part.material;
         }
-      } else {
-        dragMeshRef.current.material = part.material;
-        // dragMeshRef.current.material = new THREE.MeshStandardMaterial({
-        //   color: "pink",
-        // });
-      }
 
-      if (!active && !isRightPosition) {
-        if (isdragable) {
-          finalValue = [
-            posX,
-            part.position.y,
-            value > 2 ? -1.5 * value * 2 : 10 * value,
-          ];
-          rotation = [0, 0, 0];
+        if (!active && !isRightPosition) {
+          if (isdragable) {
+            finalValue = [part.position.x, part.position.y, part.position.z];
+            rotation = [part.rotation.x, part.rotation.y, part.rotation.z];
+          }
         }
-      }
 
-      if (!isRightPosition) {
-        api.start({
-          position: finalValue,
-          scale: active && isdragable ? 2.2 : 1,
-          rotation:
-            isdragable && active ? [0, (x / aspect) * 0.1, 0] : rotation,
-        });
+        if (!isRightPosition) {
+          api.start({
+            position: finalValue,
+            scale: active && isdragable ? 2.2 : 1,
+            rotation:
+              isdragable && active
+                ? [part.rotation.x, part.rotation.y + x * 0.001, 0]
+                : rotation,
+          });
+        }
       }
 
       return timeStamp;

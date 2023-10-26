@@ -43,7 +43,7 @@ const Home = () => {
   }, []);
 
   React.useEffect(() => {
-    if (count > 3) {
+    if (count > 10) {
       setScenario({ type: "ivolga", place: "successLastDetail" });
       setDisableTimer(true);
       setIsDone(true);
@@ -96,17 +96,17 @@ const Home = () => {
         )}
 
         {isFirstTime && !isTimeEndGame && <StarterMessage />}
-        {currentState !== "made-train" && !isTimeEndGame && (
+        {/* {currentState !== "made-train" && !isTimeEndGame && (
           <DetailsVisualization
             currentNumber={count}
             isDone={isDone}
             isOutTime={isOutTime}
             currentState={currentState}
           />
-        )}
-        {touchedDetail !== 0 && (
+        )} */}
+        {/* {touchedDetail !== 0 && (
           <DetailInfo detailNumber={touchedDetail} count={count} />
-        )}
+        )} */}
         <Canvas
           shadows
           orthographic
@@ -189,6 +189,13 @@ const detailsCounter = [
   { name: 1, id: 1 },
   { name: 2, id: 2 },
   { name: 3, id: 3 },
+  { name: 4, id: 4 },
+  { name: 5, id: 5 },
+  { name: 6, id: 6 },
+  { name: 7, id: 7 },
+  { name: 8, id: 8 },
+  { name: 9, id: 9 },
+  { name: 10, id: 10 },
 ];
 
 const DetailsVisualization = ({ currentNumber, isDone, isOutTime }) => {
