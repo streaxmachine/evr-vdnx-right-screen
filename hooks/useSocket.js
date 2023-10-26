@@ -13,12 +13,14 @@ export const useSocket = (props) => {
       // console.log(`Получено сообщение: ${event.data}`);
       if (event.data !== "ping") {
         const info = JSON.parse(event.data);
-        if (info.type === "speed") {
-          props[0](info.data);
-        } else if (info.type === "distance") {
-          props[2](info.data);
-        } else if (info.type === "calories") {
-          props[1](info.data);
+        if (props) {
+          if (info.type === "speed") {
+            props[0](info.data);
+          } else if (info.type === "distance") {
+            props[2](info.data);
+          } else if (info.type === "calories") {
+            props[1](info.data);
+          }
         }
       } else {
         console.log("here");

@@ -35,6 +35,27 @@ const CompleteQuiz = ({
 
   const percent = Math.round((score / 12) * 100);
 
+  const [currentMinutes, currentSeconds] = time.split(":").map(Number);
+
+  const formatTime = (min, sec) => {
+    let minutes, seconds;
+
+    if (min === 0 && sec === 0) {
+      minutes = 4;
+      seconds = "00";
+    } else {
+      minutes = 3 - min / 10;
+      seconds = 60 - sec;
+    }
+
+    return {
+      normal: `0${minutes}0:0${seconds}`,
+      socket: `0${minutes}:${seconds}`,
+    };
+  };
+
+  const formTime = formatTime(currentMinutes, currentSeconds);
+
   React.useEffect(() => {
     socket.send(
       JSON.stringify({
@@ -42,7 +63,7 @@ const CompleteQuiz = ({
         type: "victorina",
         data: `final`,
         true_answers: percent,
-        time: time,
+        time: formTime.socket,
         score: questionNumber + "/12",
       })
     );
@@ -92,7 +113,7 @@ const CompleteQuiz = ({
           <div className={s.completeRectangle}></div>
           <div className={s.completeStatistick}>
             <p>Затраченное время</p>
-            <p className={s.completeValue}>{time}</p>
+            <p className={s.completeValue}>{formTime.normal}</p>
           </div>
           <div className={s.completeRectangle}></div>
 
@@ -101,7 +122,10 @@ const CompleteQuiz = ({
             <p className={s.completeValue}>{questionNumber + "/12"}</p>
           </div>
         </div>
-        <button className={s.completeOtherGameBtn}>
+        <button
+          className={s.completeOtherGameBtn}
+          onClick={() => handleReset()}
+        >
           {percent > 50 ? (
             <p
               onClick={() => {
@@ -118,7 +142,7 @@ const CompleteQuiz = ({
               Другая игра
             </p>
           ) : (
-            <p onClick={() => handleReset()}>Начать заново</p>
+            <p>Начать заново</p>
           )}
         </button>
       </div>

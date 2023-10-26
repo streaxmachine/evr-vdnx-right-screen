@@ -69,7 +69,7 @@ const Questions = React.memo(
         currentQestion: 0,
         test: 0,
       },
-      []
+      [questionNumber]
     );
 
     React.useEffect(() => {
@@ -149,7 +149,7 @@ const Questions = React.memo(
 
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
         setScenario({ type: "quiz", place: "falseSecondTry" });
-        sucessNumber.test = 0;
+        // sucessNumber.test = 0;
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
@@ -216,6 +216,7 @@ const Questions = React.memo(
 
           if (sucessNumber.value === 1) {
             setScenario({ type: "quiz", place: "succesFirstTry" });
+            setScore(score + 1);
             sucessNumber.test += 1;
             sucessNumber.value = 0;
           } else {
@@ -250,7 +251,8 @@ const Questions = React.memo(
     };
 
     React.useEffect(() => {
-      setScore(sucessNumber.test);
+      // setScore(sucessNumber.test);
+      console.log(score);
     }, [questionNumber]);
 
     React.useEffect(() => {
