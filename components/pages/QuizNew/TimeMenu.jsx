@@ -4,7 +4,7 @@ import s from "./TouchPanel/TouchPanel.module.scss";
 
 const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
   const FULL_DASH_ARRAY = 283;
-  const TIME_LIMIT = 90;
+  const TIME_LIMIT = 240;
   const ref = React.useRef();
 
   let timeLeft = TIME_LIMIT;

@@ -78,7 +78,7 @@ const circles = [
 
 const places = [
   {
-    name: "Волга матушка",
+    name: "Тверская область в деталях",
     id: 0,
   },
   {

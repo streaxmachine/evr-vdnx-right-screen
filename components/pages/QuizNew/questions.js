@@ -1,7 +1,7 @@
 export const questionsVolga = [
   {
     id: '1',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "У какой деревни располагается исток Волги?",
     isLong: false,
     isImg: false,
@@ -13,7 +13,7 @@ export const questionsVolga = [
   },
   {
     id: '2',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Какая особо ценная порода рыб обитает в реке Волга?",
     isLong: false,
     isImg: false,
@@ -25,7 +25,7 @@ export const questionsVolga = [
   },
   {
     id: '3',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Какой город Тверской области не стоит на берегу Волги?",
     isLong: false,
     isImg: false,
@@ -37,7 +37,7 @@ export const questionsVolga = [
   },
   {
     id: '4',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText:
       "Иваньковское водохранилище, расположенное на Волге, снабжает водой этот город-миллионник:",
     isLong: false,
@@ -50,7 +50,7 @@ export const questionsVolga = [
   },
   {
     id: '5',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Какой город является родиной русской балалайки?",
     isLong: false,
     isImg: false,
@@ -62,7 +62,7 @@ export const questionsVolga = [
   },
   {
     id: '6',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Какой город является сапожной столицей России?",
     isLong: false,
     isImg: false,
@@ -74,7 +74,7 @@ export const questionsVolga = [
   },
   {
     id: '7',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Родиной российского сыроворения является?",
     isLong: false,
     isImg: false,
@@ -86,7 +86,7 @@ export const questionsVolga = [
   },
   {
     id: '8',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Как в древности назывался город Торопец?",
     isLong: false,
     isImg: false,
@@ -98,7 +98,7 @@ export const questionsVolga = [
   },
   {
     id: '9',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Какая из действующих церквей Твери самая древняя?",
     isLong: false,
     isImg: false,
@@ -118,7 +118,7 @@ export const questionsVolga = [
   },
   {
     id: '10',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Как называлась улица Советская в Твери с 1763 по 1919 годы?",
     isLong: false,
     isImg: false,
@@ -130,7 +130,7 @@ export const questionsVolga = [
   },
   {
     id: '11',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText:
       "Две трети территории Тверской области являются бассейном какой реки?",
     isLong: false,
@@ -143,7 +143,7 @@ export const questionsVolga = [
   },
   {
     id: '12',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText:
       "Какие населённые пункты не входят в «Пушкинское кольцо Верхневолжья»?",
     isLong: false,
@@ -156,7 +156,7 @@ export const questionsVolga = [
   },
   {
     id: '13',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Самое большое озеро Тверской области?",
     isLong: false,
     isImg: false,
@@ -168,7 +168,7 @@ export const questionsVolga = [
   },
   {
     id: '14',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText:
       "Где в Тверском регионе проводятся ежегодные пушкинские праздники поэзии?",
     isLong: false,
@@ -181,7 +181,7 @@ export const questionsVolga = [
   },
   {
     id: '15',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText:
       "Какой город в Тверской области имеет статус «Литературный город России»?",
     isLong: false,
@@ -194,7 +194,7 @@ export const questionsVolga = [
   },
   {
     id: '16',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Какое название носил город Тверь с 1931 по 1990-е гг.?",
     isLong: false,
     isImg: false,
@@ -206,7 +206,7 @@ export const questionsVolga = [
   },
   {
     id: '17',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText:
       "Город в Тверской области, который называют маленькой Венецией?",
     isLong: false,
@@ -219,7 +219,7 @@ export const questionsVolga = [
   },
   {
     id: '18',
-    questionCategory: "Волга-матушка",
+    questionCategory: "Тверская область в деталях",
     questionText: "Какая река берёт начало в Тверской области?   ",
     isLong: false,
     isImg: false,

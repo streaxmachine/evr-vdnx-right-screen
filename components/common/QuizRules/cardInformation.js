@@ -1,8 +1,8 @@
 export const cards = [
   {
-    title: "Волга-матушка",
+    title: "Тверская область в деталях",
     picSrc: "/images/QuizRules/41eacde781964cd3526f61c6c997df7a.png",
-    alt: "Волга-матушка",
+    alt: "Тверская область в деталях",
     cardNumber: "3",
   },
   {
