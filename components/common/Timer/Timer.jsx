@@ -5,16 +5,7 @@ import useStore from "hooks/useStore";
 import s from "./Timer.module.scss";
 
 const Timer = React.memo(
-  ({
-    time,
-    setTime,
-    isQuizDone = false,
-    setQuizDone = false,
-    resetGame,
-    setTimeEndGame,
-    setIsOutTime,
-    isOutTime,
-  }) => {
+  ({ time, setTime, isQuizDone = false, setIsOutTime, isOutTime }) => {
     const FULL_DASH_ARRAY = 283;
     const TIME_LIMIT = 30;
     const ref = React.useRef();
