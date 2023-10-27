@@ -51,7 +51,7 @@
 }
 
 .backMenu {
-  width: 212rem;
+  width: 279rem;
   height: 48rem;
   font-size: 18rem;
   margin-top: 64rem;
@@ -60,6 +60,16 @@
   font-weight: 500;
   border: none;
   background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20rem;
+}
+.backText {
+  z-index: 1;
+  font-weight: 400;
+  font-size: 22rem;
+  // line-height: 30rem;
 }
 
 .right {

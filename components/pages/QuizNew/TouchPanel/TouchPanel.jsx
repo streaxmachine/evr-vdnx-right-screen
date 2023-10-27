@@ -8,7 +8,6 @@ import useStore from "hooks/useStore";
 
 import s from "./TouchPanel.module.scss";
 
-
 const TouchPanel = ({ setGlobalState, socket }) => {
   const [currentCategory, setCurrentCategory] = React.useState(0);
   const [isQuizDone, setQuizDone] = React.useState(false);
@@ -33,7 +32,8 @@ const TouchPanel = ({ setGlobalState, socket }) => {
               }}
               className={s.backMenu}
             >
-              {"<  "}Главное меню
+              <img src="/images/arrow.png" alt="Назад" />
+              <span className={s.backText}>Главное меню</span>
             </button>
             <TimeMenu
               time={time}
@@ -49,14 +49,14 @@ const TouchPanel = ({ setGlobalState, socket }) => {
           style={{
             backgroundImage: `url(${
               currentCategory === 0
-                ? '/images/img.png'
+                ? "/images/img.png"
                 : currentCategory === 1
                 ? "/images/img2.png"
                 : currentCategory === 2
                 ? "/images/img3.png"
                 : currentCategory === 3
                 ? "/images/img4.png"
-                : '/images/img4.png'
+                : "/images/img4.png"
             })`,
           }}
         >
