@@ -66,7 +66,6 @@ const Home = () => {
       {resetGame && <div className={s.preloader}></div>}
       <CanvasPreloader />
       <div className={s.canvasTrain}>
-        <div className={s.count}>{count}</div>
         {!isDone && !isTimeEndGame && (
           <Link href={"/quizNew"}>
             <div className={s.buttonBack}>

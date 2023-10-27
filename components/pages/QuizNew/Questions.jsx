@@ -13,6 +13,7 @@ import CompleteQuiz from "./CompleteQuiz";
 
 import s from "./TouchPanel/TouchPanel.module.scss";
 import gsap from "gsap";
+import Image from "next/image";
 
 const Questions = React.memo(
   ({
@@ -41,7 +42,7 @@ const Questions = React.memo(
       return questions;
     }, [isQuizDone]);
 
-    const [imgUrl, setImgUrl] = React.useState("");
+    const [imgUrl, setImgUrl] = React.useState();
     const [score, setScore] = React.useState(0);
     const [currentQuestionNumber, setCurrentQuestionNumber] = React.useState(0);
     const [currentQuestion, setCurrentQuestion] = React.useState(
@@ -77,6 +78,14 @@ const Questions = React.memo(
         setQuizDone(true);
       }
     }, [questionNumber]);
+
+    React.useEffect(() => {
+      console.log(currentQuestion);
+      const isImg = currentQuestion.isImg;
+      if (isImg) {
+        setImgUrl(currentQuestion.imgUrl);
+      }
+    }, [currentQuestion]);
 
     React.useEffect(() => {
       currentQuestion.answerOptions.map((item, index) => {
@@ -143,9 +152,6 @@ const Questions = React.memo(
       );
 
       const isImg = currentQuestion.isImg;
-      if (isImg) {
-        setImgUrl(currentQuestion.imgUrl);
-      }
 
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
         setScenario({ type: "quiz", place: "falseSecondTry" });
@@ -266,7 +272,18 @@ const Questions = React.memo(
     return (
       <>
         <audio ref={audioRef} src="/music/phrase.mp3" autoPlay={false} />
-        <img ref={imgRef} className={s.starImg} src={imgUrl} alt="" />
+        {imgUrl && (
+          <Image
+            ref={imgRef}
+            className={s.starImg}
+            src={imgUrl}
+            alt=""
+            width={300}
+            height={300}
+          />
+        )}
+
+        {/* <img ref={imgRef} className={s.starImg} src={imgUrl} alt="" /> */}
         {!isQuizDone && (
           <>
             <div className={s.questionRoot}>
