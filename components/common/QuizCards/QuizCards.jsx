@@ -7,7 +7,6 @@ import useStore from "hooks/useStore";
 
 import s from "./QuizCards.module.scss";
 import useScenarioTimer from "hooks/useScenarioTimer";
-import Image from "next/image";
 
 const QuizCards = ({ setGlobalState, socket }) => {
   const { setScenario } = useStore();
@@ -81,7 +80,7 @@ function Card({ setGlobalState, card, socket, setScenario }) {
           <h4 className={s.cardTitle}>{card.title}</h4>
           <p className={s.cardText}>{card.text}</p>
         </div>
-        <Image className={s.cardPic} src={card.picSrc} alt={card.alt} width={500} height={500} />
+        <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
         <img className={s.cardZigZag} src={card.zigZagSrc} />
       </>
     </div>
