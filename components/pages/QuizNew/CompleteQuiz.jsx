@@ -48,7 +48,7 @@ const CompleteQuiz = ({
       seconds = 60 - sec;
     }
 
-    if (seconds < 10) {
+    if (seconds < 10 && seconds >=1) {
       seconds = `0${seconds}`;
     }
 

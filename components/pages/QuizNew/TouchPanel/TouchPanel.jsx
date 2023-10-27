@@ -8,11 +8,13 @@ import useStore from "hooks/useStore";
 
 import s from "./TouchPanel.module.scss";
 
+
 const TouchPanel = ({ setGlobalState, socket }) => {
   const [currentCategory, setCurrentCategory] = React.useState(0);
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   const { setScenario } = useStore();
+
   return (
     <div className={s.root}>
       <div className={s.container}>
@@ -42,7 +44,22 @@ const TouchPanel = ({ setGlobalState, socket }) => {
             <WayMenu currentCategory={currentCategory} />
           </div>
         )}
-        <div className={clsx(s.right, isQuizDone && s.rightDone)}>
+        <div
+          className={clsx(s.right, isQuizDone && s.rightDone)}
+          style={{
+            backgroundImage: `url(${
+              currentCategory === 0
+                ? '/images/img.png'
+                : currentCategory === 1
+                ? "/images/img2.png"
+                : currentCategory === 2
+                ? "/images/img3.png"
+                : currentCategory === 3
+                ? "/images/img4.png"
+                : '/images/img4.png'
+            })`,
+          }}
+        >
           <Questions
             isQuizDone={isQuizDone}
             socket={socket}
