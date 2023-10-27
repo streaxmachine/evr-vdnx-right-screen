@@ -24,13 +24,29 @@
   gap: 80rem;
 }
 
-.starImg {
+.imgWrapper {
   position: absolute;
-  height: 100%;
-  transform: translateX(-100%);
+  display: flex;
+  pointer-events: none;
+  // bottom: 0rem;
+  top: 144rem;
+  opacity: 1;
+  justify-content: center;
+  left: 0;
   width: 34%;
+  height: 100%;
+}
+
+.starImg {
+  position: relative;
+  height: 100%;
+  opacity: 0;
+  border-radius: 10rem;
+  pointer-events: none;
+  width: 300rem;
+  height: 300rem;
   object-fit: cover;
-  z-index: 101;
+  z-index: 1;
   left: 0;
 }
 
@@ -116,6 +132,8 @@
 }
 
 .completeRoot {
+  position: absolute;
+  z-index: 2;
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, #286dc0 5.98%, #4599ff 100%, #87bdff 100%);
@@ -299,7 +317,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  z-index: 100;
+  z-index: 1;
   font-size: 20rem;
   color: white;
   // opacity: 0.5;

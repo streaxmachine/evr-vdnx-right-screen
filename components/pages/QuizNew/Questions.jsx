@@ -42,7 +42,7 @@ const Questions = React.memo(
       return questions;
     }, [isQuizDone]);
 
-    const [imgUrl, setImgUrl] = React.useState();
+    const [imgUrl, setImgUrl] = React.useState("/images/stars/31.jpg");
     const [score, setScore] = React.useState(0);
     const [currentQuestionNumber, setCurrentQuestionNumber] = React.useState(0);
     const [currentQuestion, setCurrentQuestion] = React.useState(
@@ -80,7 +80,6 @@ const Questions = React.memo(
     }, [questionNumber]);
 
     React.useEffect(() => {
-      console.log(currentQuestion);
       const isImg = currentQuestion.isImg;
       if (isImg) {
         setImgUrl(currentQuestion.imgUrl);
@@ -133,6 +132,7 @@ const Questions = React.memo(
       setCurrentCategory(0);
       setCurrentQuestion(finalQuestions[0][0]);
       setQuestionNumber(0);
+      setImgUrl("/images/stars/31.jpg");
       sucessNumber.test = 0;
     };
 
@@ -155,29 +155,18 @@ const Questions = React.memo(
 
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
         setScenario({ type: "quiz", place: "falseSecondTry" });
-        // sucessNumber.test = 0;
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
         audioRef.current.play();
-        if (isImg) {
-          gsap.to(imgRef.current, {
-            x: "0%",
-            duration: 0.75,
-            ease: "expo.out",
-          });
 
-          gsap.to(imgRef.current, {
-            x: "-100%",
-            duration: 0.75,
-            delay: 4.25,
-            ease: "expo.out",
-          });
+        if (isImg) {
+          gsap.to(imgRef.current, { opacity: 1, duration: 0.1, delay: 0.2 });
         }
+        console.log("IMG HERE");
 
         currentQuestion.answerOptions.forEach((answer, questionIndex) => {
           if (answer.isCorrect) {
-            // console.log(`question_${questionNumber}`);
             setTimeout(() => {
               socket.send(
                 JSON.stringify({
@@ -191,6 +180,12 @@ const Questions = React.memo(
             }, 300);
           }
         });
+
+        if (isImg) {
+          setTimeout(() => {
+            gsap.to(imgRef.current, { opacity: 0, duration: 0.1 });
+          }, 4200);
+        }
 
         setTimeout(() => {
           setIsClickable(true);
@@ -206,20 +201,8 @@ const Questions = React.memo(
       if (!twoMisstakesState) {
         if (question.isCorrect === true) {
           if (isImg) {
-            gsap.to(imgRef.current, {
-              x: "0%",
-              duration: 0.75,
-              ease: "expo.out",
-            });
-
-            gsap.to(imgRef.current, {
-              x: "-100%",
-              duration: 0.75,
-              delay: 2.5,
-              ease: "expo.out",
-            });
+            gsap.to(imgRef.current, { opacity: 1, duration: 0.1, delay: 0.2 });
           }
-
           if (sucessNumber.value === 1) {
             setScenario({ type: "quiz", place: "succesFirstTry" });
             setScore(score + 1);
@@ -231,7 +214,15 @@ const Questions = React.memo(
           }
           setIsClickable(false);
           event.target.style.backgroundColor = "green";
-          // event.target.style.color = "white";
+
+          if (isImg) {
+            setTimeout(
+              () => {
+                gsap.to(imgRef.current, { opacity: 0, duration: 0.1 });
+              },
+              isImg ? 2300 : 700
+            );
+          }
 
           const timeout = setTimeout(
             () => {
@@ -239,18 +230,15 @@ const Questions = React.memo(
               handleCheck();
               setIsClickable(true);
               event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
-              // event.target.style.color = "white";
             },
-            isImg ? 3000 : 550
+            isImg ? 3000 : 1200
           );
         } else {
           setIsClickable(false);
           event.target.style.backgroundColor = "rgb(180, 47, 47)";
-          // event.target.style.color = "white";
           setTimeout(() => {
             setIsClickable(true);
             event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
-            // event.target.style.color = "white";
           }, 550);
         }
       }
@@ -272,16 +260,19 @@ const Questions = React.memo(
     return (
       <>
         <audio ref={audioRef} src="/music/phrase.mp3" autoPlay={false} />
-        {imgUrl && (
+        {/* {imgUrl && ( */}
+        <div className={s.imgWrapper}>
           <Image
             ref={imgRef}
             className={s.starImg}
             src={imgUrl}
             alt=""
-            width={300}
-            height={300}
+            width={500}
+            height={500}
           />
-        )}
+        </div>
+
+        {/* )} */}
 
         {/* <img ref={imgRef} className={s.starImg} src={imgUrl} alt="" /> */}
         {!isQuizDone && (

@@ -95,17 +95,17 @@ const Home = () => {
         )}
 
         {isFirstTime && !isTimeEndGame && <StarterMessage />}
-        {/* {currentState !== "made-train" && !isTimeEndGame && (
+        {currentState !== "made-train" && !isTimeEndGame && (
           <DetailsVisualization
             currentNumber={count}
             isDone={isDone}
             isOutTime={isOutTime}
             currentState={currentState}
           />
-        )} */}
-        {/* {touchedDetail !== 0 && (
+        )}
+        {touchedDetail !== 0 && (
           <DetailInfo detailNumber={touchedDetail} count={count} />
-        )} */}
+        )}
         <Canvas
           shadows
           orthographic
@@ -195,6 +195,11 @@ const detailsCounter = [
   { name: 8, id: 8 },
   { name: 9, id: 9 },
   { name: 10, id: 10 },
+  // { name: 11, id: 11 },
+  // { name: 12, id: 12 },
+  // { name: 13, id: 13 },
+  // { name: 14, id: 14 },
+  // { name: 15, id: 15 },
 ];
 
 const DetailsVisualization = ({ currentNumber, isDone, isOutTime }) => {
@@ -278,11 +283,14 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
     >
       <div className={s.detailsName}>{detail[0].name}</div>
       <div className={s.detailstext}>{detail[0].description}</div>
-      <img
-        className={s.detailsImg}
-        src={detail[0].picSrc}
-        alt={detail[0].alt}
-      />
+      {detail[0].picSrc && (
+        <img
+          className={s.detailsImg}
+          src={detail[0].picSrc}
+          alt={detail[0].alt}
+        />
+      )}
+
       <img
         className={s.detailZig}
         alt="zig"
