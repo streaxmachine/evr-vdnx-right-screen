@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import { cards } from "./cardInformation";
 
 import s from "./QuizRules.module.scss";
+import useScenarioTimer from "hooks/useScenarioTimer";
 
 const QuizRules = ({ setGlobalState, socket }) => {
+  useScenarioTimer("menu", "time15", 15);
   return (
     <>
       <main className={s.root}>

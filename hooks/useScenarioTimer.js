@@ -12,7 +12,11 @@ export default function useScenarioTimer(
   const { setScenario } = useStore();
 
   const resetInactiveTime = () => {
-    setInactiveTime(0);
+    if (inactiveTime === 0) {
+      return;
+    } else {
+      setInactiveTime(0);
+    }
   };
 
   useEffect(() => {
@@ -30,13 +34,13 @@ export default function useScenarioTimer(
 
     window.addEventListener("touchstart", touchStartHandler);
     window.addEventListener("touchmove", touchMoveHandler);
-    // window.addEventListener("mousemove", touchMoveHandler);
+    window.addEventListener("mousemove", touchMoveHandler);
 
     return () => {
       clearInterval(timer);
       window.removeEventListener("touchstart", touchStartHandler);
       window.removeEventListener("touchmove", touchMoveHandler);
-      //   window.addEventListener("mousemove", touchMoveHandler);
+        window.addEventListener("mousemove", touchMoveHandler);
     };
   }, [inactiveTime]);
 

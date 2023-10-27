@@ -2,8 +2,10 @@ import React from "react";
 import Link from "next/link";
 
 import s from "./IvolgaRules.module.scss";
+import useScenarioTimer from "hooks/useScenarioTimer";
 
 const IvolgaRules = ({ setGlobalState, socket }) => {
+  useScenarioTimer("menu", "time15", 15);
   return (
     <>
       <main className={s.root}>

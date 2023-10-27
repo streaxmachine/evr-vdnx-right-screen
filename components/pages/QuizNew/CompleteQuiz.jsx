@@ -48,6 +48,10 @@ const CompleteQuiz = ({
       seconds = 60 - sec;
     }
 
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+
     return {
       normal: `0${minutes}0:0${seconds}`,
       socket: `0${minutes}:${seconds}`,
@@ -82,10 +86,21 @@ const CompleteQuiz = ({
   }, [percent]);
 
   React.useEffect(() => {
-    time === "000:000"
-      ? setScenario({ type: "quiz", place: "timeIsOut" })
-      : setScenario({ type: "quiz", place: "results" });
-  }, [time]);
+    if (time === "000:000") {
+      setScenario({ type: "quiz", place: "timeIsOut" });
+    } else {
+      if (score === 12) {
+        setScenario({ type: "quiz", place: "best" });
+      } else if (score < 12 && score >= 9) {
+        setScenario({ type: "quiz", place: "good" });
+      } else if (score <= 8 && score >= 6) {
+        setScenario({ type: "quiz", place: "bad" });
+      } else {
+        setScenario({ type: "quiz", place: "worst" });
+      }
+    }
+  }, [time, score]);
+  
 
   const formatTimeSocket = (min, sec) => {
     let minutes, seconds;
