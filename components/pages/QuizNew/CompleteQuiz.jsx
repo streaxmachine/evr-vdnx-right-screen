@@ -48,6 +48,10 @@ const CompleteQuiz = ({
       seconds = 60 - sec;
     }
 
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+
     return {
       normal: `0${minutes}0:0${seconds}`,
       socket: `0${minutes}:${seconds}`,
