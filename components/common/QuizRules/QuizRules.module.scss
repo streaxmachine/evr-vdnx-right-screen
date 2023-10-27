@@ -5,7 +5,7 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  background: linear-gradient(rgba(0, 70, 154, 1), rgba(183, 214, 251, 1));
+  background: linear-gradient(99deg, #00469A 5.73%, #B7D6FB 96.89%), #FFF;
 }
 
 .wrapper {
@@ -16,15 +16,6 @@
   flex-direction: column;
   width: 100%;
   z-index: 1;
-}
-
-.clouds {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  background-image: url("/images/background/clouds.png");
-  background-size: cover;
-  z-index: 0;
 }
 
 .backBtn {
@@ -70,71 +61,23 @@
   color: rgba(240, 245, 249, 1);
 }
 
-.cardsWrapper {
-  width: 100%;
-  border: none;
+.bottomContainer {
   display: flex;
-  margin-top: 50rem;
-  color: white;
   justify-content: space-between;
-}
-
-.card {
-  width: 305rem;
-  height: 305rem;
-  border-radius: 1em;
-  background-color: rgba(255, 255, 255, 0.2);
-  display: flex;
-  position: relative;
-}
-
-.cardTextBlock {
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  padding: 22rem;
-  position: relative;
 }
-
-.cardTitle {
-  font-size: 40rem;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-}
-
-.cardText {
-  position: absolute;
-  top: 160rem;
-  color: rgba(69, 153, 255, 1);
-  font-weight: 500;
-  margin-top: 24rem;
-  max-width: 240rem;
-  font-size: 16rem;
-  line-height: 16rem;
-  letter-spacing: 0em;
-
-}
-
-.cardPic {
-  z-index: 1;
-  position: absolute;
-  bottom: -135rem;
-  left: -30rem;
-  width: 390rem;
-}
-
 
 .playBtn {
   background-color: white;
   color: var(--light-blue);
-  width: 400rem;
+  width: 379rem;
+  height: 68rem;
   border-radius: 100px;
   border: none;
-  padding: 20rem 65rem 20rem 64rem;
   font-weight: 700;
   font-size: 24rem;
   z-index: 1;
-  margin-top: 100rem;
+  margin-top: 60rem;
 
   &:hover {
     color: white;
@@ -142,3 +85,40 @@
   }
 }
 
+.imgContainer {
+  position: relative;
+  width: 820rem;
+  height: 460rem;
+}
+.img01 {
+  position: absolute;
+  right: 0;
+  width: 320rem;
+  margin-top: -50rem;
+}
+.img02 {
+  position: absolute;
+  width: 280rem;
+  top: 170rem;
+  left: 60rem;
+}
+.img03 {
+  position: absolute;
+  right: 140rem;
+  width: 580rem;
+}
+.img04 {
+  position: absolute;
+  right: 0;
+  bottom: -70rem;
+  width: 320rem;
+}
+
+.clouds {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url("/images/background/clouds.png");
+  background-size: cover;
+  z-index: 0;
+}
