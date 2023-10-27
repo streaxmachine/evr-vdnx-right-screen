@@ -68,6 +68,10 @@ const OnWay = ({
     );
   });
 
+  const roundedNumber = (number) => {
+    return  Math.round(number * 10) / 10
+  }
+
   return (
     <>
       <main ref={rootRef} className={s.root}>
@@ -123,17 +127,17 @@ const OnWay = ({
             <div className={s.dataWrapper}>
               <div className={s.ccal}>
                 <p className={s.dataTitle}>Калории</p>
-                <p className={s.dataNumber}>{distanceSocket * 0.1}</p>
+                <p className={s.dataNumber}>{roundedNumber(distanceSocket * 0.1)}</p>
                 <p className={s.dataMeasure}>ккал</p>
               </div>
               <div className={s.speed}>
                 <p className={s.dataTitle}>Скорость</p>
-                <p className={s.speedNumber}>{speedSocket}</p>
+                <p className={s.speedNumber}>{roundedNumber(speedSocket)}</p>
                 <p className={s.dataMeasure}>км/ч</p>
               </div>
               <div className={s.dist}>
                 <p className={s.dataTitle}>Расстояние</p>
-                <p className={s.dataNumber}>{distanceSocket}</p>
+                <p className={s.dataNumber}>{roundedNumber(distanceSocket)}</p>
                 <p className={s.dataMeasure}>км</p>
               </div>
             </div>
