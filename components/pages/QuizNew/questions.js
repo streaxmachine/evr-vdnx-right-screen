@@ -523,10 +523,10 @@ export const questionsStars = [
     answerOptions: [
       {
         answerText: "Регентом архиерейского хора",
-        isBigBtn: false,
+        isBigBtn: true,
         isCorrect: true,
       },
-      { answerText: "Учителем музыки", isBigBtn: false, isCorrect: false },
+      { answerText: "Учителем музыки", isBigBtn: true, isCorrect: false },
       {
         answerText: "Дирижёром оркестра народных инструментов",
         isBigBtn: true,
@@ -543,8 +543,8 @@ export const questionsStars = [
     isImg: true,
     imgUrl: "/images/stars/37.jpg",
     answerOptions: [
-      { answerText: "«Ручной дорожник»", isBigBtn: false, isCorrect: false },
-      { answerText: "«Хожение за три моря»", isBigBtn: false, isCorrect: true },
+      { answerText: "«Ручной дорожник»", isBigBtn: true, isCorrect: false },
+      { answerText: "«Хожение за три моря»", isBigBtn: true, isCorrect: true },
       {
         answerText: "«Географическое описание реки Волги»",
         isBigBtn: true,
@@ -913,7 +913,7 @@ export const questionsRecords = [
         isBigBtn: true,
         isCorrect: false,
       },
-      { answerText: "Вместимость вагона", isBigBtn: false, isCorrect: true },
+      { answerText: "Вместимость вагона", isBigBtn: true, isCorrect: true },
     ],
   },
   {
@@ -1029,8 +1029,8 @@ export const questionsRecords = [
     isImg: true,
     imgUrl: "/images/records/66.jpg",
     answerOptions: [
-      { answerText: " Олимпиада 80-х", isBigBtn: false, isCorrect: true },
-      { answerText: "Полет Ю.А. Гагарина", isBigBtn: false, isCorrect: false },
+      { answerText: " Олимпиада 80-х", isBigBtn: true, isCorrect: true },
+      { answerText: "Полет Ю.А. Гагарина", isBigBtn: true, isCorrect: false },
       {
         answerText: "Увеличение посевов кукурузы в 1950-1960 гг.",
         isBigBtn: true,
