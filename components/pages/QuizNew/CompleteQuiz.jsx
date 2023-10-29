@@ -48,7 +48,7 @@ const CompleteQuiz = ({
       seconds = 60 - sec;
     }
 
-    if (seconds < 10 && seconds >=1) {
+    if (seconds < 10 && seconds >= 1) {
       seconds = `0${seconds}`;
     }
 
@@ -100,7 +100,6 @@ const CompleteQuiz = ({
       }
     }
   }, [time, score]);
-  
 
   const formatTimeSocket = (min, sec) => {
     let minutes, seconds;
@@ -155,29 +154,57 @@ const CompleteQuiz = ({
             <p className={s.completeValue}>{questionNumber + "/12"}</p>
           </div>
         </div>
-        <button
-          className={s.completeOtherGameBtn}
-          onClick={() => handleReset()}
-        >
-          {percent > 50 ? (
-            <p
-              onClick={() => {
-                setGlobalState("quizCards");
-                socket.send(
-                  JSON.stringify({
-                    installation: "right",
-                    type: "mode",
-                    data: `splashscreen`,
-                  })
-                );
-              }}
+        {percent > 50 ? (
+          <button
+            className={s.completeOtherGameBtn}
+            onClick={() => handleReset()}
+          >
+            <>
+              <p
+                onClick={() => {
+                  setGlobalState("quizCards");
+                  socket.send(
+                    JSON.stringify({
+                      installation: "right",
+                      type: "mode",
+                      data: `splashscreen`,
+                    })
+                  );
+                }}
+              >
+                Другая игра
+              </p>
+            </>
+          </button>
+        ) : (
+          <>
+            <button
+              className={s.completeOtherGameBtn}
+              onClick={() => handleReset()}
             >
-              Другая игра
-            </p>
-          ) : (
-            <p>Начать заново</p>
-          )}
-        </button>
+              <p>Начать заново</p>
+            </button>
+            <button
+              className={`${s.completeOtherGameBtn} ${s.blueButton}`}
+              onClick={() => handleReset()}
+            >
+              <p
+                onClick={() => {
+                  setGlobalState("quizCards");
+                  socket.send(
+                    JSON.stringify({
+                      installation: "right",
+                      type: "mode",
+                      data: `splashscreen`,
+                    })
+                  );
+                }}
+              >
+                Главное меню
+              </p>
+            </button>
+          </>
+        )}
       </div>
       <div className={s.clouds}></div>
     </div>
