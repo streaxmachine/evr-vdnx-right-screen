@@ -21,7 +21,6 @@ const MakeTrain = ({
   setTouchedDetail,
 }) => {
   const { setScenario } = useStore();
-  console.log("here");
   const [pos, setPos] = useState([
     part.position.x,
     part.position.y,
@@ -30,6 +29,20 @@ const MakeTrain = ({
   const [isRightPosition, setIsRightPosition] = React.useState(false);
   let planeIntersectPoint = new THREE.Vector3();
   const vector = new THREE.Vector3(0, 0, 0);
+
+  const color = React.useMemo(() => {
+    return new THREE.MeshBasicMaterial({ color: "yellow" });
+  }, []);
+
+  React.useEffect(() => {
+    if (count >= 3 && value === 1) {
+      dragMeshRef.current.material = color;
+      dragMeshRef.current.material.wireframe = true;
+    }
+    if (count >= 3 && value === 2) {
+      dragMeshRef.current.visible = false;
+    }
+  }, [count]);
 
   const dragMeshRef = useRef();
 
@@ -85,6 +98,7 @@ const MakeTrain = ({
               });
               setTimeout(() => {
                 dragMeshRef.current.material = part.material;
+                // dragMeshRef.current.material. = true
               }, 1300);
               finalValue = [
                 finalData.position[0],
@@ -141,9 +155,9 @@ const MakeTrain = ({
           {...spring}
           {...bind()}
         >
-          {!isRightPosition && (
+          {!isRightPosition && value === 2 && (
             <Html zIndexRange={(0, 1)}>
-              <div className={s.value}>{value}</div>
+              <div className={s.value}>Покраска</div>
             </Html>
           )}
         </animated.mesh>

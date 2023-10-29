@@ -12,19 +12,81 @@ import { useSocket } from "hooks/useSocket";
 import s from "./CycleWay.module.scss";
 
 const CycleWay = () => {
+  useScenarioTimer("ivolga", "time5", 5);
+  useScenarioTimer("ivolga", "time30", 30);
+
   const [state, setState] = React.useState("hero");
   const [speed, setSpeed] = React.useState(0);
   const [calories, setCalories] = React.useState(0);
   const [distance, setDistance] = React.useState(0);
   const [isBack, setisBack] = React.useState(false);
   const [location, setLocation] = React.useState("1");
-  const socket = useSocket([setSpeed, setCalories, setDistance]);
+  const [isOutTime, setOutTime] = React.useState("hero");
+  const [isConnected, setConnected] = React.useState(false);
+  const [isFree, setFree] = React.useState(true);
+  const socket = useSocket([
+    setSpeed,
+    setCalories,
+    setDistance,
+    setOutTime,
+    setConnected,
+    setFree,
+  ]);
 
-  useScenarioTimer("ivolga", "time5", 5);
-  useScenarioTimer("ivolga", "time30", 30);
+  React.useEffect(() => {
+    if (state !== "hero") {
+      setOutTime(false);
+    }
+  }, [state]);
+
+  React.useEffect(() => {
+    if (isOutTime === true) {
+      setState("hero");
+    }
+  }, [isOutTime]);
+
+  React.useEffect(() => {
+    console.log(isFree);
+  }, [isFree]);
+
+  const handleMakeBusy = React.useCallback(() => {
+    if (isConnected) {
+      socket.send(
+        JSON.stringify({
+          installation: "velo",
+          type: "isFree",
+          data: 0,
+        })
+      );
+    }
+  }, [isConnected]);
+
+  const handleMakeFree = React.useCallback(() => {
+    if (isConnected) {
+      socket.send(
+        JSON.stringify({
+          installation: "velo",
+          type: "isFree",
+          data: 1,
+        })
+      );
+    }
+  }, [isConnected]);
+
+  // console.log(isFree);
+
   return (
     <>
-      {state === "hero" && <Hero setState={setState} socket={socket} />}
+      {!isFree && <div className={s.busy}>Экран пока не доступен</div>}
+      {state === "hero" && (
+        <Hero
+          setState={setState}
+          setFree={setFree}
+          handleMakeBusy={handleMakeBusy}
+          handleMakeFree={handleMakeFree}
+          socket={socket}
+        />
+      )}
       {state === "cards" && (
         <Cards
           setState={setState}
@@ -54,6 +116,7 @@ const CycleWay = () => {
           location={location}
           setState={setState}
           speedSocket={speed}
+          setFree={setFree}
           distanceSocket={distance}
           caloriesSocket={calories}
           socket={socket}

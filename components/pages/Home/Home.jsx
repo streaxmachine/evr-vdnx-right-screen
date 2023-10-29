@@ -113,7 +113,7 @@ const Home = () => {
           camera={{
             position: [10, 20, 20],
             rotation: [Math.PI, 0, 0],
-            zoom: 30,
+            zoom: 28,
           }}
           gl={{ preserveDrawingBuffer: true, antialias: false }}
         >
@@ -282,7 +282,12 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
       })}
     >
       <div className={s.detailsName}>{detail[0].name}</div>
-      <div className={s.detailstext}>{detail[0].description}</div>
+      {Number(detailNumber) === Number(count - 1) ? (
+        <div className={s.detailstext}>{detail[0].description}</div>
+      ) : (
+        <div>Упс, кажется деталь усановлена не по порядку</div>
+      )}
+
       {detail[0].picSrc && (
         <img
           className={s.detailsImg}

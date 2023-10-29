@@ -10,7 +10,7 @@ import CanvasPreloader from "../CanvasPreloader";
 
 let cursor = {};
 
-const LastStep = ({ setState, socket, setisBack, location }) => {
+const LastStep = ({ setState, socket, setisBack, location, setFree }) => {
   const currentLocation = locations.filter((item, id) => {
     return item.id === location;
   });
@@ -165,6 +165,7 @@ const LastStep = ({ setState, socket, setisBack, location }) => {
               onClick={() => {
                 setisBack(true);
                 setState("progressBar");
+                // setFree(true);
                 socket.send(
                   JSON.stringify({
                     installation: "velo",

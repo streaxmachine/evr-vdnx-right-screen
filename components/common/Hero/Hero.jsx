@@ -2,7 +2,17 @@ import React from "react";
 
 import s from "./Hero.module.scss";
 
-const Hero = ({ setState, socket }) => {
+const Hero = ({
+  setState,
+  socket,
+  handleMakeBusy,
+  setFree,
+  handleMakeFree,
+}) => {
+  React.useEffect(() => {
+    handleMakeFree();
+  }, []);
+
   return (
     <>
       <main className={s.page}></main>
@@ -18,6 +28,7 @@ const Hero = ({ setState, socket }) => {
         <button
           onClick={() => {
             setState("cards");
+            handleMakeBusy();
             socket.send(
               JSON.stringify({
                 installation: "velo",
@@ -39,4 +50,4 @@ const Hero = ({ setState, socket }) => {
     </>
   );
 };
-export default Hero;
+export default React.memo(Hero);
