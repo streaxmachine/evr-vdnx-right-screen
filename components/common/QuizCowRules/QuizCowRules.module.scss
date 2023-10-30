@@ -1,0 +1,99 @@
+@import "styles/mixins";
+
+.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(99deg, #00469a 5.73%, #b7d6fb 96.89%), #fff;
+}
+
+.wrapper {
+  margin-top: 64rem;
+  margin-bottom: 100rem;
+  max-width: 1350rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 1;
+}
+
+.backBtn {
+  color: white;
+  width: 214rem;
+  height: 48rem;
+  gap: 12rem;
+  border: none;
+  border-radius: 10rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.backText {
+  z-index: 1;
+  font-weight: 400;
+  font-size: 22rem;
+}
+
+.textblock {
+  color: white;
+  gap: 42rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 52rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 52rem;
+  letter-spacing: 0.02rem;
+}
+.text {
+  font-weight: 400;
+  font-size: 30rem;
+  line-height: 36rem;
+  text-align: left;
+  color: rgba(240, 245, 249, 1);
+}
+
+.playBtn {
+  background-color: white;
+  color: var(--light-blue);
+  width: 379rem;
+  height: 68rem;
+  border-radius: 100px;
+  border: none;
+  font-weight: 700;
+  font-size: 24rem;
+  z-index: 1;
+
+  &:hover {
+    color: white;
+    background-color: var(--light-blue);
+  }
+}
+
+.cowIMG {
+  width: 600rem;
+  padding-top: 60rem;
+}
+
+.clouds {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url("/images/background/clouds.png");
+  background-size: cover;
+  z-index: 0;
+}
