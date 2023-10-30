@@ -4,10 +4,7 @@ import { useProgress } from "@react-three/drei";
 import useImagePreloader from "hooks/useImagesPreloader";
 
 import s from "./CanvasPreloader.module.scss";
-const images = [
-  // "/images/ivolgaDetails/01W_alpha.png",
-  "/images/ivolgaDetails/FullGreen.png",
-];
+const images = ["/images/ivolgaDetails/03W_alpha.png"];
 let fakeProgress = 0;
 const CanvasPreloader = () => {
   const { progress } = useProgress();
