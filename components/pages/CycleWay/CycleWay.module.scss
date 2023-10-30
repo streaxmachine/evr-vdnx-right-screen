@@ -5,11 +5,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 56rem;
-  font-weight: 600;
+
   z-index: 100;
   top: 0;
   background: linear-gradient(99deg, #00469a 5.73%, #b7d6fb 96.89%), #fff;
+}
+
+.busyText {
+  width: 70%;
+  display: flex;
+  font-size: 46rem;
+  line-height: 50rem;
+  font-weight: 600;
+  flex-direction: column;
+  gap: 45rem;
+  text-align: center;
 }
 
 .clouds {
