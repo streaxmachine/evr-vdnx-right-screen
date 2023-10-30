@@ -100,6 +100,7 @@ const Home = () => {
           <div className={s.detailsRoot}>
             {!isOutTime && !isDone && (
               <Image
+                priority
                 className={s.base}
                 src="/images/ivolgaDetails/base_alpha.png"
                 width={330}
@@ -125,7 +126,8 @@ const Home = () => {
           camera={{
             position: [10, 20, 20],
             rotation: [Math.PI, 0, 0],
-            zoom: 28,
+            zoom: 23,
+            near: 0.00000001,
           }}
           gl={{ preserveDrawingBuffer: true, antialias: false }}
         >
@@ -136,15 +138,19 @@ const Home = () => {
             touchedDetail={touchedDetail}
             setTouchedDetail={setTouchedDetail}
           />
-          <mesh>
-            <Html className={s.test} scale={100}>
-              <div>
-                {""}
+          {touchedDetail === 0 && (
+            <mesh visible={false}>
+              <Html
+                position={[-2, -2, 0]}
+                zIndexRange={[0, 1]}
+                className={s.finger}
+                scale={100}
+              >
                 <Lottie animationData={handAnimation} />
-              </div>
-            </Html>
-            <boxGeometry />
-          </mesh>
+              </Html>
+              <boxGeometry />
+            </mesh>
+          )}
         </Canvas>
 
         {!isTimeEndGame && (
@@ -234,20 +240,19 @@ const DetailsVisualization = ({ currentNumber, isDone, isOutTime }) => {
         <>
           {detailsCounter.map((item) => {
             return (
-              <>
+              <div key={item.id}>
                 {item.id === currentNumber && !isOutTime && (
-                  <>
-                    <div className={s.imgWrapper}>
-                      <Image
-                        src={item.imgUrl}
-                        width={330}
-                        height={152}
-                        alt=""
-                      />
-                    </div>
-                  </>
+                  <div key={item.id} className={s.imgWrapper}>
+                    <Image
+                      priority
+                      src={item.imgUrl}
+                      width={330}
+                      height={152}
+                      alt=""
+                    />
+                  </div>
                 )}
-              </>
+              </div>
             );
           })}
         </>

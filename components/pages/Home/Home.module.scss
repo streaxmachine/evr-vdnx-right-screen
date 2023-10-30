@@ -18,9 +18,17 @@
   z-index: 1;
 }
 
-.test{
+.finger{
+  width: 200rem;
+  z-index: 1;
+  pointer-events: none;
   font-size: 50rem;
   scale: 5;
+
+  div {
+    transform: rotate(-30deg);
+
+  }
 }
 
 .fade_in {
@@ -126,16 +134,16 @@
 }
 
 .value {
-  border-radius: 50%;
-  background-color: black;
+  border-radius: 10rem;
+  background-color: var(--light-blue);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-size: 15rem;
+  pointer-events: none;
   padding: 5rem;
 }
-
-
 
 .detailsRoot {
   position: absolute;
@@ -288,7 +296,7 @@
   height: 190rem;
   color: white;
   z-index: 10;
-  background-color: var(--semi-blue);
+  background-color: var(--light-blue);
   gap: 18rem;
 }
 

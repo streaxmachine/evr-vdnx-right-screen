@@ -74,6 +74,7 @@ const CycleWay = () => {
   return (
     <>
       {!isFree && <div className={s.busy}>Экран пока не доступен</div>}
+
       {state === "hero" && (
         <Hero
           setState={setState}
@@ -83,6 +84,7 @@ const CycleWay = () => {
           socket={socket}
         />
       )}
+
       {state === "cards" && (
         <Cards
           setState={setState}

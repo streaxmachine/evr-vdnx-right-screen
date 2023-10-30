@@ -54,7 +54,7 @@ const Preloader = ({ onLoaded }) => {
   useLoader(
     {
       extraModels: models,
-      extraImages: [],
+      extraImages: [...imagesCycleWay],
     },
     (loader) => {
       handleLoader(loader);

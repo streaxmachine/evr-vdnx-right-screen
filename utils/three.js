@@ -38,6 +38,17 @@ export function lerp(start, end, t) {
   return start + (end - start) * t;
 }
 
+export const clearScene = (scene) => {
+  scene.traverse((o) => {
+    if (o.geometry) {
+      o.geometry.dispose();
+      o.material.emissiveMap?.dispose();
+      o.material.dispose();
+    }
+  });
+  scene?.clear();
+};
+
 export const roundToStep = (num, step) => {
   return Math.round(num / step) * step;
 };

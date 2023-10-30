@@ -3,7 +3,6 @@ import * as THREE from "three";
 import { Html, Preload } from "@react-three/drei";
 import { useDrag } from "@use-gesture/react";
 import { animated, useSpring } from "@react-spring/three";
-import { useThree } from "@react-three/fiber";
 
 import useStore from "hooks/useStore";
 
@@ -30,21 +29,46 @@ const MakeTrain = ({
   let planeIntersectPoint = new THREE.Vector3();
   const vector = new THREE.Vector3(0, 0, 0);
 
-  const color = React.useMemo(() => {
-    return new THREE.MeshBasicMaterial({ color: "yellow" });
-  }, []);
+  const mainPartMaterial = React.useMemo(() => {
+    if (value === 1) {
+      return part.material;
+    }
+  }, [value]);
 
   React.useEffect(() => {
-    if (count >= 3 && value === 1) {
-      dragMeshRef.current.material = color;
-      setTimeout(() => {
-      dragMeshRef.current.material.wireframe = true;
-      }, 3500);
+    if (value === 1) {
+      dragMeshRef.current.material = new THREE.MeshStandardMaterial({
+        color: "gray",
+      });
+    }
+  }, [value]);
+
+  React.useEffect(() => {
+    if (count >= 3 && value === 1 && !isDone) {
+      dragMeshRef.current.material = mainPartMaterial;
+
+      const timeout = setTimeout(() => {
+        dragMeshRef.current.material.transparent = true;
+        dragMeshRef.current.material.opacity = 0.2;
+      }, 1500);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }
     if (count >= 3 && value === 2) {
       dragMeshRef.current.visible = false;
     }
-  }, [count]);
+  }, [count, isDone]);
+
+  React.useEffect(() => {
+    if (isDone) {
+      if (value === 1) {
+        dragMeshRef.current.material.opacity = 1;
+        dragMeshRef.current.material.transparent = false;
+      }
+    }
+  }, [isDone]);
 
   const dragMeshRef = useRef();
 
@@ -70,18 +94,20 @@ const MakeTrain = ({
             planeIntersectPoint.z,
           ]);
         }
-
         setIsDragging(active);
         let finalValue = pos;
         if (isdragable === false && !isRightPosition) {
+          rotation = [0, 0, 0];
           if (active === false) {
             if (value !== count) {
               setTouchedDetail(value);
               finalValue = [part.position.x, part.position.y, part.position.z];
-
               dragMeshRef.current.material = new THREE.MeshStandardMaterial({
                 color: "red",
               });
+              rotation = [part.rotation.x, part.rotation.y, part.rotation.z];
+
+              setPos([part.position.x, part.position.y, part.position.z]);
               setScenario({ type: "ivolga", place: "failDetail" });
 
               setTimeout(() => {
@@ -98,10 +124,18 @@ const MakeTrain = ({
               dragMeshRef.current.material = new THREE.MeshStandardMaterial({
                 color: "green",
               });
+
               setTimeout(() => {
-                dragMeshRef.current.material = part.material;
+                if (value !== 1) {
+                  dragMeshRef.current.material = part.material;
+                } else {
+                  dragMeshRef.current.material = new THREE.MeshStandardMaterial(
+                    { color: "gray" }
+                  );
+                }
                 // dragMeshRef.current.material. = true
               }, 1300);
+
               finalValue = [
                 finalData.position[0],
                 finalData.position[1],
@@ -117,11 +151,17 @@ const MakeTrain = ({
             finalValue = pos;
           }
         } else {
-          dragMeshRef.current.material = part.material;
+          rotation = [part.rotation.x, part.rotation.y, part.rotation.z];
+
+          if (value !== 1) {
+            dragMeshRef.current.material = part.material;
+          }
         }
 
         if (!active && !isRightPosition) {
           if (isdragable) {
+            setPos([part.position.x, part.position.y, part.position.z]);
+
             finalValue = [part.position.x, part.position.y, part.position.z];
             rotation = [part.rotation.x, part.rotation.y, part.rotation.z];
           }

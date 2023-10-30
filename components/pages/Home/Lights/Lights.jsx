@@ -1,4 +1,5 @@
 import React from "react";
+import * as THREE from "three";
 import {
   Environment,
   Lightformer,
@@ -7,7 +8,7 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 
-const Lights = ({ isDragging }) => {
+const Lights = ({ isDragging, isDone }) => {
   return (
     <>
       <pointLight
@@ -18,13 +19,30 @@ const Lights = ({ isDragging }) => {
         shadow-mapSize={[1024, 1024]}
       />
       <OrbitControls
-        // autoRotate={autoRotate}
+        autoRotate={isDone}
         enabled={!isDragging}
-        autoRotateSpeed={-0.1}
+        autoRotateSpeed={-0.7}
         zoomSpeed={0.25}
-        minZoom={30}
+        minZoom={23}
         maxZoom={140}
         enablePan={false}
+        touches={
+          !isDone
+            ? [null]
+            : {
+                ONE: THREE.TOUCH.ROTATE,
+                TWO: THREE.TOUCH.DOLLY_PAN,
+              }
+        }
+        mouseButtons={
+          !isDone
+            ? [null]
+            : {
+                LEFT: THREE.MOUSE.ROTATE,
+                MIDDLE: THREE.MOUSE.DOLLY,
+                RIGHT: THREE.MOUSE.PAN,
+              }
+        }
         dampingFactor={0.05}
         minPolarAngle={Math.PI / 3}
         maxPolarAngle={Math.PI / 3}
@@ -35,19 +53,19 @@ const Lights = ({ isDragging }) => {
           <Lightformer
             intensity={20}
             rotation-x={Math.PI / 2}
-            position={[0, 5, -9]}
+            position={[0, 5, 9]}
             scale={[10, 10, 1]}
           />
           <Lightformer
             intensity={2}
             rotation-y={Math.PI / 2}
-            position={[-5, 1, -1]}
+            position={[-2, 1, 1]}
             scale={[10, 2, 1]}
           />
           <Lightformer
             intensity={2}
             rotation-y={Math.PI / 2}
-            position={[-5, -1, -1]}
+            position={[-5, -1, 1]}
             scale={[10, 2, 1]}
           />
           <Lightformer
@@ -71,11 +89,6 @@ const Lights = ({ isDragging }) => {
       <mesh position-y={0} receiveShadow rotation-x={-Math.PI * 0.5}>
         <planeGeometry args={[400, 400]} />
         <meshStandardMaterial transparent={true} opacity={0.3} color="white" />
-      </mesh>
-
-      <mesh position-y={0.1} receiveShadow rotation-x={-Math.PI * 0.5}>
-        <planeGeometry args={[30, 5]} />
-        <meshStandardMaterial transparent={false} color="red" />
       </mesh>
     </>
   );

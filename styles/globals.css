@@ -4,7 +4,7 @@ body,
   padding: 0;
   margin: 0;
   font-size: 16rem;
-  color: var(--color-black);
+  /* color: var(--color-black); */
   position: relative;
   overflow: hidden;
 }
@@ -40,7 +40,7 @@ body {
   background: linear-gradient(
     110deg,
     rgba(0, 70, 154, 1),
-    rgba(183, 214, 251, 1)
+    rgba(183, 214, 251, 1) 
   );
   padding: 0;
   margin: 0;
@@ -93,12 +93,6 @@ a {
   top: auto !important;
   bottom: 0px !important;
   left: auto !important;
-}
-
-body {
-  background: black;
-
-  color: #fff;
 }
 
 .base-page-size {

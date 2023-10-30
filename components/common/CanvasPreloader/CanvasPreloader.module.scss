@@ -1,6 +1,8 @@
 .preloader {
   height: 100vh;
   width: 100vw;
+  // opacity: 0;
+ 
   position: fixed;
   background: linear-gradient(
     110deg,
@@ -15,12 +17,20 @@
   font-size: 50rem;
 }
 
+
+
 .wrapper {
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .textblock {

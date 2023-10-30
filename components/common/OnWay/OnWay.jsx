@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { locations } from "./locations";
 
 import s from "./OnWay.module.scss";
+import { number } from "yup";
 
 const OnWay = ({
   setState,
@@ -21,7 +22,7 @@ const OnWay = ({
   const item = locations.filter((item, id) => {
     return item.id === location;
   });
-
+  // console.log(item);
   React.useEffect(() => {
     setSpeed(0);
     setDistance(0);
@@ -29,6 +30,7 @@ const OnWay = ({
 
   React.useEffect(() => {
     setProgress(distanceSocket);
+
     if (Math.round(Number(progress)) === 100) {
       const timeout = setTimeout(() => {
         setState("lastStep");
@@ -69,14 +71,13 @@ const OnWay = ({
   });
 
   const roundedNumber = (number) => {
-    return  Math.round(number * 10) / 10
-  }
+    return Math.round(number * 10) / 10;
+  };
 
   return (
     <>
-
       <main ref={rootRef} className={s.root}>
-                 <div className={s.backgroundImg}>
+        <div className={s.backgroundImg}>
           <img src={item[0].url} alt="" />
         </div>
         <div className={s.rootWrapper}>
@@ -131,7 +132,9 @@ const OnWay = ({
             <div className={s.dataWrapper}>
               <div className={s.ccal}>
                 <p className={s.dataTitle}>Калории</p>
-                <p className={s.dataNumber}>{roundedNumber(distanceSocket * 0.1)}</p>
+                <p className={s.dataNumber}>
+                  {roundedNumber(distanceSocket * 0.1)}
+                </p>
                 <p className={s.dataMeasure}>ккал</p>
               </div>
               <div className={s.speed}>
@@ -141,8 +144,10 @@ const OnWay = ({
               </div>
               <div className={s.dist}>
                 <p className={s.dataTitle}>Расстояние</p>
-                <p className={s.dataNumber}>{roundedNumber(distanceSocket)}</p>
-                <p className={s.dataMeasure}>км</p>
+                <p className={s.dataNumber}>
+                  {roundedNumber((item[0].dist / 100) * Number(distanceSocket))}
+                </p>
+                <p className={s.dataMeasure}>м</p>
               </div>
             </div>
           </div>
@@ -248,12 +253,11 @@ const OnWay = ({
             </div>
           </div>
         </div>
-   
       </main>
     </>
   );
 };
-export default OnWay;
+export default React.memo(OnWay);
 
 const OnWayPointsWrapper = ({ points, distanceSocket }) => {
   return (
@@ -269,20 +273,14 @@ const Point = ({ point, distanceSocket }) => {
   const [showInfo, setShowInfo] = React.useState(false);
 
   React.useEffect(() => {
-    console.log("distanceSocket", distanceSocket);
-    if (Math.round(Number(distanceSocket))  === Number(point.percent)) {
+    if (Number(point.percent) <= distanceSocket) {
+      // if (distanceSocket <= Number(point.percent) + 1) {
       setShowInfo(true);
-
-      const timeout = setTimeout(() => {
-        setShowInfo(false);
-      }, 3500);
-
-      return (()=>
-      {
-        clearTimeout(timeout)
-      })
+      // }
+    } else {
+      setShowInfo(false);
     }
-  }, [distanceSocket, point]);
+  }, [point, distanceSocket]);
 
   return (
     <div>

@@ -7,6 +7,8 @@ import MakeTrain from "./Train";
 
 import { dataInfo } from "./dataInfo";
 
+import { clearScene } from "utils/three";
+
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
 }
@@ -20,7 +22,11 @@ const TrainContainer = ({
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  const train = useGLTF("/models/Ivolga_3.0_Test_3.glb");
+  const train = useGLTF("/models/Ivolga_3.0_v6.glb");
+
+  const floor = React.useMemo(() => {
+    return train.scene.getObjectByName("00");
+  }, [train]);
 
   const parts = React.useMemo(() => {
     const randomNubmers = ["11", "12", "13", "14", "15"];
@@ -59,12 +65,11 @@ const TrainContainer = ({
     return parts;
   }, [train]);
 
-  console.log(train);
-
   return (
     <>
       <color attach="background" args={["#f2f2f5"]} />
-      <Lights isDragging={isDragging} />
+      <Lights isDragging={isDragging} isDone={isDone} />
+      <mesh geometry={floor.geometry} material={floor.material} />
       {parts.map((part, index) => (
         <MakeTrain
           key={index}
