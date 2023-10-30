@@ -29,7 +29,7 @@ const OnWay = ({
 
   React.useEffect(() => {
     setProgress(distanceSocket);
-    if (Number(progress) === 100) {
+    if (Math.round(Number(progress)) === 100) {
       const timeout = setTimeout(() => {
         setState("lastStep");
       }, 1500);
@@ -74,7 +74,11 @@ const OnWay = ({
 
   return (
     <>
+
       <main ref={rootRef} className={s.root}>
+                 <div className={s.backgroundImg}>
+          <img src={item[0].url} alt="" />
+        </div>
         <div className={s.rootWrapper}>
           <button
             className={s.backBtn}
@@ -244,9 +248,7 @@ const OnWay = ({
             </div>
           </div>
         </div>
-        <div className={s.backgroundImg}>
-          <img src={item[0].url} alt="" />
-        </div>
+   
       </main>
     </>
   );
@@ -268,12 +270,17 @@ const Point = ({ point, distanceSocket }) => {
 
   React.useEffect(() => {
     console.log("distanceSocket", distanceSocket);
-    if (distanceSocket === point.percent) {
+    if (Math.round(Number(distanceSocket))  === Number(point.percent)) {
       setShowInfo(true);
 
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         setShowInfo(false);
       }, 3500);
+
+      return (()=>
+      {
+        clearTimeout(timeout)
+      })
     }
   }, [distanceSocket, point]);
 
@@ -286,8 +293,7 @@ const Point = ({ point, distanceSocket }) => {
       >
         {showInfo && (
           <div className={s.textWrapper}>
-            <div className={s.text}>{point.name}</div>
-            <div className={s.text}>{point.description}</div>
+            <img src={point.url} alt="" />
           </div>
         )}
         <div className={s.circle}></div>

@@ -13,13 +13,14 @@ import CanvasPreloader from "components/common/CanvasPreloader";
 import FakeAi from "components/common/FakeAi";
 
 import useStore from "hooks/useStore";
+import useScenarioTimer from "hooks/useScenarioTimer";
 
 import handAnimation from "./handAnimation.json";
 
 import { details } from "./details";
 
 import s from "./Home.module.scss";
-import useScenarioTimer from "hooks/useScenarioTimer";
+import Image from "next/image";
 
 const Home = () => {
   // useScenarioTimer("ivolga", "time5", 5);
@@ -96,12 +97,23 @@ const Home = () => {
 
         {isFirstTime && !isTimeEndGame && <StarterMessage />}
         {currentState !== "made-train" && !isTimeEndGame && (
-          <DetailsVisualization
-            currentNumber={count}
-            isDone={isDone}
-            isOutTime={isOutTime}
-            currentState={currentState}
-          />
+          <div className={s.detailsRoot}>
+            {!isOutTime && !isDone && (
+              <Image
+                className={s.base}
+                src="/images/ivolgaDetails/base_alpha.png"
+                width={330}
+                height={152}
+                alt=""
+              />
+            )}
+            <DetailsVisualization
+              currentNumber={count}
+              isDone={isDone}
+              isOutTime={isOutTime}
+              currentState={currentState}
+            />
+          </div>
         )}
         {touchedDetail !== 0 && (
           <DetailInfo detailNumber={touchedDetail} count={count} />
@@ -185,16 +197,16 @@ const StarterMessage = () => {
 };
 
 const detailsCounter = [
-  { name: 1, id: 1 },
-  { name: 2, id: 2 },
-  { name: 3, id: 3 },
-  { name: 4, id: 4 },
-  { name: 5, id: 5 },
-  { name: 6, id: 6 },
-  { name: 7, id: 7 },
-  { name: 8, id: 8 },
-  { name: 9, id: 9 },
-  { name: 10, id: 10 },
+  { name: 1, id: 1, imgUrl: "/images/ivolgaDetails/01W_alpha.png" },
+  { name: 2, id: 2, imgUrl: "/images/ivolgaDetails/02W_alpha.png" },
+  { name: 3, id: 3, imgUrl: "/images/ivolgaDetails/03W_alpha.png" },
+  { name: 4, id: 4, imgUrl: "/images/ivolgaDetails/04W_alpha.png" },
+  { name: 5, id: 5, imgUrl: "/images/ivolgaDetails/05W_alpha.png" },
+  { name: 6, id: 6, imgUrl: "/images/ivolgaDetails/06W_alpha.png" },
+  { name: 7, id: 7, imgUrl: "/images/ivolgaDetails/07W_alpha.png" },
+  { name: 8, id: 8, imgUrl: "/images/ivolgaDetails/08W_alpha.png" },
+  { name: 9, id: 9, imgUrl: "/images/ivolgaDetails/09W_alpha.png" },
+  { name: 10, id: 10, imgUrl: "/images/ivolgaDetails/10W_alpha.png" },
   // { name: 11, id: 11 },
   // { name: 12, id: 12 },
   // { name: 13, id: 13 },
@@ -217,31 +229,51 @@ const DetailsVisualization = ({ currentNumber, isDone, isOutTime }) => {
     }
   }, [isDone]);
   return (
-    <div className={s.detailsRoot}>
+    <>
       {currentState !== "made-train" && (
         <>
           {detailsCounter.map((item) => {
             return (
-              <div
-                className={clsx(s.imgsWrapper, {
-                  [s.current]: item.id === currentNumber,
-                  [s.done]: isDone,
-                  [s.timeFail]: isOutTime,
-                })}
-                key={item.id}
-              >
-                {item.name}
-              </div>
+              <>
+                {item.id === currentNumber && !isOutTime && (
+                  <>
+                    <div className={s.imgWrapper}>
+                      <Image
+                        src={item.imgUrl}
+                        width={330}
+                        height={152}
+                        alt=""
+                      />
+                    </div>
+                  </>
+                )}
+              </>
             );
           })}
         </>
+      )}
+      {isDone && currentState !== "made-train" && (
+        <div className={s.finalImgWrapper}>
+          <img
+            className={clsx(s.finalImg, s.opacityAnim)}
+            src="/images/ivolgaDetails/FullGreen.png"
+          ></img>
+        </div>
+      )}
+      {isOutTime && (
+        <div className={s.finalImgWrapper}>
+          <img
+            className={clsx(s.finalImg, s.opacityAnim)}
+            src="/images/ivolgaDetails/FullRed.png"
+          ></img>
+        </div>
       )}
       {currentState === "made-train" && (
         <div className={s.finalImgWrapper}>
           <img className={s.finalImg} src="/images/train/finalTrain.png"></img>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

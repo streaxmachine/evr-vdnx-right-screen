@@ -45,10 +45,6 @@ const CycleWay = () => {
     }
   }, [isOutTime]);
 
-  React.useEffect(() => {
-    console.log(isFree);
-  }, [isFree]);
-
   const handleMakeBusy = React.useCallback(() => {
     if (isConnected) {
       socket.send(

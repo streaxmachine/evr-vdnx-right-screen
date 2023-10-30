@@ -6,26 +6,29 @@ export const locations = [
     hdri: "/images/hdri/cloudy_vondelpark_1k.hdr",
     points: [
       {
-        percent: "20",
-        name: "Fact name",
-        description: "Fact description",
+        percent: '1',
+        url: '/images/wayCheckPoints/card.jpg',
       },
       {
-        percent: "30",
-        name: "Fact name",
-        description: "Fact description",
+        percent: '4',
+        url: '/images/wayCheckPoints/card.jpg',
       },
 
       {
-        percent: "50",
-        name: "Fact name",
-        description: "Fact description",
+        percent: '8',
+        url: '/images/wayCheckPoints/card.jpg',
       },
-
       {
-        percent: "80",
-        name: "Fact name",
-        description: "Fact description",
+        percent: '41',
+        url: '/images/wayCheckPoints/card.jpg',
+      },
+      {
+        percent: '57',
+        url: '/images/wayCheckPoints/card.jpg',
+      },
+      {
+        percent: '72',
+        url: '/images/wayCheckPoints/card.jpg',
       },
     ],
   },
@@ -36,26 +39,12 @@ export const locations = [
     hdri: "/images/hdri/lythwood_terrace_1k.hdr",
     points: [
       {
-        percent: "10",
-        name: "Fact name",
-        description: "Fact description",
+        percent: '3',
+        url: '/images/wayCheckPoints/card.jpg',
       },
       {
-        percent: "20",
-        name: "Fact name",
-        description: "Fact description",
-      },
-
-      {
-        percent: "30",
-        name: "Fact name",
-        description: "Fact description",
-      },
-
-      {
-        percent: "50",
-        name: "Fact name",
-        description: "Fact description",
+        percent: '51',
+        url: '/images/wayCheckPoints/card.jpg',
       },
     ],
   },
@@ -66,26 +55,16 @@ export const locations = [
     hdri: "/images/hdri/meadow_1k.hdr",
     points: [
       {
-        percent: "60",
-        name: "Fact name",
-        description: "Fact description",
+        percent: '17',
+        url: '/images/wayCheckPoints/card.jpg',
       },
       {
-        percent: "60",
-        name: "Fact name",
-        description: "Fact description",
+        percent: '38',
+        url: '/images/wayCheckPoints/card.jpg',
       },
-
       {
-        percent: "70",
-        name: "Fact name",
-        description: "Fact description",
-      },
-
-      {
-        percent: "90",
-        name: "Fact name",
-        description: "Fact description",
+        percent: '90',
+        url: '/images/wayCheckPoints/card.jpg',
       },
     ],
   },

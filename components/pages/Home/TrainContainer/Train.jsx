@@ -37,7 +37,9 @@ const MakeTrain = ({
   React.useEffect(() => {
     if (count >= 3 && value === 1) {
       dragMeshRef.current.material = color;
+      setTimeout(() => {
       dragMeshRef.current.material.wireframe = true;
+      }, 3500);
     }
     if (count >= 3 && value === 2) {
       dragMeshRef.current.visible = false;
