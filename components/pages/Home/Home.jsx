@@ -5,6 +5,7 @@ import { Html, Preload, useProgress } from "@react-three/drei";
 import Link from "next/link";
 import gsap from "gsap";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import Lottie from "lottie-react";
 
 import TrainContainer from "./TrainContainer/TrainContainer";
@@ -20,7 +21,6 @@ import handAnimation from "./handAnimation.json";
 import { details } from "./details";
 
 import s from "./Home.module.scss";
-import Image from "next/image";
 
 const Home = () => {
   // useScenarioTimer("ivolga", "time5", 5);

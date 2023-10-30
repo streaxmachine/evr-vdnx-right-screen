@@ -1,15 +1,22 @@
 import React from "react";
 import { useProgress } from "@react-three/drei";
 
-import s from "./CanvasPreloader.module.scss";
-import { setRequestMeta } from "next/dist/server/request-meta";
+import useImagePreloader from "hooks/useImagesPreloader";
 
+import s from "./CanvasPreloader.module.scss";
+const images = [
+  // "/images/ivolgaDetails/01W_alpha.png",
+  "/images/ivolgaDetails/FullGreen.png",
+];
 let fakeProgress = 0;
 const CanvasPreloader = () => {
   const { progress } = useProgress();
   const [isPreloader, setPreloader] = React.useState(true);
   const [fakeProgress, setFakeProgress] = React.useState(0);
   const [preloaderProgress, setPreloaderProgress] = React.useState(0);
+
+  const { imagesPreloaded } = useImagePreloader([images]);
+  console.log(imagesPreloaded);
 
   React.useEffect(() => {
     if (fakeProgress !== 50) {
