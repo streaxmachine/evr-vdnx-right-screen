@@ -77,7 +77,12 @@ const CycleWay = () => {
 
   return (
     <>
-      {!isFree && <div className={s.busy}>Экран пока не доступен</div>}
+      {!isFree && (
+        <>
+          <div className={s.busy}>Экран пока недоступен</div>{" "}
+          <div className={s.clouds}></div>
+        </>
+      )}
       {state === "hero" && (
         <Hero
           setState={setState}

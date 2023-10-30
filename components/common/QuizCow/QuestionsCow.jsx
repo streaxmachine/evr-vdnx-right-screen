@@ -65,15 +65,15 @@ const QuestionsCow = React.memo(
         setScenario({ type: "quiz", place: "asking" });
       }, 300);
 
-      socket.send(
-        JSON.stringify({
-          installation: "right",
-          type: "puzzle",
-          data: `question_${questionNumber}`,
-          state: null,
-          id: Number(currentQuestion.id),
-        })
-      );
+      // socket.send(
+      //   JSON.stringify({
+      //     installation: "right",
+      //     type: "puzzle",
+      //     data: `question_${questionNumber}`,
+      //     state: null,
+      //     id: Number(currentQuestion.id),
+      //   })
+      // );
 
       return () => {
         clearTimeout(timeout);
@@ -102,15 +102,15 @@ const QuestionsCow = React.memo(
       event.stopPropagation();
       sucessNumber.value += 1;
 
-      socket.send(
-        JSON.stringify({
-          installation: "right",
-          type: "puzzle",
-          data: `question_${questionNumber}`,
-          state: question.isCorrect,
-          variant: index,
-        })
-      );
+      // socket.send(
+      //   JSON.stringify({
+      //     installation: "right",
+      //     type: "puzzle",
+      //     data: `question_${questionNumber}`,
+      //     state: question.isCorrect,
+      //     variant: index,
+      //   })
+      // );
 
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
         setScenario({ type: "quiz", place: "falseSecondTry" });
@@ -119,21 +119,21 @@ const QuestionsCow = React.memo(
         setIsClickable(false);
         audioRef.current.play();
 
-        currentQuestion.answerOptions.forEach((answer, questionIndex) => {
-          if (answer.isCorrect) {
-            setTimeout(() => {
-              socket.send(
-                JSON.stringify({
-                  installation: "right",
-                  type: "puzzle",
-                  data: `question_${questionNumber}`,
-                  state: answer.isCorrect,
-                  variant: questionIndex,
-                })
-              );
-            }, 300);
-          }
-        });
+        // currentQuestion.answerOptions.forEach((answer, questionIndex) => {
+        //   if (answer.isCorrect) {
+        //     setTimeout(() => {
+        //       socket.send(
+        //         JSON.stringify({
+        //           installation: "right",
+        //           type: "puzzle",
+        //           data: `question_${questionNumber}`,
+        //           state: answer.isCorrect,
+        //           variant: questionIndex,
+        //         })
+        //       );
+        //     }, 300);
+        //   }
+        // });
 
         setTimeout(() => {
           setIsClickable(true);
