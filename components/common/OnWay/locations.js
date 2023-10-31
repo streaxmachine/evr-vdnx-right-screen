@@ -3,7 +3,7 @@ export const locations = [
     id: "1",
     end: "Тверской императорский дворец",
     dist: 565,
-    url: "/images/onway/original.jpg",
+    url: "/images/onway/original.png",
     hdri: "/images/hdri/cloudy_vondelpark_1k.hdr",
     points: [
       {
@@ -37,7 +37,7 @@ export const locations = [
     id: "2",
     end: "Мультимедийный исторический парк «Россия-моя история»",
     dist: 624,
-    url: "/images/onway/facts/tverskoy.png",
+    url: "/images/onway/museum.png",
     hdri: "/images/hdri/lythwood_terrace_1k.hdr",
     points: [
       {
@@ -54,7 +54,7 @@ export const locations = [
     id: "3",
     end: "Ржевский мемориал Советскому солдату",
     dist: 272,
-    url: "/images/onway/facts/pushkin.png",
+    url: "/images/onway/rzhev.png",
     hdri: "/images/hdri/meadow_1k.hdr",
     points: [
       {
