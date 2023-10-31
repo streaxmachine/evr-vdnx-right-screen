@@ -63,27 +63,44 @@ export default QuizCards;
 
 function Card({ setGlobalState, card, socket, setScenario }) {
   // const [isClicked, setIsClicked] = useState(false);
+  const isThirdCard = card.cardGlobalState === "5";
+
+  const handleClick = () => {
+    setScenario({ type: "menu", place: "chooseGame" });
+    setGlobalState(card.cardGlobalState);
+    // setIsClicked(!isClicked);
+    // setGlobalState(card.cardGlobalState)};
+
+    if (!isThirdCard) {
+      socket.send(JSON.stringify(card.info));
+    }
+  };
 
   return (
-    <div
-      className={`${s.card} ${s.clickedCard}`}
-      onClick={() => {
-        setScenario({ type: "menu", place: "chooseGame" });
-        // setIsClicked(!isClicked);
-        // setGlobalState(card.cardGlobalState)};
-        setGlobalState(card.cardGlobalState);
-        socket.send(JSON.stringify(card.info));
-      }}
-    >
-      <>
-        <div className={s.cardTextBlock}>
-          <p className={s.cardpreTitle}>{card.preTitle}</p>
-          <h4  className={s.cardTitle}>{card.title}</h4>
-          <p className={s.cardText}>{card.text}</p>
-        </div>
-        <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
-        <img className={s.cardZigZag} src={card.zigZagSrc} />
-      </>
+    <div className={`${s.card} ${s.clickedCard}`} onClick={handleClick}>
+      {isThirdCard ? (
+        <Link href={"/quiz/"}>
+          <>
+            <div className={s.cardTextBlock}>
+              <p className={s.cardpreTitle}>{card.preTitle}</p>
+              <h4 className={s.cardTitle}>{card.title}</h4>
+              <p className={s.cardText}>{card.text}</p>
+            </div>
+            <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
+            <img className={s.cardZigZag} src={card.zigZagSrc} />
+          </>
+        </Link>
+      ) : (
+        <>
+          <div className={s.cardTextBlock}>
+            <p className={s.cardpreTitle}>{card.preTitle}</p>
+            <h4 className={s.cardTitle}>{card.title}</h4>
+            <p className={s.cardText}>{card.text}</p>
+          </div>
+          <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
+          <img className={s.cardZigZag} src={card.zigZagSrc} />
+        </>
+      )}
     </div>
   );
 }
