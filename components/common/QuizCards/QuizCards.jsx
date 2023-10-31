@@ -79,7 +79,7 @@ function Card({ setGlobalState, card, socket, setScenario }) {
   return (
     <div className={`${s.card} ${s.clickedCard}`} onClick={handleClick}>
       {isThirdCard ? (
-        <Link href={"/quiz"}>
+        <Link href={"/quiz/"}>
           <>
             <div className={s.cardTextBlock}>
               <p className={s.cardpreTitle}>{card.preTitle}</p>

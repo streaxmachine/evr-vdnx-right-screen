@@ -23,8 +23,8 @@ const LastStep = ({ setState, socket, setisBack, location, setFree }) => {
   const [randomSpeed] = useState(generateRandomSpeed());
 
   const generateRandomcalories = () => {
-    const min = 5000;
-    const max = 13000;
+    const min = 2500;
+    const max = 5000;
     const randomNum = (Math.floor(Math.random() * (max - min + 1)) + min) / 100;
     return randomNum;
   };
@@ -139,8 +139,8 @@ const LastStep = ({ setState, socket, setisBack, location, setFree }) => {
                 </div>
                 <div className={s.dist}>
                   <p className={s.dataTitle}>Расстояние</p>
-                  <p className={s.dataNumber}>{100}</p>
-                  <p className={s.dataMeasure}>км</p>
+                  <p className={s.dataNumber}>{currentLocation[0].dist}</p>
+                  <p className={s.dataMeasure}>м</p>
                 </div>
                 <div className={s.ccal}>
                   <p className={s.dataTitle}>Калории</p>
