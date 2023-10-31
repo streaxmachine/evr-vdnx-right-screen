@@ -24,8 +24,6 @@
   gap: 280rem;
 }
 
-
-
 .backMenu {
   width: 279rem;
   height: 48rem;
@@ -41,17 +39,16 @@
   align-items: center;
   gap: 20rem;
 }
+
 .backText {
   z-index: 1;
   font-weight: 400;
   font-size: 22rem;
-  // line-height: 30rem;
 }
 
 .right {
   width: 66%;
   height: 100%;
-  // background-image: url("/images/QuizCowRules/cow.png");
   background-color: white;
   color: var(--light-blue);
   background-size: cover;
@@ -60,10 +57,10 @@
 
 .cowIMG{
   position: absolute;
-  position: absolute;
-  bottom: 0;
+  bottom: 102rem;
   opacity: 0.2;
-  right: -178rem;
+  right: -59rem;
+  width: 433rem;
 }
 
 .rightDone {
@@ -77,6 +74,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgba(69, 153, 255, 0.1);
 }
 
 .category {
@@ -94,6 +92,7 @@
   margin-top: 20rem;
   font-size: 46rem;
   line-height: 50rem;
+  font-weight: 500;
   width: 972rem;
   color: black;
   max-width: 100%;

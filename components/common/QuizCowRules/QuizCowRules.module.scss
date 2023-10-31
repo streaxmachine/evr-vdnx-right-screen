@@ -49,6 +49,8 @@
   gap: 42rem;
   display: flex;
   flex-direction: column;
+  margin-top: 42rem;
+  width: 700rem;
 }
 
 .title {
@@ -85,8 +87,10 @@
 }
 
 .cowIMG {
-  width: 600rem;
-  padding-top: 60rem;
+  right: 70rem;
+  width: 700rem;
+  padding-top: 68rem;
+  position: absolute;
 }
 
 .clouds {

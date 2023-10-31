@@ -455,3 +455,18 @@
   width: 125rem;
   position: absolute;
 }
+
+
+//FAkeAI
+.aiChat {
+  position: absolute;
+  bottom: 0rem;
+  z-index: 1000;
+  width: 200rem;
+  height: 200rem;
+  background-image: url("/images/aiChat.gif");
+  background-size: 100%;
+  margin-top: 20rem;
+  right: 0;
+  mix-blend-mode: multiply;
+}
