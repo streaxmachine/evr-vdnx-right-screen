@@ -16,7 +16,6 @@ import useStore from "hooks/useStore";
 import s from "./QuizNew.module.scss";
 import FakeAi from "components/common/FakeAi";
 
-
 const QuizNew = () => {
   const socket = useSocket();
   const { isLoaded } = useStore();
