@@ -22,7 +22,7 @@ const TrainContainer = ({
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  const train = useGLTF("/models/Ivolga_3.0_v9.glb");
+  const train = useGLTF("/models/Ivolga_3.0_v12.glb");
 
   const floor = React.useMemo(() => {
     return train.scene.getObjectByName("00");
@@ -57,10 +57,10 @@ const TrainContainer = ({
       { object: part7}, //prettier-ignore
       { object: part8}, //prettier-ignore
       { object: part9}, //prettier-ignore
-      { object: part10} //prettier-ignore
-      // { object: part11}, //prettier-ignore
-      // { object: part12}, //prettier-ignore
-      // { object: part13} //prettier-ignore
+      { object: part10}, //prettier-ignore
+      { object: part11}, //prettier-ignore
+      { object: part12}, //prettier-ignore
+      { object: part13} //prettier-ignore
     );
     return parts;
   }, [train]);
