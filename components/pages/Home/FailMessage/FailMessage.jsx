@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import s from "../Home.module.scss";
 
