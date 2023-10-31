@@ -22,7 +22,7 @@ const TrainContainer = ({
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  const train = useGLTF("/models/Ivolga_3.0_v6.glb");
+  const train = useGLTF("/models/Ivolga_3.0_v9.glb");
 
   const floor = React.useMemo(() => {
     return train.scene.getObjectByName("00");

@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  async rewrites() {
+    return [
+      {
+        source: "/quiz",
+        destination: "/quiz/index.html",
+      },
+    ];
+  },
   async headers() {
     return [
       {
