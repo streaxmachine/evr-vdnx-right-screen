@@ -63,6 +63,7 @@ export default QuizCards;
 
 function Card({ setGlobalState, card, socket, setScenario }) {
   // const [isClicked, setIsClicked] = useState(false);
+
   return (
     <div
       className={`${s.card} ${s.clickedCard}`}
@@ -77,7 +78,7 @@ function Card({ setGlobalState, card, socket, setScenario }) {
       <>
         <div className={s.cardTextBlock}>
           <p className={s.cardpreTitle}>{card.preTitle}</p>
-          <h4 className={s.cardTitle}>{card.title}</h4>
+          <h4  className={s.cardTitle}>{card.title}</h4>
           <p className={s.cardText}>{card.text}</p>
         </div>
         <img className={s.cardPic} src={card.picSrc} alt={card.alt} />

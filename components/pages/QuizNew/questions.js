@@ -5,6 +5,7 @@ export const questionsVolga = [
     questionText: "У какой деревни располагается исток Волги?",
     isLong: false,
     isImg: false,
+    symbols: 42,
     answerOptions: [
       { answerText: "Селижаровка", isBigBtn: false, isCorrect: false },
       { answerText: "Волговерховье", isBigBtn: false, isCorrect: true },
@@ -17,6 +18,7 @@ export const questionsVolga = [
     questionText: "Какая особо ценная порода рыб обитает в реке Волга?",
     isLong: false,
     isImg: false,
+    symbols: 52,
     answerOptions: [
       { answerText: "Стерлядь", isBigBtn: false, isCorrect: false },
       { answerText: "Лосось", isBigBtn: false, isCorrect: false },
@@ -29,6 +31,7 @@ export const questionsVolga = [
     questionText: "Какой город Тверской области не стоит на берегу Волги?",
     isLong: false,
     isImg: false,
+    symbols: 55,
     answerOptions: [
       { answerText: "Ржев", isBigBtn: false, isCorrect: false },
       { answerText: "Старица", isBigBtn: false, isCorrect: false },
@@ -42,6 +45,7 @@ export const questionsVolga = [
       "Иваньковское водохранилище, расположенное на Волге, снабжает водой этот город-миллионник:",
     isLong: false,
     isImg: false,
+    symbols: 89,
     answerOptions: [
       { answerText: "Москва", isBigBtn: false, isCorrect: true },
       { answerText: "Нижний Новгород", isBigBtn: false, isCorrect: false },
@@ -54,6 +58,7 @@ export const questionsVolga = [
     questionText: "Какой город является родиной русской балалайки?",
     isLong: false,
     isImg: false,
+    symbols: 48,
     answerOptions: [
       { answerText: "Зубцов", isBigBtn: false, isCorrect: false },
       { answerText: "Тверь", isBigBtn: false, isCorrect: false },
@@ -66,6 +71,7 @@ export const questionsVolga = [
     questionText: "Какой город является сапожной столицей России?",
     isLong: false,
     isImg: false,
+    symbols: 47,
     answerOptions: [
       { answerText: "Кимры", isBigBtn: false, isCorrect: true },
       { answerText: "Тверь", isBigBtn: false, isCorrect: false },
@@ -78,6 +84,7 @@ export const questionsVolga = [
     questionText: "Родиной российского сыроворения является?",
     isLong: false,
     isImg: false,
+    symbols: 42,
     answerOptions: [
       { answerText: "Удомля", isBigBtn: false, isCorrect: false },
       { answerText: "Конаково", isBigBtn: false, isCorrect: true },
@@ -90,6 +97,7 @@ export const questionsVolga = [
     questionText: "Как в древности назывался город Торопец?",
     isLong: false,
     isImg: false,
+    symbols: 41,
     answerOptions: [
       { answerText: "Кривит", isBigBtn: false, isCorrect: true },
       { answerText: "Торопец", isBigBtn: false, isCorrect: false },
@@ -102,6 +110,7 @@ export const questionsVolga = [
     questionText: "Какая из действующих церквей Твери самая древняя?",
     isLong: false,
     isImg: false,
+    symbols: 49,
     answerOptions: [
       { answerText: "Собор Белая Троица", isBigBtn: true, isCorrect: true },
       {
@@ -122,6 +131,7 @@ export const questionsVolga = [
     questionText: "Как называлась улица Советская в Твери с 1763 по 1919 годы?",
     isLong: false,
     isImg: false,
+    symbols: 60,
     answerOptions: [
       { answerText: "Миллионная", isBigBtn: false, isCorrect: true },
       { answerText: "Серебряная", isBigBtn: false, isCorrect: false },
@@ -135,6 +145,7 @@ export const questionsVolga = [
       "Две трети территории Тверской области являются бассейном какой реки?",
     isLong: false,
     isImg: false,
+    symbols: 69,
     answerOptions: [
       { answerText: "Волги", isBigBtn: false, isCorrect: true },
       { answerText: "Тверцы", isBigBtn: false, isCorrect: false },
@@ -148,6 +159,7 @@ export const questionsVolga = [
       "Какие населённые пункты не входят в «Пушкинское кольцо Верхневолжья»?",
     isLong: false,
     isImg: false,
+    symbols: 70,
     answerOptions: [
       { answerText: "Старица", isBigBtn: false, isCorrect: false },
       { answerText: "Осташков", isBigBtn: false, isCorrect: true },
@@ -160,6 +172,7 @@ export const questionsVolga = [
     questionText: "Самое большое озеро Тверской области?",
     isLong: false,
     isImg: false,
+    symbols: 37,
     answerOptions: [
       { answerText: "Селигер", isBigBtn: false, isCorrect: true },
       { answerText: "Волго", isBigBtn: false, isCorrect: false },
@@ -173,6 +186,7 @@ export const questionsVolga = [
       "Где в Тверском регионе проводятся ежегодные пушкинские праздники поэзии?",
     isLong: false,
     isImg: false,
+    symbols: 72,
     answerOptions: [
       { answerText: "Тверь", isBigBtn: false, isCorrect: false },
       { answerText: "Берново", isBigBtn: false, isCorrect: true },
@@ -186,6 +200,7 @@ export const questionsVolga = [
       "Какой город в Тверской области имеет статус «Литературный город России»?",
     isLong: false,
     isImg: false,
+    symbols: 73,
     answerOptions: [
       { answerText: "Тверь", isBigBtn: false, isCorrect: false },
       { answerText: "Бежецк", isBigBtn: false, isCorrect: true },
@@ -195,9 +210,11 @@ export const questionsVolga = [
   {
     id: "16",
     questionCategory: "Тверская область в деталях",
-    questionText: "Какое название носил город Тверь с 1931 по 1990-е гг.?",
+    questionText:
+      "Какое название носил город Тверь\n" + "с 1931 по 1990-е гг.?",
     isLong: false,
     isImg: false,
+    symbols: 54,
     answerOptions: [
       { answerText: "Калинин", isBigBtn: false, isCorrect: true },
       { answerText: "Куйбышев", isBigBtn: false, isCorrect: false },
@@ -211,6 +228,7 @@ export const questionsVolga = [
       "Город в Тверской области, который называют маленькой Венецией?",
     isLong: false,
     isImg: false,
+    symbols: 63,
     answerOptions: [
       { answerText: "Вышний Волочек", isBigBtn: false, isCorrect: true },
       { answerText: "Осташков", isBigBtn: false, isCorrect: false },
@@ -223,6 +241,7 @@ export const questionsVolga = [
     questionText: "Какая река берёт начало в Тверской области?   ",
     isLong: false,
     isImg: false,
+    symbols: 43,
     answerOptions: [
       { answerText: "Волга", isBigBtn: false, isCorrect: true },
       { answerText: "Северная Двина", isBigBtn: false, isCorrect: false },
@@ -236,14 +255,15 @@ export const questionsStars = [
     id: "19",
     questionCategory: "Звезды в Твери",
     questionText:
-      "По реке Волге этот известный путешественник добрался до берегов  Каспийского моря, Персии и Индии, а затем вернулся обратно?",
+      "По реке Волге этот известный путешественник добрался до берегов Каспийского моря, Персии и Индии, а затем вернулся обратно?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/19.jpg",
+    symbols: 124,
     answerOptions: [
-      { answerText: "Никитин", isBigBtn: false, isCorrect: true },
-      { answerText: "Прохоров", isBigBtn: false, isCorrect: false },
-      { answerText: "Чижов", isBigBtn: false, isCorrect: false },
+      { answerText: "А.Н. Никитин", isBigBtn: false, isCorrect: true },
+      { answerText: "Л.А. Прохоров", isBigBtn: false, isCorrect: false },
+      { answerText: "Ф.В. Чижов", isBigBtn: false, isCorrect: false },
     ],
   },
   {
@@ -253,6 +273,7 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/20.jpg",
+    symbols: 51,
     answerOptions: [
       { answerText: "30", isBigBtn: false, isCorrect: false },
       { answerText: "50", isBigBtn: false, isCorrect: false },
@@ -266,6 +287,7 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/21.png",
+    symbols: 31,
     answerOptions: [
       { answerText: "Старик", isBigBtn: false, isCorrect: false },
       { answerText: "Пожилая женщина", isBigBtn: false, isCorrect: true },
@@ -276,10 +298,11 @@ export const questionsStars = [
     id: "22",
     questionCategory: "Звезды в Твери",
     questionText:
-      "'Тверь - самый хорошенький город после Петербурга...'. Кому принадлежат эти слова?",
+      "«Тверь - самый хорошенький город после Петербурга...». Кому принадлежат эти слова?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/22.png",
+    symbols: 82,
     answerOptions: [
       { answerText: "А.С. Пушкину", isBigBtn: false, isCorrect: false },
       { answerText: "Екатерине II", isBigBtn: false, isCorrect: true },
@@ -290,10 +313,11 @@ export const questionsStars = [
     id: "23",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Этот архитектор участвовал в создании нового облика Твери после пожара 1763 года и спроектировал Императорский путевой дворец",
+      "Этот архитектор участвовал в создании нового облика Твери после пожара 1763 года и спроектировал Императорский путевой дворец.",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/23.jpg",
+    symbols: 125,
     answerOptions: [
       { answerText: "К.И. Росси", isBigBtn: false, isCorrect: false },
       { answerText: "М.Ф. Казаков", isBigBtn: false, isCorrect: false },
@@ -312,6 +336,7 @@ export const questionsStars = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/24.jpg",
+    symbols: 141,
     answerOptions: [
       { answerText: "Ф.М. Достоевский", isBigBtn: false, isCorrect: false },
       { answerText: "И.А. Крылов", isBigBtn: false, isCorrect: false },
@@ -326,8 +351,9 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/25.jpg",
+    symbols: 75,
     answerOptions: [
-      { answerText: "Н.А.Некрасов", isBigBtn: false, isCorrect: false },
+      { answerText: "Н.А. Некрасов", isBigBtn: false, isCorrect: false },
       { answerText: "Ф.М. Достоевский", isBigBtn: false, isCorrect: false },
       { answerText: "М.Е. Салтыков-Щедрин", isBigBtn: false, isCorrect: true },
     ],
@@ -339,6 +365,7 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/26.png",
+    symbols: 29,
     answerOptions: [
       { answerText: "Памятника Рыбаку", isBigBtn: false, isCorrect: false },
       { answerText: "Памятника Козлу", isBigBtn: false, isCorrect: true },
@@ -358,6 +385,7 @@ export const questionsStars = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/27.jpg",
+    symbols: 223,
     answerOptions: [
       { answerText: "Онегиных", isBigBtn: false, isCorrect: false },
       { answerText: "Пожарских", isBigBtn: false, isCorrect: true },
@@ -371,9 +399,10 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/28.jpg",
+    symbols: 34,
     answerOptions: [
-      { answerText: "Витуса Беринга", isBigBtn: false, isCorrect: false },
-      { answerText: "Афанасия Никитина", isBigBtn: false, isCorrect: true },
+      { answerText: "В.Й.  Беринга", isBigBtn: false, isCorrect: false },
+      { answerText: "А.Н. Никитина", isBigBtn: false, isCorrect: true },
       { answerText: "Николая Японского", isBigBtn: false, isCorrect: false },
     ],
   },
@@ -385,6 +414,7 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/29.jpg",
+    symbols: 81,
     answerOptions: [
       {
         answerText: "Санкт-Петербург, Рим, Версаль",
@@ -407,6 +437,7 @@ export const questionsStars = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/30.jpg",
+    symbols: 220,
     answerOptions: [
       { answerText: "Ржев", isBigBtn: false, isCorrect: true },
       { answerText: "Туд", isBigBtn: false, isCorrect: false },
@@ -421,10 +452,11 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/31.jpg",
+    symbols: 93,
     answerOptions: [
-      { answerText: "Андрей Дементьев", isBigBtn: false, isCorrect: true },
-      { answerText: "Андрей Вознесенский", isBigBtn: false, isCorrect: false },
-      { answerText: "Евгений Евтушенко", isBigBtn: false, isCorrect: false },
+      { answerText: "А.Д. Дементьев", isBigBtn: false, isCorrect: true },
+      { answerText: "А.А. Вознесенский", isBigBtn: false, isCorrect: false },
+      { answerText: "Е.А. Евтушенко", isBigBtn: false, isCorrect: false },
     ],
   },
   {
@@ -435,19 +467,20 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/32.jpg",
+    symbols: 63,
     answerOptions: [
       {
-        answerText: "Сергей Яковлевич Лемешев",
+        answerText: "С.Я. Лемешев",
         isBigBtn: false,
         isCorrect: true,
       },
       {
-        answerText: "Леонид Витальевич Собинов",
+        answerText: "Л.В. Собинов",
         isBigBtn: false,
         isCorrect: false,
       },
       {
-        answerText: "Иван Семёнович Козловский ",
+        answerText: "И.С. Козловский ",
         isBigBtn: false,
         isCorrect: false,
       },
@@ -457,10 +490,11 @@ export const questionsStars = [
     id: "33",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Какой даме, похороненной на погосте Прутня,  посвятил А. С. Пушкин стихотворение известное по первой строчке «Я помню чудное мгновенье…»?",
-    isLong: true,
+      "Какой даме, похороненной на погосте Прутня, посвятил А.С.Пушкин стихотворение известное по первой строчке «Я помню чудное мгновенье…»?",
+    isLong: false,
     isImg: true,
     imgUrl: "/images/stars/33.jpg",
+    symbols: 137,
     answerOptions: [
       { answerText: "Анне Керн", isBigBtn: false, isCorrect: true },
       { answerText: "Екатерине Вельяшевой", isBigBtn: false, isCorrect: false },
@@ -475,19 +509,20 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/34.jpg",
+    symbols: 119,
     answerOptions: [
       {
-        answerText: "Николай Михайлович Пржевальский",
+        answerText: "Н.М. Пржевальский",
         isBigBtn: false,
         isCorrect: true,
       },
       {
-        answerText: "Михаил Сергеевич Бабушкин",
+        answerText: "М.С. Бабушкин",
         isBigBtn: false,
         isCorrect: false,
       },
       {
-        answerText: "Михаил Петрович Лазарев",
+        answerText: "М.П. Лазарев",
         isBigBtn: false,
         isCorrect: false,
       },
@@ -506,6 +541,7 @@ export const questionsStars = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/35.png",
+    symbols: 200,
     answerOptions: [
       { answerText: "Марина Цветаева", isBigBtn: false, isCorrect: false },
       { answerText: "Анна Ахматова", isBigBtn: false, isCorrect: true },
@@ -516,10 +552,11 @@ export const questionsStars = [
     id: "36",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Композитор (автор гимна России и «Священной войны»), музыкальный педагог и  дирижёр  Александр Васильевич Александров несколько лет прожил в Твери, где работал",
+      "Композитор (автор гимна России и «Священной войны»), музыкальный педагог и дирижёр Александр Васильевич Александров несколько лет прожил в Твери, где работал...",
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/36.jpg",
+    symbols: 159,
     answerOptions: [
       {
         answerText: "Регентом архиерейского хора",
@@ -542,6 +579,7 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/37.jpg",
+    symbols: 77,
     answerOptions: [
       { answerText: "«Ручной дорожник»", isBigBtn: true, isCorrect: false },
       { answerText: "«Хожение за три моря»", isBigBtn: true, isCorrect: true },
@@ -559,6 +597,7 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/38.jpg",
+    symbols: 41,
     answerOptions: [
       { answerText: "Михаила Тверского", isBigBtn: false, isCorrect: true },
       { answerText: "Нила Столобенского", isBigBtn: false, isCorrect: false },
@@ -573,10 +612,11 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/39.jpg",
+    symbols: 126,
     answerOptions: [
-      { answerText: "Вячеслав Кондратьев", isBigBtn: false, isCorrect: false },
-      { answerText: "Илья Эринбург", isBigBtn: false, isCorrect: false },
-      { answerText: "Борис Полевой", isBigBtn: false, isCorrect: true },
+      { answerText: "В.Л. Кондратьев", isBigBtn: false, isCorrect: false },
+      { answerText: "И.Г. Эринбург", isBigBtn: false, isCorrect: false },
+      { answerText: "Б.Н. Полевой", isBigBtn: false, isCorrect: true },
     ],
   },
   {
@@ -587,6 +627,7 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/40.jpg",
+    symbols: 92,
     answerOptions: [
       {
         answerText: "В Императорском дворце в Твери",
@@ -613,6 +654,7 @@ export const questionsStars = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/41.jpg",
+    symbols: 119,
     answerOptions: [
       { answerText: "Анна Кашинская", isBigBtn: false, isCorrect: true },
       { answerText: "Ксения Тверская", isBigBtn: false, isCorrect: false },
@@ -631,19 +673,20 @@ export const questionsStars = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/42.jpg",
+    symbols: 250,
     answerOptions: [
       {
-        answerText: "Леонтий Филиппович Магницкий",
+        answerText: "Л.Ф. Магницкий",
         isBigBtn: false,
         isCorrect: true,
       },
       {
-        answerText: "Степан Яковлевич Разумовский",
+        answerText: "С.Я. Разумовский",
         isBigBtn: false,
         isCorrect: false,
       },
       {
-        answerText: "Николай Владимирович Маиевский ",
+        answerText: "Н.В. Маиевский ",
         isBigBtn: false,
         isCorrect: false,
       },
@@ -657,6 +700,7 @@ export const questionsStars = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/43.png",
+    symbols: 267,
     answerOptions: [
       {
         answerText: "«Путешествие из Петербурга в Москву»",
@@ -675,23 +719,24 @@ export const questionsStars = [
     id: "44",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Этому писателю, служившему в 1860-1861 гг. вице-губернатором, установлен памятник в Твери",
+      "Этому писателю, служившему в 1860-1861гг. вице-губернатором, установлен памятник в Твери",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/44.jpeg",
+    symbols: 89,
     answerOptions: [
       {
-        answerText: "Александр Ефимович Измайлов",
+        answerText: "А.Е. Измайлов",
         isBigBtn: false,
         isCorrect: false,
       },
       {
-        answerText: "Иван Иванович Лажечников",
+        answerText: "И.И. Лажечников",
         isBigBtn: false,
         isCorrect: false,
       },
       {
-        answerText: "Михаил Евграфович Салтыков-Щедрин",
+        answerText: "М.Е. Салтыков-Щедрин",
         isBigBtn: false,
         isCorrect: true,
       },
@@ -706,6 +751,7 @@ export const questionsNumbers = [
     questionText: "Длина Волги в Тверской области?",
     isLong: false,
     isImg: false,
+    symbols: 31,
     answerOptions: [
       { answerText: "669 км", isBigBtn: false, isCorrect: true },
       { answerText: "900 км", isBigBtn: false, isCorrect: false },
@@ -719,6 +765,7 @@ export const questionsNumbers = [
       "Сколько водохранилищ расположено на реке Волга в Тверской области?",
     isLong: false,
     isImg: false,
+    symbols: 66,
     answerOptions: [
       { answerText: "5", isBigBtn: false, isCorrect: false },
       { answerText: "1", isBigBtn: false, isCorrect: true },
@@ -731,6 +778,7 @@ export const questionsNumbers = [
     questionText: "Каким по счету городом на Волге от ее истока является Ржев?",
     isLong: false,
     isImg: false,
+    symbols: 59,
     answerOptions: [
       { answerText: "1", isBigBtn: false, isCorrect: true },
       { answerText: "2", isBigBtn: false, isCorrect: false },
@@ -743,6 +791,7 @@ export const questionsNumbers = [
     questionText: "Сколько мостов в Вышнем Волочке?",
     isLong: false,
     isImg: false,
+    symbols: 32,
     answerOptions: [
       { answerText: "30", isBigBtn: false, isCorrect: true },
       { answerText: "5", isBigBtn: false, isCorrect: false },
@@ -755,6 +804,7 @@ export const questionsNumbers = [
     questionText: "Какая высота у колокольни Николаевского собора в Калязине?",
     isLong: false,
     isImg: false,
+    symbols: 58,
     answerOptions: [
       { answerText: "100 м", isBigBtn: false, isCorrect: false },
       { answerText: "50 м", isBigBtn: false, isCorrect: false },
@@ -767,6 +817,7 @@ export const questionsNumbers = [
     questionText: "Какая протяженность береговой линии озера Селигер?",
     isLong: false,
     isImg: false,
+    symbols: 50,
     answerOptions: [
       { answerText: "260 км", isBigBtn: false, isCorrect: false },
       { answerText: "650 км", isBigBtn: false, isCorrect: false },
@@ -779,6 +830,7 @@ export const questionsNumbers = [
     questionText: "Сколько лет существует Тверская Карелия?",
     isLong: false,
     isImg: false,
+    symbols: 40,
     answerOptions: [
       { answerText: "400 лет", isBigBtn: false, isCorrect: true },
       { answerText: "300 лет", isBigBtn: false, isCorrect: false },
@@ -791,6 +843,7 @@ export const questionsNumbers = [
     questionText: "Сколько лет со дня основания отмечает Тверь в 2024 году?",
     isLong: false,
     isImg: false,
+    symbols: 56,
     answerOptions: [
       { answerText: "889 лет", isBigBtn: false, isCorrect: true },
       { answerText: "909 лет", isBigBtn: false, isCorrect: false },
@@ -801,9 +854,10 @@ export const questionsNumbers = [
     id: "53",
     questionCategory: "Цифры",
     questionText:
-      "Сколько часов занимает путь из Москвы в Тверь на электричке 'Ласточка'?",
+      "Сколько часов занимает путь из Москвы в Тверь на электричке «Ласточка»?",
     isLong: false,
     isImg: false,
+    symbols: 71,
     answerOptions: [
       { answerText: "1,5 часа", isBigBtn: false, isCorrect: true },
       { answerText: "30 минут", isBigBtn: false, isCorrect: false },
@@ -816,6 +870,7 @@ export const questionsNumbers = [
     questionText: "В каком году Тверь впервые упоминается в летописи?",
     isLong: false,
     isImg: false,
+    symbols: 50,
     answerOptions: [
       { answerText: "907 г. ", isBigBtn: false, isCorrect: false },
       { answerText: "1209 г. ", isBigBtn: false, isCorrect: true },
@@ -833,6 +888,7 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/55.jpg",
+    symbols: 223,
     answerOptions: [
       { answerText: "750 литров", isBigBtn: false, isCorrect: false },
       { answerText: " 1 435 литров", isBigBtn: false, isCorrect: true },
@@ -843,10 +899,11 @@ export const questionsRecords = [
     id: "56",
     questionCategory: "Рекорды и факты",
     questionText:
-      "В 2018 году в городе Конаково на гастрономическом фестивале «ВЕРЕЩАГИН СЫРFEST 2018», который объединил профессионалов сыроварения и любителей сыра, было приготовлен самое большое в России блюдо из сыра весом свыше 122 килограммов. О каком блюде идет речь?",
+      "В 2018 г. в городе Конаково на гастрономическом фестивале «ВЕРЕЩАГИН СЫРFEST», который объединил профессионалов сыроварения и любителей сыра, было приготовлен самое большое в России блюдо из сыра весом свыше 122 кг. О каком блюде идет речь?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/56.jpg",
+    symbols: 251,
     answerOptions: [
       { answerText: "Сырный суп", isBigBtn: false, isCorrect: false },
       { answerText: "Чизкейк", isBigBtn: false, isCorrect: false },
@@ -861,6 +918,7 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/57.jpg",
+    symbols: 265,
     answerOptions: [
       { answerText: "60 килограмм", isBigBtn: false, isCorrect: false },
       { answerText: "281 килограмм", isBigBtn: false, isCorrect: true },
@@ -875,9 +933,11 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/58.jpg",
+    symbols: 260,
     answerOptions: [
       {
-        answerText: "В справочник «Железнодорожная техника»",
+        answerText:
+          "В справочник\n" + "«Железнодорожная техника»",
         isBigBtn: true,
         isCorrect: false,
       },
@@ -901,6 +961,7 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/59.jpeg",
+    symbols: 184,
     answerOptions: [
       {
         answerText: "Такая сила необходима для установки вагона на рельсы",
@@ -924,6 +985,7 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/60.jpg",
+    symbols: 168,
     answerOptions: [
       {
         answerText: "Башенный кран высотой 20 метров",
@@ -931,7 +993,8 @@ export const questionsRecords = [
         isCorrect: false,
       },
       {
-        answerText: "Высокотехнологичный роботизированный складской комплекс",
+        answerText:
+          "Высокотехнологичный\n" + "роботизированный складской комплекс",
         isBigBtn: true,
         isCorrect: true,
       },
@@ -950,6 +1013,7 @@ export const questionsRecords = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/records/61.jpg",
+    symbols: 138,
     answerOptions: [
       { answerText: "Матричный принтер", isBigBtn: false, isCorrect: false },
       { answerText: " Ноутбук-трансформер", isBigBtn: false, isCorrect: true },
@@ -968,6 +1032,7 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/62.jpeg",
+    symbols: 192,
     answerOptions: [
       { answerText: "4", isBigBtn: false, isCorrect: false },
       { answerText: "8", isBigBtn: false, isCorrect: true },
@@ -982,6 +1047,7 @@ export const questionsRecords = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/records/63.jpg",
+    symbols: 126,
     answerOptions: [
       { answerText: "1 метр", isBigBtn: false, isCorrect: false },
       { answerText: "2 метра", isBigBtn: false, isCorrect: false },
@@ -996,6 +1062,7 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/64.jpg",
+    symbols: 203,
     answerOptions: [
       { answerText: "Энергия мантии Земли", isBigBtn: false, isCorrect: false },
       { answerText: "Космическая энергия", isBigBtn: false, isCorrect: false },
@@ -1014,6 +1081,7 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/65.jpg",
+    symbols: 137,
     answerOptions: [
       { answerText: "Таволга", isBigBtn: false, isCorrect: false },
       { answerText: "Иволга", isBigBtn: false, isCorrect: true },
@@ -1028,11 +1096,12 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/66.jpg",
+    symbols: 184,
     answerOptions: [
-      { answerText: " Олимпиада 80-х", isBigBtn: true, isCorrect: true },
+      { answerText: "Олимпиада 80-х", isBigBtn: true, isCorrect: true },
       { answerText: "Полет Ю.А. Гагарина", isBigBtn: true, isCorrect: false },
       {
-        answerText: "Увеличение посевов кукурузы в 1950-1960 гг.",
+        answerText: "Увеличение посевов\n" + "кукурузы в 1950-1960 гг.",
         isBigBtn: true,
         isCorrect: false,
       },
@@ -1046,20 +1115,34 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/67.jpg",
+    symbols: 256,
     answerOptions: [
-      { answerText: "Сырный суп", isBigBtn: false, isCorrect: false },
-      { answerText: "Чизкейк", isBigBtn: false, isCorrect: false },
-      { answerText: "Фондю", isBigBtn: false, isCorrect: true },
+      {
+        answerText: "Первый электрифицированный промышленный район",
+        isBigBtn: true,
+        isCorrect: false,
+      },
+      {
+        answerText: "Лучший рабочий городок мира",
+        isBigBtn: true,
+        isCorrect: true,
+      },
+      {
+        answerText: "Первый рабочий городок, выстроенный полностью из дерева",
+        isBigBtn: true,
+        isCorrect: false,
+      },
     ],
   },
   {
     id: "68",
     questionCategory: "Рекорды и факты",
     questionText:
-      "Как называется легендарное  блюдо тверской кухни, придуманное трактирщиками города Торжка в XVIII веке в дожелезнодорожную эпоху и получившее с течением времени общероссийскую известность?",
+      "Как называется легендарное блюдо тверской кухни, придуманное трактирщиками города Торжка в XVIII веке в дожелезнодорожную эпоху и получившее с течением времени общероссийскую известность?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/68.jpg",
+    symbols: 189,
     answerOptions: [
       {
         answerText: "Тверская кулебяка",
@@ -1086,6 +1169,7 @@ export const questionsRecords = [
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/69.jpg",
+    symbols: 155,
     answerOptions: [
       {
         answerText: "Ёлочные игрушки для Кремлёвской ёлки",
@@ -1093,12 +1177,12 @@ export const questionsRecords = [
         isCorrect: false,
       },
       {
-        answerText: "Звёзды, венчающие башни Московского кремля",
+        answerText: "Звёзды, венчающие башни\n" + "Московского кремля",
         isBigBtn: true,
         isCorrect: true,
       },
       {
-        answerText: "Линзы для телескопа Пулковской обсерватории",
+        answerText: "Линзы для телескопа\n" + "Пулковской обсерватории",
         isBigBtn: true,
         isCorrect: false,
       },
@@ -1111,6 +1195,7 @@ export const questionsRecords = [
     isLong: false,
     isImg: true,
     imgUrl: "/images/records/70.jpg",
+    symbols: 47,
     answerOptions: [
       { answerText: "Золотным шитьём", isBigBtn: false, isCorrect: true },
       { answerText: "Кружевоплетением", isBigBtn: false, isCorrect: false },

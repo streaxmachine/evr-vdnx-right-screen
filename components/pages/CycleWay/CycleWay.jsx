@@ -73,8 +73,7 @@ const CycleWay = () => {
 
   return (
     <>
-      {!isFree && <div className={s.busy}>Экран пока не доступен</div>}
-
+      {!isFree && <BusyPage />}
       {state === "hero" && (
         <Hero
           setState={setState}
@@ -126,3 +125,28 @@ const CycleWay = () => {
 };
 
 export default CycleWay;
+
+const BusyPage  = React.memo(() => {
+  const phrases = [
+    "Кажется, маршрут для прогулки уже выбран другим игроком. Но не волнуйтесь, вы можете присоединиться к нему в режиме «попутчика».\n Как только текущая поездка завершится, у вас будет возможность выбрать другой интересный маршрут из доступных в главном меню.\n А пока что - добро пожаловать в велопрогулку вдвоем!",
+  ];
+
+  const randomPhraseIndex = Math.floor(Math.random() * phrases.length);
+  const randomPhrase = phrases[randomPhraseIndex];
+
+  // Разделяем фразу на абзацы, предполагая, что абзацы разделены двойными переводами строк
+  const paragraphs = randomPhrase.split("\n").map((paragraph, index) => (
+    <p className={s.paragraph} key={index}>
+      {paragraph}
+    </p>
+  ));
+
+  return (
+    <>
+      <div className={s.busy}>
+        <section className={s.busyText}>{paragraphs}</section>
+      </div>
+      <div className={s.clouds}></div>
+    </>
+  );
+});

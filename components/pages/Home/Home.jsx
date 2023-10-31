@@ -179,6 +179,7 @@ const Home = () => {
         )}
 
         <FakeAi />
+        <div className={s.aiChat}></div>
       </div>
     </>
   );
@@ -322,7 +323,7 @@ const DetailInfo = React.memo(({ detailNumber, count }) => {
       {Number(detailNumber) === Number(count - 1) ? (
         <div className={s.detailstext}>{detail[0].description}</div>
       ) : (
-        <div>Упс, кажется деталь усановлена не по порядку</div>
+        <div className={s.detailstext}>Упс, кажется деталь усановлена не по порядку</div>
       )}
 
       {detail[0].picSrc && (

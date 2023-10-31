@@ -288,7 +288,11 @@ const Questions = React.memo(
                 </div>
                 <div
                   className={clsx(s.questionText, {
-                    [s.bigText]: currentQuestion.isLong,
+                    // [s.bigText]: currentQuestion.isLong,
+                    [s.bigText]: currentQuestion.symbols > 205,
+                    [s.mediumText]:
+                      currentQuestion.symbols <= 205 &&
+                      currentQuestion.symbols > 130,
                   })}
                 >
                   {currentQuestion.questionText.includes("\n")
@@ -323,7 +327,13 @@ const Questions = React.memo(
                       onClick={(e) => handleClickAnswer(item, e, index)}
                       key={index}
                     >
-                      {item.answerText}
+                      {/* {item.answerText} */}
+                      {item.answerText.split("\n").map((text, index) => (
+                        <React.Fragment key={index}>
+                          {text}
+                          <br />
+                        </React.Fragment>
+                      ))}
                     </button>
                   );
                 })}

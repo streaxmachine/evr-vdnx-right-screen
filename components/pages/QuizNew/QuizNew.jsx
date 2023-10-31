@@ -5,6 +5,9 @@ import QuizFirstPage from "components/common/QuizFirstPage";
 import QuizCards from "components/common/QuizCards";
 import QuizRules from "components/common/QuizRules";
 import IvolgaRules from "components/common/IvolgaRules";
+import QuizCowRules from "components/common/QuizCowRules";
+import TouchPanelCow from "components/common/QuizCow/TouchPanel/TouchPanelCow";
+
 import Home from "../Home";
 
 import { useSocket } from "hooks/useSocket";
@@ -37,8 +40,14 @@ const QuizNew = () => {
       {globalState === "touchPanel" && (
         <TouchPanel setGlobalState={setGlobalState} socket={socket} />
       )}
-      {(globalState === "ivolgaRules" ) && (
+      {globalState === "ivolgaRules" && (
         <IvolgaRules setGlobalState={setGlobalState} socket={socket} />
+      )}
+      {globalState === "quizCowRules" && (
+        <QuizCowRules setGlobalState={setGlobalState} socket={socket} />
+      )}
+      {globalState === "touchPanelCow" && (
+        <TouchPanelCow setGlobalState={setGlobalState} socket={socket} />
       )}
 
       <div className={s.aiSection}>

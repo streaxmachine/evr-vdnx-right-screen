@@ -1,12 +1,32 @@
 .busy {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50rem;
-    z-index: 100;
-    top: 0;
-    background-color: black;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 100;
+  top: 0;
+  background: linear-gradient(99deg, #00469a 5.73%, #b7d6fb 96.89%), #fff;
+}
+
+.busyText {
+  width: 70%;
+  display: flex;
+  font-size: 46rem;
+  line-height: 50rem;
+  font-weight: 600;
+  flex-direction: column;
+  gap: 45rem;
+  text-align: center;
+}
+
+.clouds {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url("/images/background/clouds.png");
+  background-size: cover;
+  z-index: 101;
 }

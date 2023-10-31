@@ -21,33 +21,7 @@
   height: 100%;
   padding: 84rem;
   padding-top: 0rem;
-  gap: 80rem;
-}
-
-.imgWrapper {
-  position: absolute;
-  display: flex;
-  pointer-events: none;
-  // bottom: 0rem;
-  top: 144rem;
-  opacity: 1;
-  justify-content: center;
-  left: 0;
-  width: 34%;
-  height: 100%;
-}
-
-.starImg {
-  position: relative;
-  height: 100%;
-  opacity: 0;
-  border-radius: 10rem;
-  pointer-events: none;
-  width: 300rem;
-  height: 300rem;
-  object-fit: cover;
-  z-index: 1;
-  left: 0;
+  gap: 280rem;
 }
 
 .backMenu {
@@ -65,21 +39,28 @@
   align-items: center;
   gap: 20rem;
 }
+
 .backText {
   z-index: 1;
   font-weight: 400;
   font-size: 22rem;
-  // line-height: 30rem;
 }
 
 .right {
   width: 66%;
   height: 100%;
-  // background-image: url("/images/img.png");
   background-color: white;
   color: var(--light-blue);
   background-size: cover;
   transition: all 0.5s ease-in-out;
+}
+
+.cowIMG{
+  position: absolute;
+  bottom: 102rem;
+  opacity: 0.2;
+  right: -59rem;
+  width: 433rem;
 }
 
 .rightDone {
@@ -93,6 +74,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgba(69, 153, 255, 0.1);
 }
 
 .category {
@@ -101,8 +83,8 @@
 }
 
 .questionNumber {
-  font-size: 24rem;
-  line-height: 28rem;
+  font-size: 32rem;
+  line-height: 36rem;
   margin-top: 10rem;
 }
 
@@ -110,21 +92,16 @@
   margin-top: 20rem;
   font-size: 46rem;
   line-height: 50rem;
+  font-weight: 500;
   width: 972rem;
   color: black;
   max-width: 100%;
 }
 
 .bigText {
-  font-size: 32rem;
+  font-size: 30rem;
   line-height: 34rem;
 }
-
-.mediumText {
-  font-size: 40rem;
-  line-height: 44rem;
-}
-
 
 .answersWrapper {
   // margin-top: 108rem;
@@ -386,4 +363,23 @@
 
 .activeText {
   color: white;
+}
+
+
+.aiChat {
+  position: absolute;
+  bottom: 0rem;
+  z-index: 0;
+  width: 200rem;
+  height: 200rem;
+  background-image: url("/images/aiChat.gif");
+  background-size: 100%;
+  position: absolute;
+  margin-top: 20rem;
+  right: 0;
+  mix-blend-mode: multiply;
+}
+
+.wrapper {
+  background-color: gray;
 }
