@@ -11,7 +11,14 @@ import useData from "hooks/useData";
 
 let cursor = {};
 
-const LastStep = ({ setState, socket, setisBack, location, setFree }) => {
+const LastStep = ({
+  setState,
+  socket,
+  timeValue,
+  setisBack,
+  location,
+  setFree,
+}) => {
   const currentLocation = locations.filter((item, id) => {
     return item.id === location;
   });
@@ -90,11 +97,11 @@ const LastStep = ({ setState, socket, setisBack, location, setFree }) => {
     }
   }, [inactiveTime]);
 
-  const send = useData({value: false})
+  const send = useData({ value: false });
 
   const handleSendTouchToSocket = (e) => {
     cursor.x = (e.clientX / size[0]) * 2 - 1;
-    send.value = true
+    send.value = true;
   };
 
   useEffect(() => {
@@ -108,8 +115,8 @@ const LastStep = ({ setState, socket, setisBack, location, setFree }) => {
             data: cursor.x,
           })
         );
-        send.value = false
-      }, 1000);
+        send.value = false;
+      }, 650);
     }
     return () => clearInterval(interval);
   }, [send.value, cursor.x]);
@@ -152,9 +159,9 @@ const LastStep = ({ setState, socket, setisBack, location, setFree }) => {
                   <p className={s.dataMeasure}>м</p>
                 </div>
                 <div className={s.ccal}>
-                  <p className={s.dataTitle}>Калории</p>
-                  <p className={s.dataNumber}>{randomCalories}</p>
-                  <p className={s.dataMeasure}>ккал</p>
+                  <p className={s.dataTitle}>Время</p>
+                  <p className={s.dataNumber}>{timeValue}</p>
+                  <p className={s.dataMeasure}>мин</p>
                 </div>
               </div>
             </div>

@@ -3,7 +3,17 @@ import React, { useState } from "react";
 import { locations } from "./locations";
 
 import s from "./OnWay.module.scss";
-import { number } from "yup";
+
+const formatTime = (time) => {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+
+  return `0${minutes}0:0${seconds}`;
+};
 
 const OnWay = ({
   setState,
@@ -12,12 +22,14 @@ const OnWay = ({
   location,
   distanceSocket = 0,
   setDistance,
+  setTimeValue,
   setSpeed,
   setisBack,
 }) => {
   const [filledCells, setFilledCells] = useState(0);
   const rootRef = React.useRef();
   const [progress, setProgress] = useState(0);
+  const [time, setTime] = useState(0);
 
   const item = locations.filter((item, id) => {
     return item.id === location;
@@ -28,10 +40,25 @@ const OnWay = ({
     setDistance(0);
   }, []);
 
+  const realTime = React.useMemo(() => {
+    return formatTime(time);
+  }, [time]);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(time + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [time]);
+
   React.useEffect(() => {
     setProgress(distanceSocket);
 
     if (Math.round(Number(progress)) === 100) {
+      setTimeValue(realTime);
       const timeout = setTimeout(() => {
         setState("lastStep");
       }, 1500);
@@ -131,11 +158,11 @@ const OnWay = ({
             )}
             <div className={s.dataWrapper}>
               <div className={s.ccal}>
-                <p className={s.dataTitle}>Калории</p>
-                <p className={s.dataNumber}>
-                  {roundedNumber(distanceSocket * 0.1)}
+                <p className={s.dataTitle}>Время</p>
+                <p style={{ width: "160rem" }} className={s.dataNumber}>
+                  {realTime}
                 </p>
-                <p className={s.dataMeasure}>ккал</p>
+                <p className={s.dataMeasure}>мин</p>
               </div>
               <div className={s.speed}>
                 <p className={s.dataTitle}>Скорость</p>
@@ -159,13 +186,6 @@ const OnWay = ({
             <span className={s.textEnd}>{item[0].end}</span>
           </div>
           <div className={s.progressRoot}>
-            <div className={s.onWayPointsWrapper}>
-              <OnWayPointsWrapper
-                key={item[0].id}
-                points={item[0].points}
-                distanceSocket={distanceSocket}
-              />
-            </div>
             <div className={s.progressWrapper}>
               <div className={s.baseImage}>
                 <svg

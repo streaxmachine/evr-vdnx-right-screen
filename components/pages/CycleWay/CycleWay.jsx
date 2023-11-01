@@ -24,6 +24,7 @@ const CycleWay = () => {
   const [isOutTime, setOutTime] = React.useState("hero");
   const [isConnected, setConnected] = React.useState(false);
   const [isFree, setFree] = React.useState(true);
+  const [timeValue, setTimeValue] = React.useState();
   const socket = useSocket([
     setSpeed,
     setCalories,
@@ -100,6 +101,7 @@ const CycleWay = () => {
           setState={setState}
           setDistance={setDistance}
           setSpeed={setSpeed}
+          setTimeValue={setTimeValue}
           socket={socket}
           speedSocket={speed}
           distanceSocket={distance}
@@ -110,6 +112,7 @@ const CycleWay = () => {
       )}
       {state === "lastStep" && (
         <LastStep
+          timeValue={timeValue}
           location={location}
           setState={setState}
           speedSocket={speed}
@@ -126,7 +129,7 @@ const CycleWay = () => {
 
 export default CycleWay;
 
-const BusyPage  = React.memo(() => {
+const BusyPage = React.memo(() => {
   const phrases = [
     "Кажется, маршрут для прогулки уже выбран другим игроком. Но не волнуйтесь, вы можете присоединиться к нему в режиме «попутчика».\n Как только текущая поездка завершится, у вас будет возможность выбрать другой интересный маршрут из доступных в главном меню.\n А пока что - добро пожаловать в велопрогулку вдвоем!",
   ];
