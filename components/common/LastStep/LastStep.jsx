@@ -89,21 +89,36 @@ const LastStep = ({ setState, socket, setisBack, location, setFree }) => {
     }
   }, [inactiveTime]);
 
+  const [shouldSend, setShouldSend] = useState(false);
+
   const handleSendTouchToSocket = (e) => {
     cursor.x = (e.clientX / size[0]) * 2 - 1;
     cursor.y = -(e.clientY / size[1]) * 2 + 1;
-    console.log(cursor.x);
-    socket.send(
-      JSON.stringify({
-        installation: "velo",
-        type: "rotation",
-        data: {
-          x: cursor.x,
-          y: cursor.y,
-        },
-      })
-    );
+    setShouldSend(true);
   };
+
+  useEffect(() => {
+    let interval;
+
+    if (shouldSend) {
+      interval = setInterval(() => {
+        socket.send(
+          JSON.stringify({
+            installation: "velo",
+            type: "rotation",
+            data: {
+              x: cursor.x,
+              // y: cursor.y,
+            },
+          })
+        );
+      }, 1000); 
+
+      return () => {
+        clearInterval(interval); 
+      };
+    }
+  }, [shouldSend, cursor.x]);
 
   return (
     <>
