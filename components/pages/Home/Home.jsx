@@ -174,7 +174,7 @@ const Home = () => {
           />
         )}
 
-        <FakeAi />
+        {/* <FakeAi /> */}
         {/* <div className={s.aiChat}></div> */}
       </div>
     </>
