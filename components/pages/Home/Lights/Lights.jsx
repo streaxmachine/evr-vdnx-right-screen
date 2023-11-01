@@ -23,7 +23,7 @@ const Lights = ({ isDragging, isDone }) => {
         enabled={!isDragging}
         autoRotateSpeed={-0.7}
         zoomSpeed={0.25}
-        minZoom={23}
+        minZoom={20}
         maxZoom={140}
         enablePan={false}
         touches={

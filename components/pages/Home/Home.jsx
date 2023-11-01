@@ -29,11 +29,12 @@ const Home = () => {
   const [disableTimer, setDisableTimer] = React.useState(false);
   const [currentState, setCurrentState] = React.useState("making-train");
   const [isFirstTime, setFirstTime] = React.useState(true);
-  const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
+  const [time, setTime] = React.useState("0" + 3 + "0:10" + 0);
   const { setScenario } = useStore();
   const [isTimeEndGame, setTimeEndGame] = React.useState(false);
   const [resetGame, setResetGame] = React.useState(false);
   const [disableTouch, setDisableTouch] = React.useState();
+  const [isClickedRules, setClickedRules] = React.useState(false);
 
   useScenarioTimer("ivolga", "time30", 30, disableTimer);
 
@@ -94,7 +95,12 @@ const Home = () => {
           </section>
         )}
 
-        {isFirstTime && !isTimeEndGame && <StarterMessage />}
+        {isFirstTime && !isTimeEndGame && (
+          <StarterMessage
+            isClicked={isClickedRules}
+            setClicked={setClickedRules}
+          />
+        )}
         {currentState !== "made-train" && !isTimeEndGame && (
           <div className={s.detailsRoot}>
             {!isOutTime && !isDone && (
@@ -149,7 +155,7 @@ const Home = () => {
           setTouchedDetail={setTouchedDetail}
         />
 
-        {!isTimeEndGame && (
+        {!isTimeEndGame && isClickedRules && (
           <Timer
             time={time}
             setTime={setTime}
@@ -183,8 +189,7 @@ const Home = () => {
 
 export default React.memo(Home);
 
-const StarterMessage = () => {
-  const [isClicked, setClicked] = React.useState(false);
+const StarterMessage = ({ isClicked, setClicked }) => {
   return (
     <>
       {!isClicked && (

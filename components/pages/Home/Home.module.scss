@@ -9,6 +9,11 @@
   background-color: black;
 }
 
+.canvas {
+  width: 100%;
+  height: 100%;
+}
+
 .disableTouch {
   pointer-events: none !important;
 }

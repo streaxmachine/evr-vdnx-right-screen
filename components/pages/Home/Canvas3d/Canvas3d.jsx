@@ -20,12 +20,10 @@ const Canvas3d = ({
     <Canvas
       shadows
       orthographic
-      // frameloop="demand"
       camera={{
         position: [10, 20, 20],
         rotation: [Math.PI, 0, 0],
-        zoom: 23,
-        near: 0.00000001,
+        zoom: 20,
       }}
       gl={{ preserveDrawingBuffer: true, antialias: false }}
     >

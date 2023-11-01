@@ -35,7 +35,14 @@ const DetailInfo = React.memo(({ detailNumber, count, setDisableTouch }) => {
       {Number(detailNumber) === Number(count - 1) ? (
         <div className={s.detailstext}>{detail[0].description}</div>
       ) : (
-        <div className={s.detailstext}>Деталь установлена не по порядку</div>
+        <>
+          {detailNumber > 10 ? null : (
+            <div className={s.detailstext}>
+              Деталь установлена не по порядку
+            </div>
+          )}
+        </>
+        // <div className={s.detailstext}>Деталь установлена не по порядку</div>
       )}
 
       {/* <img
