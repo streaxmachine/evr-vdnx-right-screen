@@ -66,9 +66,10 @@ const OnWay = ({
     }
   }, [progress, distanceSocket]);
 
-  const isSlow = speedSocket < 20;
-  const isOkay = speedSocket > 19 && speedSocket < 41;
-  const isFast = speedSocket > 40;
+  const isSlow = speedSocket <= 1;
+  const isOkay = speedSocket > 1 && speedSocket <= 3;
+  const isFast = speedSocket > 3;
+
 
   React.useEffect(() => {
     const newFilledCells = Math.floor((speedSocket / 48) * 28); // 48 - максимальное значение speedSocket, 28 - количество ячеек
