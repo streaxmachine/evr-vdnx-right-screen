@@ -1,24 +1,21 @@
 import React from "react";
 import clsx from "clsx";
-import { Canvas } from "@react-three/fiber";
-import { Html, Preload, useProgress } from "@react-three/drei";
 import Link from "next/link";
-import gsap from "gsap";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Lottie from "lottie-react";
 
-import TrainContainer from "./TrainContainer/TrainContainer";
 import Timer from "components/common/Timer";
 import CanvasPreloader from "components/common/CanvasPreloader";
 import FakeAi from "components/common/FakeAi";
+import DetailHelpers from "./DetailHelper";
+import Canvas3d from "./Canvas3d";
+import DetailVisualization from "./DetailVisualization";
+import DetailInfo from "./DetailInfo";
+import FailMessage from "./FailMessage";
 
 import useStore from "hooks/useStore";
 import useScenarioTimer from "hooks/useScenarioTimer";
-
-import handAnimation from "./handAnimation.json";
-
-import { details } from "./details";
 
 import s from "./Home.module.scss";
 
@@ -36,6 +33,7 @@ const Home = () => {
   const { setScenario } = useStore();
   const [isTimeEndGame, setTimeEndGame] = React.useState(false);
   const [resetGame, setResetGame] = React.useState(false);
+  const [disableTouch, setDisableTouch] = React.useState();
 
   useScenarioTimer("ivolga", "time30", 30, disableTimer);
 
@@ -66,6 +64,7 @@ const Home = () => {
     <>
       {resetGame && <div className={s.preloader}></div>}
       <CanvasPreloader />
+
       <div className={s.canvasTrain}>
         {!isDone && !isTimeEndGame && (
           <Link href={"/quizNew"}>
@@ -108,7 +107,7 @@ const Home = () => {
                 alt=""
               />
             )}
-            <DetailsVisualization
+            <DetailVisualization
               currentNumber={count}
               isDone={isDone}
               isOutTime={isOutTime}
@@ -116,42 +115,39 @@ const Home = () => {
             />
           </div>
         )}
-        {touchedDetail !== 0 && (
-          <DetailInfo detailNumber={touchedDetail} count={count} />
-        )}
-        <Canvas
-          shadows
-          orthographic
-          // frameloop="demand"
-          camera={{
-            position: [10, 20, 20],
-            rotation: [Math.PI, 0, 0],
-            zoom: 23,
-            near: 0.00000001,
+
+        <div
+          style={{
+            zIndex: 2,
+            background: count === touchedDetail + 1 ? "green" : "red",
+            pointerEvents: disableTouch ? "all" : "none",
+            opacity: disableTouch ? "0.35" : "0",
           }}
-          gl={{ preserveDrawingBuffer: true, antialias: false }}
+          className={s.popUpsWrapper}
+        />
+        <div
+          style={{
+            pointerEvents: disableTouch ? "all" : "none",
+          }}
+          className={s.popUpsWrapper}
         >
-          <TrainContainer
-            isDone={isDone}
-            count={count}
-            setCount={setCount}
-            touchedDetail={touchedDetail}
-            setTouchedDetail={setTouchedDetail}
-          />
-          {touchedDetail === 0 && (
-            <mesh visible={false}>
-              <Html
-                position={[-2, -2, 0]}
-                zIndexRange={[0, 1]}
-                className={s.finger}
-                scale={100}
-              >
-                <Lottie animationData={handAnimation} />
-              </Html>
-              <boxGeometry />
-            </mesh>
+          {touchedDetail !== 0 && (
+            <DetailInfo
+              detailNumber={touchedDetail}
+              setDisableTouch={setDisableTouch}
+              count={count}
+            />
           )}
-        </Canvas>
+          <DetailHelpers setDisableTouch={setDisableTouch} count={count} />
+        </div>
+
+        <Canvas3d
+          isDone={isDone}
+          setCount={setCount}
+          count={count}
+          touchedDetail={touchedDetail}
+          setTouchedDetail={setTouchedDetail}
+        />
 
         {!isTimeEndGame && (
           <Timer
@@ -178,7 +174,7 @@ const Home = () => {
           />
         )}
 
-        <FakeAi />
+        {/* <FakeAi /> */}
         {/* <div className={s.aiChat}></div> */}
       </div>
     </>
@@ -188,166 +184,33 @@ const Home = () => {
 export default React.memo(Home);
 
 const StarterMessage = () => {
-  return (
-    <div className={s.starterMessageRoot}>
-      <p>Выберите правильную деталь. Подсказки на макете "Иволги".</p>
-      <p>Переместите деталь на рельсы.</p>
-      <p>Успейте собрать "Иволгу" за 3 минуты.</p>
-
-      <div className={s.lineWithcircles}>
-        <div className={`${s.circle} ${s.top}`}></div>
-        <div className={`${s.circle} ${s.middle}`}></div>
-        <div className={`${s.circle} ${s.bottom}`}></div>
-      </div>
-    </div>
-  );
-};
-
-const detailsCounter = [
-  { name: 1, id: 1, imgUrl: "/images/ivolgaDetails/01W_alpha.png" },
-  { name: 2, id: 2, imgUrl: "/images/ivolgaDetails/02W_alpha.png" },
-  { name: 3, id: 3, imgUrl: "/images/ivolgaDetails/03W_alpha.png" },
-  { name: 4, id: 4, imgUrl: "/images/ivolgaDetails/04W_alpha.png" },
-  { name: 5, id: 5, imgUrl: "/images/ivolgaDetails/05W_alpha.png" },
-  { name: 6, id: 6, imgUrl: "/images/ivolgaDetails/06W_alpha.png" },
-  { name: 7, id: 7, imgUrl: "/images/ivolgaDetails/07W_alpha.png" },
-  { name: 8, id: 8, imgUrl: "/images/ivolgaDetails/08W_alpha.png" },
-  { name: 9, id: 9, imgUrl: "/images/ivolgaDetails/09W_alpha.png" },
-  { name: 10, id: 10, imgUrl: "/images/ivolgaDetails/10W_alpha.png" },
-  // { name: 11, id: 11 },
-  // { name: 12, id: 12 },
-  // { name: 13, id: 13 },
-  // { name: 14, id: 14 },
-  // { name: 15, id: 15 },
-];
-
-const DetailsVisualization = ({ currentNumber, isDone, isOutTime }) => {
-  const [currentState, setCurrentState] = React.useState("");
-
-  React.useEffect(() => {
-    if (isDone) {
-      const timeout = setTimeout(() => {
-        setCurrentState("made-train");
-      }, 2500);
-
-      return () => {
-        clearTimeout(timeout);
-      };
-    }
-  }, [isDone]);
+  const [isClicked, setClicked] = React.useState(false);
   return (
     <>
-      {currentState !== "made-train" && (
+      {!isClicked && (
         <>
-          {detailsCounter.map((item) => {
-            return (
-              <div key={item.id}>
-                {item.id === currentNumber && !isOutTime && (
-                  <div key={item.id} className={s.imgWrapper}>
-                    <Image
-                      priority
-                      src={item.imgUrl}
-                      width={330}
-                      height={152}
-                      alt=""
-                    />
-                  </div>
-                )}
+          <div className={s.starterBackground}></div>
+          <div className={s.starterMessageRoot}>
+            <div className={s.starterWrapper}>
+              <p>Выберите правильную деталь. Подсказки на макете "Иволги".</p>
+              <p>Переместите деталь на рельсы.</p>
+              <p>Успейте собрать "Иволгу" за 3 минуты.</p>
+
+              <div className={s.lineWithcircles}>
+                <div className={`${s.circle} ${s.top}`}></div>
+                <div className={`${s.circle} ${s.middle}`}></div>
+                <div className={`${s.circle} ${s.bottom}`}></div>
               </div>
-            );
-          })}
+              <button className={s.starterBtn} onClick={() => setClicked(true)}>
+                Я все понял
+              </button>
+            </div>
+          </div>
         </>
-      )}
-      {isDone && currentState !== "made-train" && (
-        <div className={s.finalImgWrapper}>
-          <img
-            className={clsx(s.finalImg, s.opacityAnim)}
-            src="/images/ivolgaDetails/FullGreen.png"
-          ></img>
-        </div>
-      )}
-      {isOutTime && (
-        <div className={s.finalImgWrapper}>
-          <img
-            className={clsx(s.finalImg, s.opacityAnim)}
-            src="/images/ivolgaDetails/FullRed.png"
-          ></img>
-        </div>
-      )}
-      {currentState === "made-train" && (
-        <div className={s.finalImgWrapper}>
-          <img className={s.finalImg} src="/images/train/finalTrain.png"></img>
-        </div>
       )}
     </>
   );
 };
-
-const DetailInfo = React.memo(({ detailNumber, count }) => {
-  const rootRef = React.useRef();
-  const detail = React.useMemo(() => {
-    return details.filter((item) => item.id === detailNumber);
-  }, [detailNumber]);
-  React.useEffect(() => {
-    gsap.to(rootRef.current, {
-      right: "64rem",
-      duration: 1,
-      ease: "elastic.out(0.2,0.5)",
-    });
-
-    const timeout = setTimeout(() => {
-      gsap.to(rootRef.current, {
-        right: "-100%",
-        duration: 0.5,
-        ease: "expo.in",
-      });
-    }, 3500);
-
-    return () => {
-      clearTimeout(timeout);
-      gsap.set(rootRef.current, {
-        right: "-100%",
-        ease: "expo.in",
-      });
-    };
-  }, [detailNumber]);
-
-  return (
-    <div
-      ref={rootRef}
-      className={clsx(s.detailInfoRoot, {
-        [s.correct]: Number(detailNumber) === Number(count - 1),
-      })}
-    >
-      <div className={s.detailsName}>{detail[0].name}</div>
-      {Number(detailNumber) === Number(count - 1) ? (
-        <div className={s.detailstext}>{detail[0].description}</div>
-      ) : (
-        <div className={s.detailstext}>
-          Упс, кажется деталь усановлена не по порядку
-        </div>
-      )}
-
-      {detail[0].picSrc && (
-        <img
-          className={s.detailsImg}
-          src={detail[0].picSrc}
-          alt={detail[0].alt}
-        />
-      )}
-
-      <img
-        className={s.detailZig}
-        alt="zig"
-        src={
-          Number(detailNumber) === Number(count - 1)
-            ? "/images/train/line.png"
-            : "/images/train/line_red.png"
-        }
-      />
-    </div>
-  );
-});
 
 const SuccessMessage = () => {
   return (
@@ -375,78 +238,6 @@ const SuccessMessage = () => {
           src={"/images/train/line.png"}
         />
       </div>
-    </div>
-  );
-};
-
-const FailMessage = ({
-  setScenario,
-  setDisableTimer,
-  router,
-  setTimeEndGame,
-  setResetGame,
-}) => {
-  const [isShow, setShow] = React.useState(false);
-
-  React.useEffect(() => {
-    setScenario({ type: "ivolga", place: "timeEnd" });
-    setDisableTimer(true);
-
-    const timeout = setTimeout(() => {
-      setTimeEndGame(true);
-      setShow(true);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  return (
-    <>
-      {isShow && (
-        <div className={s.failMessageRoot}>
-          <div className={s.failMessageWrapper}>
-            <img
-              src="/images/train/Icon.png"
-              alt="время вышло"
-              className={s.failMessageWrapper_img}
-            />
-            <p className={s.failMessageWrapper_title}>Игра завершена!</p>
-            <p className={s.failMessageWrapper_text}>
-              Вы не успели собрать Иволгу, но не расстраивайтесь, вы попробовали
-              и это уже отличный результат! Сыграйте еще раз или выберите другую
-              игру. Уверен в следующий раз, результат будет еще лучше!
-            </p>
-
-            <div
-              className={s.failMessageWrapper_button}
-              onClick={() => {
-                setResetGame(true);
-                router.reload();
-              }}
-            >
-              <p>Начать заново</p>
-            </div>
-
-            <Link href={"/quizNew"}>
-              <div
-                className={`${s.failMessageWrapper_button} ${s.button_blue}`}
-              >
-                <p>Главное меню</p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
-
-const LottieContainer = () => {
-  return (
-    <div className={s.lottieAnimation}>
-      <Lottie animationData={handAnimation} />
     </div>
   );
 };
