@@ -24,7 +24,7 @@ const Canvas3d = ({
   return (
     <Canvas
       shadows
-      gl={{ preserveDrawingBuffer: true, antialias: false }}
+      gl={{ preserveDrawingBuffer: true, antialias: true }}
     >
       <OrthographicCamera makeDefault 
         near={0.001}
@@ -52,6 +52,11 @@ const Canvas3d = ({
           <boxGeometry />
         </mesh>
       )}
+
+      <mesh visible  rotation-x={ - Math.PI * 0.5 } position-y={-0.3}>
+        <planeGeometry args={[26, 4]} />
+        <meshBasicMaterial color={"#4599ff"} opacity={0.4} />
+      </mesh>
     </Canvas>
   );
 };
