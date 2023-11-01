@@ -191,17 +191,27 @@ const StarterMessage = ({ isClicked, setClicked }) => {
           <div className={s.starterBackground}></div>
           <div className={s.starterMessageRoot}>
             <div className={s.starterWrapper}>
-              <p>Выберите правильную деталь. Подсказки на макете "Иволги".</p>
-              <p>Переместите деталь на рельсы.</p>
-              <p>Успейте собрать "Иволгу" за 3 минуты.</p>
-
-              <div className={s.lineWithcircles}>
-                <div className={`${s.circle} ${s.top}`}></div>
-                <div className={`${s.circle} ${s.middle}`}></div>
-                <div className={`${s.circle} ${s.bottom}`}></div>
+              <h2 className={s.starterHeadline}>Как играть?</h2>
+              <div className={s.starterContent}>
+                <div className={s.lineWithcircles}>
+                  <div className={`${s.circle} ${s.top}`}></div>
+                  <div className={`${s.circle} ${s.middle}`}></div>
+                  <div className={`${s.circle} ${s.bottom}`}></div>
+                </div>
+                <div className={s.textContainer}>
+                  <p style={{ marginTop: "0rem" }}>
+                    Выберите правильную деталь. Подсказки на макете "Иволги".
+                  </p>
+                  <p style={{ marginTop: "0rem" }}>
+                    Переместите деталь на рельсы.
+                  </p>
+                  <p style={{ marginTop: "0rem" }}>
+                    Успейте собрать "Иволгу" за 3 минуты.
+                  </p>
+                </div>
               </div>
               <button className={s.starterBtn} onClick={() => setClicked(true)}>
-                Я все понял
+                Понятно
               </button>
             </div>
           </div>

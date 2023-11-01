@@ -7,6 +7,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 
 import { locations } from "../OnWay/locations";
 import CanvasPreloader from "../CanvasPreloader";
+import useData from "hooks/useData";
 
 let cursor = {};
 
@@ -89,21 +90,29 @@ const LastStep = ({ setState, socket, setisBack, location, setFree }) => {
     }
   }, [inactiveTime]);
 
+  const send = useData({value: false})
+
   const handleSendTouchToSocket = (e) => {
     cursor.x = (e.clientX / size[0]) * 2 - 1;
-    cursor.y = -(e.clientY / size[1]) * 2 + 1;
-    console.log(cursor.x);
-    socket.send(
-      JSON.stringify({
-        installation: "velo",
-        type: "rotation",
-        data: {
-          x: cursor.x,
-          y: cursor.y,
-        },
-      })
-    );
+    send.value = true
   };
+
+  useEffect(() => {
+    let interval;
+    if (send.value) {
+      interval = setInterval(() => {
+        socket.send(
+          JSON.stringify({
+            installation: "velo",
+            type: "rotation",
+            data: cursor.x,
+          })
+        );
+        send.value = false
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [send.value, cursor.x]);
 
   return (
     <>

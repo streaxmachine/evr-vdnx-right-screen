@@ -1,7 +1,12 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import Lottie from "lottie-react";
-import { Html, Preload, useProgress } from "@react-three/drei";
+import {
+  Html,
+  OrthographicCamera,
+  Preload,
+  useProgress,
+} from "@react-three/drei";
 
 import TrainContainer from "../TrainContainer";
 
@@ -19,14 +24,14 @@ const Canvas3d = ({
   return (
     <Canvas
       shadows
-      orthographic
-      camera={{
-        position: [10, 20, 20],
-        rotation: [Math.PI, 0, 0],
-        zoom: 20,
-      }}
       gl={{ preserveDrawingBuffer: true, antialias: false }}
     >
+      <OrthographicCamera makeDefault 
+        near={0.001}
+        far={1000}
+        zoom={25}
+        position={[7.2, 45.2, 10.3]}
+      />
       <TrainContainer
         isDone={isDone}
         count={count}
