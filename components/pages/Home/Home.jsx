@@ -35,6 +35,7 @@ const Home = () => {
   const [resetGame, setResetGame] = React.useState(false);
   const [disableTouch, setDisableTouch] = React.useState();
   const [isClickedRules, setClickedRules] = React.useState(false);
+  const [isShowPopUp, setShowPopUp] = React.useState(true);
 
   useScenarioTimer("ivolga", "time30", 30, disableTimer);
 
@@ -126,26 +127,19 @@ const Home = () => {
           style={{
             zIndex: 2,
             background: count === touchedDetail + 1 ? "green" : "red",
-            pointerEvents: disableTouch ? "all" : "none",
-            opacity: disableTouch ? "0.35" : "0",
+            pointerEvents: isShowPopUp ? "all" : "none",
+            opacity: isShowPopUp ? "0.35" : "0",
           }}
           className={s.popUpsWrapper}
         />
-        <div
-          style={{
-            pointerEvents: disableTouch ? "all" : "none",
-          }}
-          className={s.popUpsWrapper}
-        >
-          {touchedDetail !== 0 && (
-            <DetailInfo
-              detailNumber={touchedDetail}
-              setDisableTouch={setDisableTouch}
-              count={count}
-            />
-          )}
-          <DetailHelpers setDisableTouch={setDisableTouch} count={count} />
-        </div>
+
+        <DetailInfo
+          setShowPopUp={setShowPopUp}
+          isShowPopUp={isShowPopUp}
+          detailNumber={touchedDetail}
+          setDisableTouch={setDisableTouch}
+          count={count}
+        />
 
         <Canvas3d
           isDone={isDone}

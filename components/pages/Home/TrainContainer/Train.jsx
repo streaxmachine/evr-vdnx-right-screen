@@ -197,11 +197,11 @@ const MakeTrain = ({
           {...spring}
           {...bind()}
         >
-          {!isRightPosition && value === 2 && (
+          {/* {!isRightPosition && value === 2 && (
             <Html zIndexRange={(0, 1)}>
               <div className={s.value}>Покраска</div>
             </Html>
-          )}
+          )} */}
         </animated.mesh>
       </group>
       <Preload all />
