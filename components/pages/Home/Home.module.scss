@@ -32,7 +32,7 @@
   pointer-events: all;
 }
 
-.finger{
+.finger {
   width: 200rem;
   z-index: 1;
   pointer-events: none;
@@ -41,7 +41,6 @@
 
   div {
     transform: rotate(-30deg);
-
   }
 }
 
@@ -55,7 +54,6 @@
   transition: opacity 2s ease-out;
 }
 
-
 .preloader {
   height: 100vh;
   width: 100vw;
@@ -64,7 +62,7 @@
     110deg,
     rgba(0, 70, 154, 1),
     rgba(183, 214, 251, 1)
-  );;
+  );
   background: linear-gradient(
     110deg,
     rgba(0, 70, 154, 1),
@@ -184,10 +182,7 @@
     // filter: invert(1);
     margin-bottom: 5px;
     // margin-bottom: 5px;
-
   }
-
-
 
   img {
     // width: 100%;
@@ -225,7 +220,6 @@
 
   .opacityAnimInInfinite {
     animation: fadeInFromNone2 3s infinite;
-
   }
 }
 
@@ -279,7 +273,7 @@
   height: 100vh;
 }
 
-.detailHelperWrapper{
+.detailHelperWrapper {
   width: 500rem;
   padding: 25rem;
   text-align: center;
@@ -295,11 +289,11 @@
   top: 50%;
   left: 50%;
   background-color: var(--light-blue);
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
-
 .detailInfoRoot {
+  
   position: absolute;
   display: flex;
   justify-content: space-around;
@@ -310,17 +304,18 @@
   // top: 240rem;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   // right: -100%;
   width: 555rem;
-  height: 210rem;
+  min-height: 210rem;
+  height:fit-content;
   background-color: white;
   color: rgba(180, 47, 47, 1);
   border-radius: 10rem;
   border: 4rem solid rgba(180, 47, 47, 1);
 }
 
-.detailConfirmButton{
+.detailConfirmButton {
   position: absolute;
   bottom: -65rem;
   border-radius: 10rem;
@@ -343,15 +338,17 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%);
-  margin-bottom: 320rem;
-  padding: 10rem;
+  margin-bottom: 350rem;
+  padding: 15rem;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
-  background-color: white;
-  border: solid 3rem var(--light-blue);
+  color: white;
+  background-color: var(--light-blue);
+  font-size: 22rem;
+  height: 50rem;
+  border: none;
   border-radius: 10rem;
   height: fit-content;
   width: 100%;
@@ -373,6 +370,9 @@
 .detailsImg {
   position: inherit;
   right: 0;
+  width: 294rem;
+  margin-top: 12rem;
+  margin-right: -43rem;
 }
 
 .detailZig {
@@ -420,18 +420,18 @@
   flex-wrap: nowrap;
   justify-content: space-evenly;
 }
-.starterHeadline{
+.starterHeadline {
   font-size: 54rem;
   font-weight: 500;
 }
 
-.starterContent{
+.starterContent {
   display: flex;
   width: 300rem;
   height: 175rem;
 }
 
-.textContainer{
+.textContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -484,10 +484,10 @@
   font-size: 20rem;
   z-index: 1;
 
-  &:hover {
-    color: white;
-    background-color: var(--light-blue);
-  }
+  // &:hover {
+  //   color: white;
+  //   background-color: var(--light-blue);
+  // }
 }
 .failMessageRoot {
   position: absolute;
@@ -502,7 +502,6 @@
   align-items: center;
   justify-content: center;
 
-
   .failMessageWrapper {
     width: 70%;
     height: 70%;
@@ -513,7 +512,7 @@
     pointer-events: all;
 
     display: flex;
-    justify-content: space-between;;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -551,7 +550,7 @@
   color: var(--light-blue);
   background-color: white;
 }
-.button_blue{
+.button_blue {
   background-color: var(--semi-blue);
   color: white;
 }
@@ -633,7 +632,6 @@
   width: 125rem;
   position: absolute;
 }
-
 
 //FAkeAI
 .aiChat {
