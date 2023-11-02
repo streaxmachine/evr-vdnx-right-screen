@@ -45,26 +45,26 @@ const ProgressBar = ({ setState, isBack }) => {
     }
   }, [progress]);
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      const randomPhrase = Math.floor(Math.random() * phrases.length);
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     const randomPhrase = Math.floor(Math.random() * phrases.length);
 
-      gsap.to(randomPhraseRef.current, {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => setText(phrases[randomPhrase]),
-      });
-      gsap.to(randomPhraseRef.current, {
-        opacity: 1,
-        duration: 1,
-        delay: 0.5,
-      });
-    }, 4000);
+  //     gsap.to(randomPhraseRef.current, {
+  //       opacity: 0,
+  //       duration: 0.5,
+  //       onComplete: () => setText(phrases[randomPhrase]),
+  //     });
+  //     gsap.to(randomPhraseRef.current, {
+  //       opacity: 1,
+  //       duration: 1,
+  //       delay: 0.5,
+  //     });
+  //   }, 4000);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
   return (
     <>
       <div className={s.page}></div>
@@ -89,7 +89,8 @@ const ProgressBar = ({ setState, isBack }) => {
             </div>
 
             <span className={s.fact} ref={randomPhraseRef}>
-              {text}
+              {/* {text} */}
+              "А вы знали, что Великая княгиня Екатерина Павловна устраивала во дворце такие балы, что однажды Александр I назвал его «маленьким Петергофом»?"
             </span>
           </div>
 
