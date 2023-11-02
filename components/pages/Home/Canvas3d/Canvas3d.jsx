@@ -22,14 +22,12 @@ const Canvas3d = ({
   setTouchedDetail,
 }) => {
   return (
-    <Canvas
-      shadows
-      gl={{ preserveDrawingBuffer: true, antialias: true }}
-    >
-      <OrthographicCamera makeDefault 
+    <Canvas shadows gl={{ preserveDrawingBuffer: true, antialias: true }}>
+      <OrthographicCamera
+        makeDefault
         near={0.001}
         far={1000}
-        zoom={25}
+        zoom={20}
         position={[7.2, 45.2, 10.3]}
       />
       <TrainContainer
@@ -53,7 +51,7 @@ const Canvas3d = ({
         </mesh>
       )}
 
-      <mesh visible  rotation-x={ - Math.PI * 0.5 } position-y={-0.3}>
+      <mesh visible rotation-x={-Math.PI * 0.5} position-y={-0.3}>
         <planeGeometry args={[26, 4]} />
         <meshBasicMaterial color={"#4599ff"} opacity={0.4} />
       </mesh>

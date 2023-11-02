@@ -18,9 +18,11 @@ import useStore from "hooks/useStore";
 import useScenarioTimer from "hooks/useScenarioTimer";
 
 import s from "./Home.module.scss";
+import { useSocket } from "hooks/useSocket";
 
 const Home = () => {
   // useScenarioTimer("ivolga", "time5", 5);
+  const socket = useSocket();
   const router = useRouter();
   const [count, setCount] = React.useState(1);
   const [touchedDetail, setTouchedDetail] = React.useState(0);
@@ -72,7 +74,18 @@ const Home = () => {
       <div className={s.canvasTrain}>
         {!isDone && !isTimeEndGame && (
           <Link href={"/quizNew"}>
-            <div className={s.buttonBack}>
+            <div
+              onClick={() => {
+                socket.send(
+                  JSON.stringify({
+                    installation: "right",
+                    type: "mode",
+                    data: "menu",
+                  })
+                );
+              }}
+              className={s.buttonBack}
+            >
               <img src="/images/arrow.png" alt="Назад" />
               <p className={s.backText}>Главное меню</p>
             </div>
@@ -204,15 +217,15 @@ const StarterMessage = ({ isClicked, setClicked }) => {
                   <div className={`${s.circle} ${s.bottom}`}></div>
                 </div>
                 <div className={s.textContainer}>
-                  <p style={{ marginTop: "0rem" }}>
+                  <div style={{ marginTop: "0rem" }}>
                     Выберите правильную деталь. Подсказки на макете "Иволги".
-                  </p>
-                  <p style={{ marginTop: "0rem" }}>
+                  </div>
+                  <div style={{ marginTop: "0rem" }}>
                     Переместите деталь на рельсы.
-                  </p>
-                  <p style={{ marginTop: "0rem" }}>
+                  </div>
+                  <div style={{ marginTop: "0rem" }}>
                     Успейте собрать "Иволгу" за 3 минуты.
-                  </p>
+                  </div>
                 </div>
               </div>
               <button className={s.starterBtn} onClick={() => setClicked(true)}>
@@ -238,14 +251,18 @@ const SuccessMessage = () => {
       </div>
       <div className={s.successRightWrapper}>
         <p className={s.successRightWrapper_title}>«Иволга»</p>
-        <p className={s.successRightWrapper_text}>
+        <div className={s.successRightWrapper_text}>
           Тверской вагоностроительный завод стал флагманом городских
-          электропоездов. <p> Всего по состоянию на осень 2023 года произведёно 55
-          составов в трёх версиях.</p> Три поколения Иволги заслужили любовь и
-          уважение пассажиров. Опыт и отзывы пассажиров помогают продолжать
-          совершенствовать поезд и создавать инновации в новых поколениях
-          «Иволги».
-        </p>
+          электропоездов.{" "}
+          <p>
+            {" "}
+            Всего по состоянию на осень 2023 года произведёно 55 составов в трёх
+            версиях.
+          </p>{" "}
+          Три поколения Иволги заслужили любовь и уважение пассажиров. Опыт и
+          отзывы пассажиров помогают продолжать совершенствовать поезд и
+          создавать инновации в новых поколениях «Иволги».
+        </div>
         <img
           className={s.successRightWrapper_zig}
           alt="zig"

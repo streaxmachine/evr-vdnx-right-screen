@@ -33,8 +33,16 @@ const DetailInfo = React.memo(
       setShow(true);
       setPauseTimer(true);
 
+      console.log("detailNumber", detailNumber);
+
       if (Number(detailNumber) !== Number(count - 1)) {
-        setText(phrases[count].errorText);
+        if (Number(detailNumber) >= 11) {
+          setText(
+            "Кажется не подходит... Это деталь от другого транспортного средства"
+          );
+        } else {
+          setText(phrases[count].errorText);
+        }
       } else {
         setText(phrases[count].text);
       }
@@ -61,9 +69,9 @@ const DetailInfo = React.memo(
                 </div>
               ) : (
                 <>
-                  {Number(detailNumber) === Number(count - 1) && (
-                    <div className={s.detailsName}>{detail[0]?.name}</div>
-                  )}
+                  {/* {Number(detailNumber) === Number(count - 1) && ( */}
+                  <div className={s.detailsName}>{detail[0]?.name}</div>
+                  {/* )} */}
                 </>
               )}
 
@@ -71,27 +79,25 @@ const DetailInfo = React.memo(
                 <div className={s.detailsText}>{detail[0]?.description}</div>
               ) : (
                 <>
-                  {detailNumber > 11 ? (
-                    <div>Деталь не от иволги</div>
+                  {detailNumber >= 11 ? (
+                    <div className={s.detailsText}>
+                      {detail[0]?.description}
+                    </div>
                   ) : (
                     <div className={s.detailsText}>
-                      Для установки этой детали пока рано
+                      Выбранная вами деталь должна устанавливаться позже
                     </div>
                   )}
                 </>
               )}
 
-              {Number(detailNumber) === Number(count - 1) && (
-                <>
-                  {Number(count) !== 11 && (
-                    <img
-                      className={s.detailsImg}
-                      src={detail[0]?.picSrc}
-                      alt={detail[0]?.alt}
-                    />
-                  )}
-                </>
-              )}
+              <>
+                <img
+                  className={s.detailsImg}
+                  src={detail[0]?.picSrc}
+                  alt={detail[0]?.alt}
+                />
+              </>
 
               <img
                 className={s.detailZig}
@@ -102,17 +108,25 @@ const DetailInfo = React.memo(
                     : "/images/train/line_red.png"
                 }
               />
+
+              {Number(detailNumber) >= 11 && (
+                <div className={s.wrongDetailHelp}>
+                  {phrases[count].errorText}
+                </div>
+              )}
+
               <button
                 onClick={() => {
                   setShow(false);
                   setShowPopUp(false);
                   setPauseTimer(false);
                 }}
+                style={{}}
                 className={s.detailConfirmButton}
               >
                 {Number(count) !== 11
-                  ? "Все понятно!  Играем дальше"
-                  : "Осмотреться"}
+                  ? "Играем дальше"
+                  : "Рассмотреть «Иволгу»"}
               </button>
             </motion.div>
           )}

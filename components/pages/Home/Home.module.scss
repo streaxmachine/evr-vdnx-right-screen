@@ -293,11 +293,11 @@
 }
 
 .detailInfoRoot {
-  
   position: absolute;
   display: flex;
   justify-content: space-around;
-  padding: 10rem;
+  padding: 20rem;
+  gap: 10rem;
   flex-direction: column;
   pointer-events: all;
   z-index: 3;
@@ -338,17 +338,17 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%);
-  margin-bottom: 350rem;
+  bottom: 105%;
   padding: 15rem;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  background-color: var(--light-blue);
+  color: var(--light-blue);
+  background-color: white;
+  border: solid 5rem var(--light-blue);
   font-size: 22rem;
   height: 50rem;
-  border: none;
   border-radius: 10rem;
   height: fit-content;
   width: 100%;
@@ -357,14 +357,35 @@
 
 .detailsName {
   color: black;
-  font-size: 30rem;
+  font-size: 25rem;
   font-weight: 600;
+  // margin-bottom: 25rem;
 }
 
 .detailsText {
   font-size: 20rem;
   width: 65%;
   z-index: 2;
+}
+
+.wrongDetailHelp {
+  // color: white;
+  // width: 100%;
+  // left: 50%;
+  // transform: translate(-50%);
+  // background-color: white;
+  border-top: solid 1rem black;
+  width: 55%;
+  color: var(--light-blue);
+  margin-top: 10rem;
+  font-size: 22rem;
+  padding-top: 10rem;
+  // position: absolute;
+  // bottom: -80rem;
+  // border-radius: 10rem;
+  // text-align: center;
+  // padding: 10rem;
+  // font-size: 25rem;
 }
 
 .detailsImg {

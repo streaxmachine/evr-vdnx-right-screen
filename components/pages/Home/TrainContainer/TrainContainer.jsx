@@ -1,13 +1,12 @@
 import React, { useState, useRef } from "react";
 import * as THREE from "three";
-import { Preload, useGLTF } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 
 import Lights from "../Lights";
 import MakeTrain from "./Train";
 
 import { dataInfo } from "./dataInfo";
-
-import { clearScene } from "utils/three";
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
@@ -22,14 +21,14 @@ const TrainContainer = ({
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  const train = useGLTF("/models/Ivolga_3.0_v12.glb");
+  const train = useGLTF("/models/Ivolga_3.0_v22.glb");
 
   const floor = React.useMemo(() => {
     return train.scene.getObjectByName("00");
   }, [train]);
 
   const parts = React.useMemo(() => {
-    const randomNubmers = ["11", "12", "13", "14", "15"];
+    const randomNubmers = ["11", "12", "13", "14", "15", "16", "17"];
     shuffle(randomNubmers);
     const part1 = train.scene.getObjectByName("1");
     const part2 = train.scene.getObjectByName("2");
@@ -45,6 +44,10 @@ const TrainContainer = ({
     const part11 = train.scene.getObjectByName(randomNubmers[0]);
     const part12 = train.scene.getObjectByName(randomNubmers[1]);
     const part13 = train.scene.getObjectByName(randomNubmers[2]);
+    // const part14 = train.scene.getObjectByName(randomNubmers[3]);
+    // const part15 = train.scene.getObjectByName(randomNubmers[4]);
+    // const part16 = train.scene.getObjectByName(randomNubmers[5]);
+    // const part17 = train.scene.getObjectByName(randomNubmers[6]);
 
     const parts = [];
     parts.push(
@@ -61,6 +64,10 @@ const TrainContainer = ({
       { object: part11, id: Number(randomNubmers[0]) }, //prettier-ignore
       { object: part12, id: Number(randomNubmers[1]) }, //prettier-ignore
       { object: part13, id: Number(randomNubmers[2]) } //prettier-ignore
+      // { object: part14, id: Number(randomNubmers[3]) }, //prettier-ignore
+      // { object: part15, id: Number(randomNubmers[4]) }, //prettier-ignore
+      // { object: part16, id: Number(randomNubmers[5]) }, //prettier-ignore
+      // { object: part17, id: Number(randomNubmers[6]) } //prettier-ignore
     );
     return parts;
   }, [train]);

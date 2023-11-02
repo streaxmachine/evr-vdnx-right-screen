@@ -191,6 +191,7 @@ const MakeTrain = ({
           geometry={part.geometry}
           material={part.material}
           scale={1.5}
+          visible={isDone && value > 10 ? false : true}
           castShadow
           receiveShadow
           ref={dragMeshRef}
@@ -224,13 +225,13 @@ const MakeTrain = ({
 
           {value === 9 && (
             <mesh
-              scale={2.5}
-              position-x={-2}
-              position-z={0}
+              scale={2.7}
+              position-x={-2.8}
+              position-z={-1.5}
               position-y={1.0}
               rotation-x={-Math.PI / 2}
             >
-              <planeGeometry args={[7, 1.2]} />
+              <planeGeometry args={[7, 2.4]} />
               <meshBasicMaterial visible={false} color={"red"} />
             </mesh>
           )}
