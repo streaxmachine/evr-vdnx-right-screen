@@ -66,9 +66,9 @@ const OnWay = ({
     }
   }, [progress, distanceSocket]);
 
-  const isSlow = speedSocket <= 1.9;
-  const isOkay = speedSocket > 1.9 && speedSocket <= 3.9;
-  const isFast = speedSocket > 3.9;
+  const isSlow = speedSocket <= 1;
+  const isOkay = speedSocket > 1 && speedSocket <= 3.5;
+  const isFast = speedSocket > 3.5;
 
 
   React.useEffect(() => {
@@ -83,7 +83,7 @@ const OnWay = ({
   const rays = Array.from({ length: 28 }, (_, index) => {
     const isFilled = index < filledCells;
     const isRed =
-      (speedSocket <= 1 && isFilled) || (speedSocket > 3 && !isFilled);
+      (speedSocket <= 1 && isFilled) || (speedSocket >= 3.5  && !isFilled);
 
     return (
       <div
