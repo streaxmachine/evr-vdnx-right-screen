@@ -164,11 +164,7 @@ const CompleteQuiz = ({
                 onClick={() => {
                   setGlobalState("quizCards");
                   socket.send(
-                    JSON.stringify({
-                      installation: "right",
-                      type: "mode",
-                      data: `splashscreen`,
-                    })
+                    JSON.stringify({"installation":"right","type":"mode","data":"menu"})
                   );
                 }}
               >

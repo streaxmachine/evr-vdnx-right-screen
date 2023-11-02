@@ -189,7 +189,7 @@ const CompleteQuizCow = ({
                     JSON.stringify({
                       installation: "right",
                       type: "mode",
-                      data: `splashscreen`,
+                      data: "menu",
                     })
                   );
                 }}
