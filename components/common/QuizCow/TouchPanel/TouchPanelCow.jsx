@@ -8,7 +8,6 @@ import useStore from "hooks/useStore";
 
 import s from "./TouchPanelCow.module.scss";
 
-
 const TouchPanelCow = ({ setGlobalState, socket }) => {
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
@@ -26,7 +25,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
                   JSON.stringify({
                     installation: "right",
                     type: "mode",
-                    data: "puzzle_start",
+                    data: "menu",
                   })
                 );
               }}
@@ -43,9 +42,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
             />
           </div>
         )}
-        <div
-          className={clsx(s.right, isQuizDone && s.rightDone)}        
-        >
+        <div className={clsx(s.right, isQuizDone && s.rightDone)}>
           <QuestionsCow
             isQuizDone={isQuizDone}
             socket={socket}
@@ -54,7 +51,11 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
             setQuizDone={setQuizDone}
             setGlobalState={setGlobalState}
           />
-          <img className={s.cowIMG} src="/images/QuizCowRules/cow.png" alt="Корова" />
+          <img
+            className={s.cowIMG}
+            src="/images/QuizCowRules/cow.png"
+            alt="Корова"
+          />
         </div>
       </div>
     </div>
@@ -62,5 +63,3 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
 };
 
 export default React.memo(TouchPanelCow);
-
-

@@ -26,7 +26,7 @@ const TouchPanel = ({ setGlobalState, socket }) => {
                   JSON.stringify({
                     installation: "right",
                     type: "mode",
-                    data: "victorina_start",
+                    data: "menu",
                   })
                 );
               }}

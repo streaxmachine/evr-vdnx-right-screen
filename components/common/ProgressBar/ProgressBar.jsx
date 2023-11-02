@@ -25,7 +25,7 @@ const ProgressBar = ({ setState, isBack }) => {
     if (progress !== 100) {
       const interval = setInterval(() => {
         setProgress(progress + 2);
-      }, 100);
+      }, 40);
       return () => {
         clearInterval(interval);
       };
