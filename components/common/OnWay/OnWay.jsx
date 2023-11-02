@@ -66,9 +66,9 @@ const OnWay = ({
     }
   }, [progress, distanceSocket]);
 
-  const isSlow = speedSocket <= 1;
-  const isOkay = speedSocket > 1 && speedSocket <= 3;
-  const isFast = speedSocket > 3;
+  const isSlow = speedSocket <= 1.9;
+  const isOkay = speedSocket > 1.9 && speedSocket <= 3.9;
+  const isFast = speedSocket > 3.9;
 
 
   React.useEffect(() => {
@@ -167,7 +167,7 @@ const OnWay = ({
               </div>
               <div className={s.speed}>
                 <p className={s.dataTitle}>Скорость</p>
-                <p className={s.speedNumber}>{roundedNumber(speedSocket) * 8}</p>
+                <p className={s.speedNumber}>{roundedNumber(speedSocket * 2.8) }</p>
                 <p className={s.dataMeasure}>км/ч</p>
               </div>
               <div className={s.dist}>
