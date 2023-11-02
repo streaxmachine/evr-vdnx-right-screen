@@ -88,18 +88,18 @@ const ProgressBar = ({ setState, isBack }) => {
               />
             </div>
 
-            <span className={s.fact} ref={randomPhraseRef}>
+            {/* <span className={s.fact} ref={randomPhraseRef}>
               {text}
-            </span>
+            </span> */}
           </div>
 
-          <div className={s.imgWrapper}>
+          {/* <div className={s.imgWrapper}>
             <img
               className={s.img}
               src="/images/progress/progress_putevoi.png"
               alt="Путевой дворец"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

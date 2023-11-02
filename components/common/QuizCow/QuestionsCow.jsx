@@ -8,8 +8,6 @@ import CompleteQuizCow from "./CompleteQuizCow";
 
 import s from "./TouchPanel/TouchPanelCow.module.scss";
 
-
-
 const QuestionsCow = React.memo(
   ({ time, isQuizDone, setScenario, socket, setQuizDone, setGlobalState }) => {
     const buttonRef = React.useRef();
@@ -117,7 +115,7 @@ const QuestionsCow = React.memo(
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
-        audioRef.current.play();
+        // audioRef.current.play();
 
         // currentQuestion.answerOptions.forEach((answer, questionIndex) => {
         //   if (answer.isCorrect) {
@@ -243,6 +241,5 @@ const QuestionsCow = React.memo(
     );
   }
 );
-
 
 export default QuestionsCow;
