@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useControls } from "leva";
+import * as THREE from "three";
 
 import s from "./LastStep.module.scss";
-import { Environment, OrbitControls } from "@react-three/drei";
-import { Canvas, useThree } from "@react-three/fiber";
+import {
+  Environment,
+  OrbitControls,
+  PerspectiveCamera,
+  useTexture,
+} from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 
 import { locations } from "../OnWay/locations";
 import CanvasPreloader from "../CanvasPreloader";
@@ -126,8 +131,9 @@ const LastStep = ({
       <CanvasPreloader />
       <div className={s.canvasWrapper}>
         <Canvas onPointerMove={(e) => handleSendTouchToSocket(e)}>
-          <Environment background files={currentLocation[0].hdri} />
-          <OrbitControls />
+          <MySphere />
+          <PerspectiveCamera />
+          <OrbitControls enableZoom={false} />
         </Canvas>
       </div>
 
@@ -201,3 +207,16 @@ const LastStep = ({
   );
 };
 export default React.memo(LastStep);
+
+function MySphere() {
+  const texture = useTexture("/images/lastpage/dspdfspfsd.jpg");
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.RepeatWrapping;
+  texture.repeat.set(7, 4);
+  return (
+    <mesh>
+      <sphereGeometry args={[5, 20, 20]} />
+      <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
+    </mesh>
+  );
+}
