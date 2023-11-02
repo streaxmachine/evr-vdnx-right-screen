@@ -82,7 +82,7 @@ const MakeTrain = ({
   const bind = useDrag(
     ({ active, movement: [x, y], timeStamp, event }) => {
       const distance = vector.distanceTo(dragMeshRef.current.position);
-      const isdragable = distance > 8;
+      const isdragable = distance > 10;
       let rotation = [part.rotation.x, part.rotation.y, part.rotation.z];
 
       if (!isDone) {
