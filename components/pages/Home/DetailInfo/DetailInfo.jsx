@@ -65,7 +65,8 @@ const DetailInfo = React.memo(
 
               {Number(count) === 11 ? (
                 <div className={s.detailsName}>
-                  {"Поздравляем, вы успешно собрали иволгу!"}
+                  {"Поздравляем!"}
+                  <p>{"Вы успешно собрали «Иволгу!»"}</p>
                 </div>
               ) : (
                 <>

@@ -74,7 +74,7 @@
   width: 100%;
   border: none;
   display: flex;
-  margin-top: 25rem;
+  margin-top: 116rem;
   color: white;
   justify-content: center;
   align-items: center;
@@ -86,49 +86,9 @@
   position: absolute;
 }
 
-.lineWithcircles {
-  position: relative;
+.containerBtn{
+  margin-top: 256rem;
   z-index: 5;
-  width: 6rem;
-  height: 200rem;
-  background-color: white;
-  margin: 0 auto;
-  transform: translateX(-390rem);
-}
-
-.circle {
-  position: absolute;
-  width: 20rem; /* Диаметр кругов */
-  height: 20rem;
-  background-color: white;
-  border-radius: 50%; /* Создает круглую форму */
-}
-
-.circleTop {
-  position: absolute;
-  width: 70rem; 
-  height: 70rem;
-  background-color: white;
-  border-radius: 50%; 
-}
-
-.circleNumber {
-  color: var(--light-blue);
-  font-size: 36rem;
-  font-weight: 600;
-  transform: translateX(25rem) translateY(15rem);
-}
-
-.top {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.bottom {
-  bottom: 0;
-  left: 50%; 
-  transform: translateX(-50%); 
 }
 
 .playBtn {
@@ -141,12 +101,9 @@
   font-weight: 700;
   font-size: 24rem;
   z-index: 1;
-  margin-top: 160rem;
 
-  &:hover {
-    color: white;
-    background-color: var(--light-blue);
-  }
+  cursor: pointer;
+
 }
 
 // /* AI */
@@ -154,14 +111,14 @@
 .aiChat {
   width: 184px;
   height: 184px;
-  background-image: url('/images/aiChat.gif');
+  background-image: url("/images/aiChat.gif");
   background-size: 100%;
   position: absolute;
   bottom: -1rem;
   right: 64rem;
   mix-blend-mode: multiply;
 }
-.speechBubbleContainer{
+.speechBubbleContainer {
   position: absolute;
   width: 510rem;
   left: 42%;
@@ -189,8 +146,8 @@
 .triangle {
   width: 10rem;
   height: 10rem;
-  border-top: 16px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-right: 21px solid rgba(255, 255, 255, 0.2);;
-  border-left: 38px solid transparent;
+  border-top: 39px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-right: 20px solid rgba(255, 255, 255, 0.2);
+  border-left: 32px solid transparent;
 }

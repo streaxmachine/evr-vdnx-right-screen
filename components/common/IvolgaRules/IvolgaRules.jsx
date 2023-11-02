@@ -45,29 +45,22 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
           <div className={s.speechBubbleContainer}>
             <div className={s.triangle}></div>
             <div className={s.speechBubble}>
-              Выделенная область и ее порядковый номер помогут вам верно собрать
-              поезд.
+              Выделенная область поможет вам верно собрать поезд.
             </div>
           </div>
 
           <div className={s.imgContainer}>
-            <div className={s.lineWithcircles}>
-              <div className={`${s.circleTop} ${s.top}`}>
-                <p className={s.circleNumber}>1</p>
-              </div>
-              <div className={`${s.circle} ${s.bottom}`}></div>
-            </div>
 
             <img
               className={s.ivolgaImg}
-              src="/images/IvolgaRules/ivolga.png"
+              src="/images/IvolgaDetails/04W_alpha.png"
               alt="ivolga"
             />
           </div>
 
-          <div>
+          <div className={s.containerBtn}>
             <Link href={"/"}>
-              <button className={s.playBtn}>Все понятно! Я в игре</button>
+              <button className={s.playBtn} >Все понятно! Я в игре</button>
             </Link>
           </div>
         </div>
