@@ -16,7 +16,7 @@ const boxAnimation = {
 };
 
 const DetailInfo = React.memo(
-  ({ detailNumber, count, setDisableTouch, setShowPopUp, isShowPopUp }) => {
+  ({ detailNumber, count, setPauseTimer, setShowPopUp }) => {
     const rootRef = React.useRef();
     const [isShow, setShow] = React.useState(true);
     const [text, setText] = React.useState(phrases[1].text);
@@ -24,7 +24,6 @@ const DetailInfo = React.memo(
       if (count === detailNumber + 1) {
         return details.filter((item) => item.id === detailNumber + 1);
       } else {
-        console.log("hefsfaffsa");
         return details.filter((item) => item.id === detailNumber);
       }
     }, [detailNumber, count]);
@@ -32,14 +31,13 @@ const DetailInfo = React.memo(
     React.useEffect(() => {
       setShowPopUp(true);
       setShow(true);
+      setPauseTimer(true);
 
       if (Number(detailNumber) !== Number(count - 1)) {
         setText(phrases[count].errorText);
       } else {
         setText(phrases[count].text);
       }
-
-      console.log(count);
     }, [count, detailNumber]);
 
     return (
@@ -62,7 +60,11 @@ const DetailInfo = React.memo(
                   {"Поздравляем, вы успешно собрали иволгу!"}
                 </div>
               ) : (
-                <div className={s.detailsName}>{detail[0]?.name}</div>
+                <>
+                  {Number(detailNumber) === Number(count - 1) && (
+                    <div className={s.detailsName}>{detail[0]?.name}</div>
+                  )}
+                </>
               )}
 
               {Number(detailNumber) === Number(count - 1) ? (
@@ -73,18 +75,22 @@ const DetailInfo = React.memo(
                     <div>Деталь не от иволги</div>
                   ) : (
                     <div className={s.detailsText}>
-                      Деталь установлена не по порядку
+                      Для установки этой детали пока рано
                     </div>
                   )}
                 </>
               )}
 
-              {Number(count) !== 11 && (
-                <img
-                  className={s.detailsImg}
-                  src={detail[0]?.picSrc}
-                  alt={detail[0]?.alt}
-                />
+              {Number(detailNumber) === Number(count - 1) && (
+                <>
+                  {Number(count) !== 11 && (
+                    <img
+                      className={s.detailsImg}
+                      src={detail[0]?.picSrc}
+                      alt={detail[0]?.alt}
+                    />
+                  )}
+                </>
               )}
 
               <img
@@ -100,10 +106,13 @@ const DetailInfo = React.memo(
                 onClick={() => {
                   setShow(false);
                   setShowPopUp(false);
+                  setPauseTimer(false);
                 }}
                 className={s.detailConfirmButton}
               >
-                {Number(count) !== 11 ? "Я все понял!" : "Осмотреться"}
+                {Number(count) !== 11
+                  ? "Все понятно!  Играем дальше"
+                  : "Осмотреться"}
               </button>
             </motion.div>
           )}

@@ -27,32 +27,34 @@ const QuizNew = () => {
   }, [isLoaded]);
   return (
     <>
-      {globalState === "firstPage" && (
-        <QuizFirstPage setGlobalState={setGlobalState} socket={socket} />
-      )}
-      {globalState === "quizCards" && (
-        <QuizCards setGlobalState={setGlobalState} socket={socket} />
-      )}
-      {globalState === "quizRules" && (
-        <QuizRules setGlobalState={setGlobalState} socket={socket} />
-      )}
-      {globalState === "touchPanel" && (
-        <TouchPanel setGlobalState={setGlobalState} socket={socket} />
-      )}
-      {globalState === "ivolgaRules" && (
-        <IvolgaRules setGlobalState={setGlobalState} socket={socket} />
-      )}
-      {globalState === "quizCowRules" && (
-        <QuizCowRules setGlobalState={setGlobalState} socket={socket} />
-      )}
-      {globalState === "touchPanelCow" && (
-        <TouchPanelCow setGlobalState={setGlobalState} socket={socket} />
-      )}
+      <div className={s.root}>
+        {globalState === "firstPage" && (
+          <QuizFirstPage setGlobalState={setGlobalState} socket={socket} />
+        )}
+        {globalState === "quizCards" && (
+          <QuizCards setGlobalState={setGlobalState} socket={socket} />
+        )}
+        {globalState === "quizRules" && (
+          <QuizRules setGlobalState={setGlobalState} socket={socket} />
+        )}
+        {globalState === "touchPanel" && (
+          <TouchPanel setGlobalState={setGlobalState} socket={socket} />
+        )}
+        {globalState === "ivolgaRules" && (
+          <IvolgaRules setGlobalState={setGlobalState} socket={socket} />
+        )}
+        {globalState === "quizCowRules" && (
+          <QuizCowRules setGlobalState={setGlobalState} socket={socket} />
+        )}
+        {globalState === "touchPanelCow" && (
+          <TouchPanelCow setGlobalState={setGlobalState} socket={socket} />
+        )}
 
-      <div className={s.aiSection}>
-        <div className={s.aiChat} />
+        <div className={s.aiSection}>
+          <div className={s.aiChat} />
+        </div>
+        <FakeAi />
       </div>
-      <FakeAi />
     </>
   );
 };

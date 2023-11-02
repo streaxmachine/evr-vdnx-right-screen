@@ -48,19 +48,19 @@ const TrainContainer = ({
 
     const parts = [];
     parts.push(
-      { object: part1}, //prettier-ignore
-      { object: part2}, //prettier-ignore
-      { object: part3}, //prettier-ignore
-      { object: part4}, //prettier-ignore
-      { object: part5}, //prettier-ignore
-      { object: part6}, //prettier-ignore
-      { object: part7}, //prettier-ignore
-      { object: part8}, //prettier-ignore
-      { object: part9}, //prettier-ignore
-      { object: part10}, //prettier-ignore
-      { object: part11}, //prettier-ignore
-      { object: part12}, //prettier-ignore
-      { object: part13} //prettier-ignore
+      { object: part1, id: 1 },
+      { object: part2, id: 2}, //prettier-ignore
+      { object: part3, id: 3}, //prettier-ignore
+      { object: part4, id: 4}, //prettier-ignore
+      { object: part5, id: 5}, //prettier-ignore
+      { object: part6, id: 6}, //prettier-ignore
+      { object: part7, id: 7}, //prettier-ignore
+      { object: part8, id: 8}, //prettier-ignore
+      { object: part9, id: 9}, //prettier-ignore
+      { object: part10, id: 10}, //prettier-ignore
+      { object: part11, id: Number(randomNubmers[0]) }, //prettier-ignore
+      { object: part12, id: Number(randomNubmers[1]) }, //prettier-ignore
+      { object: part13, id: Number(randomNubmers[2]) } //prettier-ignore
     );
     return parts;
   }, [train]);
@@ -78,7 +78,7 @@ const TrainContainer = ({
           part={part.object}
           posX={index * 1.5}
           count={count}
-          finalData={dataInfo[index + 1]}
+          finalData={dataInfo[part.id]}
           setCount={setCount}
           setIsDragging={setIsDragging}
           floorPlane={floorPlane}

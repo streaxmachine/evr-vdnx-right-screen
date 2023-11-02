@@ -163,7 +163,6 @@ const Questions = React.memo(
         if (isImg) {
           gsap.to(imgRef.current, { opacity: 1, duration: 0.1, delay: 0.2 });
         }
-        console.log("IMG HERE");
 
         currentQuestion.answerOptions.forEach((answer, questionIndex) => {
           if (answer.isCorrect) {

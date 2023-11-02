@@ -26,7 +26,7 @@ const Home = () => {
   const [touchedDetail, setTouchedDetail] = React.useState(0);
   const [isDone, setIsDone] = React.useState(false);
   const [isOutTime, setIsOutTime] = React.useState(false);
-  const [disableTimer, setDisableTimer] = React.useState(false);
+  const [disableTimer, setDisableTimer] = React.useState(true);
   const [currentState, setCurrentState] = React.useState("making-train");
   const [isFirstTime, setFirstTime] = React.useState(true);
   const [time, setTime] = React.useState("0" + 3 + "0:10" + 0);
@@ -36,6 +36,8 @@ const Home = () => {
   const [disableTouch, setDisableTouch] = React.useState();
   const [isClickedRules, setClickedRules] = React.useState(false);
   const [isShowPopUp, setShowPopUp] = React.useState(true);
+
+  const [pauseTimer, setPauseTimer] = React.useState(false);
 
   useScenarioTimer("ivolga", "time30", 30, disableTimer);
 
@@ -126,7 +128,8 @@ const Home = () => {
         <div
           style={{
             zIndex: 2,
-            background: count === touchedDetail + 1 ? "green" : "red",
+            background:
+              count === touchedDetail + 1 ? "rgb(161 245 161)" : "#f98787",
             pointerEvents: isShowPopUp ? "all" : "none",
             opacity: isShowPopUp ? "0.35" : "0",
           }}
@@ -137,6 +140,7 @@ const Home = () => {
           setShowPopUp={setShowPopUp}
           isShowPopUp={isShowPopUp}
           detailNumber={touchedDetail}
+          setPauseTimer={setPauseTimer}
           setDisableTouch={setDisableTouch}
           count={count}
         />
@@ -152,6 +156,7 @@ const Home = () => {
         {!isTimeEndGame && isClickedRules && (
           <Timer
             time={time}
+            pauseTimer={pauseTimer}
             setTime={setTime}
             setQuizDone={setIsDone}
             isQuizDone={isDone}
@@ -235,11 +240,11 @@ const SuccessMessage = () => {
         <p className={s.successRightWrapper_title}>«Иволга»</p>
         <p className={s.successRightWrapper_text}>
           Тверской вагоностроительный завод стал флагманом городских
-          электропоездов. Всего по состоянию на середину 2020 года произведён 41
-          состав в трёх версиях. Три поколения Иволги заслужили любовь и
+          электропоездов. Всего по состоянию на осень 2023 года произведёно 55
+          составов в трёх версиях. Три поколения Иволги заслужили любовь и
           уважение пассажиров. Опыт и отзывы пассажиров помогают продолжать
           совершенствовать поезд и создавать инновации в новых поколениях
-          Иволги.
+          "Иволги".
         </p>
         <img
           className={s.successRightWrapper_zig}

@@ -197,11 +197,55 @@ const MakeTrain = ({
           {...spring}
           {...bind()}
         >
-          {/* {!isRightPosition && value === 2 && (
-            <Html zIndexRange={(0, 1)}>
-              <div className={s.value}>Покраска</div>
-            </Html>
-          )} */}
+          {value === 5 && (
+            <mesh
+              scale={3}
+              position-x={1}
+              position-y={2.5}
+              rotation-x={-Math.PI / 2}
+            >
+              <planeGeometry args={[7, 1]} />
+              <meshBasicMaterial visible={false} color={"red"} />
+            </mesh>
+          )}
+
+          {value === 3 && (
+            <mesh
+              scale={3.4}
+              position-x={0.5}
+              position-z={0}
+              position-y={1.0}
+              rotation-x={-Math.PI / 2}
+            >
+              <planeGeometry args={[7, 1]} />
+              <meshBasicMaterial visible={false} color={"red"} />
+            </mesh>
+          )}
+
+          {value === 9 && (
+            <mesh
+              scale={2.5}
+              position-x={-2}
+              position-z={0}
+              position-y={1.0}
+              rotation-x={-Math.PI / 2}
+            >
+              <planeGeometry args={[7, 1.2]} />
+              <meshBasicMaterial visible={false} color={"red"} />
+            </mesh>
+          )}
+
+          {value === 6 && (
+            <mesh
+              scale={2.7}
+              position-x={-1}
+              position-y={2.7}
+              rotation-x={-Math.PI / 2}
+            >
+              <boxGeometry args={[7, 1]} />
+              <meshBasicMaterial visible={false} color={"red"} />
+            </mesh>
+          )}
         </animated.mesh>
       </group>
       <Preload all />

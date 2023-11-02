@@ -1,3 +1,10 @@
+.root {
+  -ms-user-select: none; 
+		-moz-user-select: none; 
+		-webkit-user-select: none; 
+		user-select: none; 
+}
+
 .aiChat {
     position: absolute;
     bottom: 0rem;
