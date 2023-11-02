@@ -94,7 +94,7 @@ const CycleWay = () => {
         />
       )}
       {state === "progressBar" && (
-        <ProgressBar setState={setState} socket={socket} isBack={isBack} />
+        <ProgressBar setState={setState} socket={socket} isBack={isBack} location={location} />
       )}
       {state === "onway" && (
         <OnWay

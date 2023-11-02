@@ -72,7 +72,7 @@ const OnWay = ({
 
 
   React.useEffect(() => {
-    const newFilledCells = Math.floor((speedSocket / 48) * 28); // 48 - максимальное значение speedSocket, 28 - количество ячеек
+    const newFilledCells = Math.floor((speedSocket / 5.1) * 28); // 48 - максимальное значение speedSocket, 28 - количество ячеек
     setFilledCells(newFilledCells);
   }, [speedSocket]);
 
@@ -83,7 +83,7 @@ const OnWay = ({
   const rays = Array.from({ length: 28 }, (_, index) => {
     const isFilled = index < filledCells;
     const isRed =
-      (speedSocket < 20 && isFilled) || (speedSocket > 40 && !isFilled);
+      (speedSocket <= 1 && isFilled) || (speedSocket > 3 && !isFilled);
 
     return (
       <div
@@ -167,7 +167,7 @@ const OnWay = ({
               </div>
               <div className={s.speed}>
                 <p className={s.dataTitle}>Скорость</p>
-                <p className={s.speedNumber}>{roundedNumber(speedSocket)}</p>
+                <p className={s.speedNumber}>{roundedNumber(speedSocket) * 8}</p>
                 <p className={s.dataMeasure}>км/ч</p>
               </div>
               <div className={s.dist}>

@@ -38,8 +38,7 @@ const QuizCards = ({ setGlobalState, socket }) => {
             <span className={s.backText}>Главное меню</span>
           </button>
           <div className={s.textblock}>
-            <h2 className={s.title}>Сыграем?</h2>
-            <span className={s.text}>Выбери игру</span>
+            <h2 className={s.title}>Выбери игру</h2>
           </div>
           <section className={s.cardsWrapper}>
             {cards.map((card, id) => (

@@ -1,15 +1,12 @@
 import React from "react";
 import gsap from "gsap";
 
-import { phrases } from "./phrases";
-
 import s from "./ProgressBar.module.scss";
 
-const ProgressBar = ({ setState, isBack }) => {
+const ProgressBar = ({ setState, isBack, location }) => {
   const [progress, setProgress] = React.useState(0);
   const rootRef = React.useRef();
 
-  const [text, setText] = React.useState(phrases[0]);
   const randomPhraseRef = React.useRef();
 
   React.useEffect(() => {
@@ -45,26 +42,19 @@ const ProgressBar = ({ setState, isBack }) => {
     }
   }, [progress]);
 
-  // React.useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     const randomPhrase = Math.floor(Math.random() * phrases.length);
+  let text;
 
-  //     gsap.to(randomPhraseRef.current, {
-  //       opacity: 0,
-  //       duration: 0.5,
-  //       onComplete: () => setText(phrases[randomPhrase]),
-  //     });
-  //     gsap.to(randomPhraseRef.current, {
-  //       opacity: 1,
-  //       duration: 1,
-  //       delay: 0.5,
-  //     });
-  //   }, 4000);
+  if (location === "1") {
+    text =
+      "А вы знали, что Великая княгиня Екатерина Павловна устраивала во дворце такие балы, что однажды Александр I назвал его «маленьким Петергофом»";
+  } else if (location === "2") {
+    text =
+      "А вы знали, что Мультимедийный исторический парк «Россия - Моя история»  - это один из самых масштабных мультимедийных парков в нашей стране";
+  } else if (location === "3") {
+    text =
+      "А вы знали, что скульптура Советскому солдату в центре Ржевского мемориала состоит из 600 частей. Вес каждой превышает 100 кг.";
+  }
 
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, []);
   return (
     <>
       <div className={s.page}></div>
@@ -89,8 +79,7 @@ const ProgressBar = ({ setState, isBack }) => {
             </div>
 
             <span className={s.fact} ref={randomPhraseRef}>
-              {/* {text} */}
-              "А вы знали, что Великая княгиня Екатерина Павловна устраивала во дворце такие балы, что однажды Александр I назвал его «маленьким Петергофом»?"
+              {text}
             </span>
           </div>
 
