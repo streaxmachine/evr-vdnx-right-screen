@@ -75,29 +75,37 @@ const DetailInfo = React.memo(
                 </>
               )}
 
-              {Number(detailNumber) === Number(count - 1) ? (
-                <div className={s.detailsText}>{detail[0]?.description}</div>
-              ) : (
+              {count !== 11 && (
                 <>
-                  {detailNumber >= 11 ? (
+                  {Number(detailNumber) === Number(count - 1) ? (
                     <div className={s.detailsText}>
                       {detail[0]?.description}
                     </div>
                   ) : (
-                    <div className={s.detailsText}>
-                      Выбранная вами деталь должна устанавливаться позже
-                    </div>
+                    <>
+                      {detailNumber >= 11 ? (
+                        <div className={s.detailsText}>
+                          {detail[0]?.description}
+                        </div>
+                      ) : (
+                        <div className={s.detailsText}>
+                          Выбранная вами деталь должна устанавливаться позже
+                        </div>
+                      )}
+                    </>
                   )}
                 </>
               )}
 
-              <>
-                <img
-                  className={s.detailsImg}
-                  src={detail[0]?.picSrc}
-                  alt={detail[0]?.alt}
-                />
-              </>
+              {count !== 11 && (
+                <>
+                  <img
+                    className={s.detailsImg}
+                    src={detail[0]?.picSrc}
+                    alt={detail[0]?.alt}
+                  />
+                </>
+              )}
 
               <img
                 className={s.detailZig}
