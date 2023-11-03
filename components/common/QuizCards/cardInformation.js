@@ -4,7 +4,7 @@ export const cards = [
     title: "Узнай Тверь",
     text: "12 вопросов. 3 категории. 4 минуты. Только ты и история Тверской области.",
     picSrc: "/images/QuizCards/e5065ee379a684fec367ed0338938ea3.png",
-    alt: "Разгадай Тверь",
+    alt: "Узнай Тверь",
     cardGlobalState: "quizRules",
     info: { installation: "right", type: "mode", data: "victorina" },
   },
