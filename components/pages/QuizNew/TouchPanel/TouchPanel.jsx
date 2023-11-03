@@ -12,6 +12,7 @@ const TouchPanel = ({ setGlobalState, socket }) => {
   const [currentCategory, setCurrentCategory] = React.useState(0);
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
+  const [stopTime, setStopTime] = React.useState(false);
   const { setScenario } = useStore();
 
   return (
@@ -36,6 +37,7 @@ const TouchPanel = ({ setGlobalState, socket }) => {
               <span className={s.backText}>Главное меню</span>
             </button>
             <TimeMenu
+              stopTime={stopTime}
               time={time}
               setTime={setTime}
               setQuizDone={setQuizDone}
@@ -61,6 +63,7 @@ const TouchPanel = ({ setGlobalState, socket }) => {
           }}
         >
           <Questions
+            setStopTime={setStopTime}
             isQuizDone={isQuizDone}
             socket={socket}
             time={time}

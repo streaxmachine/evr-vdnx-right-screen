@@ -19,6 +19,7 @@ const Questions = React.memo(
   ({
     currentCategory,
     setCurrentCategory,
+    setStopTime,
     time,
     isQuizDone,
     setScenario,
@@ -154,6 +155,7 @@ const Questions = React.memo(
       const isImg = currentQuestion.isImg;
 
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
+        setStopTime(true);
         setScenario({ type: "quiz", place: "falseSecondTry" });
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
@@ -187,6 +189,7 @@ const Questions = React.memo(
         }
 
         setTimeout(() => {
+          setStopTime(false);
           setIsClickable(true);
           setQuestionNumber(questionNumber + 1);
           handleCheck();
