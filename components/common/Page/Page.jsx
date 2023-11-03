@@ -34,6 +34,12 @@ const Page = ({
     <>
       <Head>
         <title>{fullTitle}</title>
+        <script src="/dist/TouchFree_Tooling.js" type="text/javascript" />
+        <script src="/dist/Plugins/Snapping_Plugin.js" type="text/javascript" />
+        <script
+          src="/dist/Plugins/Snapping_Example.js"
+          type="text/javascript"
+        />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"

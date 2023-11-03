@@ -13,14 +13,6 @@ const Guide = ({ setGlobalState, socket }) => {
 
   return (
     <>
-      <Head>
-        <script src="/dist/TouchFree_Tooling.js" type="text/javascript" />
-        <script src="/dist/Plugins/Snapping_Plugin.js" type="text/javascript" />
-        <script
-          src="/dist/Plugins/Snapping_Example.js"
-          type="text/javascript"
-        />
-      </Head>
       <main className={s.root}>
         <div className={s.wrapper}>
           <div className={s.textblock}>
