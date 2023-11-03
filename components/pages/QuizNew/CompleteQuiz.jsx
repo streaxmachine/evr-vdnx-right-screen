@@ -191,7 +191,7 @@ const CompleteQuiz = ({
                     JSON.stringify({
                       installation: "right",
                       type: "mode",
-                      data: `splashscreen`,
+                      data: `menu`,
                     })
                   );
                 }}
