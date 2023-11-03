@@ -160,9 +160,10 @@ const Questions = React.memo(
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
-        audioRef.current.play();
+        // audioRef.current.play();
 
         if (isImg) {
+          setStopTime(true);
           gsap.to(imgRef.current, { opacity: 1, duration: 0.1, delay: 0.2 });
         }
 
@@ -184,6 +185,7 @@ const Questions = React.memo(
 
         if (isImg) {
           setTimeout(() => {
+            setStopTime(false);
             gsap.to(imgRef.current, { opacity: 0, duration: 0.1 });
           }, 4200);
         }
@@ -203,6 +205,7 @@ const Questions = React.memo(
       if (!twoMisstakesState) {
         if (question.isCorrect === true) {
           if (isImg) {
+            setStopTime(true);
             gsap.to(imgRef.current, { opacity: 1, duration: 0.1, delay: 0.2 });
           }
           if (sucessNumber.value === 1) {
@@ -220,6 +223,8 @@ const Questions = React.memo(
           if (isImg) {
             setTimeout(
               () => {
+                setStopTime(false);
+
                 gsap.to(imgRef.current, { opacity: 0, duration: 0.1 });
               },
               isImg ? 2300 : 700
