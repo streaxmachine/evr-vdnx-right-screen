@@ -16,7 +16,7 @@ const boxAnimation = {
 };
 
 const DetailInfo = React.memo(
-  ({ detailNumber, count, setPauseTimer, setShowPopUp }) => {
+  ({ detailNumber, count, setPauseTimer, isShowPopUp, setShowPopUp }) => {
     const rootRef = React.useRef();
     const [isShow, setShow] = React.useState(true);
     const [text, setText] = React.useState(phrases[1].text);
@@ -29,8 +29,16 @@ const DetailInfo = React.memo(
     }, [detailNumber, count]);
 
     React.useEffect(() => {
+      if (!isShowPopUp) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+    }, [isShowPopUp]);
+
+    React.useEffect(() => {
       setShowPopUp(true);
-      setShow(true);
+      // setShow(true);
       setPauseTimer(true);
 
       console.log("detailNumber", detailNumber);
@@ -126,7 +134,7 @@ const DetailInfo = React.memo(
 
               <button
                 onClick={() => {
-                  setShow(false);
+                  // setShow(false);
                   setShowPopUp(false);
                   setPauseTimer(false);
                 }}

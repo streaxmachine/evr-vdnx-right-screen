@@ -210,6 +210,19 @@ const MakeTrain = ({
             </mesh>
           )}
 
+          {value === 10 && (
+            <mesh
+              scale={3.4}
+              position-x={0.5}
+              position-z={0}
+              position-y={0.3}
+              rotation-x={-Math.PI / 2}
+            >
+              <planeGeometry args={[6, 1]} />
+              <meshBasicMaterial visible={false} color={"red"} />
+            </mesh>
+          )}
+
           {value === 3 && (
             <mesh
               scale={3.4}
