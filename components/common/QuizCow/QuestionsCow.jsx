@@ -9,7 +9,7 @@ import CompleteQuizCow from "./CompleteQuizCow";
 import s from "./TouchPanel/TouchPanelCow.module.scss";
 
 const QuestionsCow = React.memo(
-  ({ time, isQuizDone, setScenario, socket, setQuizDone, setGlobalState }) => {
+  ({ time, isQuizDone, setScenario, socket, setQuizDone, setGlobalState,setIsPointClicked, isPointClicked, setCurrentQuestionIndex, currentQuestionIndex }) => {
     const buttonRef = React.useRef();
     const audioRef = React.useRef();
 
@@ -22,6 +22,7 @@ const QuestionsCow = React.memo(
     const [questionNumber, setQuestionNumber] = React.useState(0);
     const [twoMisstakesState, setTwoMisstakesState] = React.useState(false);
 
+    console.log(currentQuestionIndex, currentQuestion.id)
     const searchRightVariant = React.useCallback(() => {
       currentQuestion.answerOptions.map((item, index) => {
         if (item.isCorrect) {
@@ -47,6 +48,7 @@ const QuestionsCow = React.memo(
     React.useEffect(() => {
       if (questionNumber === 13) {
         setQuizDone(true);
+        setCurrentQuestionIndex(0)
       }
     }, [questionNumber]);
 
@@ -84,6 +86,7 @@ const QuestionsCow = React.memo(
       } else {
         setQuestionNumber(questionNumber + 1);
         setCurrentQuestion(finalQuestions[questionNumber + 1]);
+        setIsPointClicked(false)
       }
     };
 
@@ -91,7 +94,9 @@ const QuestionsCow = React.memo(
       setQuizDone(false);
       setScore(0);
       setCurrentQuestion(finalQuestions[0]);
+      setIsPointClicked(false)
       setQuestionNumber(0);
+      setCurrentQuestionIndex(0)
       sucessNumber.test = 0;
     };
 
@@ -138,6 +143,7 @@ const QuestionsCow = React.memo(
           setQuestionNumber(questionNumber + 1);
           handleCheck();
           setTwoMisstakesState(false);
+
           return;
         }, 5000);
       } else if (sucessNumber.value === 1 && question.isCorrect !== true) {
@@ -151,6 +157,7 @@ const QuestionsCow = React.memo(
             setScore(score + 1);
             sucessNumber.test += 1;
             sucessNumber.value = 0;
+           
           } else {
             setScenario({ type: "quiz", place: "succesFirstTry" });
             sucessNumber.value = 0;
@@ -163,6 +170,7 @@ const QuestionsCow = React.memo(
             handleCheck();
             setIsClickable(true);
             event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
+
           }, 500);
         } else {
           setIsClickable(false);
@@ -184,19 +192,20 @@ const QuestionsCow = React.memo(
       <>
         <audio ref={audioRef} src="/music/phrase.mp3" autoPlay={false} />
 
-        {!isQuizDone && (
+        {!isQuizDone && currentQuestionIndex == currentQuestion.id && (
           <>
-            <div className={s.questionRoot}>
+          <div className={`${s.questionRoot}`}>
               <div className={s.firstTextWrapper}>
-                <div className={s.questionNumber}>
-                  Вопрос {questionNumber + 1}/13
-                </div>
+
                 <div
                   className={clsx(s.questionText, {
                     [s.bigText]: currentQuestion.isLong,
                   })}
                 >
                   {currentQuestion.questionText}
+                </div>
+                <div className={s.questionNumber}>
+                  Вопрос {questionNumber + 1}/13
                 </div>
               </div>
 

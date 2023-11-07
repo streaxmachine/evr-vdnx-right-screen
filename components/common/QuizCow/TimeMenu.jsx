@@ -44,20 +44,22 @@ const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
         const dashArray = setCircleDasharray(timeLeft);
 
         if (dashArray > 256) {
-          ref.current.setAttribute("color", "white");
+          ref.current.setAttribute("color", "var(--light-blue)");
         }
-        if (dashArray < 120) {
+        if (dashArray < 140) {
+          ref.current.setAttribute("color", "#2b47d6");
+        }
+        if (dashArray < 70) {
           ref.current.setAttribute("color", "purple");
         }
-        if (dashArray < 60) {
-          ref.current.setAttribute("color", "red");
+        if (dashArray < 35) {
+          ref.current.setAttribute("color", "var(--maroon)");
         }
         if (timeLeft === 0) {
-          s;
           setTimeout(() => {
+            ref.current.setAttribute("color", "rgba(255, 255, 255, 0.0)");
             setQuizDone(true);
           }, 500);
-          // setEndQuiz(true);
         }
       }, 1000);
       return () => {
@@ -68,26 +70,27 @@ const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
 
   return (
     <>
-      <div className="base-timer">
+      <div className={s.base_timer}>
         <svg
           className="base-timer__svg"
           viewBox="0 0 100 100"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g className="base-timer__circle">
+          <g className={s.base_timer__circle}>
             <circle
-              className="base-timer__path-elapsed"
+              className={s.base_timer__path_elapsed}
               color="rgba(69, 153, 255, 1)"
+              fill="rgba(255, 255, 255, 0.9)"
               cx="50"
               cy="50"
               r="45"
             ></circle>
             <path
               ref={ref}
-              id="base-timer-path-remaining"
+              id="base-timer__path-remaining"
               strokeDasharray="283"
               color="white"
-              className="base-timer__path-remaining"
+              className={`${s.base_timer__path_remaining} base-timer__path-remaining`}
               d="
             M 50, 50
             m -45, 0
@@ -97,8 +100,11 @@ const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
             ></path>
           </g>
         </svg>
-        <span id="base-timer-label" className="base-timer__label">
-          <p>{time}</p>
+        <span
+          id="base-timer-label"
+          className={`${s.base_timer__label} base-timer-label`}
+        >
+          <p style={{ fontSize: "28rem" }}>{time}</p>
           <p className="time">Время</p>
         </span>
       </div>

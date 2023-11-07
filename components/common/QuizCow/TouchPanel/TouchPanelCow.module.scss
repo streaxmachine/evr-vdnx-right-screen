@@ -3,6 +3,9 @@
   height: 100vh;
   font-size: 50rem;
   color: white;
+  // background-color: #87bdff;
+  background-image: url("/images/quizCow/bg.png");
+  background-size: cover;
 }
 
 .container {
@@ -10,34 +13,37 @@
   height: 100%;
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .left {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 18%;
+  padding: 25rem 172rem 20rem;
   align-items: center;
-  flex-direction: column;
-  background-color: var(--light-blue);
-  width: 34%;
-  height: 100%;
-  padding: 84rem;
-  padding-top: 0rem;
-  gap: 280rem;
+  backdrop-filter: blur(5rem);
 }
 
 .backMenu {
-  width: 279rem;
+  width: 214rem;
   height: 48rem;
   font-size: 18rem;
-  margin-top: 64rem;
   border-radius: 10rem;
-  color: white;
+  color: var(--light-blue);
   font-weight: 500;
   border: none;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20rem;
+  gap: 16rem;
+}
+.arrow {
+  font-weight: 600;
+  font-size: 30rem;
 }
 
 .backText {
@@ -46,21 +52,83 @@
   font-size: 22rem;
 }
 
-.right {
-  width: 66%;
+.progressRoot {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 187rem;
+}
+
+
+
+.progressWrapper {
+  display: flex;
   height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.pathBlue {
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+  stroke: var(--light-blue);
+  transition: all 1.5s;
+ 
+}
+
+.quiz {
+  width: 1260rem;
+  height: 760rem;
   background-color: white;
   color: var(--light-blue);
   background-size: cover;
   transition: all 0.5s ease-in-out;
+  position: absolute;
+  margin-top: 120rem;
 }
 
-.cowIMG{
+.onWayPointsWrapper {
+  position: relative;
+  display: flex;
+  top: 30rem;
+  width: 100%;
+}
+
+.point {
   position: absolute;
-  bottom: 102rem;
-  opacity: 0.2;
-  right: -59rem;
-  width: 433rem;
+  offset-path: path(
+    "M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
+  );
+  transition: all 1.5s;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  bottom: -12rem;
+}
+
+.pathButton {
+  width: 60rem;
+  height: 60rem;
+  z-index: 5;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60rem;
+  height: 60rem;
+}
+
+.buttonNumber {
+  font-size: 42rem;
+  font-weight: 600;
+  z-index: 5;
+  position: fixed;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .rightDone {
@@ -68,13 +136,32 @@
 }
 
 .questionRoot {
+  position: relative;
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 1260rem;
+  height: 760rem;
+  padding: 64rem;
+  bottom: 32rem;
+
+  background-color: white;
+  color: var(--light-blue);
+
+  transition: all 0.5s ease-in-out;
+}
+
+.questionRootInvisible {
   padding: 64rem;
   position: relative;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(69, 153, 255, 0.1);
+  // visibility: collapse;
 }
 
 .category {
@@ -83,8 +170,8 @@
 }
 
 .questionNumber {
-  font-size: 32rem;
-  line-height: 36rem;
+  font-size: 22rem;
+  line-height: 28rem;
   margin-top: 10rem;
 }
 
@@ -104,13 +191,12 @@
 }
 
 .answersWrapper {
-  // margin-top: 108rem;
   gap: 32rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 100rem;
+  margin-bottom: -10rem;
 }
 
 .answerButton {
@@ -134,9 +220,10 @@
 
 .completeRoot {
   position: absolute;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
+  // top: -120rem;
+  z-index: 120;
+  width: 100vw;
+  height: 100vh;
   background: linear-gradient(90deg, #286dc0 5.98%, #4599ff 100%, #87bdff 100%);
 }
 
@@ -219,7 +306,7 @@
   }
 }
 
-.blueButton{
+.blueButton {
   color: white;
   background-color: var(--light-blue);
   &:hover {
@@ -256,9 +343,9 @@
 
 .base_timer {
   position: relative;
-  width: 300px;
-  height: 300px;
-  color: red;
+  width: 140rem;
+  height: 140rem;
+  // color: red;
 }
 
 .base_timer__svg {
@@ -272,13 +359,13 @@
   color: red;
 }
 
-.base_timer__path-elapsed {
+.base_timer__path_elapsed {
   stroke-width: 7px;
   stroke: grey;
-  color: red;
+  // color: red;
 }
 
-.base_timer__path-remaining {
+.base_timer__path_remaining {
   stroke-width: 7px;
   stroke-linecap: round;
   transform: rotate(90deg);
@@ -286,19 +373,20 @@
   transition: 1s linear all;
   fill-rule: nonzero;
   stroke: currentColor;
-  color: red;
+  // color: red;
 }
 
 .base_timer__label {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 140rem;
+  height: 140rem;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   font-size: 48px;
-  color: red;
+  color: var(--light-blue);
 }
 
 .wayMenuRoot {
@@ -364,7 +452,6 @@
 .activeText {
   color: white;
 }
-
 
 .aiChat {
   position: absolute;

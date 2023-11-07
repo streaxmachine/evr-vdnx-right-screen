@@ -187,6 +187,13 @@ const OnWay = ({
             <span className={s.textEnd}>{item[0].end}</span>
           </div>
           <div className={s.progressRoot}>
+          <div className={s.onWayPointsWrapper}>
+              <OnWayPointsWrapper
+                key={item[0].id}
+                points={item[0].points}
+                distanceSocket={distanceSocket}
+              />
+            </div>
             <div className={s.progressWrapper}>
               <div className={s.baseImage}>
                 <svg

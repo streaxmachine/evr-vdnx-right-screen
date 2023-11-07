@@ -83,8 +83,8 @@
 }
 
 .card {
-  // width: 305rem;
-  width: 394rem;
+  width: 305rem;
+  // width: 394rem;
   height: 520rem;
   border-radius: 1em;
   background-color: rgb(240, 245, 249);
@@ -131,7 +131,7 @@
   font-weight: 500;
 }
 .cardTitle {
-  // margin-top: 8rem;
+  margin-top: 8rem;
   margin-top: 24rem;
   color: black;
   font-size: 40rem;
@@ -141,13 +141,13 @@
 
 .cardText {
   position: absolute;
-  top: 174rem;
+  top: 184rem;
   color: var(--light-blue);
   font-weight: 500;
-  // margin-top: 24rem;
-  // max-width: 240rem;
+  margin-top: 24rem;
+  max-width: 240rem;
   font-size: 16rem;
-  // line-height: 16rem;
+  line-height: 16rem;
   line-height: 20rem;
   letter-spacing: 0em;
   z-index: 2;
@@ -157,7 +157,7 @@
   z-index: 1;
   position: absolute;
   bottom: -170rem;
-  // left: -40rem;
+  left: -40rem;
   width: 500rem;
   pointer-events: none;
 }
