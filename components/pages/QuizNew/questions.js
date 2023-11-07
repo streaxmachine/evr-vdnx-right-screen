@@ -107,14 +107,14 @@ export const questionsVolga = [
   {
     id: "9",
     questionCategory: "Тверская область в деталях",
-    questionText: "Какая из действующих церквей Твери самая древняя?",
+    questionText: "Какая из действующих церквей Твери\n" + "самая древняя?",
     isLong: false,
     isImg: false,
     symbols: 49,
     answerOptions: [
       { answerText: "Собор Белая Троица", isBigBtn: true, isCorrect: true },
       {
-        answerText: "Воскресенская церковь Трёх Исповедников",
+        answerText: "Воскресенская церковь \n" + " Трёх Исповедников",
         isBigBtn: true,
         isCorrect: false,
       },
@@ -128,7 +128,7 @@ export const questionsVolga = [
   {
     id: "10",
     questionCategory: "Тверская область в деталях",
-    questionText: "Как называлась улица Советская в Твери с 1763 по 1919 годы?",
+    questionText: "Как называлась улица Советская в Твери \n" + " с 1763 по 1919 годы?",
     isLong: false,
     isImg: false,
     symbols: 60,
@@ -211,7 +211,7 @@ export const questionsVolga = [
     id: "16",
     questionCategory: "Тверская область в деталях",
     questionText:
-      "Какое название носил город Тверь\n" + "с 1931 по 1990-е гг.?",
+      "Какое название носил город Тверь\n" + "с 1931 по 1990-е годы?",
     isLong: false,
     isImg: false,
     symbols: 54,
@@ -238,7 +238,7 @@ export const questionsVolga = [
   {
     id: "18",
     questionCategory: "Тверская область в деталях",
-    questionText: "Какая река берёт начало в Тверской области?   ",
+    questionText: "Какая река берёт начало в Тверской области?",
     isLong: false,
     isImg: false,
     symbols: 43,
@@ -255,7 +255,7 @@ export const questionsStars = [
     id: "19",
     questionCategory: "Звезды в Твери",
     questionText:
-      "По реке Волге этот известный путешественник добрался до берегов Каспийского моря, Персии и Индии, а затем вернулся обратно?",
+      "Какой известный путешественник добрался по реке Волге до берегов Каспийского моря, Персии и Индии, а затем вернулся обратно?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/19.jpg",
@@ -298,7 +298,7 @@ export const questionsStars = [
     id: "22",
     questionCategory: "Звезды в Твери",
     questionText:
-      "«Тверь - самый хорошенький город после Петербурга...». Кому принадлежат эти слова?",
+      "«Тверь - самый хорошенький город после Петербурга...».\n" + "\n" + " Кому принадлежат эти слова?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/22.png",
@@ -313,7 +313,7 @@ export const questionsStars = [
     id: "23",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Этот архитектор участвовал в создании нового облика Твери после пожара 1763 года и спроектировал Императорский путевой дворец.",
+      "Этот архитектор участвовал в создании нового облика Твери после пожара 1763 г.\n" + "и спроектировал Императорский путевой дворец.",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/23.jpg",
@@ -328,15 +328,15 @@ export const questionsStars = [
     id: "24",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Кто написал эти строки:\n" +
-      "У Гальяни иль Кольони\n" +
+      "Кто написал эти строки?\n" +
+      "\n" + " У Гальяни иль Кольони\n" +
       "Закажи себе в Твери\n" +
       "С пармазаном макарони,\n" +
       "Да яишницу свари...",
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/24.jpg",
-    symbols: 141,
+    symbols: 210,
     answerOptions: [
       { answerText: "Ф.М. Достоевский", isBigBtn: false, isCorrect: false },
       { answerText: "И.А. Крылов", isBigBtn: false, isCorrect: false },
@@ -376,9 +376,8 @@ export const questionsStars = [
     id: "27",
     questionCategory: "Звезды в Твери",
     questionText:
-      "В какой гостинице А.С. Пушкин останавливался в Торжке?\n" +
-      "Еще осталось шутливое стихотворение об этом визите:\n" +
-      "На досуге отобедай\n" +
+      "В какой гостинице А.С. Пушкин останавливался в Торжке, оставив шутливое стихотворение об этом визите?\n" +
+      "\n" +"На досуге отобедай\n" +
       "У Пожарского в Торжке,\n" +
       "Жареных котлет отведай\n" +
       "И отправься налегке",
@@ -401,7 +400,7 @@ export const questionsStars = [
     imgUrl: "/images/stars/28.jpg",
     symbols: 34,
     answerOptions: [
-      { answerText: "В.Й.  Беринга", isBigBtn: false, isCorrect: false },
+      { answerText: "В.И.  Беринга", isBigBtn: false, isCorrect: false },
       { answerText: "А.Н. Никитина", isBigBtn: false, isCorrect: true },
       { answerText: "Николая Японского", isBigBtn: false, isCorrect: false },
     ],
@@ -417,7 +416,7 @@ export const questionsStars = [
     symbols: 81,
     answerOptions: [
       {
-        answerText: "Санкт-Петербург, Рим, Версаль",
+        answerText: "Санкт-Петербург,\n" + " Рим, Версаль",
         isBigBtn: false,
         isCorrect: true,
       },
@@ -430,10 +429,11 @@ export const questionsStars = [
     questionCategory: "Звезды в Твери",
     questionText:
       "Какому городу Тверской области посвящены строки известного стихотворения Александра Трифоновича Твардовского?\n" +
-      "«Фронт горел, не стихая,\n" +
+      "\n" +
+      "Фронт горел, не стихая,\n" +
       "Как на теле рубец.\n" +
       "Я убит и не знаю,\n" +
-      "Наш ли … наконец?»",
+      "Наш ли … наконец?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/30.jpg",
@@ -448,7 +448,7 @@ export const questionsStars = [
     id: "31",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Известный поэт-песенник родом из Твери, в нашем городе есть Дом поэзии, названный его именем?",
+    "Именем какого известного поэта-песенника родом из Твери в нашем городе назван Дом поэзии?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/31.jpg",
@@ -490,7 +490,7 @@ export const questionsStars = [
     id: "33",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Какой даме, похороненной на погосте Прутня, посвятил А.С.Пушкин стихотворение известное по первой строчке «Я помню чудное мгновенье…»?",
+      "Какой даме, похороненной на погосте Прутня, А.С.Пушкин посвятил стихотворение известное по первой строчке «Я помню чудное мгновенье…»?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/33.jpg",
@@ -505,7 +505,7 @@ export const questionsStars = [
     id: "34",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Этот известный путешественник и натуралист в конце XIX века служил прапорщиком в Полоцком пехотном полку в городе Белом",
+    "Какой известный путешественник и натуралист в конце XIX века служил прапорщиком в Полоцком пехотном полку в городе Белом?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/34.jpg",
@@ -532,16 +532,16 @@ export const questionsStars = [
     id: "35",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Строки «Ты знаешь, я томлюсь в неволе,\n" +
+      "Кто является автором этих строк, навеянных пребыванием в имении Слепнёво Бежецкого уезда Тверской губернии?\n" +
+      "\n" +
+      "Ты знаешь, я томлюсь в неволе,\n" +
       "О смерти Господа моля.\n" +
       "Но всё мне памятна до боли\n" +
-      "Тверская скудная земля»\n" +
-      "навеяны пребыванием в имении Слепнёво Бежецкого уезда Тверской губернии.\n" +
-      "Кто автор?",
+      "Тверская скудная земля",
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/35.png",
-    symbols: 200,
+    symbols: 210,
     answerOptions: [
       { answerText: "Марина Цветаева", isBigBtn: false, isCorrect: false },
       { answerText: "Анна Ахматова", isBigBtn: false, isCorrect: true },
@@ -559,13 +559,13 @@ export const questionsStars = [
     symbols: 159,
     answerOptions: [
       {
-        answerText: "Регентом архиерейского хора",
+        answerText: "регентом архиерейского хора",
         isBigBtn: true,
         isCorrect: true,
       },
-      { answerText: "Учителем музыки", isBigBtn: true, isCorrect: false },
+      { answerText: "учителем музыки", isBigBtn: true, isCorrect: false },
       {
-        answerText: "Дирижёром оркестра народных инструментов",
+        answerText: "дирижёром оркестра народных инструментов",
         isBigBtn: true,
         isCorrect: false,
       },
@@ -608,7 +608,7 @@ export const questionsStars = [
     id: "39",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Псевдоним писателя Бориса Кампова, который учился в тверской гимназии № 6, а в 1946 г. написал «Повесть о настоящем человеке»?",
+      "Какой псевдоним был у писателя Бориса Кампова, который учился в тверской гимназии № 6, а в 1946 г. написал «Повесть о настоящем человеке»?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/39.jpg",
@@ -635,7 +635,7 @@ export const questionsStars = [
         isCorrect: true,
       },
       {
-        answerText: "В гостинице Дарьи Пожарской в Торжке",
+        answerText: "В гостинице\n" + "Дарьи Пожарской в Торжке",
         isBigBtn: true,
         isCorrect: false,
       },
@@ -669,7 +669,7 @@ export const questionsStars = [
     id: "42",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Именно этот уроженец Тверской земли, выдающийся математик, учитель, богослов, политик, государственный деятель и поэт первым ввёл в российский обиход понятие «арифметика» и дал определение дроби, арифметической и геометрической прогрессиям.",
+      "Именно этот уроженец Тверской земли, выдающийся математик, учитель, богослов, политик, государственный деятель и поэт первым ввёл в российский обиход понятие «арифметика» и дал определение дроби, арифметической и геометрической прогрессиям:",
     isLong: true,
     isImg: true,
     imgUrl: "/images/stars/42.jpg",
@@ -719,7 +719,7 @@ export const questionsStars = [
     id: "44",
     questionCategory: "Звезды в Твери",
     questionText:
-      "Этому писателю, служившему в 1860-1861гг. вице-губернатором, установлен памятник в Твери",
+    "Какому писателю, служившему в 1860-1861 годах вице-губернатором, установлен памятник в Твери?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/stars/44.jpeg",
@@ -884,7 +884,7 @@ export const questionsRecords = [
     id: "55",
     questionCategory: "Рекорды и факты",
     questionText:
-      "Рекорд России – самая большая чашка сваренного кофе «Поетти» установлен в 2023 году в Твери в рамках празднования Дня города и 888-летия областной столицы. Сколько литров ароматного напитка было сварено по случаю торжества?",
+      "Рекорд России – самая большая чашка сваренного кофе «Поетти» установлен в 2023 году в Твери в рамках празднования Дня города и 888-летия областной столицы.\n" + "\n" + "Сколько литров ароматного напитка было сварено по случаю торжества?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/55.jpg",
@@ -899,7 +899,7 @@ export const questionsRecords = [
     id: "56",
     questionCategory: "Рекорды и факты",
     questionText:
-      "В 2018 г. в городе Конаково на гастрономическом фестивале «ВЕРЕЩАГИН СЫРFEST», который объединил профессионалов сыроварения и любителей сыра, было приготовлен самое большое в России блюдо из сыра весом свыше 122 кг. О каком блюде идет речь?",
+      "В 2018 г. в городе Конаково на гастрономическом фестивале «ВЕРЕЩАГИН СЫРFEST», который объединил профессионалов сыроварения и любителей сыра, было приготовлен самое большое в России блюдо из сыра весом свыше 122 кг.\n" + "\n" + " О каком блюде идет речь?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/56.jpg",
@@ -914,7 +914,7 @@ export const questionsRecords = [
     id: "57",
     questionCategory: "Рекорды и факты",
     questionText:
-      "Рекорд, который придется по душе всем любителям сладкого, был установлен в Лихославльском районе Тверской области в 2018 году. На фабрике компании «Мармеладная сказка» был изготовлен самый большой в России кусок мармелада. Знаете ли вы, сколько весила эта сладость?",
+      "Рекорд, который придется по душе всем любителям сладкого, был установлен в Лихославльском районе Тверской области в 2018 году. На фабрике компании «Мармеладная сказка» был изготовлен самый большой в России кусок мармелада.\n" + "\n" + " Знаете ли вы, сколько весила эта сладость?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/57.jpg",
@@ -937,17 +937,17 @@ export const questionsRecords = [
     answerOptions: [
       {
         answerText:
-          "В справочник\n" + "«Железнодорожная техника»",
+          "в справочник\n" + "«Железнодорожная техника»",
         isBigBtn: true,
         isCorrect: false,
       },
       {
-        answerText: " В Книгу рекордов Гиннеса",
+        answerText: "в Книгу рекордов Гиннеса",
         isBigBtn: true,
         isCorrect: false,
       },
       {
-        answerText: " В Книгу рекордов России",
+        answerText: "в Книгу рекордов России",
         isBigBtn: true,
         isCorrect: true,
       },
@@ -957,7 +957,7 @@ export const questionsRecords = [
     id: "59",
     questionCategory: "Рекорды и факты",
     questionText:
-      "Грузоподъемность крытых 9-метровых вагонов, выпускаемых Тверским вагоностроительным заводом с 1899 года, составляла 12,5 тонн. Что означала надпись на них – «40 человек или 8 лошадей»?",
+      "Грузоподъемность крытых 9-метровых вагонов, выпускаемых Тверским вагоностроительным заводом с 1899 года, составляла 12,5 тонн. \n" + "\n" + "Что означала надпись на них – «40 человек или 8 лошадей»?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/59.jpeg",
@@ -988,18 +988,18 @@ export const questionsRecords = [
     symbols: 168,
     answerOptions: [
       {
-        answerText: "Башенный кран высотой 20 метров",
+        answerText: "башенный кран высотой 20 метров",
         isBigBtn: true,
         isCorrect: false,
       },
       {
         answerText:
-          "Высокотехнологичный\n" + "роботизированный складской комплекс",
+          "высокотехнологичный\n" + "роботизированный складской комплекс",
         isBigBtn: true,
         isCorrect: true,
       },
       {
-        answerText: "Цех по производству розеток",
+        answerText: "цех по производству розеток",
         isBigBtn: true,
         isCorrect: false,
       },
@@ -1009,16 +1009,16 @@ export const questionsRecords = [
     id: "61",
     questionCategory: "Рекорды и факты",
     questionText:
-      "В 2022 году на тверском IT-предприятии «Аквариус» начался серийный выпуск компьютерного оборудования. Первым с конвейера предприятия сошел:",
+      "В 2022 году на тверском IT-предприятии «Аквариус» начался серийный выпуск компьютерного оборудования.\n" + "\n" + " Первым с конвейера предприятия сошел:",
     isLong: false,
     isImg: true,
     imgUrl: "/images/records/61.jpg",
     symbols: 138,
     answerOptions: [
-      { answerText: "Матричный принтер", isBigBtn: false, isCorrect: false },
-      { answerText: " Ноутбук-трансформер", isBigBtn: false, isCorrect: true },
+      { answerText: "матричный принтер", isBigBtn: false, isCorrect: false },
+      { answerText: "ноутбук-трансформер", isBigBtn: false, isCorrect: true },
       {
-        answerText: "Проводная компьютерная мышь",
+        answerText: "проводная компьютерная мышь",
         isBigBtn: false,
         isCorrect: false,
       },
@@ -1028,11 +1028,11 @@ export const questionsRecords = [
     id: "62",
     questionCategory: "Рекорды и факты",
     questionText:
-      "Конаковская компания «Авторос» - производитель единственного в своем вездехода «Шаман» 8x8, предназначенного для любого бездорожья. Сколько колес приводят в движение это транспортное средство?",
+      "Конаковская компания «Авторос» - производитель единственного в своем вездехода «Шаман» 8x8, предназначенного для любого бездорожья.\n" + "\n" + " Сколько колес приводят в движение это транспортное средство?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/62.jpeg",
-    symbols: 192,
+    symbols: 206,
     answerOptions: [
       { answerText: "4", isBigBtn: false, isCorrect: false },
       { answerText: "8", isBigBtn: false, isCorrect: true },
@@ -1043,11 +1043,11 @@ export const questionsRecords = [
     id: "63",
     questionCategory: "Рекорды и факты",
     questionText:
-      "Тверская компания «Металл-Тех» производит мини-экскаваторы для земляных работ. На какую глубину может копать такой экскаватор?",
+      "Тверская компания «Металл-Тех» производит мини-экскаваторы для земляных работ.\n" + "\n" + " На какую глубину может копать такой экскаватор?",
     isLong: false,
     isImg: true,
     imgUrl: "/images/records/63.jpg",
-    symbols: 126,
+    symbols: 200,
     answerOptions: [
       { answerText: "1 метр", isBigBtn: false, isCorrect: false },
       { answerText: "2 метра", isBigBtn: false, isCorrect: false },
@@ -1058,11 +1058,11 @@ export const questionsRecords = [
     id: "64",
     questionCategory: "Рекорды и факты",
     questionText:
-      "Образованное в 1959 году тверское предприятие «Исток» предлагает уникальные технологические решения в сфере альтернативной энергии. На основе какой энергии работает выпускаемое предприятием оборудование?",
+      "Образованное в 1959 году тверское предприятие «Исток» предлагает уникальные технологические решения в сфере альтернативной энергии.\n" + "\n" + " На основе какой энергии работает выпускаемое предприятием оборудование?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/64.jpg",
-    symbols: 203,
+    symbols: 206,
     answerOptions: [
       { answerText: "Энергия мантии Земли", isBigBtn: false, isCorrect: false },
       { answerText: "Космическая энергия", isBigBtn: false, isCorrect: false },
@@ -1092,11 +1092,11 @@ export const questionsRecords = [
     id: "66",
     questionCategory: "Рекорды и факты",
     questionText:
-      "Ржевские пряники всегда выпекались на меду. Первое упоминание о медовом ржевском прянике встречается в XV веке. Какое знаковое событие в истории СССР помогло возродить ржевский пряник?",
+      "Ржевские пряники всегда выпекались на меду. Первое упоминание о медовом ржевском прянике встречается в XV веке.\n" + "\n" + " Какое знаковое событие в истории СССР помогло возродить ржевский пряник?",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/66.jpg",
-    symbols: 184,
+    symbols: 206,
     answerOptions: [
       { answerText: "Олимпиада 80-х", isBigBtn: true, isCorrect: true },
       { answerText: "Полет Ю.А. Гагарина", isBigBtn: true, isCorrect: false },
@@ -1111,24 +1111,24 @@ export const questionsRecords = [
     id: "67",
     questionCategory: "Рекорды и факты",
     questionText:
-      "Морозовский городок – уникальный историко-архитектурный комплекс Твери середины 19 века, в котором были объединены лучшие традиции легкой промышленности Российской империи. На Всемирной выставке в Париже в 1900 г. Морозовский городок удостоен Гран-при как:",
+      "Морозовский городок – уникальный историко-архитектурный комплекс Твери середины XIX века, в котором были объединены лучшие традиции легкой промышленности Российской империи.\n" + "\n" + " На Всемирной выставке в Париже в 1900 г. Морозовский городок удостоен Гран-при как:",
     isLong: true,
     isImg: true,
     imgUrl: "/images/records/67.jpg",
     symbols: 256,
     answerOptions: [
       {
-        answerText: "Первый электрифицированный промышленный район",
+        answerText: "первый электрифицированный промышленный район",
         isBigBtn: true,
         isCorrect: false,
       },
       {
-        answerText: "Лучший рабочий городок мира",
+        answerText: "лучший рабочий городок мира",
         isBigBtn: true,
         isCorrect: true,
       },
       {
-        answerText: "Первый рабочий городок, выстроенный полностью из дерева",
+        answerText: "первый рабочий городок, выстроенный полностью из дерева",
         isBigBtn: true,
         isCorrect: false,
       },
@@ -1172,7 +1172,7 @@ export const questionsRecords = [
     symbols: 155,
     answerOptions: [
       {
-        answerText: "Ёлочные игрушки для Кремлёвской ёлки",
+        answerText: "Ёлочные игрушки \n" + " для Кремлёвской ёлки",
         isBigBtn: true,
         isCorrect: false,
       },
@@ -1203,3 +1203,4 @@ export const questionsRecords = [
     ],
   },
 ];
+
