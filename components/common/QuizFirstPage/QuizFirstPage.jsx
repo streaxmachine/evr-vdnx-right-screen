@@ -24,21 +24,38 @@ const Guide = ({ setGlobalState, socket }) => {
               Знакомьтесь с проектами Тверской области в игровом формате
               <p> и получите возможность выиграть приз!</p>
             </span>
-            <button
-              onClick={() => {
-                setGlobalState("quizCards");
-                socket.send(
-                  JSON.stringify({
-                    installation: "right",
-                    type: "mode",
-                    data: "menu",
-                  })
-                );
-              }}
-              className={s.button}
-            >
-              Выбрать игру
-            </button>
+            <div className={s.buttonContainer}>
+              <button
+                onClick={() => {
+                  setGlobalState("quizCards");
+                  socket.send(
+                    JSON.stringify({
+                      installation: "right",
+                      type: "mode",
+                      data: "menu",
+                    })
+                  );
+                }}
+                className={s.button}
+              >
+                Выбрать игру
+              </button>
+              <button
+                onClick={() => {
+                  setGlobalState("aiChat");
+                  // socket.send(
+                  //   JSON.stringify({
+                  //     installation: "right",
+                  //     type: "mode",
+                  //     data: "menu",
+                  //   })
+                  // );
+                }}
+                className={s.button}
+              >
+                Виртуальный помощник
+              </button>
+            </div>
           </div>
           <section className={s.imgContainer}>
             <img

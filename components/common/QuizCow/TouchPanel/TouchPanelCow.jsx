@@ -56,7 +56,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
                 }}
                 className={s.backMenu}
               >
-                <span className={s.arrow}>{"<"}</span>
+                <img src="/images/aiChat/arrow.png" alt="Назад" />
                 <span className={s.backText}>Главное меню</span>
               </button>
 

@@ -54,13 +54,22 @@
   text-align: left;
   vertical-align: top;
 }
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20rem;
+}
+
 .button {
   background-color: white;
   color: var(--light-blue);
-  width: 22%;
+  min-width: 240rem;
   border-radius: 100px;
   border: none;
-  padding: 22rem 22rem;
+  padding: 22rem 44rem;
   font-weight: 700;
   font-size: 24rem;
 
