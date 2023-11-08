@@ -33,11 +33,10 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [dashOffset, setDashOffset] = React.useState(0);
 
-
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setShowQuestion(true);
-    }, 2000);
+    }, 3000);
 
     return () => {
       clearTimeout(timeout);
@@ -49,15 +48,15 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
     const calculateDashOffset = (questionNumber) => {
       return 4200 - questionNumber * 340;
     };
- 
+
     gsap.to(ref.current, {
       duration: 1.75,
+      delay: 0.2,
       "stroke-dashoffset": calculateDashOffset(questionNumber),
       ease: "power2.inOut",
-    })
+    });
     // ref.current.setAttribute("stroke-dashoffset", calculateDashOffset(questionNumber));
   }, [questionNumber]);
-
 
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   const { setScenario } = useStore();
@@ -191,6 +190,7 @@ const OnWayPointsWrapper = ({
 };
 
 const Point = ({ point, number, questionNumber }) => {
+  console.log(questionNumber, number);
   return (
     <div
       className={s.point}
@@ -206,7 +206,9 @@ const Point = ({ point, number, questionNumber }) => {
           alt="point"
         />
         <img
-          style={{ opacity: questionNumber >= number ? 1 : 0 }}
+          style={{
+            opacity: questionNumber >= number ? 1 : 0,
+          }}
           className={s.pathButton}
           src="/images/quizCow/gold.png"
           alt="point"
