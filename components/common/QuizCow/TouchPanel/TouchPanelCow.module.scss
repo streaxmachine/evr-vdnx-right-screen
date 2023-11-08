@@ -61,8 +61,6 @@
   top: 187rem;
 }
 
-
-
 .progressWrapper {
   display: flex;
   height: 100%;
@@ -70,16 +68,22 @@
   align-items: center;
 }
 
-
-
 .pathBlue {
-  transition: 1s linear all;
-  fill-rule: nonzero;
-  stroke: currentColor;
   stroke: var(--light-blue);
-  transition: all 1.5s;
- 
+  stroke-dasharray: 4200;
+  // animation: dash 2s linear forwards;
+  // animation-direction: reverse;
 }
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: var(--dash-offset);; /* Начальное значение, когда весь путь скрыт */
+  }
+  to {
+    stroke-dashoffset: 0; /* Конечное значение, использующее переменную --dash-offset */
+  }
+}
+
 
 .quiz {
   width: 1260rem;
@@ -145,7 +149,7 @@
 
 .questionRoot {
   position: relative;
- 
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -7,6 +7,7 @@ import QuestionsCow from "../QuestionsCow";
 import useStore from "hooks/useStore";
 
 import s from "./TouchPanelCow.module.scss";
+import gsap from "gsap";
 
 const points = [
   { percent: 0, url: "URL_1" },
@@ -30,6 +31,8 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
   const [isPointClicked, setIsPointClicked] = React.useState(true);
   const [isShowQuestion, setShowQuestion] = React.useState(true);
   const [questionNumber, setQuestionNumber] = React.useState(0);
+  const [dashOffset, setDashOffset] = React.useState(0);
+
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
@@ -41,6 +44,20 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
     };
   }, [isShowQuestion]);
   // const currentQuestion = finalQuestions[currentQuestionIndex];
+
+  React.useEffect(() => {
+    const calculateDashOffset = (questionNumber) => {
+      return 4200 - questionNumber * 340;
+    };
+ 
+    gsap.to(ref.current, {
+      duration: 1.75,
+      "stroke-dashoffset": calculateDashOffset(questionNumber),
+      ease: "power2.inOut",
+    })
+    // ref.current.setAttribute("stroke-dashoffset", calculateDashOffset(questionNumber));
+  }, [questionNumber]);
+
 
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   const { setScenario } = useStore();
@@ -102,24 +119,18 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
                 <path
                   d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
                   stroke="black"
-                  strokeWidth="14"
+                  strokeWidth="7"
                   strokeLinecap="round"
-                  strokeDasharray="1 18"
+                  strokeDasharray="4200"
                   shapeRendering="geometricPrecision"
                   fillRule="evenodd"
                   clipRule="evenodd"
                 />
                 <path
                   d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
-                  ref={ref}
                   className={s.pathBlue}
-                  strokeWidth="14"
-                  strokeLinecap="round"
-                  strokeDasharray="1 18"
-                  shapeRendering="geometricPrecision"
-                  fillRule="nonzero"
-                  style={{ offsetDistance: 22 + "%" }}
-                  fill="url(#paint0_linear_299_9740)"
+                  strokeWidth="7"
+                  ref={ref}
                 />
               </svg>
             </div>
