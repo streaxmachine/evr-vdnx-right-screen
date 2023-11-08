@@ -53,7 +53,7 @@ const QuizNew = () => {
         <div className={s.aiSection}>
           <div className={s.aiChat} />
         </div>
-        <FakeAi />
+        {/* <FakeAi /> */}
       </div>
     </>
   );

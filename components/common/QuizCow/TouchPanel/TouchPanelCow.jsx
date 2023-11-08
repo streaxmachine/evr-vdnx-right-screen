@@ -7,7 +7,6 @@ import QuestionsCow from "../QuestionsCow";
 import useStore from "hooks/useStore";
 
 import s from "./TouchPanelCow.module.scss";
-import { current } from "immer";
 
 const points = [
   { percent: 0, url: "URL_1" },
@@ -28,12 +27,23 @@ const points = [
 const TouchPanelCow = ({ setGlobalState, socket }) => {
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
-  const [isPointClicked, setIsPointClicked] = React.useState(false);
+  const [isPointClicked, setIsPointClicked] = React.useState(true);
+  const [isShowQuestion, setShowQuestion] = React.useState(true);
+  const [questionNumber, setQuestionNumber] = React.useState(0);
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowQuestion(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isShowQuestion]);
   // const currentQuestion = finalQuestions[currentQuestionIndex];
 
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   const { setScenario } = useStore();
-  const [progress, setProgress] = React.useState(10);
 
   const ref = React.useRef();
 
@@ -74,7 +84,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
           <div className={s.onWayPointsWrapper}>
             <OnWayPointsWrapper
               points={points}
-              progress={progress}
+              questionNumber={questionNumber}
               setIsPointClicked={setIsPointClicked}
               currentQuestionIndex={currentQuestionIndex}
               setCurrentQuestionIndex={setCurrentQuestionIndex}
@@ -92,10 +102,10 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
                 <path
                   d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
                   stroke="black"
-                  stroke-width="14"
-                  stroke-linecap="round"
+                  strokeWidth="14"
+                  strokeLinecap="round"
                   strokeDasharray="1 18"
-                  shape-rendering="geometricPrecision"
+                  shapeRendering="geometricPrecision"
                   fillRule="evenodd"
                   clipRule="evenodd"
                 />
@@ -103,10 +113,10 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
                   d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
                   ref={ref}
                   className={s.pathBlue}
-                  stroke-width="14"
-                  stroke-linecap="round"
+                  strokeWidth="14"
+                  strokeLinecap="round"
                   strokeDasharray="1 18"
-                  shape-rendering="geometricPrecision"
+                  shapeRendering="geometricPrecision"
                   fillRule="nonzero"
                   style={{ offsetDistance: 22 + "%" }}
                   fill="url(#paint0_linear_299_9740)"
@@ -117,7 +127,12 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
         </div>
 
         <div className={clsx(isQuizDone && s.rightDone)}>
+          {/* {isShowQuestion && ( */}
           <QuestionsCow
+            isShowQuestion={isShowQuestion}
+            setShowQuestion={setShowQuestion}
+            questionNumber={questionNumber}
+            setQuestionNumber={setQuestionNumber}
             isQuizDone={isQuizDone}
             socket={socket}
             time={time}
@@ -129,6 +144,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
             currentQuestionIndex={currentQuestionIndex}
             setCurrentQuestionIndex={setCurrentQuestionIndex}
           />
+          {/* )} */}
         </div>
       </div>
     </div>
@@ -139,7 +155,7 @@ export default React.memo(TouchPanelCow);
 
 const OnWayPointsWrapper = ({
   points,
-  progress,
+  questionNumber,
   setIsPointClicked,
   setCurrentQuestionIndex,
   currentQuestionIndex,
@@ -150,8 +166,8 @@ const OnWayPointsWrapper = ({
         return (
           <Point
             key={id}
+            questionNumber={questionNumber}
             point={point}
-            progress={progress}
             number={id}
             setIsPointClicked={setIsPointClicked}
             setCurrentQuestionIndex={setCurrentQuestionIndex}
@@ -163,35 +179,25 @@ const OnWayPointsWrapper = ({
   );
 };
 
-const Point = ({
-  point,
-  progress,
-  number,
-  currentQuestionIndex,
-  setCurrentQuestionIndex,
-  setIsPointClicked,
-}) => {
-
-  const handlePointClick = () => {
-
-    if(number === currentQuestionIndex){
-    setIsPointClicked(true);
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-    // console.log(currentQuestionIndex)
-    }
-  };
-
+const Point = ({ point, number, questionNumber }) => {
   return (
     <div
       className={s.point}
-      style={{ offsetDistance: point.percent + "%" }}
+      style={{
+        offsetDistance: point.percent + "%",
+      }}
       key={point.percent}
-      onClick={handlePointClick}
     >
       <div className={s.buttonContainer}>
         <img
           className={s.pathButton}
           src="/images/quizCow/silver.png"
+          alt="point"
+        />
+        <img
+          style={{ opacity: questionNumber >= number ? 1 : 0 }}
+          className={s.pathButton}
+          src="/images/quizCow/gold.png"
           alt="point"
         />
         <span className={s.buttonNumber}>{number + 1}</span>

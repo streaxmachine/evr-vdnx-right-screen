@@ -201,10 +201,7 @@ const CompleteQuizCow = ({
         )}
       </div>
       <div className={s.clouds}></div>
-      <FakeAi />
-      <div className={s.aiSection}>
-        <div className={s.aiChat} />
-      </div>
+      {/* <FakeAi /> */}
     </div>
   );
 };
