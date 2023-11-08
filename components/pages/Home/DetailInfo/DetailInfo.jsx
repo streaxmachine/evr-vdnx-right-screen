@@ -68,7 +68,19 @@ const DetailInfo = React.memo(
               })}
             >
               {Number(count) !== 11 && (
-                <div className={s.whatDetail}>{text}</div>
+                <div
+                  style={{
+                    backgroundColor:
+                      Number(detailNumber) !== Number(count - 1) &&
+                      "rgba(180, 47, 47, 1)",
+                  }}
+                  className={s.whatDetail}
+                >
+                  {text +
+                    ". " +
+                    `${detailNumber >= 11 ? phrases[count].errorText : ""}` +
+                    ""}
+                </div>
               )}
 
               {Number(count) === 11 ? (
@@ -81,6 +93,16 @@ const DetailInfo = React.memo(
                   {/* {Number(detailNumber) === Number(count - 1) && ( */}
                   <div className={s.detailsName}>{detail[0]?.name}</div>
                   {/* )} */}
+                </>
+              )}
+
+              {count !== 11 && (
+                <>
+                  <img
+                    className={s.detailsImg}
+                    src={detail[0]?.picSrc}
+                    alt={detail[0]?.alt}
+                  />
                 </>
               )}
 
@@ -106,30 +128,8 @@ const DetailInfo = React.memo(
                 </>
               )}
 
-              {count !== 11 && (
-                <>
-                  <img
-                    className={s.detailsImg}
-                    src={detail[0]?.picSrc}
-                    alt={detail[0]?.alt}
-                  />
-                </>
-              )}
-
-              <img
-                className={s.detailZig}
-                alt="zig"
-                src={
-                  Number(detailNumber) === Number(count - 1)
-                    ? "/images/train/line.png"
-                    : "/images/train/line_red.png"
-                }
-              />
-
               {Number(detailNumber) >= 11 && (
-                <div className={s.wrongDetailHelp}>
-                  {phrases[count].errorText}
-                </div>
+                <div className={s.wrongDetailHelp}></div>
               )}
 
               <button
@@ -138,12 +138,14 @@ const DetailInfo = React.memo(
                   setShowPopUp(false);
                   setPauseTimer(false);
                 }}
-                style={{}}
+                style={{
+                  backgroundColor:
+                    Number(detailNumber) !== Number(count - 1) &&
+                    "rgba(180, 47, 47, 1)",
+                }}
                 className={s.detailConfirmButton}
               >
-                {Number(count) !== 11
-                  ? "Играем дальше"
-                  : "Рассмотреть «Иволгу»"}
+                {Number(count) !== 11 ? "Найти деталь" : "Рассмотреть «Иволгу»"}
               </button>
             </motion.div>
           )}
