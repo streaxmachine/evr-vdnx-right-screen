@@ -9,7 +9,6 @@ import useStore from "hooks/useStore";
 import s from "./TouchPanelCow.module.scss";
 import gsap from "gsap";
 
-
 const points = [
   { percent: 0, url: "URL_1" },
   { percent: 9.9, url: "URL_2" },
@@ -29,20 +28,33 @@ const points = [
 const TouchPanelCow = ({ setGlobalState, socket }) => {
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
-  const [isShowQuestion, setShowQuestion] = React.useState(true);
+  const [isShowQuestion, setShowQuestion] = React.useState(false);
+  const [isShowFirstQuestion, setShowFirstQuestion] = React.useState(false);
   const [questionNumber, setQuestionNumber] = React.useState(0);
+
+  const ref = React.useRef();
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setShowQuestion(true);
-    }, 5000);
+    }, 4500);
 
     return () => {
       clearTimeout(timeout);
     };
   }, [isShowQuestion]);
 
-  let dashOffsetNumber;
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowFirstQuestion(true);
+    }, 7000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  let dashOffsetNumber = 1;
 
   React.useEffect(() => {
     if (questionNumber == 0) {
@@ -83,8 +95,6 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
 
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   const { setScenario } = useStore();
-
-  const ref = React.useRef();
 
   return (
     <div className={s.root}>
@@ -148,6 +158,19 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
                   clipRule="evenodd"
                   className={s.path}
                 />
+
+                <path
+                  d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
+                  stroke="#ffaa00"
+                  strokeWidth="7"
+                  className={s.pathGreyOrange}
+                />
+                <path
+                  d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
+                  stroke="#424242"
+                  strokeWidth="7"
+                  className={s.pathGrey}
+                />
                 <path
                   d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
                   className={s.pathBlue}
@@ -164,6 +187,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
           <QuestionsCow
             isShowQuestion={isShowQuestion}
             setShowQuestion={setShowQuestion}
+            isShowFirstQuestion={isShowFirstQuestion}
             questionNumber={questionNumber}
             setQuestionNumber={setQuestionNumber}
             isQuizDone={isQuizDone}
@@ -210,12 +234,14 @@ const OnWayPointsWrapper = ({
 
 const Point = ({ point, number, questionNumber }) => {
   const pointRef = React.useRef(null);
+  const [golden, setGolden] = React.useState(false);
+  const [flashNumber, setFlashNumber] = React.useState(false);
 
   React.useEffect(() => {
     if (questionNumber === number) {
       gsap.to(pointRef.current, {
         scale: 1.4,
-        duration: 1,
+        duration: 1.5,
         ease: "power2.inOut",
         onComplete: () => {
           gsap.to(pointRef.current, {
@@ -232,13 +258,37 @@ const Point = ({ point, number, questionNumber }) => {
           });
         },
       });
-    } else  {
+    } else {
       gsap.to(pointRef.current, {
         duration: 0.25,
         scale: 1,
       });
     }
   }, [questionNumber, number]);
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setGolden(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (number === 0) {
+      // Включить мигание цифры 1 в течение первых 3 секунд
+      const flashInterval = setInterval(() => {
+        setFlashNumber((prev) => !prev);
+      }, 500); // Менять каждые 500 миллисекунд
+
+      setTimeout(() => {
+        clearInterval(flashInterval);
+        setFlashNumber(false);
+      }, 3000); // Остановить мигание через 3 секунды
+    }
+  }, [number]);
 
   return (
     <div
@@ -257,13 +307,17 @@ const Point = ({ point, number, questionNumber }) => {
         />
         <img
           style={{
-            opacity: questionNumber >= number ? 1 : 0,
+            opacity: questionNumber >= number && golden ? 1 : 0,
           }}
           className={s.pathButton}
           src="/images/quizCow/gold.png"
           alt="point"
         />
-        <span className={s.buttonNumber}>{number + 1}</span>
+        <span
+          className={`${s.buttonNumber} ${number === 0 ? s.highlight : ""}`}
+        >
+          {number + 1}
+        </span>
       </div>
     </div>
   );

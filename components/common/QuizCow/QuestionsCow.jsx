@@ -18,6 +18,7 @@ const QuestionsCow = React.memo(
     setGlobalState,
     isShowQuestion,
     setShowQuestion,
+    isShowFirstQuestion,
     questionNumber,
     setQuestionNumber,
     setCurrentQuestionIndex,
@@ -162,7 +163,7 @@ const QuestionsCow = React.memo(
       <>
         <audio ref={audioRef} src="/music/phrase.mp3" autoPlay={false} />
 
-        {!isQuizDone && isShowQuestion && (
+        {!isQuizDone && isShowQuestion &&  isShowFirstQuestion &&(
           <>
             <div className={`${s.questionRoot}`}>
               <div className={s.firstTextWrapper}>
