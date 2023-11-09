@@ -54,10 +54,20 @@ const QuizNew = () => {
           <AiChat setGlobalState={setGlobalState} socket={socket} />
         )}
 
-        <div className={s.aiSection}>
-          <div className={s.aiChat} />
-        </div>
-        {/* <FakeAi /> */}
+        {globalState === "firstPage" ||
+        globalState === "quizCards" ||
+        globalState === "quizRules" ||
+        globalState === "touchPanel" ||
+        globalState === "ivolgaRules" ||
+        globalState === "quizCowRules" ? (
+          <>
+            <div className={s.aiSection}>
+              <div className={s.aiChat} />
+            </div>
+            <FakeAi />
+          </>
+        ) : null}
+
       </div>
     </>
   );
