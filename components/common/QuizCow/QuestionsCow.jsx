@@ -17,7 +17,6 @@ const QuestionsCow = React.memo(
     setQuizDone,
     setGlobalState,
     isShowQuestion,
-    setIsPointClicked,
     setShowQuestion,
     questionNumber,
     setQuestionNumber,
@@ -91,7 +90,6 @@ const QuestionsCow = React.memo(
       } else {
         setQuestionNumber(questionNumber + 1);
         setCurrentQuestion(finalQuestions[questionNumber + 1]);
-        // setIsPointClicked(false);
       }
     };
 
@@ -99,7 +97,6 @@ const QuestionsCow = React.memo(
       setQuizDone(false);
       setScore(0);
       setCurrentQuestion(finalQuestions[0]);
-      setIsPointClicked(false);
       setQuestionNumber(0);
       setCurrentQuestionIndex(0);
       sucessNumber.test = 0;

@@ -9,6 +9,7 @@ import useStore from "hooks/useStore";
 import s from "./TouchPanelCow.module.scss";
 import gsap from "gsap";
 
+
 const points = [
   { percent: 0, url: "URL_1" },
   { percent: 9.9, url: "URL_2" },
@@ -28,21 +29,18 @@ const points = [
 const TouchPanelCow = ({ setGlobalState, socket }) => {
   const [isQuizDone, setQuizDone] = React.useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
-  const [isPointClicked, setIsPointClicked] = React.useState(true);
   const [isShowQuestion, setShowQuestion] = React.useState(true);
   const [questionNumber, setQuestionNumber] = React.useState(0);
-  const [dashOffset, setDashOffset] = React.useState(0);
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setShowQuestion(true);
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearTimeout(timeout);
     };
   }, [isShowQuestion]);
-  // const currentQuestion = finalQuestions[currentQuestionIndex];
 
   let dashOffsetNumber;
 
@@ -76,7 +74,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
     }
 
     gsap.to(ref.current, {
-      duration: 1.75,
+      duration: 3,
       delay: 0.2,
       "stroke-dashoffset": dashOffsetNumber,
       ease: "power2.inOut",
@@ -126,7 +124,6 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
             <OnWayPointsWrapper
               points={points}
               questionNumber={questionNumber}
-              setIsPointClicked={setIsPointClicked}
               currentQuestionIndex={currentQuestionIndex}
               setCurrentQuestionIndex={setCurrentQuestionIndex}
             />
@@ -175,8 +172,6 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
             setScenario={setScenario}
             setQuizDone={setQuizDone}
             setGlobalState={setGlobalState}
-            setIsPointClicked={setIsPointClicked}
-            isPointClicked={isPointClicked}
             currentQuestionIndex={currentQuestionIndex}
             setCurrentQuestionIndex={setCurrentQuestionIndex}
           />
@@ -192,7 +187,6 @@ export default React.memo(TouchPanelCow);
 const OnWayPointsWrapper = ({
   points,
   questionNumber,
-  setIsPointClicked,
   setCurrentQuestionIndex,
   currentQuestionIndex,
 }) => {
@@ -205,7 +199,6 @@ const OnWayPointsWrapper = ({
             questionNumber={questionNumber}
             point={point}
             number={id}
-            setIsPointClicked={setIsPointClicked}
             setCurrentQuestionIndex={setCurrentQuestionIndex}
             currentQuestionIndex={currentQuestionIndex}
           />
@@ -221,20 +214,32 @@ const Point = ({ point, number, questionNumber }) => {
   React.useEffect(() => {
     if (questionNumber === number) {
       gsap.to(pointRef.current, {
-        duration: 0.2,
-        scale: 1.25,
-        delay: 1.25,
+        scale: 1.4,
+        duration: 1,
+        ease: "power2.inOut",
         onComplete: () => {
-          pointRef.current, { duration: 0.25, scale: 1.0 };
+          gsap.to(pointRef.current, {
+            scale: 0.2,
+            duration: 0.6,
+            ease: "power2.inOut",
+            onComplete: () => {
+              gsap.to(pointRef.current, {
+                scale: 1.2,
+                duration: 0.6,
+                ease: "power2.inOut",
+              });
+            },
+          });
         },
       });
-    } else {
+    } else  {
       gsap.to(pointRef.current, {
         duration: 0.25,
         scale: 1,
       });
     }
   }, [questionNumber, number]);
+
   return (
     <div
       className={s.point}
