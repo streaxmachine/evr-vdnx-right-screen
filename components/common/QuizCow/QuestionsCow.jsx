@@ -22,6 +22,7 @@ const QuestionsCow = React.memo(
     questionNumber,
     setQuestionNumber,
     setCurrentQuestionIndex,
+    setPauseTimer
   }) => {
     const buttonRef = React.useRef();
     const audioRef = React.useRef();
@@ -91,6 +92,7 @@ const QuestionsCow = React.memo(
       } else {
         setQuestionNumber(questionNumber + 1);
         setCurrentQuestion(finalQuestions[questionNumber + 1]);
+        setPauseTimer(true)
       }
     };
 
@@ -100,6 +102,7 @@ const QuestionsCow = React.memo(
       setCurrentQuestion(finalQuestions[0]);
       setQuestionNumber(0);
       setCurrentQuestionIndex(0);
+      setPauseTimer(true)
       sucessNumber.test = 0;
     };
 
@@ -118,6 +121,7 @@ const QuestionsCow = React.memo(
           setIsClickable(true);
           setShowQuestion(false);
           setQuestionNumber(questionNumber + 1);
+          setPauseTimer(false)
           handleCheck();
           setTwoMisstakesState(false);
 
@@ -143,6 +147,7 @@ const QuestionsCow = React.memo(
 
           const timeout = setTimeout(() => {
             setQuestionNumber(questionNumber + 1);
+            setPauseTimer(false)
             handleCheck();
             setShowQuestion(false);
             setIsClickable(true);

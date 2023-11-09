@@ -31,12 +31,14 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
   const [isShowQuestion, setShowQuestion] = React.useState(false);
   const [isShowFirstQuestion, setShowFirstQuestion] = React.useState(false);
   const [questionNumber, setQuestionNumber] = React.useState(0);
+  const [pauseTimer, setPauseTimer] = React.useState(true);
 
   const ref = React.useRef();
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setShowQuestion(true);
+      setPauseTimer(false);
     }, 4500);
 
     return () => {
@@ -47,6 +49,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setShowFirstQuestion(true);
+      setPauseTimer(false);
     }, 7000);
 
     return () => {
@@ -124,6 +127,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
                 setTime={setTime}
                 setQuizDone={setQuizDone}
                 isQuizDone={isQuizDone}
+                pauseTimer={pauseTimer}
               />
             </div>
           </>
@@ -183,7 +187,6 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
         </div>
 
         <div className={clsx(isQuizDone && s.rightDone)}>
-          {/* {isShowQuestion && ( */}
           <QuestionsCow
             isShowQuestion={isShowQuestion}
             setShowQuestion={setShowQuestion}
@@ -198,8 +201,8 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
             setGlobalState={setGlobalState}
             currentQuestionIndex={currentQuestionIndex}
             setCurrentQuestionIndex={setCurrentQuestionIndex}
+            setPauseTimer={setPauseTimer}
           />
-          {/* )} */}
         </div>
       </div>
     </div>
@@ -278,15 +281,14 @@ const Point = ({ point, number, questionNumber }) => {
 
   React.useEffect(() => {
     if (number === 0) {
-      // Включить мигание цифры 1 в течение первых 3 секунд
       const flashInterval = setInterval(() => {
         setFlashNumber((prev) => !prev);
-      }, 500); // Менять каждые 500 миллисекунд
+      }, 500);
 
       setTimeout(() => {
         clearInterval(flashInterval);
         setFlashNumber(false);
-      }, 3000); // Остановить мигание через 3 секунды
+      }, 3000);
     }
   }, [number]);
 
