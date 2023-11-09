@@ -15,6 +15,8 @@ import s from "./TouchPanel/TouchPanel.module.scss";
 import gsap from "gsap";
 import Image from "next/image";
 
+import { SoundsEmmitter } from "constants/events";
+
 const Questions = React.memo(
   ({
     currentCategory,
@@ -156,7 +158,12 @@ const Questions = React.memo(
 
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
         setStopTime(true);
-        setScenario({ type: "quiz", place: "falseSecondTry" });
+        setScenario({
+          type: "quiz",
+          place: "falseSecondTry",
+          music: "falseAnswer",
+        });
+        SoundsEmmitter.send("false-answer");
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
@@ -199,7 +206,12 @@ const Questions = React.memo(
           return;
         }, 5000);
       } else if (sucessNumber.value === 1 && question.isCorrect !== true) {
-        setScenario({ type: "quiz", place: "falseFirstTry" });
+        setScenario({
+          type: "quiz",
+          place: "falseFirstTry",
+          music: "falseAnswer",
+        });
+        SoundsEmmitter.send("false-answer");
       }
 
       if (!twoMisstakesState) {
@@ -209,12 +221,21 @@ const Questions = React.memo(
             gsap.to(imgRef.current, { opacity: 1, duration: 0.1, delay: 0.2 });
           }
           if (sucessNumber.value === 1) {
-            setScenario({ type: "quiz", place: "succesFirstTry" });
+            setScenario({
+              type: "quiz",
+              place: "succesFirstTry",
+            });
+            SoundsEmmitter.send("true-answer");
             setScore(score + 1);
             sucessNumber.test += 1;
             sucessNumber.value = 0;
           } else {
-            setScenario({ type: "quiz", place: "succesFirstTry" });
+            setScenario({
+              type: "quiz",
+              place: "succesFirstTry",
+            });
+            SoundsEmmitter.send("true-answer");
+
             sucessNumber.value = 0;
           }
           setIsClickable(false);

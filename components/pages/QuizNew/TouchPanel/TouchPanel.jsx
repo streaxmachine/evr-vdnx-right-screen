@@ -7,6 +7,7 @@ import Questions from "../Questions.jsx";
 import useStore from "hooks/useStore";
 
 import s from "./TouchPanel.module.scss";
+import { SoundsEmmitter } from "constants/events";
 
 const TouchPanel = ({ setGlobalState, socket }) => {
   const [currentCategory, setCurrentCategory] = React.useState(0);
@@ -22,6 +23,7 @@ const TouchPanel = ({ setGlobalState, socket }) => {
           <div className={s.left}>
             <button
               onClick={() => {
+                SoundsEmmitter.send("return-menu");
                 setGlobalState("firstPage");
                 socket.send(
                   JSON.stringify({

@@ -5,8 +5,11 @@ import { cards } from "./cardInformation";
 
 import useStore from "hooks/useStore";
 
-import s from "./QuizCards.module.scss";
+import { SoundsEmmitter } from "constants/events";
+
 import useScenarioTimer from "hooks/useScenarioTimer";
+
+import s from "./QuizCards.module.scss";
 
 const QuizCards = ({ setGlobalState, socket }) => {
   const { setScenario } = useStore();
@@ -24,6 +27,7 @@ const QuizCards = ({ setGlobalState, socket }) => {
           <button
             className={s.backBtn}
             onClick={() => {
+              SoundsEmmitter.send("return-menu");
               setGlobalState("firstPage");
               socket.send(
                 JSON.stringify({
@@ -65,6 +69,7 @@ function Card({ setGlobalState, card, socket, setScenario }) {
   const isThirdCard = card.cardGlobalState === "5";
 
   const handleClick = () => {
+    SoundsEmmitter.send("choose-game");
     setScenario({ type: "menu", place: "chooseGame" });
     setGlobalState(card.cardGlobalState);
     // setIsClicked(!isClicked);

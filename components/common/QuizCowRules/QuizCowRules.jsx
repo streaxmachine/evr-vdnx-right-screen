@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import { cards } from "./cardInformation";
 
-import s from "./QuizCowRules.module.scss";
 import useScenarioTimer from "hooks/useScenarioTimer";
+
+import { SoundsEmmitter } from "constants/events";
+
+import s from "./QuizCowRules.module.scss";
 
 const QuizCardRules = ({ setGlobalState, socket }) => {
   useScenarioTimer("menu", "time15", 15);
@@ -14,6 +17,7 @@ const QuizCardRules = ({ setGlobalState, socket }) => {
           <button
             className={s.backBtn}
             onClick={() => {
+              SoundsEmmitter.send("return-menu");
               setGlobalState("firstPage");
               socket.send(
                 JSON.stringify({

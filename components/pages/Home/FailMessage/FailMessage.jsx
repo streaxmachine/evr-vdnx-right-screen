@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 
+import { SoundsEmmitter } from "constants/events";
+
 import s from "../Home.module.scss";
 
 const FailMessage = ({
@@ -55,6 +57,9 @@ const FailMessage = ({
 
             <Link href={"/quizNew"}>
               <div
+                onClick={() => {
+                  SoundsEmmitter.send("return-menu");
+                }}
                 className={`${s.failMessageWrapper_button} ${s.button_blue}`}
               >
                 <p>Главное меню</p>

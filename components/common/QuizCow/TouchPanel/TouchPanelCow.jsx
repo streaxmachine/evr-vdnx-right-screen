@@ -8,6 +8,7 @@ import useStore from "hooks/useStore";
 
 import s from "./TouchPanelCow.module.scss";
 import gsap from "gsap";
+import { SoundsEmmitter } from "constants/events";
 
 const points = [
   { percent: 0, url: "URL_1" },
@@ -97,6 +98,8 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
               <button
                 onClick={() => {
                   setGlobalState("firstPage");
+                  SoundsEmmitter.send("return-menu");
+
                   socket.send(
                     JSON.stringify({
                       installation: "right",

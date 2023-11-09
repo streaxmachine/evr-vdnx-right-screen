@@ -8,6 +8,8 @@ import IvolgaRules from "components/common/IvolgaRules";
 import QuizCowRules from "components/common/QuizCowRules";
 import TouchPanelCow from "components/common/QuizCow/TouchPanel/TouchPanelCow";
 import AiChat from "components/common/aiChat";
+import Sounds from "components/common/Sounds";
+import FakeAi from "components/common/FakeAi";
 
 import Home from "../Home";
 
@@ -15,7 +17,6 @@ import { useSocket } from "hooks/useSocket";
 import useStore from "hooks/useStore";
 
 import s from "./QuizNew.module.scss";
-import FakeAi from "components/common/FakeAi";
 
 const QuizNew = () => {
   const socket = useSocket();
@@ -68,6 +69,7 @@ const QuizNew = () => {
           </>
         ) : null}
 
+        <Sounds />
       </div>
     </>
   );

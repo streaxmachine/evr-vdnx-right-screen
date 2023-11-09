@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import { cards } from "./cardInformation";
 
-import s from "./QuizRules.module.scss";
 import useScenarioTimer from "hooks/useScenarioTimer";
+
+import { SoundsEmmitter } from "constants/events";
+
+import s from "./QuizRules.module.scss";
 
 const QuizRules = ({ setGlobalState, socket }) => {
   useScenarioTimer("menu", "time15", 15);
@@ -14,6 +17,8 @@ const QuizRules = ({ setGlobalState, socket }) => {
           <button
             className={s.backBtn}
             onClick={() => {
+              SoundsEmmitter.send("return-menu");
+
               setGlobalState("firstPage");
               socket.send(
                 JSON.stringify({
@@ -33,8 +38,12 @@ const QuizRules = ({ setGlobalState, socket }) => {
               Вам предстоит проверить свои знания о Тверской области. Вас ждет
               12 вопросов, поделенных на 4 категории. Игра продолжается до тех
               пор, пока не окончится время. Постарайтесь дать как можно больше
-              правильных ответов. <p> После завершения игры вы сможете получить приз
-              у промоутера стенда! Удачи!</p>
+              правильных ответов.{" "}
+              <p>
+                {" "}
+                После завершения игры вы сможете получить приз у промоутера
+                стенда! Удачи!
+              </p>
             </span>
           </div>
           {/* <section className={s.cardsWrapper}>
@@ -54,10 +63,26 @@ const QuizRules = ({ setGlobalState, socket }) => {
               Все понятно! Я в игре
             </button>
             <div className={s.imgContainer}>
-              <img src="/images/QuizRules/01.png" className={s.img01} alt=""></img>
-              <img src="/images/QuizRules/02.png" className={s.img02} alt=""></img>
-              <img src="/images/QuizRules/03.png" className={s.img03} alt=""></img>
-              <img src="/images/QuizRules/04.png" className={s.img04} alt=""></img>
+              <img
+                src="/images/QuizRules/01.png"
+                className={s.img01}
+                alt=""
+              ></img>
+              <img
+                src="/images/QuizRules/02.png"
+                className={s.img02}
+                alt=""
+              ></img>
+              <img
+                src="/images/QuizRules/03.png"
+                className={s.img03}
+                alt=""
+              ></img>
+              <img
+                src="/images/QuizRules/04.png"
+                className={s.img04}
+                alt=""
+              ></img>
             </div>
           </section>
         </div>

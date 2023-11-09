@@ -2,6 +2,8 @@ import React from "react";
 
 import useStore from "hooks/useStore";
 
+import { SoundsEmmitter } from "constants/events";
+
 import s from "./TouchPanel/TouchPanel.module.scss";
 
 const phrases = [
@@ -71,6 +73,10 @@ const CompleteQuiz = ({
         score: questionNumber + "/12",
       })
     );
+  }, []);
+
+  React.useEffect(() => {
+    SoundsEmmitter.send("winning-game");
   }, []);
 
   const phraseNumber = React.useMemo(() => {
@@ -164,7 +170,11 @@ const CompleteQuiz = ({
                 onClick={() => {
                   setGlobalState("quizCards");
                   socket.send(
-                    JSON.stringify({"installation":"right","type":"mode","data":"menu"})
+                    JSON.stringify({
+                      installation: "right",
+                      type: "mode",
+                      data: "menu",
+                    })
                   );
                 }}
               >
@@ -186,6 +196,7 @@ const CompleteQuiz = ({
             >
               <p
                 onClick={() => {
+                  SoundsEmmitter.send("return-menu");
                   setGlobalState("quizCards");
                   socket.send(
                     JSON.stringify({
