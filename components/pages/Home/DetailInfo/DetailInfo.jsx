@@ -63,6 +63,10 @@ const DetailInfo = React.memo(
             <motion.div
               {...boxAnimation}
               ref={rootRef}
+              style={{
+                justifyContent: count === 11 && "center",
+                minHeight: count === 11 && "285rem",
+              }}
               className={clsx(s.detailInfoRoot, {
                 [s.correct]: Number(detailNumber) === Number(count - 1),
               })}
@@ -77,21 +81,30 @@ const DetailInfo = React.memo(
                   className={s.whatDetail}
                 >
                   {text +
-                    ". " +
-                    `${detailNumber >= 11 ? phrases[count].errorText : ""}` +
+                    `${
+                      detailNumber >= 11 ? ". " + phrases[count].errorText : ""
+                    }` +
                     ""}
                 </div>
               )}
 
               {Number(count) === 11 ? (
                 <div className={s.detailsName}>
-                  {"Поздравляем!"}
-                  <p>{"Вы успешно собрали «Иволгу!»"}</p>
+                  <div className={s.successMessage}>
+                    <p> Поздравляем!</p>
+                    <p>Вы успешно собрали «Иволгу!»</p>
+                  </div>
                 </div>
               ) : (
                 <>
                   {/* {Number(detailNumber) === Number(count - 1) && ( */}
                   <div className={s.detailsName}>{detail[0]?.name}</div>
+                  {detailNumber < 11 && (
+                    <div className={s.detailCounter}>
+                      {detailNumber + " из 10"}
+                    </div>
+                  )}
+
                   {/* )} */}
                 </>
               )}
@@ -127,10 +140,10 @@ const DetailInfo = React.memo(
                   )}
                 </>
               )}
-
+              {/* 
               {Number(detailNumber) >= 11 && (
                 <div className={s.wrongDetailHelp}></div>
-              )}
+              )} */}
 
               <button
                 onClick={() => {
@@ -145,7 +158,12 @@ const DetailInfo = React.memo(
                 }}
                 className={s.detailConfirmButton}
               >
-                {Number(count) !== 11 ? "Найти деталь" : "Рассмотреть «Иволгу»"}
+                {Number(detailNumber) > 10 && "Попробовать еще раз"}
+                {Number(detailNumber) < 11
+                  ? Number(count) !== 11
+                    ? "Найти деталь"
+                    : "Рассмотреть «Иволгу»"
+                  : ""}
               </button>
             </motion.div>
           )}
