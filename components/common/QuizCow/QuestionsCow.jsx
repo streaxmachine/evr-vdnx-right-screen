@@ -9,7 +9,20 @@ import CompleteQuizCow from "./CompleteQuizCow";
 import s from "./TouchPanel/TouchPanelCow.module.scss";
 
 const QuestionsCow = React.memo(
-  ({ time, isQuizDone, setScenario, socket, setQuizDone, setGlobalState,setIsPointClicked, isPointClicked, setCurrentQuestionIndex, currentQuestionIndex }) => {
+  ({
+    time,
+    isQuizDone,
+    setScenario,
+    socket,
+    setQuizDone,
+    setGlobalState,
+    isShowQuestion,
+    setIsPointClicked,
+    setShowQuestion,
+    questionNumber,
+    setQuestionNumber,
+    setCurrentQuestionIndex,
+  }) => {
     const buttonRef = React.useRef();
     const audioRef = React.useRef();
 
@@ -19,10 +32,12 @@ const QuestionsCow = React.memo(
     const [currentQuestion, setCurrentQuestion] = React.useState(
       finalQuestions[0]
     );
-    const [questionNumber, setQuestionNumber] = React.useState(0);
+    // const [questionNumber, setQuestionNumber] = React.useState(0);
     const [twoMisstakesState, setTwoMisstakesState] = React.useState(false);
 
-    console.log(currentQuestionIndex, currentQuestion.id)
+    // React.useEffect(() => {
+    // }, [questionNumber]);
+
     const searchRightVariant = React.useCallback(() => {
       currentQuestion.answerOptions.map((item, index) => {
         if (item.isCorrect) {
@@ -48,7 +63,7 @@ const QuestionsCow = React.memo(
     React.useEffect(() => {
       if (questionNumber === 13) {
         setQuizDone(true);
-        setCurrentQuestionIndex(0)
+        setCurrentQuestionIndex(0);
       }
     }, [questionNumber]);
 
@@ -65,16 +80,6 @@ const QuestionsCow = React.memo(
         setScenario({ type: "quiz", place: "asking" });
       }, 300);
 
-      // socket.send(
-      //   JSON.stringify({
-      //     installation: "right",
-      //     type: "puzzle",
-      //     data: `question_${questionNumber}`,
-      //     state: null,
-      //     id: Number(currentQuestion.id),
-      //   })
-      // );
-
       return () => {
         clearTimeout(timeout);
       };
@@ -86,7 +91,7 @@ const QuestionsCow = React.memo(
       } else {
         setQuestionNumber(questionNumber + 1);
         setCurrentQuestion(finalQuestions[questionNumber + 1]);
-        setIsPointClicked(false)
+        // setIsPointClicked(false);
       }
     };
 
@@ -94,9 +99,9 @@ const QuestionsCow = React.memo(
       setQuizDone(false);
       setScore(0);
       setCurrentQuestion(finalQuestions[0]);
-      setIsPointClicked(false)
+      setIsPointClicked(false);
       setQuestionNumber(0);
-      setCurrentQuestionIndex(0)
+      setCurrentQuestionIndex(0);
       sucessNumber.test = 0;
     };
 
@@ -105,47 +110,21 @@ const QuestionsCow = React.memo(
       event.stopPropagation();
       sucessNumber.value += 1;
 
-      // socket.send(
-      //   JSON.stringify({
-      //     installation: "right",
-      //     type: "puzzle",
-      //     data: `question_${questionNumber}`,
-      //     state: question.isCorrect,
-      //     variant: index,
-      //   })
-      // );
-
       if (sucessNumber.value === 2 && question.isCorrect !== true) {
         setScenario({ type: "quiz", place: "falseSecondTry" });
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
-        // audioRef.current.play();
-
-        // currentQuestion.answerOptions.forEach((answer, questionIndex) => {
-        //   if (answer.isCorrect) {
-        //     setTimeout(() => {
-        //       socket.send(
-        //         JSON.stringify({
-        //           installation: "right",
-        //           type: "puzzle",
-        //           data: `question_${questionNumber}`,
-        //           state: answer.isCorrect,
-        //           variant: questionIndex,
-        //         })
-        //       );
-        //     }, 300);
-        //   }
-        // });
 
         setTimeout(() => {
           setIsClickable(true);
+          setShowQuestion(false);
           setQuestionNumber(questionNumber + 1);
           handleCheck();
           setTwoMisstakesState(false);
 
           return;
-        }, 5000);
+        }, 3000);
       } else if (sucessNumber.value === 1 && question.isCorrect !== true) {
         setScenario({ type: "quiz", place: "falseFirstTry" });
       }
@@ -157,7 +136,6 @@ const QuestionsCow = React.memo(
             setScore(score + 1);
             sucessNumber.test += 1;
             sucessNumber.value = 0;
-           
           } else {
             setScenario({ type: "quiz", place: "succesFirstTry" });
             sucessNumber.value = 0;
@@ -168,10 +146,10 @@ const QuestionsCow = React.memo(
           const timeout = setTimeout(() => {
             setQuestionNumber(questionNumber + 1);
             handleCheck();
+            setShowQuestion(false);
             setIsClickable(true);
             event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
-
-          }, 500);
+          }, 1500);
         } else {
           setIsClickable(false);
           event.target.style.backgroundColor = "rgb(180, 47, 47)";
@@ -183,20 +161,14 @@ const QuestionsCow = React.memo(
       }
     };
 
-    React.useEffect(() => {
-      // setScore(sucessNumber.test);
-      console.log(score);
-    }, [questionNumber]);
-
     return (
       <>
         <audio ref={audioRef} src="/music/phrase.mp3" autoPlay={false} />
 
-        {!isQuizDone && currentQuestionIndex == currentQuestion.id && (
+        {!isQuizDone && isShowQuestion && (
           <>
-          <div className={`${s.questionRoot}`}>
+            <div className={`${s.questionRoot}`}>
               <div className={s.firstTextWrapper}>
-
                 <div
                   className={clsx(s.questionText, {
                     [s.bigText]: currentQuestion.isLong,

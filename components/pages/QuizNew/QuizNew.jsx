@@ -17,7 +17,6 @@ import useStore from "hooks/useStore";
 import s from "./QuizNew.module.scss";
 import FakeAi from "components/common/FakeAi";
 
-
 const QuizNew = () => {
   const socket = useSocket();
   const { isLoaded } = useStore();
@@ -55,10 +54,10 @@ const QuizNew = () => {
           <AiChat setGlobalState={setGlobalState} socket={socket} />
         )}
 
-        {/* <div className={s.aiSection}>
+        <div className={s.aiSection}>
           <div className={s.aiChat} />
         </div>
-        <FakeAi /> */}
+        {/* <FakeAi /> */}
       </div>
     </>
   );

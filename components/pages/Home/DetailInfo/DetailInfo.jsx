@@ -63,24 +63,59 @@ const DetailInfo = React.memo(
             <motion.div
               {...boxAnimation}
               ref={rootRef}
+              style={{
+                justifyContent: count === 11 && "center",
+                minHeight: count === 11 && "285rem",
+              }}
               className={clsx(s.detailInfoRoot, {
                 [s.correct]: Number(detailNumber) === Number(count - 1),
               })}
             >
               {Number(count) !== 11 && (
-                <div className={s.whatDetail}>{text}</div>
+                <div
+                  style={{
+                    backgroundColor:
+                      Number(detailNumber) !== Number(count - 1) &&
+                      "rgba(180, 47, 47, 1)",
+                  }}
+                  className={s.whatDetail}
+                >
+                  {text +
+                    `${
+                      detailNumber >= 11 ? ". " + phrases[count].errorText : ""
+                    }` +
+                    ""}
+                </div>
               )}
 
               {Number(count) === 11 ? (
                 <div className={s.detailsName}>
-                  {"Поздравляем!"}
-                  <p>{"Вы успешно собрали «Иволгу!»"}</p>
+                  <div className={s.successMessage}>
+                    <p> Поздравляем!</p>
+                    <p>Вы успешно собрали «Иволгу!»</p>
+                  </div>
                 </div>
               ) : (
                 <>
                   {/* {Number(detailNumber) === Number(count - 1) && ( */}
                   <div className={s.detailsName}>{detail[0]?.name}</div>
+                  {detailNumber < 11 && (
+                    <div className={s.detailCounter}>
+                      {detailNumber + " из 10"}
+                    </div>
+                  )}
+
                   {/* )} */}
+                </>
+              )}
+
+              {count !== 11 && (
+                <>
+                  <img
+                    className={s.detailsImg}
+                    src={detail[0]?.picSrc}
+                    alt={detail[0]?.alt}
+                  />
                 </>
               )}
 
@@ -105,32 +140,10 @@ const DetailInfo = React.memo(
                   )}
                 </>
               )}
-
-              {count !== 11 && (
-                <>
-                  <img
-                    className={s.detailsImg}
-                    src={detail[0]?.picSrc}
-                    alt={detail[0]?.alt}
-                  />
-                </>
-              )}
-
-              <img
-                className={s.detailZig}
-                alt="zig"
-                src={
-                  Number(detailNumber) === Number(count - 1)
-                    ? "/images/train/line.png"
-                    : "/images/train/line_red.png"
-                }
-              />
-
+              {/* 
               {Number(detailNumber) >= 11 && (
-                <div className={s.wrongDetailHelp}>
-                  {phrases[count].errorText}
-                </div>
-              )}
+                <div className={s.wrongDetailHelp}></div>
+              )} */}
 
               <button
                 onClick={() => {
@@ -138,12 +151,19 @@ const DetailInfo = React.memo(
                   setShowPopUp(false);
                   setPauseTimer(false);
                 }}
-                style={{}}
+                style={{
+                  backgroundColor:
+                    Number(detailNumber) !== Number(count - 1) &&
+                    "rgba(180, 47, 47, 1)",
+                }}
                 className={s.detailConfirmButton}
               >
-                {Number(count) !== 11
-                  ? "Играем дальше"
-                  : "Рассмотреть «Иволгу»"}
+                {Number(detailNumber) > 10 && "Попробовать еще раз"}
+                {Number(detailNumber) < 11
+                  ? Number(count) !== 11
+                    ? "Найти деталь"
+                    : "Рассмотреть «Иволгу»"
+                  : ""}
               </button>
             </motion.div>
           )}

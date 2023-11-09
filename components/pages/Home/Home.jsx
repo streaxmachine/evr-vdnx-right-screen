@@ -146,7 +146,11 @@ const Home = () => {
           style={{
             zIndex: 2,
             background:
-              count === touchedDetail + 1 ? "rgb(161 245 161)" : "#f98787",
+              touchedDetail === 0
+                ? "black"
+                : count === touchedDetail + 1
+                ? "rgb(161 245 161)"
+                : "#f98787",
             pointerEvents: isShowPopUp || isOutTime ? "all" : "none",
             opacity: isShowPopUp ? "0.35" : "0",
           }}
