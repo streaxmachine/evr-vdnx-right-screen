@@ -11,17 +11,17 @@ import gsap from "gsap";
 
 const points = [
   { percent: 0, url: "URL_1" },
-  { percent: 8.3, url: "URL_2" },
-  { percent: 16.6, url: "URL_3" },
-  { percent: 24.9, url: "URL_4" },
-  { percent: 33.2, url: "URL_5" },
-  { percent: 42, url: "URL_6" },
-  { percent: 49.8, url: "URL_7" },
-  { percent: 58.1, url: "URL_8" },
-  { percent: 66.4, url: "URL_9" },
-  { percent: 74.7, url: "URL_10" },
-  { percent: 83, url: "URL_11" },
-  { percent: 91.3, url: "URL_12" },
+  { percent: 9.9, url: "URL_2" },
+  { percent: 18.9, url: "URL_3" },
+  { percent: 25.9, url: "URL_4" },
+  { percent: 38, url: "URL_5" },
+  { percent: 55.5, url: "URL_6" },
+  { percent: 63, url: "URL_7" },
+  { percent: 68.5, url: "URL_8" },
+  { percent: 78, url: "URL_9" },
+  { percent: 83, url: "URL_10" },
+  { percent: 90, url: "URL_11" },
+  { percent: 95, url: "URL_12" },
   { percent: 100, url: "URL_13" },
 ];
 
@@ -44,18 +44,43 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
   }, [isShowQuestion]);
   // const currentQuestion = finalQuestions[currentQuestionIndex];
 
+  let dashOffsetNumber;
+
   React.useEffect(() => {
-    const calculateDashOffset = (questionNumber) => {
-      return 4200 - questionNumber * 340;
-    };
+    if (questionNumber == 0) {
+      dashOffsetNumber = 4200 - 1;
+    } else if (questionNumber == 1) {
+      dashOffsetNumber = 4200 - 380;
+    } else if (questionNumber == 2) {
+      dashOffsetNumber = 4200 - 780;
+    } else if (questionNumber == 3) {
+      dashOffsetNumber = 4200 - 1000;
+    } else if (questionNumber == 4) {
+      dashOffsetNumber = 4200 - 1600;
+    } else if (questionNumber == 5) {
+      dashOffsetNumber = 4200 - 2250;
+    } else if (questionNumber == 6) {
+      dashOffsetNumber = 4200 - 2550;
+    } else if (questionNumber == 7) {
+      dashOffsetNumber = 4200 - 2750;
+    } else if (questionNumber == 8) {
+      dashOffsetNumber = 4200 - 3200;
+    } else if (questionNumber == 9) {
+      dashOffsetNumber = 4200 - 3400;
+    } else if (questionNumber == 10) {
+      dashOffsetNumber = 4200 - 3650;
+    } else if (questionNumber == 11) {
+      dashOffsetNumber = 4200 - 3900;
+    } else if (questionNumber == 12) {
+      dashOffsetNumber = 4200 - 4200;
+    }
 
     gsap.to(ref.current, {
       duration: 1.75,
       delay: 0.2,
-      "stroke-dashoffset": calculateDashOffset(questionNumber),
+      "stroke-dashoffset": dashOffsetNumber,
       ease: "power2.inOut",
     });
-    // ref.current.setAttribute("stroke-dashoffset", calculateDashOffset(questionNumber));
   }, [questionNumber]);
 
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
@@ -68,7 +93,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
       <div className={s.container}>
         {!isQuizDone && (
           <>
-            <div className={s.left}>
+            <div className={s.header}>
               <button
                 onClick={() => {
                   setGlobalState("firstPage");
@@ -117,13 +142,14 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
               >
                 <path
                   d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
-                  stroke="black"
+                  stroke="#424242"
                   strokeWidth="7"
                   strokeLinecap="round"
                   strokeDasharray="4200"
                   shapeRendering="geometricPrecision"
                   fillRule="evenodd"
                   clipRule="evenodd"
+                  className={s.path}
                 />
                 <path
                   d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
@@ -190,10 +216,29 @@ const OnWayPointsWrapper = ({
 };
 
 const Point = ({ point, number, questionNumber }) => {
-  console.log(questionNumber, number);
+  const pointRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (questionNumber === number) {
+      gsap.to(pointRef.current, {
+        duration: 0.2,
+        scale: 1.25,
+        delay: 1.25,
+        onComplete: () => {
+          pointRef.current, { duration: 0.25, scale: 1.0 };
+        },
+      });
+    } else {
+      gsap.to(pointRef.current, {
+        duration: 0.25,
+        scale: 1,
+      });
+    }
+  }, [questionNumber, number]);
   return (
     <div
       className={s.point}
+      ref={pointRef}
       style={{
         offsetDistance: point.percent + "%",
       }}
