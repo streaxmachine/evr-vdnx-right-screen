@@ -4,7 +4,7 @@
   font-size: 50rem;
   color: white;
   // background-color: #87bdff;
-  background-image: url("/images/quizCow/bg.png");
+  background-image: url("/images/quizCow/bg2.png");
   background-size: cover;
 }
 
@@ -231,22 +231,17 @@
 
 .questionRoot {
   position: relative;
-  // opacity: 0.3;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
   width: 1260rem;
-  height: 760rem;
-  padding: 64rem;
-  bottom: 64rem;
+  height: 690rem;
+  padding: 40rem 56rem 40rem 56rem;
+  bottom: 14rem;
   border-radius: 10rem;
-
   background-color: white;
   color: var(--light-blue);
-
   transition: all 0.5s ease-in-out;
+  justify-content: space-between;
 }
 
 .questionRootInvisible {
@@ -272,13 +267,11 @@
 }
 
 .questionText {
-  margin-top: 20rem;
-  font-size: 46rem;
-  line-height: 50rem;
-  font-weight: 500;
-  width: 972rem;
-  color: black;
-  max-width: 100%;
+    font-size: 46rem;
+    line-height: 50rem;
+    font-weight: 500;
+    color: black;
+    max-width: 100%;
 }
 
 .bigText {
@@ -292,7 +285,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: -10rem;
 }
 
 .answerButton {
