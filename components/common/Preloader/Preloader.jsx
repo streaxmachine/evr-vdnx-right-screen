@@ -3,7 +3,6 @@ import clsx from "clsx";
 import gsap from "gsap";
 import addZero from "add-zero";
 
-import MaskCup from "components/common/MaskCup";
 import useLoader from "hooks/useLoader";
 import useStore from "hooks/useStore";
 import useData from "hooks/useData";
@@ -93,11 +92,6 @@ const Preloader = ({ onLoaded }) => {
 
   return (
     <div className={clsx(s.root, "preloader-root")}>
-      {/* <MaskCup className={clsx(s.maskCup, "preloader-cup")}>
-        <div className={s.img} ref={backRef} />
-        <div className={s.img} ref={frontRef} />
-      </MaskCup> */}
-
       <div ref={valueRef} className={clsx(s.progress, "progress")}>
         000%
       </div>

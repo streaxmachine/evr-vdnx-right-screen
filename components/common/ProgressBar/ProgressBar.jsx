@@ -13,9 +13,8 @@ const ProgressBar = ({ setState, isBack, location }) => {
     gsap.to(rootRef.current, {
       duration: 0.25,
       "--progress-width": progress + "%",
-      ease: "power2.inOut",
+      ease: "circ.out",
     });
-    // rootRef.current.style.setProperty("--progress-width", progress + "%");
   }, [progress]);
 
   React.useEffect(() => {
@@ -27,7 +26,6 @@ const ProgressBar = ({ setState, isBack, location }) => {
         clearInterval(interval);
       };
     } else {
-      // null;
       const timeout = setTimeout(() => {
         if (isBack === false) {
           setState("onway");
@@ -83,13 +81,6 @@ const ProgressBar = ({ setState, isBack, location }) => {
             </span>
           </div>
 
-          {/* <div className={s.imgWrapper}>
-            <img
-              className={s.img}
-              src="/images/progress/progress_putevoi.png"
-              alt="Путевой дворец"
-            />
-          </div> */}
         </div>
       </div>
     </>

@@ -103,21 +103,9 @@
   z-index: 1;
 
   cursor: pointer;
-
 }
 
-// /* AI */
 
-.aiChat {
-  width: 184px;
-  height: 184px;
-  background-image: url("/images/aiChat.gif");
-  background-size: 100%;
-  position: absolute;
-  bottom: -1rem;
-  right: 64rem;
-  mix-blend-mode: multiply;
-}
 .speechBubbleContainer {
   position: absolute;
   width: 510rem;

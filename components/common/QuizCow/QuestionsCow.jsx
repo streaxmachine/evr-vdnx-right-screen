@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 import CompleteQuizCow from "./CompleteQuizCow";
 
-import s from "./TouchPanel/TouchPanelCow.module.scss";
+import s from "./TouchPanelCow/TouchPanelCow.module.scss";
 
 const QuestionsCow = React.memo(
   ({
@@ -103,6 +103,7 @@ const QuestionsCow = React.memo(
       setQuestionNumber(0);
       setCurrentQuestionIndex(0);
       setPauseTimer(true)
+      setShowQuestion(false)
       sucessNumber.test = 0;
     };
 

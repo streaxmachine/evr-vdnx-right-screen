@@ -2,7 +2,7 @@ import React from "react";
 
 import useStore from "hooks/useStore";
 
-import s from "./TouchPanel/TouchPanelCow.module.scss";
+import s from "./TouchPanelCow/TouchPanelCow.module.scss";
 import FakeAi from "../FakeAi";
 
 const makePhraseWithProcent = (scenario, percent) => {
