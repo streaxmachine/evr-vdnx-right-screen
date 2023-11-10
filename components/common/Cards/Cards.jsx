@@ -8,7 +8,7 @@ const Cards = ({ setState, socket, setisBack, setLocation }) => {
   return (
     <>
       <div className={s.root}>
-        <div className={s.pageLayer}></div>
+        <div className={s.clouds}></div>
         <div className={s.rootWrapper}>
           <div
             onClick={() => {

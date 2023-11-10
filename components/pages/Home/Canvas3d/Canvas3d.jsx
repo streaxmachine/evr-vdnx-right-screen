@@ -4,8 +4,6 @@ import Lottie from "lottie-react";
 import {
   Html,
   OrthographicCamera,
-  Preload,
-  useProgress,
 } from "@react-three/drei";
 
 import TrainContainer from "../TrainContainer";

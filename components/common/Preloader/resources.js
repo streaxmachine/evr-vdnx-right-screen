@@ -1,5 +1,3 @@
-export const models = ["/models/testTrainTest.glb"];
-
 export const images = [
   "/images/background/q_zig.png",
   "/images/background/clouds.png",

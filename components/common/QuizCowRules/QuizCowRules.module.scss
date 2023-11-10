@@ -33,15 +33,15 @@
   cursor: pointer;
 }
 
-.content {
-  display: flex;
-  align-items: center;
-}
-
 .backText {
   z-index: 1;
   font-weight: 400;
   font-size: 22rem;
+}
+
+.content {
+  display: flex;
+  align-items: center;
 }
 
 .textblock {
@@ -61,6 +61,7 @@
   line-height: 52rem;
   letter-spacing: 0.02rem;
 }
+
 .text {
   font-weight: 400;
   font-size: 30rem;

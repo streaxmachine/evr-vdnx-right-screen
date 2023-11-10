@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-
-import { cards } from "./cardInformation";
+import React from "react";
 
 import useScenarioTimer from "hooks/useScenarioTimer";
 
@@ -70,14 +68,3 @@ const QuizCardRules = ({ setGlobalState, socket }) => {
   );
 };
 export default QuizCardRules;
-
-// function Card({ card }) {
-//   return (
-//     <div className={`${s.card}`}>
-//       <div className={s.cardTextBlock}>
-//         <h4 className={s.cardTitle}>{card.title}</h4>
-//       </div>
-//       <img className={s.cardPic} src={card.picSrc} alt={card.alt} />
-//     </div>
-//   );
-// }

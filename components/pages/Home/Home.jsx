@@ -1,14 +1,10 @@
 import React from "react";
-import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Lottie from "lottie-react";
 
 import Timer from "components/common/Timer";
 import CanvasPreloader from "components/common/CanvasPreloader";
-import FakeAi from "components/common/FakeAi";
-import DetailHelpers from "./DetailHelper";
 import Canvas3d from "./Canvas3d";
 import DetailVisualization from "./DetailVisualization";
 import DetailInfo from "./DetailInfo";
@@ -199,9 +195,6 @@ const Home = () => {
             setDisableTimer={setDisableTimer}
           />
         )}
-
-        {/* <FakeAi /> */}
-        {/* <div className={s.aiChat}></div> */}
       </div>
     </>
   );

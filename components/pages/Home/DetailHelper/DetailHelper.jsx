@@ -1,6 +1,5 @@
 import React from "react";
 import gsap from "gsap";
-import clsx from "clsx";
 
 import { phrases } from "../phrases";
 

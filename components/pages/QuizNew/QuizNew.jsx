@@ -6,7 +6,7 @@ import QuizCards from "components/common/QuizCards";
 import QuizRules from "components/common/QuizRules";
 import IvolgaRules from "components/common/IvolgaRules";
 import QuizCowRules from "components/common/QuizCowRules";
-import TouchPanelCow from "components/common/QuizCow/TouchPanel/TouchPanelCow";
+import TouchPanelCow from "components/common/QuizCow/TouchPanelCow/TouchPanelCow";
 import AiChat from "components/common/aiChat";
 import Sounds from "components/common/Sounds";
 import FakeAi from "components/common/FakeAi";
