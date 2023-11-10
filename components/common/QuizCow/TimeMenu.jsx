@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./TouchPanel/TouchPanelCow.module.scss";
 
-const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
+const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone, pauseTimer }) => {
   const FULL_DASH_ARRAY = 283;
   const TIME_LIMIT = 240;
   const ref = React.useRef();
@@ -36,7 +36,7 @@ const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
   };
 
   React.useEffect(() => {
-    if (!isQuizDone) {
+    if (!isQuizDone && !pauseTimer) {
       const timerInterval = setInterval(() => {
         setTimePassed(timePassed + 1);
         timeLeft = TIME_LIMIT - timePassed;
@@ -66,7 +66,7 @@ const TimeMenu = React.memo(({ time, setTime, isQuizDone, setQuizDone }) => {
         clearInterval(timerInterval);
       };
     }
-  }, [time, isQuizDone]);
+  }, [time, isQuizDone, pauseTimer]);
 
   return (
     <>

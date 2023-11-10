@@ -17,11 +17,12 @@ const QuestionsCow = React.memo(
     setQuizDone,
     setGlobalState,
     isShowQuestion,
-    setIsPointClicked,
     setShowQuestion,
+    isShowFirstQuestion,
     questionNumber,
     setQuestionNumber,
     setCurrentQuestionIndex,
+    setPauseTimer
   }) => {
     const buttonRef = React.useRef();
     const audioRef = React.useRef();
@@ -91,7 +92,7 @@ const QuestionsCow = React.memo(
       } else {
         setQuestionNumber(questionNumber + 1);
         setCurrentQuestion(finalQuestions[questionNumber + 1]);
-        // setIsPointClicked(false);
+        setPauseTimer(true)
       }
     };
 
@@ -99,9 +100,9 @@ const QuestionsCow = React.memo(
       setQuizDone(false);
       setScore(0);
       setCurrentQuestion(finalQuestions[0]);
-      setIsPointClicked(false);
       setQuestionNumber(0);
       setCurrentQuestionIndex(0);
+      setPauseTimer(true)
       sucessNumber.test = 0;
     };
 
@@ -120,6 +121,7 @@ const QuestionsCow = React.memo(
           setIsClickable(true);
           setShowQuestion(false);
           setQuestionNumber(questionNumber + 1);
+          setPauseTimer(false)
           handleCheck();
           setTwoMisstakesState(false);
 
@@ -145,6 +147,7 @@ const QuestionsCow = React.memo(
 
           const timeout = setTimeout(() => {
             setQuestionNumber(questionNumber + 1);
+            setPauseTimer(false)
             handleCheck();
             setShowQuestion(false);
             setIsClickable(true);
@@ -165,7 +168,7 @@ const QuestionsCow = React.memo(
       <>
         <audio ref={audioRef} src="/music/phrase.mp3" autoPlay={false} />
 
-        {!isQuizDone && isShowQuestion && (
+        {!isQuizDone && isShowQuestion &&  isShowFirstQuestion &&(
           <>
             <div className={`${s.questionRoot}`}>
               <div className={s.firstTextWrapper}>
