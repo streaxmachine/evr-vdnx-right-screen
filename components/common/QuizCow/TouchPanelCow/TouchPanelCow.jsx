@@ -33,8 +33,11 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
   const [isShowFirstQuestion, setShowFirstQuestion] = React.useState(false);
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [pauseTimer, setPauseTimer] = React.useState(true);
+  const [isReturned, setReturn] = React.useState(false);
 
   const ref = React.useRef();
+  const refOrange = React.useRef(null);
+  const refGrey = React.useRef(null);
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
@@ -56,9 +59,9 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
     return () => {
       clearTimeout(timeout);
     };
-  }, []);
+  }, [isShowFirstQuestion]);
 
-  let dashOffsetNumber = 1;
+  let dashOffsetNumber = 4200;
 
   React.useEffect(() => {
     if (questionNumber == 0) {
@@ -88,7 +91,6 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
     } else if (questionNumber == 12) {
       dashOffsetNumber = 4200 - 4200;
     }
-
     gsap.to(ref.current, {
       duration: 3,
       delay: 0.2,
@@ -99,6 +101,32 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
 
   const [time, setTime] = React.useState("0" + 4 + "0:10" + 0);
   const { setScenario } = useStore();
+
+  const restartAnimations = () => {
+    refOrange.current.classList.remove(s.animatedPathOrange);
+    refGrey.current.classList.remove(s.animatedPathGrey);
+    ref.current.classList.remove(s.pathOrange);
+
+    const timeOut = setTimeout(() => {
+      refGrey.current.classList.add(s.animatedPathGrey);
+      refOrange.current.classList.add(s.animatedPathOrange);
+      ref.current.classList.add(s.pathOrange);
+    }, 10);
+
+    return () => clearTimeout(timeOut);
+  };
+
+  React.useEffect(() => {
+    if (isReturned) {
+      restartAnimations();
+
+      const timeOut = setTimeout(() => {
+        setReturn(false);
+      });
+
+      return () => clearTimeout(timeOut);
+    }
+  }, [isReturned]);
 
   return (
     <div className={s.root}>
@@ -171,12 +199,14 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
                   stroke="#ffaa00"
                   strokeWidth="7"
                   className={s.animatedPathOrange}
+                  ref={refOrange}
                 />
                 <path
                   d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
                   stroke="#424242"
                   strokeWidth="7"
                   className={s.animatedPathGrey}
+                  ref={refGrey}
                 />
                 <path
                   d="M175 79.1803C179.012 79.1803 433.215 265.278 536.5 299.181C664.178 341.09 792.489 285.316 822.369 217.034C823.884 213.572 826.097 210.246 829.225 208.124C899.309 160.559 911.244 389.47 1028 385.677C1289.5 377.18 1340 -54.3216 1199 52.6764C1134.84 101.362 1329 648.177 1115 691.68C1044.67 705.978 892 540.68 838.5 556.68C785 572.68 733 722.68 669 691.68C605 660.68 573.5 487.68 480.5 500.68C387.5 513.68 344.365 672.072 279 691.68C204 714.18 15 697.18 37.5002 585.68C46.4961 541.1 196 543.68 175 482.68C154 421.68 11.5002 402.18 37.5002 368.18"
@@ -194,6 +224,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
             isShowQuestion={isShowQuestion}
             setShowQuestion={setShowQuestion}
             isShowFirstQuestion={isShowFirstQuestion}
+            setShowFirstQuestion={setShowFirstQuestion}
             questionNumber={questionNumber}
             setQuestionNumber={setQuestionNumber}
             isQuizDone={isQuizDone}
@@ -205,6 +236,7 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
             currentQuestionIndex={currentQuestionIndex}
             setCurrentQuestionIndex={setCurrentQuestionIndex}
             setPauseTimer={setPauseTimer}
+            setReturn={setReturn}
           />
         </div>
       </div>

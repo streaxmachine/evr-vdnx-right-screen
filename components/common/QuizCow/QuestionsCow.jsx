@@ -19,10 +19,12 @@ const QuestionsCow = React.memo(
     isShowQuestion,
     setShowQuestion,
     isShowFirstQuestion,
+    setShowFirstQuestion,
     questionNumber,
     setQuestionNumber,
     setCurrentQuestionIndex,
-    setPauseTimer
+    setPauseTimer,
+    setReturn
   }) => {
     const buttonRef = React.useRef();
     const audioRef = React.useRef();
@@ -33,11 +35,7 @@ const QuestionsCow = React.memo(
     const [currentQuestion, setCurrentQuestion] = React.useState(
       finalQuestions[0]
     );
-    // const [questionNumber, setQuestionNumber] = React.useState(0);
     const [twoMisstakesState, setTwoMisstakesState] = React.useState(false);
-
-    // React.useEffect(() => {
-    // }, [questionNumber]);
 
     const searchRightVariant = React.useCallback(() => {
       currentQuestion.answerOptions.map((item, index) => {
@@ -104,7 +102,9 @@ const QuestionsCow = React.memo(
       setCurrentQuestionIndex(0);
       setPauseTimer(true)
       setShowQuestion(false)
+      setShowFirstQuestion(false)
       sucessNumber.test = 0;
+      setReturn(true)
     };
 
     const handleClickAnswer = (question, event, index) => {
