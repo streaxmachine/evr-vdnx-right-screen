@@ -24,6 +24,7 @@ const CycleWay = () => {
   const [isOutTime, setOutTime] = React.useState("hero");
   const [isConnected, setConnected] = React.useState(false);
   const [isFree, setFree] = React.useState(true);
+  const [point, setPoint] = React.useState(0);
   const [timeValue, setTimeValue] = React.useState();
   const socket = useSocket([
     setSpeed,
@@ -32,6 +33,7 @@ const CycleWay = () => {
     setOutTime,
     setConnected,
     setFree,
+    setPoint,
   ]);
 
   React.useEffect(() => {
@@ -94,10 +96,17 @@ const CycleWay = () => {
         />
       )}
       {state === "progressBar" && (
-        <ProgressBar setState={setState} socket={socket} isBack={isBack} location={location} />
+        <ProgressBar
+          setState={setState}
+          socket={socket}
+          isBack={isBack}
+          location={location}
+        />
       )}
       {state === "onway" && (
         <OnWay
+          point={point}
+          setPoint={setPoint}
           setState={setState}
           setDistance={setDistance}
           setSpeed={setSpeed}

@@ -16,6 +16,7 @@ export const useSocket = (props) => {
       // console.log(`Получено сообщение: ${event.data}`);
       if (event.data !== "ping") {
         const info = JSON.parse(event.data);
+        console.log(info);
 
         if (props) {
           if (info.type === "speed") {
@@ -31,16 +32,14 @@ export const useSocket = (props) => {
             props[5](true);
             props[3](true);
           } else if (info.type === "isFree") {
-            console.log("type free");
             if (Number(info.data) === 0) {
-              console.log("type 1");
-              console;
               props[5](false);
             } else {
-              console.log("type 2");
-
               props[5](true);
             }
+          } else if (info.type.includes("poi")) {
+            console.log("here");
+            props[6](Number(info.data));
           }
         }
       } else {

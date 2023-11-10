@@ -18,6 +18,8 @@ const formatTime = (time) => {
 const OnWay = ({
   setState,
   socket,
+  point,
+  setPoint,
   speedSocket = 0,
   location,
   distanceSocket = 0,
@@ -36,6 +38,7 @@ const OnWay = ({
   });
   // console.log(item);
   React.useEffect(() => {
+    setPoint(0);
     setSpeed(0);
     setDistance(0);
   }, []);
@@ -70,7 +73,6 @@ const OnWay = ({
   const isOkay = speedSocket > 1 && speedSocket <= 3.5;
   const isFast = speedSocket > 3.5;
 
-
   React.useEffect(() => {
     const newFilledCells = Math.floor((speedSocket / 5.1) * 28); // 48 - максимальное значение speedSocket, 28 - количество ячеек
     setFilledCells(newFilledCells);
@@ -83,7 +85,7 @@ const OnWay = ({
   const rays = Array.from({ length: 28 }, (_, index) => {
     const isFilled = index < filledCells;
     const isRed =
-      (speedSocket <= 1 && isFilled) || (speedSocket >= 3.5  && !isFilled);
+      (speedSocket <= 1 && isFilled) || (speedSocket >= 3.5 && !isFilled);
 
     return (
       <div
@@ -167,7 +169,9 @@ const OnWay = ({
               </div>
               <div className={s.speed}>
                 <p className={s.dataTitle}>Скорость</p>
-                <p className={s.speedNumber}>{roundedNumber(speedSocket * 2.8) }</p>
+                <p className={s.speedNumber}>
+                  {roundedNumber(speedSocket * 2.8)}
+                </p>
                 <p className={s.dataMeasure}>км/ч</p>
               </div>
               <div className={s.dist}>
@@ -187,8 +191,9 @@ const OnWay = ({
             <span className={s.textEnd}>{item[0].end}</span>
           </div>
           <div className={s.progressRoot}>
-          <div className={s.onWayPointsWrapper}>
+            <div className={s.onWayPointsWrapper}>
               <OnWayPointsWrapper
+                socketPoint={point}
                 key={item[0].id}
                 points={item[0].points}
                 distanceSocket={distanceSocket}
@@ -287,28 +292,33 @@ const OnWay = ({
 };
 export default React.memo(OnWay);
 
-const OnWayPointsWrapper = ({ points, distanceSocket }) => {
+const OnWayPointsWrapper = ({ socketPoint, points, distanceSocket }) => {
   return (
     <>
       {points.map((item, id) => {
-        return <Point key={id} point={item} distanceSocket={distanceSocket} />;
+        return (
+          <Point
+            key={id}
+            socketPoint={socketPoint}
+            point={item}
+            distanceSocket={distanceSocket}
+          />
+        );
       })}
     </>
   );
 };
 
-const Point = ({ point, distanceSocket }) => {
+const Point = ({ point, distanceSocket, socketPoint }) => {
   const [showInfo, setShowInfo] = React.useState(false);
 
   React.useEffect(() => {
-    if (Number(point.percent) <= distanceSocket) {
-      // if (distanceSocket <= Number(point.percent) + 1) {
+    if (point.id === socketPoint) {
       setShowInfo(true);
-      // }
     } else {
       setShowInfo(false);
     }
-  }, [point, distanceSocket]);
+  }, [point, socketPoint]);
 
   return (
     <div>
