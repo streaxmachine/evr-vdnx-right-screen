@@ -164,6 +164,7 @@ const Questions = React.memo(
           music: "falseAnswer",
         });
         SoundsEmmitter.send("false-answer");
+        SoundsEmmitter.send("second-false-ai");
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
@@ -212,6 +213,7 @@ const Questions = React.memo(
           music: "falseAnswer",
         });
         SoundsEmmitter.send("false-answer");
+        SoundsEmmitter.send("false-ai");
       }
 
       if (!twoMisstakesState) {
@@ -226,6 +228,7 @@ const Questions = React.memo(
               place: "succesFirstTry",
             });
             SoundsEmmitter.send("true-answer");
+            SoundsEmmitter.send("true-ai");
             setScore(score + 1);
             sucessNumber.test += 1;
             sucessNumber.value = 0;
@@ -235,6 +238,7 @@ const Questions = React.memo(
               place: "succesFirstTry",
             });
             SoundsEmmitter.send("true-answer");
+            SoundsEmmitter.send("true-ai");
 
             sucessNumber.value = 0;
           }

@@ -8,6 +8,9 @@ const vars = {
   winningGame: null,
   chooseGame: null,
   returnMenu: null,
+  falseAI: null,
+  trueAI:null,
+  secondFalseAI: null
 };
 
 const Sounds = () => {
@@ -17,6 +20,9 @@ const Sounds = () => {
     vars.winningGame = new Audio("/music/WinningGame.wav");
     vars.chooseGame = new Audio("/music/ChooseGame.wav");
     vars.returnMenu = new Audio("/music/ReturnMenu.wav");
+    vars.falseAI = new Audio("/music/FalseAI.mp3");
+    vars.trueAI = new Audio("/music/TrueAI.mp3");
+    vars.secondFalseAI = new Audio("/music/SecondFalseAI.mp3");
   }, []);
 
   const handleTrueAnswer = React.useCallback(() => {
@@ -39,6 +45,18 @@ const Sounds = () => {
     vars.returnMenu.play();
   }, []);
 
+  const handleTrueAI = React.useCallback(() => {
+    vars.trueAI.play();
+  }, []);
+
+  const handleFalseAI = React.useCallback(() => {
+    vars.falseAI.play();
+  }, []);
+
+  const handleSecondFalseAI = React.useCallback(() => {
+    vars.secondFalseAI.play();
+  }, []);
+
   React.useEffect(() => {
     createAudio();
   }, []);
@@ -49,6 +67,9 @@ const Sounds = () => {
     SoundsEmmitter.on("winning-game", handleWinningGame);
     SoundsEmmitter.on("choose-game", handleChooseGame);
     SoundsEmmitter.on("return-menu", handleReturnMenu);
+    SoundsEmmitter.on("true-ai", handleTrueAI);
+    SoundsEmmitter.on("false-ai", handleFalseAI);
+    SoundsEmmitter.on("second-false-ai", handleSecondFalseAI);
 
     return () => {
       SoundsEmmitter.off("true-answer", handleTrueAnswer);
@@ -56,6 +77,9 @@ const Sounds = () => {
       SoundsEmmitter.off("winning-game", handleWinningGame);
       SoundsEmmitter.off("choose-game", handleChooseGame);
       SoundsEmmitter.off("return-menu", handleReturnMenu);
+      SoundsEmmitter.off("true-ai", handleTrueAI);
+      SoundsEmmitter.off("false-ai", handleFalseAI);
+      SoundsEmmitter.off("second-false-ai", handleSecondFalseAI);
     };
   }, []);
 
