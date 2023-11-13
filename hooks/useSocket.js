@@ -21,7 +21,7 @@ export const useSocket = (props) => {
         if (props) {
           if (info.type === "speed") {
             // props[3](false);
-            props[0](info.data);
+            props[0](info.data_tablet);
           } else if (info.type === "distance") {
             // props[3](false);
             props[2](info.data);
