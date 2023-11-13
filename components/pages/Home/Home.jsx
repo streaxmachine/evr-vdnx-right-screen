@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Lottie from "lottie-react";
 
 import Timer from "components/common/Timer";
 import CanvasPreloader from "components/common/CanvasPreloader";
@@ -9,6 +10,8 @@ import Canvas3d from "./Canvas3d";
 import DetailVisualization from "./DetailVisualization";
 import DetailInfo from "./DetailInfo";
 import FailMessage from "./FailMessage";
+
+import handZoom from "./handZoom.json";
 
 import useStore from "hooks/useStore";
 import useScenarioTimer from "hooks/useScenarioTimer";
@@ -99,6 +102,10 @@ const Home = () => {
               alt="360deg"
               className={s.buttonBackDone_img}
             ></img>
+            <HandAnimation
+              currentState={currentState}
+              isTimeEndGame={isTimeEndGame}
+            />
             <Link href={"/quizNew"}>
               <div className={s.buttonBackDone}>
                 <p>Главное меню</p>
@@ -272,3 +279,41 @@ const SuccessMessage = () => {
     </div>
   );
 };
+
+const HandAnimation = React.memo(({ isTimeEndGame, currentState }) => {
+  const [isAnimationVisible, setAnimationVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleTouchStart = () => {
+      setAnimationVisible(false);
+    };
+
+    document.addEventListener("touchstart", handleTouchStart);
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (currentState === "made-train" && !isTimeEndGame) {
+      const timeout = setTimeout(() => {
+        setAnimationVisible(true);
+      }, 1500);
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [currentState, isTimeEndGame]);
+
+  return (
+    isAnimationVisible && (
+      <Lottie
+        className={s.handZoom}
+        animationData={handZoom}
+        loop={true}
+        autoplay={true}
+      />
+    )
+  );
+});
