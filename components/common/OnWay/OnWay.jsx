@@ -69,9 +69,9 @@ const OnWay = ({
     }
   }, [progress, distanceSocket]);
 
-  const isSlow = speedSocket <= 6;
-  const isOkay = speedSocket > 6 && speedSocket <= 11;
-  const isFast = speedSocket > 11;
+  const isSlow = speedSocket <= 5;
+  const isOkay = speedSocket > 5 && speedSocket <= 10;
+  const isFast = speedSocket > 10;
 
   React.useEffect(() => {
     const newFilledCells = Math.floor((speedSocket / 14.2) * 28); // 14.2 - максимальное значение speedSocket, 28 - количество ячеек
@@ -85,7 +85,7 @@ const OnWay = ({
   const rays = Array.from({ length: 28 }, (_, index) => {
     const isFilled = index < filledCells;
     const isRed =
-      (speedSocket <= 6 && isFilled) || (speedSocket >= 11 && !isFilled);
+      (speedSocket <= 5 && isFilled) || (speedSocket >= 10 && !isFilled); // isSlow // isFast
 
     return (
       <div
