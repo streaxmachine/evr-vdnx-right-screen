@@ -42,6 +42,7 @@ body {
     rgba(0, 70, 154, 1),
     rgba(183, 214, 251, 1) 
   );
+  cursor: none;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,

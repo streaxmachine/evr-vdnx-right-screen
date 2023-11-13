@@ -54,18 +54,18 @@ const CompleteQuizCow = ({
 
   const formTime = formatTime(currentMinutes, currentSeconds);
 
-  React.useEffect(() => {
-    socket.send(
-      JSON.stringify({
-        installation: "right",
-        type: "puzzle",
-        data: `final`,
-        true_answers: percent,
-        time: formTime.socket,
-        score: questionNumber + "/13",
-      })
-    );
-  }, []);
+  // React.useEffect(() => {
+  //   socket.send(
+  //     JSON.stringify({
+  //       installation: "right",
+  //       type: "puzzle",
+  //       data: `final`,
+  //       true_answers: percent,
+  //       time: formTime.socket,
+  //       score: questionNumber + "/13",
+  //     })
+  //   );
+  // }, []);
 
   const phraseNumber = React.useMemo(() => {
     if (percent < 50) {
