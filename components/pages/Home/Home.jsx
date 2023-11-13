@@ -288,10 +288,10 @@ const HandAnimation = React.memo(({ isTimeEndGame, currentState }) => {
       setAnimationVisible(false);
     };
 
-    document.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchstart", handleTouchStart);
 
     return () => {
-      document.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchstart", handleTouchStart);
     };
   }, []);
 
