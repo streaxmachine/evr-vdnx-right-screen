@@ -12,14 +12,8 @@ import s from "./aiChat.module.scss";
 const AIChat = ({ setGlobalState, socket }) => {
   const [showHelper, setShowHelper] = React.useState(true);
   const [isInputVisible, setInputVisible] = React.useState(false);
-  const [isListening, setListening] = React.useState(false);
-
   const toggleInputVisibility = () => {
     setInputVisible(!isInputVisible);
-  };
-
-  const toggleListening = () => {
-    setListening(!isListening);
   };
 
   return (
@@ -48,26 +42,14 @@ const AIChat = ({ setGlobalState, socket }) => {
 
           {showHelper && <Helper />}
 
-          <Chat setShowHelper={setShowHelper} isInputVisible={isInputVisible} setInputVisible={setInputVisible} />
+          <Chat
+            setShowHelper={setShowHelper}
+            isInputVisible={isInputVisible}
+            setInputVisible={setInputVisible}
+          />
         </section>
         <section className={s.bottom}>
-          <div className={s.bottomPart}>
-            <div
-              className={isListening ? s.listeningIcon : s.icon}
-              onMouseDown={() => toggleListening(true)}
-            >
-              {isListening ? (
-                <img src="/images/aiChat/left_listening.svg" alt="" />
-              ) : (
-                <img src="/images/aiChat/left.svg" alt="" />
-              )}
-            </div>
-            <span className={isListening ? s.listeningText : s.bottomText}>
-              {isListening
-                ? "Говорите..."
-                : "Нажмите и удерживайте иконку микрофона, чтобы озвучить запрос"}
-            </span>
-          </div>
+          <RecordingButton />
           <div className={s.bottomPart}>
             <div className={s.icon} onClick={() => toggleInputVisibility()}>
               <img src="/images/aiChat/right.svg" alt="" />
@@ -85,42 +67,144 @@ const AIChat = ({ setGlobalState, socket }) => {
 
 export default React.memo(AIChat);
 
-const Chat = React.memo(({ setShowHelper, isInputVisible , setInputVisible }) => {
-  const [messages, setMessages] = React.useState([]);
+const RecordingButton = React.memo(() => {
+  const mediaRecorder = React.useRef(null);
+  const audioRef = React.useRef(null);
+
+  const [buttonClicked, setButtonClicked] = React.useState(false);
+  const [isListening, setListening] = React.useState(false);
+  const [stream, setStream] = React.useState(null);
+  const [audioChunks, setAudioChunks] = React.useState([]);
+  const [audioBase64, setAudioBase64] = React.useState("");
+
+  const toggleListening = () => {
+    setButtonClicked(true);
+    setListening(!isListening);
+  };
 
   React.useEffect(() => {
-    async function loadWelcomeMessage() {
-      setMessages([
-        <BotMessage
-          key="0"
-          fetchMessage={async () => await API.GetChatbotResponse("hi")}
-        />,
-      ]);
+    if (buttonClicked) {
+      if (isListening) {
+        startRecording();
+      } else {
+        stopRecording();
+      }
     }
-    loadWelcomeMessage();
-  }, []);
+  }, [isListening, buttonClicked]);
 
-  const send = async (text) => {
-    const newMessages = messages.concat(
-      <UserMessage key={messages.length + 1} text={text} />,
-      <BotMessage
-        key={messages.length + 2}
-        fetchMessage={async () => await API.GetChatbotResponse(text)}
-      />
-    );
-    setMessages(newMessages);
+  const startRecording = async () => {
+    try {
+      const audioStream = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+      });
+      setStream(audioStream);
+
+      const media = new MediaRecorder(audioStream);
+      mediaRecorder.current = media;
+
+      let localAudioChunks = [];
+      mediaRecorder.current.ondataavailable = (event) => {
+        if (typeof event.data === "undefined") return;
+        if (event.data.size === 0) return;
+        localAudioChunks.push(event.data);
+      };
+
+      mediaRecorder.current.onstop = () => {
+        const audioBlob = new Blob(localAudioChunks);
+        setAudioChunks(localAudioChunks);
+
+        // const audioUrl = URL.createObjectURL(audioBlob);
+        // audioRef.current.src = audioUrl;
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const base64Result = reader.result.split(",")[1];
+          setAudioBase64(base64Result);
+          // console.log("Audio Base64:", base64Result);
+        };
+        reader.readAsDataURL(audioBlob);
+      };
+
+      mediaRecorder.current.start();
+    } catch (error) {
+      console.error("Error accessing microphone:", error);
+    }
   };
+
+  const stopRecording = () => {
+    if (mediaRecorder.current) {
+      mediaRecorder.current.stop();
+    } else {
+      console.error("mediaRecorder.current is null");
+    }
+  };
+
   return (
     <>
-      <div className={s.chatRoot}>
-        <Messages messages={messages} />
-        {isInputVisible && (
-          <Input onSend={send} setShowHelper={setShowHelper} setInputVisible={setInputVisible} />
-        )}
+      <div className={s.bottomPart}>
+        <div
+          className={isListening ? s.listeningIcon : s.icon}
+          onMouseDown={() => toggleListening()}
+        >
+          {isListening ? (
+            <img src="/images/aiChat/left_listening.svg" alt="" />
+          ) : (
+            <img src="/images/aiChat/left.svg" alt="" />
+          )}
+        </div>
+        <span className={isListening ? s.listeningText : s.bottomText}>
+          {isListening
+            ? "Говорите..."
+            : "Нажмите и удерживайте иконку микрофона, чтобы озвучить запрос"}
+        </span>
       </div>
+      {/* <audio ref={audioRef} controls />  */}
     </>
   );
 });
+
+const Chat = React.memo(
+  ({ setShowHelper, isInputVisible, setInputVisible }) => {
+    const [messages, setMessages] = React.useState([]);
+
+    React.useEffect(() => {
+      async function loadWelcomeMessage() {
+        setMessages([
+          <BotMessage
+            key="0"
+            fetchMessage={async () => await API.GetChatbotResponse("hi")}
+          />,
+        ]);
+      }
+      loadWelcomeMessage();
+    }, []);
+
+    const send = async (text) => {
+      const newMessages = messages.concat(
+        <UserMessage key={messages.length + 1} text={text} />,
+        <BotMessage
+          key={messages.length + 2}
+          fetchMessage={async () => await API.GetChatbotResponse(text)}
+        />
+      );
+      setMessages(newMessages);
+    };
+    return (
+      <>
+        <div className={s.chatRoot}>
+          <Messages messages={messages} />
+          {isInputVisible && (
+            <Input
+              onSend={send}
+              setShowHelper={setShowHelper}
+              setInputVisible={setInputVisible}
+            />
+          )}
+        </div>
+      </>
+    );
+  }
+);
 
 const Helper = React.memo(({}) => {
   return (
