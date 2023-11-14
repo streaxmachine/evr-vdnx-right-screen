@@ -34,6 +34,14 @@
   backdrop-filter: blur(1rem);
 }
 
+.headerLogo {
+  display: flex;
+  width: 860rem;
+  height: 100rem;
+  justify-content: space-evenly;
+  gap: 82rem;
+}
+
 .backMenu {
   width: 214rem;
   height: 48rem;

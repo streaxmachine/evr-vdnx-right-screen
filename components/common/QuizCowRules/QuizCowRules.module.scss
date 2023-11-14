@@ -6,11 +6,13 @@
   display: flex;
   justify-content: center;
   background: linear-gradient(99deg, #00469a 5.73%, #b7d6fb 96.89%), #fff;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
 }
 
 .wrapper {
   margin-top: 64rem;
-  margin-bottom: 100rem;
+  // margin-bottom: 100rem;
   max-width: 1350rem;
   display: flex;
   flex-direction: column;
@@ -92,6 +94,14 @@
   width: 700rem;
   padding-top: 68rem;
   position: absolute;
+}
+
+.footerLogo {
+  display: flex;
+  width: 1350rem;
+  height: 100rem;
+  justify-content: flex-start;
+  gap: 82rem;
 }
 
 .clouds {

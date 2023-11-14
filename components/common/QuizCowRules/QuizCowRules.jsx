@@ -61,7 +61,12 @@ const QuizCardRules = ({ setGlobalState, socket }) => {
             />
           </section>
         </div>
-
+        <section className={s.footerLogo}>
+          
+          <img src="/images/quizCow/AP.png" alt="" />
+          <img src="/images/quizCow/BG1.png" alt="" />
+          <img src="/images/quizCow/IV.png" alt="" />
+        </section>
         <div className={s.clouds}></div>
       </main>
     </>
