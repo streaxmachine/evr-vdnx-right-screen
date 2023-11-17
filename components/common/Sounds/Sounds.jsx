@@ -1,5 +1,7 @@
 import React from "react";
 
+import useStore from "hooks/useStore";
+
 import { SoundsEmmitter } from "constants/events";
 
 const vars = {
@@ -8,22 +10,75 @@ const vars = {
   winningGame: null,
   chooseGame: null,
   returnMenu: null,
-  falseAI: null,
-  trueAI:null,
-  secondFalseAI: null
+
+  trueAI00: null,
+  trueAI01: null,
+  trueAI02: null,
+  trueAI03: null,
+
+  falseAI00: null,
+  falseAI01: null,
+  falseAI02: null,
+  falseAI03: null,
+
+  secondFalseAI00: null,
+  secondFalseAI01: null,
 };
 
 const Sounds = () => {
+  const { musicIndex, scenario } = useStore();
+  const [audio, setAudio] = React.useState(null);
+
   const createAudio = React.useCallback(() => {
     vars.trueAnswer = new Audio("/music/RightAnswer.wav");
     vars.falseAnswer = new Audio("/music/WrongAnswer.wav");
     vars.winningGame = new Audio("/music/WinningGame.wav");
     vars.chooseGame = new Audio("/music/ChooseGame.wav");
     vars.returnMenu = new Audio("/music/ReturnMenu.wav");
-    vars.falseAI = new Audio("/music/FalseAI.mp3");
-    vars.trueAI = new Audio("/music/TrueAI.mp3");
-    vars.secondFalseAI = new Audio("/music/SecondFalseAI.mp3");
+
+    vars.trueAI00 = new Audio("/music/succesFirstTry_zero.mp3");
+    vars.trueAI01 = new Audio("/music/succesFirstTry_one.mp3");
+    vars.trueAI02 = new Audio("/music/succesFirstTry_two.mp3");
+    vars.trueAI03 = new Audio("/music/succesFirstTry_three.mp3");
+
+    vars.falseAI00 = new Audio("/music/falseFirstTry_zero.mp3");
+    vars.falseAI01 = new Audio("/music/falseFirstTry_one.mp3");
+    vars.falseAI02 = new Audio("/music/falseFirstTry_two.mp3");
+    vars.falseAI03 = new Audio("/music/falseFirstTry_three.mp3");
+
+    vars.secondFalseAI00 = new Audio("/music/falseSecondTry_zero.mp3");
+    vars.secondFalseAI01 = new Audio("/music/falseSecondTry_one.mp3");
   }, []);
+
+  React.useEffect(() => {
+    createAudio();
+  }, []);
+
+  const trueAnswerSounds = [
+    vars.trueAI00,
+    vars.trueAI01,
+    vars.trueAI02,
+    vars.trueAI03,
+  ];
+  const falseAnswerSounds = [
+    vars.falseAI00,
+    vars.falseAI01,
+    vars.falseAI02,
+    vars.falseAI03,
+  ];
+  const secondFalseAnswerSounds = [vars.secondFalseAI00, vars.secondFalseAI01];
+
+  React.useEffect(() => {
+    if (scenario.place === "succesFirstTry") {
+      setAudio(trueAnswerSounds[musicIndex]);
+    } else if (scenario.place === "falseFirstTry") {
+      setAudio(falseAnswerSounds[musicIndex]);
+    } else if (scenario.place === "falseSecondTry") {
+      setAudio(secondFalseAnswerSounds[musicIndex]);
+    }
+
+    console.log(musicIndex, trueAnswerSounds, trueAnswerSounds[musicIndex]);
+  }, [musicIndex, scenario]);
 
   const handleTrueAnswer = React.useCallback(() => {
     vars.trueAnswer.play();
@@ -46,20 +101,17 @@ const Sounds = () => {
   }, []);
 
   const handleTrueAI = React.useCallback(() => {
-    vars.trueAI.play();
-  }, []);
+    audio?.play();
+    console.log(audio)
+  }, [musicIndex, scenario]);
 
   const handleFalseAI = React.useCallback(() => {
-    vars.falseAI.play();
-  }, []);
+    audio?.play();
+  }, [musicIndex, scenario]);
 
   const handleSecondFalseAI = React.useCallback(() => {
-    vars.secondFalseAI.play();
-  }, []);
-
-  React.useEffect(() => {
-    createAudio();
-  }, []);
+    audio?.play();
+  }, [musicIndex, scenario]);
 
   React.useEffect(() => {
     SoundsEmmitter.on("true-answer", handleTrueAnswer);

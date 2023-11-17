@@ -29,6 +29,7 @@ function initStore(preloadedState = initialState) {
       setGallery: (isGallery) => set(() => ({ isGallery })),
       setLoaded: (isLoaded) => set(() => ({ isLoaded })),
       setScenario: (scenario) => set(() => ({ scenario })),
+      setMusicIndex: (musicIndex) => set(() => ({ musicIndex })),
       setIsLoadedMusicverse: (isLoadedMusicverse) =>
         set(() => ({ isLoadedMusicverse })),
       setCart: (product) => {
