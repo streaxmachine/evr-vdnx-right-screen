@@ -315,6 +315,9 @@ const Point = ({ point, distanceSocket, socketPoint }) => {
   React.useEffect(() => {
     if (point.id === socketPoint) {
       setShowInfo(true);
+      const timer = setTimeout(() => setShowInfo(false), 10000);
+
+      return () => clearTimeout(timer);
     } else {
       setShowInfo(false);
     }
