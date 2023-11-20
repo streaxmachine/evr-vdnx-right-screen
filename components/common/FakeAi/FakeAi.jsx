@@ -8,8 +8,9 @@ import s from "./FakeAi.module.scss";
 
 function getRandomElement(arr) {
   if (arr?.length) {
-    var item = arr[Math.floor(Math.random() * arr.length)];
-    return item;
+    const randomNumber = Math.floor(Math.random() * arr.length);
+    var item = arr[randomNumber];
+    return { item, randomNumber };
   }
 }
 
@@ -17,21 +18,26 @@ const FakeAi = () => {
   const textRef = React.useRef();
   const [text, setText] = React.useState("");
   const { scenario, setMusicIndex } = useStore();
+  const [isRerender, setRerender] = React.useState(false);
 
   React.useEffect(() => {
     if (scenario.type) {
       const phrases = scenaries[scenario.type][scenario.place];
       const phrase = getRandomElement(phrases);
-      const index = phrases.indexOf(phrase);
-      setText(phrase);
 
       if (
         scenario.place === "succesFirstTry" ||
         scenario.place === "falseFirstTry" ||
         scenario.place === "falseSecondTry"
       ) {
-        setMusicIndex(index);
-      } 
+        setRerender(!isRerender);
+        setMusicIndex({
+          soundIndex: phrase.randomNumber,
+          rerender: isRerender,
+        });
+      }
+
+      setText(phrase.item);
     }
   }, [scenario]);
 

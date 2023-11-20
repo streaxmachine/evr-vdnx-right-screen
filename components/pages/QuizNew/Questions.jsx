@@ -163,8 +163,6 @@ const Questions = React.memo(
           place: "falseSecondTry",
           music: "falseAnswer",
         });
-        SoundsEmmitter.send("false-answer");
-        SoundsEmmitter.send("second-false-ai");
         sucessNumber.value = 0;
         setTwoMisstakesState(true);
         setIsClickable(false);
@@ -213,7 +211,6 @@ const Questions = React.memo(
           music: "falseAnswer",
         });
         SoundsEmmitter.send("false-answer");
-        SoundsEmmitter.send("false-ai");
       }
 
       if (!twoMisstakesState) {
@@ -227,8 +224,7 @@ const Questions = React.memo(
               type: "quiz",
               place: "succesFirstTry",
             });
-            SoundsEmmitter.send("true-answer");
-            SoundsEmmitter.send("true-ai");
+
             setScore(score + 1);
             sucessNumber.test += 1;
             sucessNumber.value = 0;
@@ -237,8 +233,6 @@ const Questions = React.memo(
               type: "quiz",
               place: "succesFirstTry",
             });
-            SoundsEmmitter.send("true-answer");
-            SoundsEmmitter.send("true-ai");
 
             sucessNumber.value = 0;
           }
@@ -263,7 +257,7 @@ const Questions = React.memo(
               setIsClickable(true);
               event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
             },
-            isImg ? 3000 : 1200
+            isImg ? 3000 : 3000
           );
         } else {
           setIsClickable(false);
@@ -271,14 +265,14 @@ const Questions = React.memo(
           setTimeout(() => {
             setIsClickable(true);
             event.target.style.backgroundColor = "rgba(69, 153, 255, 1)";
-          }, 550);
+          }, 3000);
         }
       }
     };
 
     React.useEffect(() => {
       // setScore(sucessNumber.test);
-      console.log(score);
+      // console.log(score);
     }, [questionNumber]);
 
     React.useEffect(() => {

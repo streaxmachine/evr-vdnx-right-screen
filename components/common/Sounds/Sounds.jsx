@@ -27,7 +27,6 @@ const vars = {
 
 const Sounds = () => {
   const { musicIndex, scenario } = useStore();
-  const [audio, setAudio] = React.useState(null);
 
   const createAudio = React.useCallback(() => {
     vars.trueAnswer = new Audio("/music/RightAnswer.wav");
@@ -70,15 +69,13 @@ const Sounds = () => {
 
   React.useEffect(() => {
     if (scenario.place === "succesFirstTry") {
-      setAudio(trueAnswerSounds[musicIndex]);
+      trueAnswerSounds[musicIndex.soundIndex].play();
     } else if (scenario.place === "falseFirstTry") {
-      setAudio(falseAnswerSounds[musicIndex]);
+      falseAnswerSounds[musicIndex.soundIndex].play();
     } else if (scenario.place === "falseSecondTry") {
-      setAudio(secondFalseAnswerSounds[musicIndex]);
+      secondFalseAnswerSounds[musicIndex.soundIndex].play();
     }
-
-    console.log(musicIndex, trueAnswerSounds, trueAnswerSounds[musicIndex]);
-  }, [musicIndex, scenario]);
+  }, [musicIndex]);
 
   const handleTrueAnswer = React.useCallback(() => {
     vars.trueAnswer.play();
@@ -100,28 +97,12 @@ const Sounds = () => {
     vars.returnMenu.play();
   }, []);
 
-  const handleTrueAI = React.useCallback(() => {
-    audio?.play();
-    console.log(audio)
-  }, [musicIndex, scenario]);
-
-  const handleFalseAI = React.useCallback(() => {
-    audio?.play();
-  }, [musicIndex, scenario]);
-
-  const handleSecondFalseAI = React.useCallback(() => {
-    audio?.play();
-  }, [musicIndex, scenario]);
-
   React.useEffect(() => {
     SoundsEmmitter.on("true-answer", handleTrueAnswer);
     SoundsEmmitter.on("false-answer", handleFalseAnswer);
     SoundsEmmitter.on("winning-game", handleWinningGame);
     SoundsEmmitter.on("choose-game", handleChooseGame);
     SoundsEmmitter.on("return-menu", handleReturnMenu);
-    SoundsEmmitter.on("true-ai", handleTrueAI);
-    SoundsEmmitter.on("false-ai", handleFalseAI);
-    SoundsEmmitter.on("second-false-ai", handleSecondFalseAI);
 
     return () => {
       SoundsEmmitter.off("true-answer", handleTrueAnswer);
@@ -129,9 +110,6 @@ const Sounds = () => {
       SoundsEmmitter.off("winning-game", handleWinningGame);
       SoundsEmmitter.off("choose-game", handleChooseGame);
       SoundsEmmitter.off("return-menu", handleReturnMenu);
-      SoundsEmmitter.off("true-ai", handleTrueAI);
-      SoundsEmmitter.off("false-ai", handleFalseAI);
-      SoundsEmmitter.off("second-false-ai", handleSecondFalseAI);
     };
   }, []);
 
