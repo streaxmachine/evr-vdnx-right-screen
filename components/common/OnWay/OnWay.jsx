@@ -326,17 +326,17 @@ const Point = ({ point, distanceSocket, socketPoint }) => {
   return (
     <div>
       <div
-        className={s.point}
+        className={`${s.point} ${showInfo ? s.showInfo : s.hideInfo}`}
         style={{ left: point.percent + "%" }}
         key={point.percent}
       >
-        {showInfo && (
-          <div className={s.textWrapper}>
+
+          <div className={`${s.textWrapper}`}>
             <img src={point.url} alt="" />
           </div>
-        )}
-        <div className={s.circle}></div>
-        <div className={s.stick}></div>
+
+        <div className={`${s.circle} ${showInfo ? s.showInfo : s.hideInfo}`}></div>
+        <div className={`${s.stick} ${showInfo ? s.showInfo : s.hideInfo}`}></div>
       </div>
     </div>
   );
