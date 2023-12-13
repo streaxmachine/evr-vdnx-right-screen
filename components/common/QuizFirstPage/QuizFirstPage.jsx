@@ -4,6 +4,7 @@ import Head from "next/head";
 import useStore from "hooks/useStore";
 
 import s from "./QuizFirstPage.module.scss";
+// import { TouchFree, TouchFreeRequest } from "public/dist/TouchFree_Tooling";
 
 const Guide = ({ setGlobalState, socket }) => {
   const { setScenario } = useStore();
@@ -11,8 +12,24 @@ const Guide = ({ setGlobalState, socket }) => {
     setScenario({ type: "menu", place: "hello" });
   }, []);
 
+  React.useEffect(() => {
+    setTimeout(() => {
+      // const touchfree = new TouchList();
+      // console.log(touchfree);
+      const touc = leap();
+      console.log(touc);
+    }, 3000);
+  }, []);
   return (
     <>
+      <Head>
+        <script src="/dist/TouchFree_Tooling.js" type="text/javascript" />
+        <script src="/dist/Plugins/Snapping_Plugin.js" type="text/javascript" />
+        <script
+          src="/dist/Plugins/Snapping_Example.js"
+          type="text/javascript"
+        />
+      </Head>
       <main className={s.root}>
         <div className={s.wrapper}>
           <div className={s.textblock}>
