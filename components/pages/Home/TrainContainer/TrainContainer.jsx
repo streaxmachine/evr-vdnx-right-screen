@@ -7,6 +7,7 @@ import Lights from "../Lights";
 import MakeTrain from "./Train";
 
 import { dataInfo } from "./dataInfo";
+import LeapTrain from "./LeapTrain";
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
@@ -44,10 +45,6 @@ const TrainContainer = ({
     const part11 = train.scene.getObjectByName(randomNubmers[0]);
     const part12 = train.scene.getObjectByName(randomNubmers[1]);
     const part13 = train.scene.getObjectByName(randomNubmers[2]);
-    // const part14 = train.scene.getObjectByName(randomNubmers[3]);
-    // const part15 = train.scene.getObjectByName(randomNubmers[4]);
-    // const part16 = train.scene.getObjectByName(randomNubmers[5]);
-    // const part17 = train.scene.getObjectByName(randomNubmers[6]);
 
     const parts = [];
     parts.push(
@@ -60,14 +57,10 @@ const TrainContainer = ({
       { object: part7, id: 7}, //prettier-ignore
       { object: part8, id: 8}, //prettier-ignore
       { object: part9, id: 9}, //prettier-ignore
-      { object: part10, id: 10}, //prettier-ignore
-      { object: part11, id: Number(randomNubmers[0]) }, //prettier-ignore
-      { object: part12, id: Number(randomNubmers[1]) }, //prettier-ignore
-      { object: part13, id: Number(randomNubmers[2]) } //prettier-ignore
-      // { object: part14, id: Number(randomNubmers[3]) }, //prettier-ignore
-      // { object: part15, id: Number(randomNubmers[4]) }, //prettier-ignore
-      // { object: part16, id: Number(randomNubmers[5]) }, //prettier-ignore
-      // { object: part17, id: Number(randomNubmers[6]) } //prettier-ignore
+      { object: part10, id: 10} //prettier-ignore
+      // { object: part11, id: Number(randomNubmers[0]) }, //prettier-ignore
+      // { object: part12, id: Number(randomNubmers[1]) }, //prettier-ignore
+      // { object: part13, id: Number(randomNubmers[2]) } //prettier-ignore
     );
     return parts;
   }, [train]);
@@ -77,7 +70,7 @@ const TrainContainer = ({
       <color attach="background" args={["#f2f2f5"]} />
       <Lights isDragging={isDragging} isDone={isDone} />
       <mesh geometry={floor.geometry} material={floor.material} />
-      {parts.map((part, index) => (
+      {/* {parts.map((part, index) => (
         <MakeTrain
           key={index}
           isDone={isDone}
@@ -92,7 +85,20 @@ const TrainContainer = ({
           touchedDetail={touchedDetail}
           setTouchedDetail={setTouchedDetail}
         />
-      ))}
+      ))} */}
+      {parts.map((part, index) => {
+        return (
+          <LeapTrain
+            key={index}
+            value={Number(part.object.name)}
+            part={part.object}
+            touchedDetail={touchedDetail}
+            setTouchedDetail={setTouchedDetail}
+            count={count}
+            setCount={setCount}
+          />
+        );
+      })}
       {/* <Preload all /> */}
     </>
   );
