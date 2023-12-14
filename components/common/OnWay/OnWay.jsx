@@ -315,6 +315,9 @@ const Point = ({ point, distanceSocket, socketPoint }) => {
   React.useEffect(() => {
     if (point.id === socketPoint) {
       setShowInfo(true);
+      const timer = setTimeout(() => setShowInfo(false), 10000);
+
+      return () => clearTimeout(timer);
     } else {
       setShowInfo(false);
     }
@@ -323,17 +326,17 @@ const Point = ({ point, distanceSocket, socketPoint }) => {
   return (
     <div>
       <div
-        className={s.point}
+        className={`${s.point} ${showInfo ? s.showInfo : s.hideInfo}`}
         style={{ left: point.percent + "%" }}
         key={point.percent}
       >
-        {showInfo && (
-          <div className={s.textWrapper}>
+
+          <div className={`${s.textWrapper}`}>
             <img src={point.url} alt="" />
           </div>
-        )}
-        <div className={s.circle}></div>
-        <div className={s.stick}></div>
+
+        <div className={`${s.circle} ${showInfo ? s.showInfo : s.hideInfo}`}></div>
+        <div className={`${s.stick} ${showInfo ? s.showInfo : s.hideInfo}`}></div>
       </div>
     </div>
   );

@@ -100,6 +100,7 @@ const MakeTrain = ({
           rotation = [0, 0, 0];
           if (active === false) {
             if (value !== count) {
+              console.log(value);
               setTouchedDetail(value);
               finalValue = [part.position.x, part.position.y, part.position.z];
               dragMeshRef.current.material = new THREE.MeshStandardMaterial({

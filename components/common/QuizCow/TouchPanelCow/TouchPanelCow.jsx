@@ -149,10 +149,22 @@ const TouchPanelCow = ({ setGlobalState, socket }) => {
                 }}
                 className={s.backMenu}
               >
-                <img src="/images/aiChat/arrow.png" alt="Назад" />
+                <img src="/images/arrow.png" alt="Назад" />
                 <span className={s.backText}>Главное меню</span>
               </button>
-
+              <section className={s.headerLogo}>
+                <img src="/images/quizCow/AP.png" alt="" />
+                <img src="/images/quizCow/BG1.png" alt="" />
+                <img
+                  src="/images/quizCow/Iskrenne.png"
+                  alt=""
+                  style={{
+                    width: "110rem",
+                    height: "110rem",
+                    transform: "translateY(-5rem)",
+                  }}
+                />
+              </section>
               <TimeMenu
                 time={time}
                 setTime={setTime}

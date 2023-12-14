@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
 import s from "../aiChat.module.scss";
+import axios from "axios";
 
 export default function BotMessage({ fetchMessage }) {
   const [isLoading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    async function loadMessage() {
-      const msg = await fetchMessage();
+    console.log(fetchMessage);
+    const loadMessage = async () => {
+      axios
+        .post(`http://127.0.0.1:5000/generate`, {
+          text: fetchMessage,
+        })
+        .then((res) => {
+          setMessage(res.data.message);
+        });
       setLoading(false);
-      setMessage(msg);
-    }
+    };
     loadMessage();
   }, [fetchMessage]);
 

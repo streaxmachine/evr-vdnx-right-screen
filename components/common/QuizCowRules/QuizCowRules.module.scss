@@ -6,11 +6,13 @@
   display: flex;
   justify-content: center;
   background: linear-gradient(99deg, #00469a 5.73%, #b7d6fb 96.89%), #fff;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
 }
 
 .wrapper {
   margin-top: 64rem;
-  margin-bottom: 100rem;
+  // margin-bottom: 100rem;
   max-width: 1350rem;
   display: flex;
   flex-direction: column;
@@ -94,6 +96,15 @@
   position: absolute;
 }
 
+.footerLogo {
+  display: flex;
+  width: 1350rem;
+  height: 100rem;
+  justify-content: flex-start;
+  gap: 110rem;
+  z-index: 1;
+}
+
 .clouds {
   width: 100vw;
   height: 100vh;
@@ -101,4 +112,18 @@
   background-image: url("/images/background/clouds.png");
   background-size: cover;
   z-index: 0;
+}
+
+.whiteGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 280rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.99) 100%
+  );
 }

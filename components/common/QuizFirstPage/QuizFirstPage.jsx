@@ -4,6 +4,7 @@ import Head from "next/head";
 import useStore from "hooks/useStore";
 
 import s from "./QuizFirstPage.module.scss";
+// import { TouchFree, TouchFreeRequest } from "public/dist/TouchFree_Tooling";
 
 const Guide = ({ setGlobalState, socket }) => {
   const { setScenario } = useStore();

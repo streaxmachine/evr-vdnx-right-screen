@@ -201,6 +201,16 @@
   align-items: center;
   flex-direction: column;
   bottom: -12rem;
+  transition: transform 0.5s ease;
+  transform: scale(0);
+
+  &.showInfo {
+    transform: scale(1); 
+  }
+
+  &.hideInfo {
+    transform: scale(0);
+  }
 
   .circle{
     width: 10rem;
@@ -223,11 +233,20 @@
     position: absolute;
     display: flex;
     bottom: 60rem;
+    transition: transform 0.5s ease; 
     
     img {
       object-fit: cover;
     border-radius: 10rem;
       width: 100%;
+    }
+
+    &.showInfo {
+      transform: scale(1);
+    }
+
+    &.hideInfo {
+      transform: scale(0);
     }
   }
 

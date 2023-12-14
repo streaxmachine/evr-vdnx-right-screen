@@ -51,7 +51,13 @@ const AIChat = ({ setGlobalState, socket }) => {
         <section className={s.bottom}>
           <RecordingButton />
           <div className={s.bottomPart}>
-            <div className={s.icon} onClick={() => toggleInputVisibility()}>
+            <div
+              className={s.icon}
+              onClick={() => {
+                setShowHelper(false);
+                toggleInputVisibility();
+              }}
+            >
               <img src="/images/aiChat/right.svg" alt="" />
             </div>
             <span className={s.bottomText}>
