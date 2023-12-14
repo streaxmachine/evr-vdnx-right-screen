@@ -179,12 +179,7 @@ const Chat = React.memo(
 
     React.useEffect(() => {
       async function loadWelcomeMessage() {
-        setMessages([
-          <BotMessage
-            key="0"
-            fetchMessage={async () => await API.GetChatbotResponse("hi")}
-          />,
-        ]);
+        setMessages([<BotMessage key="0" fetchMessage={"Привет"} />]);
       }
       loadWelcomeMessage();
     }, []);
@@ -192,10 +187,7 @@ const Chat = React.memo(
     const send = async (text) => {
       const newMessages = messages.concat(
         <UserMessage key={messages.length + 1} text={text} />,
-        <BotMessage
-          key={messages.length + 2}
-          fetchMessage={async () => await API.GetChatbotResponse(text)}
-        />
+        <BotMessage key={messages.length + 2} fetchMessage={text} />
       );
       setMessages(newMessages);
     };
