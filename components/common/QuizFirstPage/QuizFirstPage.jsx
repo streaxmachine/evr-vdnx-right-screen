@@ -41,7 +41,7 @@ const Guide = ({ setGlobalState, socket }) => {
               >
                 Выбрать игру
               </button>
-              {/* <button
+              <button
                 onClick={() => {
                   setGlobalState("aiChat");
                   // socket.send(
@@ -55,7 +55,7 @@ const Guide = ({ setGlobalState, socket }) => {
                 className={s.button}
               >
                 Виртуальный помощник
-              </button> */}
+              </button>
             </div>
           </div>
           <section className={s.imgContainer}>

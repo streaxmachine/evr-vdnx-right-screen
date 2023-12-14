@@ -48,13 +48,18 @@ const AIChat = ({ setGlobalState, socket }) => {
 
           {showHelper && <Helper />}
 
-          <Chat setShowHelper={setShowHelper} isInputVisible={isInputVisible} setInputVisible={setInputVisible} />
+          <Chat
+            setShowHelper={setShowHelper}
+            isInputVisible={isInputVisible}
+            setInputVisible={setInputVisible}
+          />
         </section>
         <section className={s.bottom}>
           <div className={s.bottomPart}>
             <div
               className={isListening ? s.listeningIcon : s.icon}
               onMouseDown={() => toggleListening(true)}
+              onMouseUp={() => toggleListening(false)}
             >
               {isListening ? (
                 <img src="/images/aiChat/left_listening.svg" alt="" />
@@ -69,7 +74,13 @@ const AIChat = ({ setGlobalState, socket }) => {
             </span>
           </div>
           <div className={s.bottomPart}>
-            <div className={s.icon} onClick={() => toggleInputVisibility()}>
+            <div
+              className={s.icon}
+              onClick={() => {
+                setShowHelper(false);
+                toggleInputVisibility();
+              }}
+            >
               <img src="/images/aiChat/right.svg" alt="" />
             </div>
             <span className={s.bottomText}>
@@ -85,42 +96,42 @@ const AIChat = ({ setGlobalState, socket }) => {
 
 export default React.memo(AIChat);
 
-const Chat = React.memo(({ setShowHelper, isInputVisible , setInputVisible }) => {
-  const [messages, setMessages] = React.useState([]);
+const Chat = React.memo(
+  ({ setShowHelper, isInputVisible, setInputVisible }) => {
+    const [messages, setMessages] = React.useState([]);
 
-  React.useEffect(() => {
-    async function loadWelcomeMessage() {
-      setMessages([
-        <BotMessage
-          key="0"
-          fetchMessage={async () => await API.GetChatbotResponse("hi")}
-        />,
-      ]);
-    }
-    loadWelcomeMessage();
-  }, []);
+    React.useEffect(() => {
+      async function loadWelcomeMessage() {
+        setMessages([
+          <BotMessage key="0" fetchMessage={"Привет! Представься кто ты"} />,
+        ]);
+      }
+      loadWelcomeMessage();
+    }, []);
 
-  const send = async (text) => {
-    const newMessages = messages.concat(
-      <UserMessage key={messages.length + 1} text={text} />,
-      <BotMessage
-        key={messages.length + 2}
-        fetchMessage={async () => await API.GetChatbotResponse(text)}
-      />
+    const send = async (text) => {
+      const newMessages = messages.concat(
+        <UserMessage key={messages.length + 1} text={text} />,
+        <BotMessage key={messages.length + 2} fetchMessage={text} />
+      );
+      setMessages(newMessages);
+    };
+    return (
+      <>
+        <div className={s.chatRoot}>
+          <Messages messages={messages} />
+          {isInputVisible && (
+            <Input
+              onSend={send}
+              setShowHelper={setShowHelper}
+              setInputVisible={setInputVisible}
+            />
+          )}
+        </div>
+      </>
     );
-    setMessages(newMessages);
-  };
-  return (
-    <>
-      <div className={s.chatRoot}>
-        <Messages messages={messages} />
-        {isInputVisible && (
-          <Input onSend={send} setShowHelper={setShowHelper} setInputVisible={setInputVisible} />
-        )}
-      </div>
-    </>
-  );
-});
+  }
+);
 
 const Helper = React.memo(({}) => {
   return (
