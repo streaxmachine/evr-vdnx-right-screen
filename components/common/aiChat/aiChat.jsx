@@ -83,6 +83,10 @@ const RecordingButton = React.memo(() => {
   };
 
   React.useEffect(() => {
+    console.log(audioBase64);
+  }, [audioBase64]);
+
+  React.useEffect(() => {
     if (buttonClicked) {
       if (isListening) {
         startRecording();
