@@ -1,15 +1,14 @@
 import React from "react";
 import Link from "next/link";
 
-
 import useScenarioTimer from "hooks/useScenarioTimer";
-import useStore from 'hooks/useStore'
+import useStore from "hooks/useStore";
 
 import s from "./IvolgaRules.module.scss";
 
 const IvolgaRules = ({ setGlobalState, socket }) => {
   useScenarioTimer("menu", "time15", 15);
-  const { setLeap } = useStore()
+
   return (
     <>
       <main className={s.root}>
@@ -45,6 +44,10 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
               станет настоящим испытанием вашей логики и эрудированности!
             </span>
           </div>
+          <div className={s.togglecontainer}>
+            Выберите режим управления в игре:
+            <Toggle />
+          </div>
 
           <div className={s.speechBubbleContainer}>
             <div className={s.triangle}></div>
@@ -54,7 +57,6 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
           </div>
 
           <div className={s.imgContainer}>
-
             <img
               className={s.ivolgaImg}
               src="/images/IvolgaDetails/04W_alpha.png"
@@ -63,11 +65,8 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
           </div>
 
           <div className={s.containerBtn}>
-            <Link href={"/"} onClick={() => setLeap(false)}>
+            <Link href={"/"}>
               <button className={s.playBtn}>Все понятно! Я в игре</button>
-            </Link>
-            <Link href={"/"} onClick={() => setLeap(true)}>
-              <button className={s.playBtn}>Управлять рукой</button>
             </Link>
           </div>
         </div>
@@ -78,3 +77,22 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
   );
 };
 export default IvolgaRules;
+
+const Toggle = () => {
+  const { setLeap, isLeap } = useStore();
+
+  const handleToggle = () => {
+    setLeap(!isLeap);
+  };
+
+
+  return (
+    <label className={s.switch}>
+      <input type="checkbox" checked={isLeap} onChange={handleToggle} />
+      <span className={`${s.slider} ${isLeap ? s.on : s.off}`}>
+        <span className={s.offText}>С помощью сенсорного экрана</span>
+        <span className={s.onText}>С помощью жестов</span>
+      </span>
+    </label>
+  );
+};
