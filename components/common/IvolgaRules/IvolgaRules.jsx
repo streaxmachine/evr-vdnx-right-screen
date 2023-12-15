@@ -1,11 +1,15 @@
 import React from "react";
 import Link from "next/link";
 
-import s from "./IvolgaRules.module.scss";
+
 import useScenarioTimer from "hooks/useScenarioTimer";
+import useStore from 'hooks/useStore'
+
+import s from "./IvolgaRules.module.scss";
 
 const IvolgaRules = ({ setGlobalState, socket }) => {
   useScenarioTimer("menu", "time15", 15);
+  const { setLeap } = useStore()
   return (
     <>
       <main className={s.root}>
@@ -59,8 +63,11 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
           </div>
 
           <div className={s.containerBtn}>
-            <Link href={"/"}>
-              <button className={s.playBtn} >Все понятно! Я в игре</button>
+            <Link href={"/"} onClick={() => setLeap(false)}>
+              <button className={s.playBtn}>Все понятно! Я в игре</button>
+            </Link>
+            <Link href={"/"} onClick={() => setLeap(true)}>
+              <button className={s.playBtn}>Управлять рукой</button>
             </Link>
           </div>
         </div>

@@ -16,6 +16,7 @@ let initialState = {
     items: [],
     totalPrice: 0,
   },
+  isLeap: false
 };
 
 function initStore(preloadedState = initialState) {
@@ -58,6 +59,7 @@ function initStore(preloadedState = initialState) {
           }));
         }
       },
+      setLeap: (isLeap) => set(() => ({ isLeap })),
     }))
   );
 }

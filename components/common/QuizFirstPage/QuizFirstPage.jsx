@@ -12,6 +12,14 @@ const Guide = ({ setGlobalState, socket }) => {
     setScenario({ type: "menu", place: "hello" });
   }, []);
 
+  React.useEffect(() => {
+    const element1 = document.getElementsByClassName("touchfreecursor")[0];
+    const element2 = document.getElementsByClassName("touchfreecursor")[1];
+
+    element1.style.display = "block";
+    element2.style.display = "block";
+  }, []);
+
   return (
     <>
       <main className={s.root}>

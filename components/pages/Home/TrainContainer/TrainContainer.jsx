@@ -6,6 +6,8 @@ import { useGLTF } from "@react-three/drei";
 import Lights from "../Lights";
 import MakeTrain from "./Train";
 
+import useStore from "hooks/useStore";
+
 import { dataInfo } from "./dataInfo";
 import LeapTrain from "./LeapTrain";
 
@@ -23,6 +25,8 @@ const TrainContainer = ({
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   const train = useGLTF("/models/Ivolga_3.0_v22.glb");
+
+  const { isLeap } = useStore();
 
   const floor = React.useMemo(() => {
     return train.scene.getObjectByName("00");
@@ -70,35 +74,37 @@ const TrainContainer = ({
       <color attach="background" args={["#f2f2f5"]} />
       <Lights isDragging={isDragging} isDone={isDone} />
       <mesh geometry={floor.geometry} material={floor.material} />
-      {/* {parts.map((part, index) => (
-        <MakeTrain
-          key={index}
-          isDone={isDone}
-          value={Number(part.object.name)}
-          part={part.object}
-          posX={index * 1.5}
-          count={count}
-          finalData={dataInfo[part.id]}
-          setCount={setCount}
-          setIsDragging={setIsDragging}
-          floorPlane={floorPlane}
-          touchedDetail={touchedDetail}
-          setTouchedDetail={setTouchedDetail}
-        />
-      ))} */}
-      {parts.map((part, index) => {
-        return (
-          <LeapTrain
-            key={index}
-            value={Number(part.object.name)}
-            part={part.object}
-            touchedDetail={touchedDetail}
-            setTouchedDetail={setTouchedDetail}
-            count={count}
-            setCount={setCount}
-          />
-        );
-      })}
+
+      {isLeap
+        ? parts.map((part, index) => {
+            return (
+              <LeapTrain
+                key={index}
+                value={Number(part.object.name)}
+                part={part.object}
+                touchedDetail={touchedDetail}
+                setTouchedDetail={setTouchedDetail}
+                count={count}
+                setCount={setCount}
+              />
+            );
+          })
+        : parts.map((part, index) => (
+            <MakeTrain
+              key={index}
+              isDone={isDone}
+              value={Number(part.object.name)}
+              part={part.object}
+              posX={index * 1.5}
+              count={count}
+              finalData={dataInfo[part.id]}
+              setCount={setCount}
+              setIsDragging={setIsDragging}
+              floorPlane={floorPlane}
+              touchedDetail={touchedDetail}
+              setTouchedDetail={setTouchedDetail}
+            />
+          ))}
       {/* <Preload all /> */}
     </>
   );

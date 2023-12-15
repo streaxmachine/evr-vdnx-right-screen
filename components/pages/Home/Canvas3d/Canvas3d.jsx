@@ -8,6 +8,8 @@ import {
 
 import TrainContainer from "../TrainContainer";
 
+import useStore from "hooks/useStore";
+
 import handAnimation from "../handAnimation.json";
 
 import s from "../Home.module.scss";
@@ -19,6 +21,7 @@ const Canvas3d = ({
   touchedDetail,
   setTouchedDetail,
 }) => {
+  const { isLeap } = useStore();
   return (
     <Canvas shadows gl={{ preserveDrawingBuffer: true, antialias: true }}>
       <OrthographicCamera
@@ -35,7 +38,7 @@ const Canvas3d = ({
         touchedDetail={touchedDetail}
         setTouchedDetail={setTouchedDetail}
       />
-      {touchedDetail === 0 && (
+      {touchedDetail === 0  &&  !isLeap &&(
         <mesh visible={false}>
           <Html
             position={[-2, -2, 0]}
