@@ -8,6 +8,7 @@ import s from "./QuizCowRules.module.scss";
 
 const QuizCardRules = ({ setGlobalState, socket }) => {
   useScenarioTimer("menu", "time15", 15);
+  const [quizState, setQuizState] = React.useState("");
   return (
     <>
       <main className={s.root}>
@@ -34,25 +35,37 @@ const QuizCardRules = ({ setGlobalState, socket }) => {
             <div className={s.textblock}>
               <h2 className={s.title}>Правила игры</h2>
               <div className={s.text}>
-                Привет, маленькие исследователи мира молока!
-                <p>
-                  Сегодня мы отправимся в увлекательное путешествие, чтобы
-                  узнать, откуда оно берется и как попадает в ваш холодильник.
-                </p>
+                Приветствуем вас, маленькие исследователи фермерского дела!
               </div>
               <div className={s.text}>
-                Викторина "Молоко: от поля до стола" состоит из 13 увлекательных
-                вопросов, и у вас есть 4 минуты, чтобы дать ответы. Готовы
-                начать это захватывающее приключение? Поехали!"
+                Давайте вместе отправимся в увлекательное приключение, раскрывая
+                тайны животноводства. У нас есть Фермерский квест с двумя
+                викторинами: "Молоко: от поля до стола" и "Приключения свинок".
+                В первой вы узнаете, как молоко попадает к вам на стол, а во
+                второй - о жизни веселых свинок и их роли в фермерском
+                хозяйстве.
               </div>
-              <button
-                className={s.playBtn}
-                onClick={() => {
-                  setGlobalState("touchPanelCow");
-                }}
-              >
-                Все понятно! Я в игре
-              </button>
+              <div className={s.text}>
+                Правила игры просты: вас ждут 12-13 увлекательных вопросов,
+                ответить на которые нужно за 4 минуты. Готовы начать это
+                захватывающее приключение? Поехали!
+              </div>
+
+              <div className={s.togglecontainer}>
+                Во что будем играть?
+                <Toggle setQuizState={setQuizState} />
+              </div>
+              <div className={s.buttonContainer}>
+                <button
+                  className={s.playBtn}
+                  onClick={() => {
+                    // setGlobalState("touchPanelCow");
+                    setGlobalState(quizState);
+                  }}
+                >
+                  Все понятно! Я в игре
+                </button>
+              </div>
             </div>
             <img
               className={s.cowIMG}
@@ -68,9 +81,18 @@ const QuizCardRules = ({ setGlobalState, socket }) => {
             src="/images/quizCow/Iskrenne.png"
             alt=""
             style={{
-              width: "110rem",
-              height: "110rem",
+              width: "74rem",
+              height: "74rem",
               transform: "translateY(-4rem)",
+            }}
+          />
+          <img
+            src="/images/quizCowRules/Coral_logo.png"
+            alt=""
+            style={{
+              width: "158px",
+              height: "183px",
+              transform: "translateY(-42rem)",
             }}
           />
         </section>
@@ -81,3 +103,29 @@ const QuizCardRules = ({ setGlobalState, socket }) => {
   );
 };
 export default QuizCardRules;
+
+const Toggle = ({ setQuizState }) => {
+  const [isPig, setPig] = React.useState(false);
+
+  const handleToggle = () => {
+    setPig(!isPig);
+  };
+
+  React.useEffect(() => {
+    if (isPig) {
+      setQuizState("touchPanelPig");
+    } else {
+      setQuizState("touchPanelCow");
+    }
+  }, [isPig]);
+
+  return (
+    <label className={s.switch}>
+      <input type="checkbox" checked={isPig} onChange={handleToggle} />
+      <span className={`${s.slider} ${isPig ? s.on : s.off}`}>
+        <span className={s.offText}>Молоко: от поля до стола</span>
+        <span className={s.onText}>Приключения свинок</span>
+      </span>
+    </label>
+  );
+};
