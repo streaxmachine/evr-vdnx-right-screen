@@ -66,6 +66,7 @@ const Home = () => {
       setFirstTime(false);
     }
   }, [count]);
+
   return (
     <>
       <FakeForLeap

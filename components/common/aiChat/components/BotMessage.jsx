@@ -1,29 +1,46 @@
 import React, { useState, useEffect } from "react";
 import s from "../aiChat.module.scss";
 import axios from "axios";
+import Lottie from "lottie-react";
+import waiting from "./waiting.json";
 
-export default function BotMessage({ fetchMessage }) {
+export default function BotMessage({
+  fetchMessage,
+  BotMessage,
+  setBotMessage,
+}) {
   const [isLoading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    console.log(fetchMessage);
     const loadMessage = async () => {
+      setLoading(true);
+
       axios
-        .post(`http://127.0.0.1:5000/generate`, {
+        .post(`https://tverai.onrender.com/generate`, {
           text: fetchMessage,
         })
         .then((res) => {
           setMessage(res.data.message);
+          setLoading(false);
         });
-      setLoading(false);
     };
     loadMessage();
   }, [fetchMessage]);
 
   return (
     <div className={s.message_container}>
-      <div className={s.bot_message}>{isLoading ? "..." : message}</div>
+      {!isLoading && (
+        <div className={s.bot_message}>{isLoading ? "..." : message}</div>
+      )}
+      {isLoading && (
+        <Lottie
+          className={s.waiting}
+          animationData={waiting}
+          loop={true}
+          autoplay={true}
+        />
+      )}
     </div>
   );
 }
