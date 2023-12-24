@@ -19,8 +19,9 @@ export default function Input({
   };
 
   const handleSend = (e) => {
-    handleClearInput();
+    console.log("hrer");
     onSend(text);
+    handleClearInput();
     setShowHelper(false);
   };
 
@@ -32,16 +33,14 @@ export default function Input({
 
   return (
     <div className={s.input}>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSend();
+        }}
+      >
         <input type="text" onChange={handleInputChange} value={text} />
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            handleSend();
-          }}
-        >
-          Отправить
-        </button>
+        <button type="submit">Отправить</button>
       </form>
     </div>
   );
