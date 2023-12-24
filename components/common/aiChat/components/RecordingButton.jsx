@@ -8,12 +8,7 @@ import SpeechRecognition, {
 import s from "../aiChat.module.scss";
 
 const RecordingButton = React.memo(
-  ({
-    toggleInputVisibility,
-    setText,
-    handleSendFromMic,
-    setHandleSendFromMic,
-  }) => {
+  ({ toggleInputVisibility, setText, setShowHelper, setHandleSendFromMic }) => {
     const { transcript, resetTranscript } = useSpeechRecognition({
       isFuzzyMatch: true,
       bestMatchOnly: true,
@@ -28,8 +23,10 @@ const RecordingButton = React.memo(
     };
 
     React.useEffect(() => {
-      console.log(transcript);
-      setText(transcript);
+      console.log(transcript.length);
+      if (transcript.length !== 0) {
+        setText(transcript);
+      }
     }, [transcript]);
 
     React.useEffect(() => {
@@ -41,6 +38,7 @@ const RecordingButton = React.memo(
           });
         } else {
           setHandleSendFromMic(true);
+
           SpeechRecognition.stopListening();
           setTimeout(() => {
             resetTranscript();
@@ -62,10 +60,14 @@ const RecordingButton = React.memo(
                 continuous: true,
                 language: "Ru-us",
               });
+              setShowHelper(false);
+              setListening(true);
               toggleInputVisibility();
             }}
             onPointerUp={() => {
-              setHandleSendFromMic(true);
+              if (transcript.length !== 0) {
+                setHandleSendFromMic(true);
+              }
               SpeechRecognition.stopListening();
 
               setTimeout(() => {
@@ -77,7 +79,7 @@ const RecordingButton = React.memo(
 
                 setText("");
               }, 500);
-
+              setListening(false);
               // toggleListening();
               // toggleInputVisibility();
             }}

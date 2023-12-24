@@ -11,6 +11,7 @@ export default function Input({
   handleClearInput,
   text,
   setText,
+  handleSendFromTemplate,
   handleSendFromMic,
 }) {
   const handleInputChange = (e) => {
@@ -25,7 +26,6 @@ export default function Input({
 
   React.useEffect(() => {
     if (handleSendFromMic) {
-      console.log("fff");
       handleSend();
     }
   }, [handleSendFromMic]);

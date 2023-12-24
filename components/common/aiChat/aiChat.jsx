@@ -8,12 +8,15 @@ import Chat from "./components/Chat";
 import { layout } from "./components/layout";
 
 import s from "./aiChat.module.scss";
+import MessageTemplates from "./components/MessageTemplates";
 
 const AIChat = ({ setGlobalState, socket }) => {
   const [showHelper, setShowHelper] = React.useState(true);
   const [isInputVisible, setInputVisible] = React.useState(false);
   const [isKeyBoardVisible, setKeyBoardVisible] = React.useState(false);
   const [handleSendFromMic, setHandleSendFromMic] = React.useState(false);
+  const [handleSendFromTemplate, setHandleSendFromTemplate] =
+    React.useState(false);
 
   const toggleInputVisibility = () => {
     setInputVisible(!isInputVisible);
@@ -55,11 +58,20 @@ const AIChat = ({ setGlobalState, socket }) => {
         </section>
         <section className={s.right}>
           <div className={s.title}>Иволга</div>
+
           {showHelper && <Helper />}
+          {showHelper && (
+            <MessageTemplates
+              setHandleSendFromTemplate={setHandleSendFromTemplate}
+              setText={setText}
+              setShowHelper={setShowHelper}
+            />
+          )}
           <Chat
             handleClearInput={handleClearInput}
             handleSendFromMic={handleSendFromMic}
             text={text}
+            handleSendFromTemplate={handleSendFromTemplate}
             setText={setText}
             setShowHelper={setShowHelper}
             isInputVisible={isInputVisible}
@@ -68,6 +80,7 @@ const AIChat = ({ setGlobalState, socket }) => {
         </section>
         <section className={s.bottom}>
           <RecordingButton
+            setShowHelper={setShowHelper}
             handleSendFromMic={handleSendFromMic}
             setHandleSendFromMic={setHandleSendFromMic}
             text={text}
@@ -93,17 +106,18 @@ const AIChat = ({ setGlobalState, socket }) => {
           {isKeyBoardVisible && (
             <div className={s.keyBoard}>
               <button
+                className={s.keyBoardBtn}
                 onClick={() => {
                   toggleInputVisibility();
 
                   setKeyBoardVisible(false);
                 }}
               >
-                закрыть
+                Закрыть
               </button>
               <KeyboardReact
                 keyboardRef={(r) => (keyboardRef.current = r)}
-                // onKeyPress={onKeyPress}
+                // onKeyPress={handleKeyPress}
                 onChange={handleInputChange}
                 layout={layout}
               />

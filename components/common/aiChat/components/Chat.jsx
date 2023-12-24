@@ -1,4 +1,5 @@
 import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import UserMessage from "./UserMessage";
 import BotMessage from "./BotMessage";
@@ -6,6 +7,14 @@ import Messages from "./Messages";
 import Input from "./Input";
 
 import s from "../aiChat.module.scss";
+
+const boxAnimation = {
+  initial: { opacity: 0, y: 100 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" },
+  key: "start",
+  exit: { opacity: 0, y: 100, transition: { duration: 0.5 } },
+};
 
 const Chat = React.memo(
   ({
@@ -15,6 +24,7 @@ const Chat = React.memo(
     setText,
     text,
     handleSendFromMic,
+    handleSendFromTemplate,
     handleClearInput,
   }) => {
     const [messages, setMessages] = React.useState([]);
@@ -32,21 +42,36 @@ const Chat = React.memo(
       );
       setMessages(newMessages);
     };
+
+    React.useEffect(() => {
+      if (handleSendFromTemplate) {
+        send(text);
+        setTimeout(() => {
+          setText("");
+        }, 100);
+      }
+    }, [handleSendFromTemplate]);
+
     return (
       <>
         <div className={s.chatRoot}>
           <Messages messages={messages} text={text} />
-          {isInputVisible && (
-            <Input
-              handleSendFromMic={handleSendFromMic}
-              handleClearInput={handleClearInput}
-              text={text}
-              setText={setText}
-              onSend={send}
-              setShowHelper={setShowHelper}
-              setInputVisible={setInputVisible}
-            />
-          )}
+          <AnimatePresence>
+            {isInputVisible && (
+              <motion.div className={s.inputWrapper} {...boxAnimation}>
+                <Input
+                  handleSendFromMic={handleSendFromMic}
+                  handleClearInput={handleClearInput}
+                  handleSendFromTemplate={handleSendFromTemplate}
+                  text={text}
+                  setText={setText}
+                  onSend={send}
+                  setShowHelper={setShowHelper}
+                  setInputVisible={setInputVisible}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </>
     );

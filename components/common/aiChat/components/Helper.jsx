@@ -7,7 +7,6 @@ const Helper = React.memo(({}) => {
     <>
       <div className={s.helperRoot}>
         <div className={s.aiChat}></div>
-
         <div className={s.container}>
           <div className={s.triangle}></div>
           <div className={s.speechBubble}>

@@ -18,7 +18,7 @@
   color: black;
   font-size: 20rem;
   position: absolute;
-  bottom: 20rem;
+  bottom: 35rem;
   height: 200rem;
 }
 
@@ -86,7 +86,8 @@
 }
 
 .helperRoot {
-  position: absolute;
+  // position: absolute;
+  margin-top: 160rem;
   display: flex;
   width: 820rem;
   height: 196rem;
@@ -94,7 +95,6 @@
   flex-direction: column;
   justify-content: flex-end;
   align-content: stretch;
-  top: 160rem;
 }
 
 .aiChat {
@@ -193,6 +193,7 @@
   text-align: center;
   flex-direction: column;
   justify-content: center;
+  user-select: none;
 }
 
 .bottom::after {
@@ -280,15 +281,68 @@
 //chat
 
 .chatRoot {
+  transition: all 5ms;
   display: flex;
   // height: 540rem;
   flex-direction: column;
   justify-content: flex-end;
 }
 
+.messagesTemplateRoot{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16rem;
+
+  .messagesTemplateWrapper {
+    width: 80%;
+    text-align: center;
+
+  }
+
+  .templateMes {
+    border-radius: 0px 10px 10px 10px;
+    background: var(--White-20, rgba(255, 255, 255, 0.20));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50rem;
+    margin-top: 16rem;
+  }
+
+  .tempDoubleWrapper {
+    display: flex;
+    
+    gap: 16rem;
+  }
+
+  .temp1 {
+    width: 450rem;
+  }
+
+  .temp2 {
+    width: 400rem;
+  }
+
+  .temp3 {
+    width: 269rem;
+  }
+
+  .temp4 {
+    width: 184rem;
+  }
+
+  .temp5 {
+    width: 353rem;
+  }
+}
+
 .messages {
   width: 100%;
+  position: relative;
   // height: 50%;
+  transition: all 5ms;
   height: 540rem;
   overflow: auto;
   display: flex;
@@ -297,6 +351,8 @@
   flex-direction: column;
   padding: 10rem 0rem;
 }
+
+
 
 .messsageTest {
   height: 100%;
@@ -337,13 +393,34 @@
   line-height: 26rem;
 }
 
-.input {
+.keyBoardBtn {
+  border: none;
+  border-top-left-radius: 10rem;
+  border-top-right-radius: 10rem;
+  color: var(--light-blue);
+  background-color: white;
+  font-size: 16rem;
+  // height: 29rem;
+  text-align: center;
+  padding-top: 10rem;
+}
+
+.inputWrapper {
+  width: 100%;
   position: relative;
+}
+
+.input {
+  position: absolute;
   color: black;
+  width: 100%;
   font-size: 20rem;
   display: flex;
   flex-direction: column;
   gap: 12rem;
+  bottom: -30rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .input > form > input[type="text"] {
@@ -362,21 +439,40 @@
   display: flex;
 }
 
+.input {
+  form {
+display: flex;
+gap: 16rem;
+    width: 80%;
+  }
+}
+
 .input > form > input:focus {
   outline: none;
 }
 
 .input > form > button {
-  background-color: transparent;
-  border: 0;
-  border-bottom-right-radius: 10rem;
+  background-color: white;
+  border: none;
+  border-radius: 10rem;
+  width: 155rem;
+  font-size: 16rem;
+  color: var(--light-blue);
   box-shadow: none;
   cursor: pointer;
   fill: #4a4a4a;
   opacity: 1;
   outline: none;
-  padding: 14rem 16rem 12rem 16rem;
-  position: absolute;
-  right: 0;
-  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+
+  &::after {
+    display: block;
+ 
+    width: 10rem;
+    height: 10rem;
+    content: url('/images/aiChat/shape.svg');
+  }
 }

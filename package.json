@@ -22,7 +22,7 @@
     "cookie": "^0.5.0",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
-    "framer-motion": "^10.12.21",
+    "framer-motion": "^10.16.16",
     "fs": "^0.0.1-security",
     "gl-noise": "^1.6.1",
     "gsap": "^3.11.4",
