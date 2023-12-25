@@ -18,13 +18,13 @@ const QuizRules = ({ setGlobalState, socket }) => {
               SoundsEmmitter.send("return-menu");
 
               setGlobalState("firstPage");
-              socket.send(
-                JSON.stringify({
-                  installation: "right",
-                  type: "mode",
-                  data: "victorina_start",
-                })
-              );
+              // socket.send(
+              //   JSON.stringify({
+              //     installation: "right",
+              //     type: "mode",
+              //     data: "victorina_start",
+              //   })
+              // );
             }}
           >
             <img src="/images/arrow.png" alt="Назад" />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import UserMessage from "./UserMessage";
@@ -26,15 +26,23 @@ const Chat = React.memo(
     handleSendFromMic,
     handleSendFromTemplate,
     handleClearInput,
+    setMessages,
+    messages,
   }) => {
-    const [messages, setMessages] = React.useState([]);
     const [botMessage, setBotMessage] = React.useState("");
+    const [userMessage, setUserMessage] = React.useState("");
 
     const send = async (text) => {
       const newMessages = messages.concat(
-        <UserMessage key={messages.length + 1} text={text} />,
+        <UserMessage
+          key={messages.length + 1}
+          message={userMessage}
+          setMessage={setUserMessage}
+          text={text}
+        />,
         <BotMessage
           botMessage={botMessage}
+          userMessage={userMessage}
           setBotMessage={setBotMessage}
           key={messages.length + 2}
           fetchMessage={text}
@@ -42,6 +50,17 @@ const Chat = React.memo(
       );
       setMessages(newMessages);
     };
+
+    React.useEffect(() => {
+      if (botMessage !== "") {
+        const timeout = setTimeout(() => {
+          setMessages([]);
+        }, 30000);
+        return () => {
+          clearTimeout(timeout);
+        };
+      }
+    }, [botMessage, userMessage, isInputVisible]);
 
     React.useEffect(() => {
       if (handleSendFromTemplate) {

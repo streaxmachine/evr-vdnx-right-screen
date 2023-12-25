@@ -17,6 +17,7 @@ const AIChat = ({ setGlobalState, socket }) => {
   const [handleSendFromMic, setHandleSendFromMic] = React.useState(false);
   const [handleSendFromTemplate, setHandleSendFromTemplate] =
     React.useState(false);
+  const [messages, setMessages] = React.useState([]);
 
   const toggleInputVisibility = () => {
     setInputVisible(!isInputVisible);
@@ -35,6 +36,15 @@ const AIChat = ({ setGlobalState, socket }) => {
     setText("");
   };
 
+  React.useEffect(() => {
+    if (messages.length === 0) {
+      setShowHelper(true);
+      setHandleSendFromTemplate(false);
+      setKeyBoardVisible(false);
+      setInputVisible(false);
+    }
+  }, [messages]);
+
   return (
     <div className={s.root}>
       <div className={s.container}>
@@ -42,13 +52,13 @@ const AIChat = ({ setGlobalState, socket }) => {
           <button
             onClick={() => {
               setGlobalState("firstPage");
-              socket.send(
-                JSON.stringify({
-                  installation: "right",
-                  type: "mode",
-                  data: "menu",
-                })
-              );
+              // socket.send(
+              //   JSON.stringify({
+              //     installation: "right",
+              //     type: "mode",
+              //     data: "menu",
+              //   })
+              // );
             }}
             className={s.backMenu}
           >
@@ -73,6 +83,8 @@ const AIChat = ({ setGlobalState, socket }) => {
             text={text}
             handleSendFromTemplate={handleSendFromTemplate}
             setText={setText}
+            messages={messages}
+            setMessages={setMessages}
             setShowHelper={setShowHelper}
             isInputVisible={isInputVisible}
             setInputVisible={setInputVisible}
@@ -84,6 +96,7 @@ const AIChat = ({ setGlobalState, socket }) => {
             handleSendFromMic={handleSendFromMic}
             setHandleSendFromMic={setHandleSendFromMic}
             text={text}
+            isInputVisible={isInputVisible}
             setText={setText}
             toggleInputVisibility={toggleInputVisibility}
           />

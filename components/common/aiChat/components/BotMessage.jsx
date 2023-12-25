@@ -13,11 +13,7 @@ const boxAnimation = {
   exit: { opacity: 0, transition: { duration: 0.5 } },
 };
 
-export default function BotMessage({
-  fetchMessage,
-  BotMessage,
-  setBotMessage,
-}) {
+export default function BotMessage({ fetchMessage, setBotMessage }) {
   const [isLoading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
@@ -30,8 +26,11 @@ export default function BotMessage({
           text: fetchMessage,
         })
         .then((res) => {
-          setMessage(res.data.message);
-          setLoading(false);
+          setTimeout(() => {
+            setMessage(res.data.message);
+            setBotMessage(res.data.message);
+            setLoading(false);
+          }, 700);
         });
     };
     loadMessage();
@@ -42,7 +41,7 @@ export default function BotMessage({
       <AnimatePresence>
         {!isLoading && (
           <motion.div {...boxAnimation} className={s.bot_message}>
-            {isLoading ? "..." : message}
+            {message}
           </motion.div>
         )}
       </AnimatePresence>

@@ -8,7 +8,13 @@ import SpeechRecognition, {
 import s from "../aiChat.module.scss";
 
 const RecordingButton = React.memo(
-  ({ toggleInputVisibility, setText, setShowHelper, setHandleSendFromMic }) => {
+  ({
+    toggleInputVisibility,
+    setText,
+    setShowHelper,
+    setHandleSendFromMic,
+    isInputVisible,
+  }) => {
     const { transcript, resetTranscript } = useSpeechRecognition({
       isFuzzyMatch: true,
       bestMatchOnly: true,
@@ -23,11 +29,22 @@ const RecordingButton = React.memo(
     };
 
     React.useEffect(() => {
-      console.log(transcript.length);
       if (transcript.length !== 0) {
         setText(transcript);
       }
     }, [transcript]);
+
+    React.useEffect(() => {
+      if (!isInputVisible) {
+        SpeechRecognition.stopListening();
+        setTimeout(() => {
+          setListening(false);
+          resetTranscript();
+          setHandleSendFromMic(false);
+          setText("");
+        }, 100);
+      }
+    }, [isInputVisible]);
 
     React.useEffect(() => {
       if (buttonClicked) {
@@ -54,12 +71,29 @@ const RecordingButton = React.memo(
         <div className={s.bottomPart}>
           <div
             className={isListening ? s.listeningIcon : s.icon}
+            onPointerLeave={() => {
+              if (isListening) {
+                SpeechRecognition.stopListening();
+
+                setTimeout(() => {
+                  setHandleSendFromMic(false);
+                  toggleInputVisibility();
+                }, 250);
+                setTimeout(() => {
+                  resetTranscript();
+                  setText("");
+                }, 500);
+                setListening(false);
+              }
+            }}
             onPointerDown={() => {
               // toggleListening();
               SpeechRecognition.startListening({
                 continuous: true,
                 language: "Ru-us",
               });
+              resetTranscript();
+              setText("");
               setShowHelper(false);
               setListening(true);
               toggleInputVisibility();
@@ -76,12 +110,9 @@ const RecordingButton = React.memo(
               }, 250);
               setTimeout(() => {
                 resetTranscript();
-
                 setText("");
               }, 500);
               setListening(false);
-              // toggleListening();
-              // toggleInputVisibility();
             }}
           >
             {isListening ? (

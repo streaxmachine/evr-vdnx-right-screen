@@ -26,7 +26,7 @@ const CycleWay = () => {
   const [isFree, setFree] = React.useState(true);
   const [point, setPoint] = React.useState(0);
   const [timeValue, setTimeValue] = React.useState();
-  const socket = useSocket([
+  const socket = useSocket("velo", [
     setSpeed,
     setCalories,
     setDistance,
