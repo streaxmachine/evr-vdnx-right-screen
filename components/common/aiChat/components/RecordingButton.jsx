@@ -87,7 +87,6 @@ const RecordingButton = React.memo(
               }
             }}
             onPointerDown={() => {
-              // toggleListening();
               SpeechRecognition.startListening({
                 continuous: true,
                 language: "Ru-us",

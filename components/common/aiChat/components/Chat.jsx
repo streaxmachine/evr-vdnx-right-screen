@@ -55,7 +55,7 @@ const Chat = React.memo(
       if (botMessage !== "") {
         const timeout = setTimeout(() => {
           setMessages([]);
-        }, 30000);
+        }, 120000);
         return () => {
           clearTimeout(timeout);
         };

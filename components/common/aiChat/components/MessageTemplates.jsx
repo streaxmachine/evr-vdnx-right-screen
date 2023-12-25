@@ -39,12 +39,6 @@ const MessageTemplates = ({
         <div className={s.tempDoubleWrapper}>
           <div
             onClick={(e) => handleClick(e)}
-            className={clsx(s.templateMes, s.temp4)}
-          >
-            Кто такие Румелко?
-          </div>
-          <div
-            onClick={(e) => handleClick(e)}
             className={clsx(s.templateMes, s.temp5)}
           >
             Где в центре Твери можно вкусно поесть?

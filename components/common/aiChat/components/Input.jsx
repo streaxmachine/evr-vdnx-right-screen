@@ -19,10 +19,11 @@ export default function Input({
   };
 
   const handleSend = (e) => {
-    console.log("hrer");
-    onSend(text);
-    handleClearInput();
-    setShowHelper(false);
+    if (text.trim() !== "") {
+      onSend(text);
+      handleClearInput();
+      setShowHelper(false);
+    }
   };
 
   React.useEffect(() => {
@@ -40,7 +41,9 @@ export default function Input({
         }}
       >
         <input type="text" onChange={handleInputChange} value={text} />
-        <button type="submit">Отправить</button>
+        <button style={{ zIndex: 100 }} type="submit">
+          Отправить
+        </button>
       </form>
     </div>
   );
