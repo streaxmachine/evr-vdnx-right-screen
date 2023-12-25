@@ -16,7 +16,7 @@ const points = [
   { percent: 9.9, url: "URL_2" },
   { percent: 18.9, url: "URL_3" },
   { percent: 25.9, url: "URL_4" },
-  { percent: 38, url: "URL_5" },
+  { percent: 43, url: "URL_5" },
   { percent: 55.5, url: "URL_6" },
   { percent: 63, url: "URL_7" },
   { percent: 68.5, url: "URL_8" },
@@ -74,7 +74,7 @@ const TouchPanelPig = ({ setGlobalState, socket }) => {
     } else if (questionNumber == 3) {
       dashOffsetNumber = 4200 - 1000;
     } else if (questionNumber == 4) {
-      dashOffsetNumber = 4200 - 1600;
+      dashOffsetNumber = 4200 - 1800;
     } else if (questionNumber == 5) {
       dashOffsetNumber = 4200 - 2250;
     } else if (questionNumber == 6) {

@@ -67,11 +67,19 @@ const QuizCardRules = ({ setGlobalState, socket }) => {
                 </button>
               </div>
             </div>
-            <img
-              className={s.cowIMG}
-              src="/images/QuizCowRules/cow.png"
-              alt="Корова"
-            />
+            {quizState === 'touchPanelCow' ? (
+              <img
+                className={s.cowIMG}
+                src="/images/QuizCowRules/cow.png"
+                alt="Корова"
+              />
+            ) : (
+              <img
+                className={s.pigIMG}
+                src="/images/QuizCowRules/PIG.png"
+                alt="свинка"
+              />
+            )}
           </section>
         </div>
         <section className={s.footerLogo}>
