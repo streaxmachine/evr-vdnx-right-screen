@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 export const useSocket = (type = "velo", { ...props }) => {
   const [socket, setSocket] = React.useState();
   useEffect(() => {
-    const socket2 = new WebSocket("wss://wsdmxtest.herokuapp.com:443");
+    const socket2 = new WebSocket("ws://192.168.88.250:5001");
     setSocket(socket2);
     socket2.onopen = function () {
       console.log("Соединение установлено");

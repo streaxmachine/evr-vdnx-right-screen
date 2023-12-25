@@ -169,9 +169,7 @@ const OnWay = ({
               </div>
               <div className={s.speed}>
                 <p className={s.dataTitle}>Скорость</p>
-                <p className={s.speedNumber}>
-                  {roundedNumber(speedSocket)}
-                </p>
+                <p className={s.speedNumber}>{roundedNumber(speedSocket)}</p>
                 <p className={s.dataMeasure}>км/ч</p>
               </div>
               <div className={s.dist}>
@@ -327,16 +325,19 @@ const Point = ({ point, distanceSocket, socketPoint }) => {
     <div>
       <div
         className={`${s.point} ${showInfo ? s.showInfo : s.hideInfo}`}
-        style={{ left: point.percent + "%" }}
+        style={{ left: Number(distanceSocket) + "%" }}
         key={point.percent}
       >
+        <div className={`${s.textWrapper}`}>
+          <img src={point.url} alt="" />
+        </div>
 
-          <div className={`${s.textWrapper}`}>
-            <img src={point.url} alt="" />
-          </div>
-
-        <div className={`${s.circle} ${showInfo ? s.showInfo : s.hideInfo}`}></div>
-        <div className={`${s.stick} ${showInfo ? s.showInfo : s.hideInfo}`}></div>
+        <div
+          className={`${s.circle} ${showInfo ? s.showInfo : s.hideInfo}`}
+        ></div>
+        <div
+          className={`${s.stick} ${showInfo ? s.showInfo : s.hideInfo}`}
+        ></div>
       </div>
     </div>
   );
