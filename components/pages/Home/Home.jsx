@@ -22,7 +22,7 @@ import FakeForLeap from "./FakeForLeap";
 
 const Home = () => {
   // useScenarioTimer("ivolga", "time5", 5);
-  const socket = useSocket();
+  const socket = useSocket("train", []);
   const router = useRouter();
   const [count, setCount] = React.useState(1);
   const [touchedDetail, setTouchedDetail] = React.useState(0);
