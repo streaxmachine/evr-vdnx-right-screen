@@ -2,7 +2,6 @@ import gsap from "gsap";
 import React from "react";
 
 gsap.defaults({ ease: "linear" });
-import Preloader from "components/common/Preloader";
 
 import useCalcVh from "hooks/useCalcVh";
 import useFoucFix from "hooks/useFoucFix";
