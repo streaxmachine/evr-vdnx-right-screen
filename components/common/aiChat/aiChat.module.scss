@@ -14,11 +14,14 @@
 }
 
 .keyBoard {
-  width: 90%;
+  width: 82%;
   color: black;
   font-size: 20rem;
   position: absolute;
-  bottom: 35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0rem;
   height: 200rem;
 }
 
@@ -397,11 +400,10 @@
 
 .keyBoardBtn {
   border: none;
-  border-top-left-radius: 10rem;
-  border-top-right-radius: 10rem;
-  color: var(--light-blue);
+  height: 100%;
   background-color: white;
   font-size: 16rem;
+  border-radius: 10rem;
   // height: 29rem;
   text-align: center;
   padding-top: 10rem;
