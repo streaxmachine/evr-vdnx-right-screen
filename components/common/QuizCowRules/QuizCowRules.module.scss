@@ -48,11 +48,11 @@
 
 .textblock {
   color: white;
-  gap: 42rem;
+  gap: 32rem;
   display: flex;
   flex-direction: column;
-  margin-top: 42rem;
-  width: 700rem;
+  margin-top: 32rem;
+  width: 900rem;
 }
 
 .title {
@@ -66,15 +66,20 @@
 
 .text {
   font-weight: 400;
-  font-size: 30rem;
-  line-height: 36rem;
+  font-size: 24rem;
+  line-height: 26rem;
   text-align: left;
   color: rgba(240, 245, 249, 1);
 }
 
+.buttonContainer {
+  display: flex;
+  gap: 32rem;
+}
+
 .playBtn {
-  background-color: white;
-  color: var(--light-blue);
+  color: white;
+  background-color: var(--light-blue);
   width: 379rem;
   height: 68rem;
   border-radius: 100px;
@@ -84,13 +89,32 @@
   z-index: 1;
 
   &:hover {
-    color: white;
-    background-color: var(--light-blue);
+    color:var(--light-blue);
+    background-color: white;
   }
 }
 
 .cowIMG {
-  right: 70rem;
+  position: absolute;
+  right: 40rem;
+  width: 700rem;
+  padding-top: 68rem;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+}
+
+.pigIMG {
+  position: absolute;
+  right: 40rem;
+  width: 700rem;
+  padding-top: 68rem;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+}
+
+
+.cowIMG {
+  right: 40rem;
   width: 700rem;
   padding-top: 68rem;
   position: absolute;
@@ -99,9 +123,9 @@
 .footerLogo {
   display: flex;
   width: 1350rem;
-  height: 100rem;
+  height: 68rem;
   justify-content: flex-start;
-  gap: 110rem;
+  gap: 56rem;
   z-index: 1;
 }
 
@@ -127,3 +151,111 @@
     rgba(255, 255, 255, 0.99) 100%
   );
 }
+
+.togglecontainer {
+  display: flex;
+  color: white;
+  font-size: 28rem;
+  font-weight: 700;
+  gap: 20rem;
+  flex-direction: column;
+  margin-top: 20rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 800rem;
+  height: 66rem;
+  margin-right: 20rem;
+  z-index: 1;
+  display: flex;
+  transition: all 0.2s ease-in-out;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(204, 204, 204);
+  transition: 0.4s;
+  border-radius: 40rem;
+  border: none;
+  transition: all 0.2s ease-in-out;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 59rem;
+  width: 450rem;
+  left: 4rem;
+  bottom: 4rem;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 40rem;
+  box-shadow: 0 0 6rem rgb(165, 165, 165);
+}
+
+input:checked + .slider {
+  background-color: rgb(204, 204, 204);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 6rem rgb(165, 165, 165);
+}
+
+input:checked + .slider:before {
+  transform: translateX(424rem);
+  width: 368rem;
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rem;
+  font-weight: 700;
+  font-size: 24rem;
+  cursor: pointer;
+}
+
+.onText,
+.offText {
+  font-size: 24rem;
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+}
+
+.onText {
+  color: gray;
+  z-index: 2;
+}
+
+.offText {
+  color: gray;
+  z-index: 2;
+}
+
+input:checked + .slider .onText {
+  color: var(--light-blue);
+}
+
+input:not(:checked) + .slider .offText {
+  color: var(--light-blue);
+}
+
+

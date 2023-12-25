@@ -6,11 +6,24 @@ import useStore from "hooks/useStore";
 import s from "./QuizFirstPage.module.scss";
 // import { TouchFree, TouchFreeRequest } from "public/dist/TouchFree_Tooling";
 
-const Guide = ({ setGlobalState, socket }) => {
+const Guide = ({ setGlobalState, socket, isConnected }) => {
   const { setScenario } = useStore();
   React.useEffect(() => {
     setScenario({ type: "menu", place: "hello" });
   }, []);
+
+  React.useEffect(() => {
+    if (isConnected) {
+      socket.send(
+        JSON.stringify({
+          installation: "right",
+          type: "mode",
+          data: "victorina_start",
+        })
+      );
+    }
+    console.log(isConnected);
+  }, [isConnected]);
 
   return (
     <>

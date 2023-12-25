@@ -1,26 +1,49 @@
 import React from "react";
-import clsx from "clsx";
+import KeyboardReact from "react-simple-keyboard";
 
-import Messages from "./components/Messages";
-import Input from "./components/Input";
-import BotMessage from "./components/BotMessage";
-import UserMessage from "./components/UserMessage";
-import API from "./chatAPI";
+import RecordingButton from "./components/RecordingButton";
+import Helper from "./components/Helper";
+import Chat from "./components/Chat";
+
+import { layout } from "./components/layout";
 
 import s from "./aiChat.module.scss";
+import MessageTemplates from "./components/MessageTemplates";
 
 const AIChat = ({ setGlobalState, socket }) => {
   const [showHelper, setShowHelper] = React.useState(true);
   const [isInputVisible, setInputVisible] = React.useState(false);
-  const [isListening, setListening] = React.useState(false);
+  const [isKeyBoardVisible, setKeyBoardVisible] = React.useState(false);
+  const [handleSendFromMic, setHandleSendFromMic] = React.useState(false);
+  const [handleSendFromTemplate, setHandleSendFromTemplate] =
+    React.useState(false);
+  const [messages, setMessages] = React.useState([]);
 
   const toggleInputVisibility = () => {
     setInputVisible(!isInputVisible);
   };
+  const keyboardRef = React.useRef();
+  const [text, setText] = React.useState("");
 
-  const toggleListening = () => {
-    setListening(!isListening);
+  const handleInputChange = (e) => {
+    setText(e);
   };
+
+  const handleClearInput = () => {
+    if (keyboardRef.current) {
+      keyboardRef.current.clearInput();
+    }
+    setText("");
+  };
+
+  React.useEffect(() => {
+    if (messages.length === 0) {
+      setShowHelper(true);
+      setHandleSendFromTemplate(false);
+      setKeyBoardVisible(false);
+      setInputVisible(false);
+    }
+  }, [messages]);
 
   return (
     <div className={s.root}>
@@ -29,13 +52,13 @@ const AIChat = ({ setGlobalState, socket }) => {
           <button
             onClick={() => {
               setGlobalState("firstPage");
-              socket.send(
-                JSON.stringify({
-                  installation: "right",
-                  type: "mode",
-                  data: "menu",
-                })
-              );
+              // socket.send(
+              //   JSON.stringify({
+              //     installation: "right",
+              //     type: "mode",
+              //     data: "menu",
+              //   })
+              // );
             }}
             className={s.backMenu}
           >
@@ -47,38 +70,43 @@ const AIChat = ({ setGlobalState, socket }) => {
           <div className={s.title}>Иволга</div>
 
           {showHelper && <Helper />}
-
+          {showHelper && (
+            <MessageTemplates
+              setHandleSendFromTemplate={setHandleSendFromTemplate}
+              setText={setText}
+              setShowHelper={setShowHelper}
+            />
+          )}
           <Chat
+            handleClearInput={handleClearInput}
+            handleSendFromMic={handleSendFromMic}
+            text={text}
+            handleSendFromTemplate={handleSendFromTemplate}
+            setText={setText}
+            messages={messages}
+            setMessages={setMessages}
             setShowHelper={setShowHelper}
             isInputVisible={isInputVisible}
             setInputVisible={setInputVisible}
           />
         </section>
         <section className={s.bottom}>
-          <div className={s.bottomPart}>
-            <div
-              className={isListening ? s.listeningIcon : s.icon}
-              onMouseDown={() => toggleListening(true)}
-              onMouseUp={() => toggleListening(false)}
-            >
-              {isListening ? (
-                <img src="/images/aiChat/left_listening.svg" alt="" />
-              ) : (
-                <img src="/images/aiChat/left.svg" alt="" />
-              )}
-            </div>
-            <span className={isListening ? s.listeningText : s.bottomText}>
-              {isListening
-                ? "Говорите..."
-                : "Нажмите и удерживайте иконку микрофона, чтобы озвучить запрос"}
-            </span>
-          </div>
+          <RecordingButton
+            setShowHelper={setShowHelper}
+            handleSendFromMic={handleSendFromMic}
+            setHandleSendFromMic={setHandleSendFromMic}
+            text={text}
+            isInputVisible={isInputVisible}
+            setText={setText}
+            toggleInputVisibility={toggleInputVisibility}
+          />
           <div className={s.bottomPart}>
             <div
               className={s.icon}
               onClick={() => {
                 setShowHelper(false);
                 toggleInputVisibility();
+                setKeyBoardVisible(true);
               }}
             >
               <img src="/images/aiChat/right.svg" alt="" />
@@ -88,6 +116,26 @@ const AIChat = ({ setGlobalState, socket }) => {
               клавиатурой
             </span>
           </div>
+          {isKeyBoardVisible && (
+            <div className={s.keyBoard}>
+              <button
+                className={s.keyBoardBtn}
+                onClick={() => {
+                  toggleInputVisibility();
+
+                  setKeyBoardVisible(false);
+                }}
+              >
+                Закрыть
+              </button>
+              <KeyboardReact
+                keyboardRef={(r) => (keyboardRef.current = r)}
+                // onKeyPress={handleKeyPress}
+                onChange={handleInputChange}
+                layout={layout}
+              />
+            </div>
+          )}
         </section>
       </div>
     </div>
@@ -95,63 +143,3 @@ const AIChat = ({ setGlobalState, socket }) => {
 };
 
 export default React.memo(AIChat);
-
-const Chat = React.memo(
-  ({ setShowHelper, isInputVisible, setInputVisible }) => {
-    const [messages, setMessages] = React.useState([]);
-
-    React.useEffect(() => {
-      async function loadWelcomeMessage() {
-        setMessages([
-          <BotMessage key="0" fetchMessage={"Привет! Представься кто ты"} />,
-        ]);
-      }
-      loadWelcomeMessage();
-    }, []);
-
-    const send = async (text) => {
-      const newMessages = messages.concat(
-        <UserMessage key={messages.length + 1} text={text} />,
-        <BotMessage key={messages.length + 2} fetchMessage={text} />
-      );
-      setMessages(newMessages);
-    };
-    return (
-      <>
-        <div className={s.chatRoot}>
-          <Messages messages={messages} />
-          {isInputVisible && (
-            <Input
-              onSend={send}
-              setShowHelper={setShowHelper}
-              setInputVisible={setInputVisible}
-            />
-          )}
-        </div>
-      </>
-    );
-  }
-);
-
-const Helper = React.memo(({}) => {
-  return (
-    <>
-      <div className={s.helperRoot}>
-        <div className={s.aiChat}></div>
-
-        <div className={s.container}>
-          <div className={s.triangle}></div>
-          <div className={s.speechBubble}>
-            <h3 className={s.speechBubbleTitle}>Чем я могу помочь?</h3>
-            <span className={s.speechBubbleText}>
-              Поговорите с виртуальным помощником Иволга – искусственным
-              интеллектом, который знает о Тверской области практически все.
-              Побеседовать с Иволгой можно с помощью микрофона или виртуальной
-              клавиатуры.
-            </span>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-});

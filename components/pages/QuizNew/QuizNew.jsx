@@ -7,6 +7,7 @@ import QuizRules from "components/common/QuizRules";
 import IvolgaRules from "components/common/IvolgaRules";
 import QuizCowRules from "components/common/QuizCowRules";
 import TouchPanelCow from "components/common/QuizCow/TouchPanelCow/TouchPanelCow";
+import TouchPanelPig from "components/common/QuizPig/TouchPanelPig";
 import AiChat from "components/common/aiChat";
 import Sounds from "components/common/Sounds";
 import FakeAi from "components/common/FakeAi";
@@ -18,8 +19,10 @@ import useStore from "hooks/useStore";
 
 import s from "./QuizNew.module.scss";
 
+
 const QuizNew = () => {
-  const socket = useSocket();
+  const [isConnected, setConnected] = React.useState(false);
+  const socket = useSocket("ivolga", [setConnected]);
   const { isLoaded } = useStore();
   const [globalState, setGlobalState] = React.useState("firstPage");
   React.useEffect(() => {
@@ -27,11 +30,16 @@ const QuizNew = () => {
       setGlobalState("firstPage");
     }
   }, [isLoaded]);
+
   return (
     <>
       <div className={s.root}>
         {globalState === "firstPage" && (
-          <QuizFirstPage setGlobalState={setGlobalState} socket={socket} />
+          <QuizFirstPage
+            isConnected={isConnected}
+            setGlobalState={setGlobalState}
+            socket={socket}
+          />
         )}
         {globalState === "quizCards" && (
           <QuizCards setGlobalState={setGlobalState} socket={socket} />
@@ -50,6 +58,9 @@ const QuizNew = () => {
         )}
         {globalState === "touchPanelCow" && (
           <TouchPanelCow setGlobalState={setGlobalState} socket={socket} />
+        )}
+        {globalState === "touchPanelPig" && (
+          <TouchPanelPig setGlobalState={setGlobalState} socket={socket} />
         )}
         {globalState === "aiChat" && (
           <AiChat setGlobalState={setGlobalState} socket={socket} />

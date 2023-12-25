@@ -5,37 +5,43 @@ import KeyboardReact from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import { layout } from "./layout";
 
-export default function Input({ onSend, setShowHelper, setInputVisible }) {
-  const [text, setText] = useState("");
-  const keyboardRef = React.useRef();
-
+export default function Input({
+  onSend,
+  setShowHelper,
+  handleClearInput,
+  text,
+  setText,
+  handleSendFromTemplate,
+  handleSendFromMic,
+}) {
   const handleInputChange = (e) => {
-    setText(e);
+    setText(e.target.value);
   };
 
-  const onKeyPress = (e) => {
-    if (e === "{enter}") {
-      handleSend();
-    }
-  };
-
-  const handleSend = () => {
-    keyboardRef.current.clearInput();
+  const handleSend = (e) => {
+    console.log("hrer");
     onSend(text);
+    handleClearInput();
     setShowHelper(false);
   };
 
+  React.useEffect(() => {
+    if (handleSendFromMic) {
+      handleSend();
+    }
+  }, [handleSendFromMic]);
+
   return (
     <div className={s.input}>
-      <form onSubmit={handleSend}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSend();
+        }}
+      >
         <input type="text" onChange={handleInputChange} value={text} />
+        <button type="submit">Отправить</button>
       </form>
-      <KeyboardReact
-        keyboardRef={(r) => (keyboardRef.current = r)}
-        onKeyPress={onKeyPress}
-        onChange={handleInputChange}
-        layout={layout}
-      />
     </div>
   );
 }
