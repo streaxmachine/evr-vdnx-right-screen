@@ -95,7 +95,7 @@ const QuizCardRules = ({ setGlobalState, socket }) => {
             }}
           />
           <img
-            src="/images/quizCowRules/Coral_logo.png"
+            src="/images/QuizCowRules/Coral_logo.png"
             alt=""
             style={{
               width: "158px",

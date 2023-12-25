@@ -59,7 +59,7 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
           <div className={s.imgContainer}>
             <img
               className={s.ivolgaImg}
-              src="/images/IvolgaDetails/04W_alpha.png"
+              src="/images/ivolgaDetails/04W_alpha.png"
               alt="ivolga"
             />
           </div>
