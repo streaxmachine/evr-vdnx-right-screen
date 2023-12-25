@@ -121,7 +121,7 @@ const LastStep = ({
           })
         );
         send.value = false;
-      }, 650);
+      }, 500);
     }
     return () => clearInterval(interval);
   }, [send.value, cursor.x]);
