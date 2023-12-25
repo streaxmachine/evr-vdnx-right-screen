@@ -133,7 +133,12 @@ const LastStep = ({
         <Canvas onPointerMove={(e) => handleSendTouchToSocket(e)}>
           <MySphere />
           <PerspectiveCamera />
-          <OrbitControls enableZoom={false} />
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            minPolarAngle={Math.PI / 2}
+            maxPolarAngle={Math.PI / 2}
+          />
         </Canvas>
       </div>
 
