@@ -18,6 +18,7 @@ import useScenarioTimer from "hooks/useScenarioTimer";
 
 import s from "./Home.module.scss";
 import { useSocket } from "hooks/useSocket";
+import FakeForLeap from "./FakeForLeap";
 
 const Home = () => {
   // useScenarioTimer("ivolga", "time5", 5);
@@ -65,8 +66,14 @@ const Home = () => {
       setFirstTime(false);
     }
   }, [count]);
+
   return (
     <>
+      <FakeForLeap
+        setCount={setCount}
+        setTouchedDetail={setTouchedDetail}
+        count={count}
+      />
       {resetGame && <div className={s.preloader}></div>}
       <CanvasPreloader />
 

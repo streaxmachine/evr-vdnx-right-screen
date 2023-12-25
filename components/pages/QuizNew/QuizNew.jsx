@@ -21,7 +21,8 @@ import s from "./QuizNew.module.scss";
 
 
 const QuizNew = () => {
-  const socket = useSocket();
+  const [isConnected, setConnected] = React.useState(false);
+  const socket = useSocket("ivolga", [setConnected]);
   const { isLoaded } = useStore();
   const [globalState, setGlobalState] = React.useState("firstPage");
   React.useEffect(() => {
@@ -29,11 +30,16 @@ const QuizNew = () => {
       setGlobalState("firstPage");
     }
   }, [isLoaded]);
+
   return (
     <>
       <div className={s.root}>
         {globalState === "firstPage" && (
-          <QuizFirstPage setGlobalState={setGlobalState} socket={socket} />
+          <QuizFirstPage
+            isConnected={isConnected}
+            setGlobalState={setGlobalState}
+            socket={socket}
+          />
         )}
         {globalState === "quizCards" && (
           <QuizCards setGlobalState={setGlobalState} socket={socket} />

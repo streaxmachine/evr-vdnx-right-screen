@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 
-export const useSocket = (props) => {
+export const useSocket = (type = "velo", { ...props }) => {
   const [socket, setSocket] = React.useState();
   useEffect(() => {
     const socket2 = new WebSocket("wss://wsdmxtest.herokuapp.com:443");
     setSocket(socket2);
     socket2.onopen = function () {
       console.log("Соединение установлено");
-      if (props) {
+
+      if (type === "ivolga") {
+        props[0](true);
+      }
+
+      if (type === "velo") {
         props[4](true);
       }
     };
@@ -18,7 +23,7 @@ export const useSocket = (props) => {
         const info = JSON.parse(event.data);
         // console.log(info);
 
-        if (props) {
+        if (type === "velo") {
           if (info.type === "speed") {
             // props[3](false);
             props[0](info.data_tablet);
@@ -38,12 +43,10 @@ export const useSocket = (props) => {
               props[5](true);
             }
           } else if (info.type.includes("poi")) {
-            console.log("here");
             props[6](Number(info.data));
           }
         }
       } else {
-        console.log("here");
         socket2.send(JSON.stringify("pong"));
       }
     };

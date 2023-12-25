@@ -1594,10 +1594,10 @@
     "combined-stream" "^1.0.8"
     "mime-types" "^2.1.12"
 
-"framer-motion@^10.12.21":
-  "integrity" "sha512-EmnP73O5+1OGm2jtQNoBPPuAJvhySl+p4/9PL7PPJHt58nkPWeFaxhCJaUDXDf6N3jSLluefxopc0FrMCQ+/tQ=="
-  "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-10.12.21.tgz"
-  "version" "10.12.21"
+"framer-motion@^10.16.16":
+  "integrity" "sha512-je6j91rd7NmUX7L1XHouwJ4v3R+SO4umso2LUcgOct3rHZ0PajZ80ETYZTajzEXEl9DlKyzjyt4AvGQ+lrebOw=="
+  "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-10.16.16.tgz"
+  "version" "10.16.16"
   dependencies:
     "tslib" "^2.4.0"
   optionalDependencies:
@@ -2360,6 +2360,13 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
+"next-transpile-modules@^10.0.1":
+  "integrity" "sha512-4VX/LCMofxIYAVV58UmD+kr8jQflpLWvas/BQ4Co0qWLWzVh06FoZkECkrX5eEZT6oJFqie6+kfbTA3EZCVtdQ=="
+  "resolved" "https://registry.npmjs.org/next-transpile-modules/-/next-transpile-modules-10.0.1.tgz"
+  "version" "10.0.1"
+  dependencies:
+    "enhanced-resolve" "^5.10.0"
+
 "next@13.1.6":
   "integrity" "sha512-hHlbhKPj9pW+Cymvfzc15lvhaOZ54l+8sXDXJWm3OBNBzgrVj6hwGPmqqsXg40xO1Leq+kXpllzRPuncpC0Phw=="
   "resolved" "https://registry.npmjs.org/next/-/next-13.1.6.tgz"
@@ -2718,6 +2725,16 @@
     "loose-envify" "^1.1.0"
     "scheduler" "^0.21.0"
 
+"react-simple-keyboard@^3.7.52":
+  "integrity" "sha512-DE8Tch3xr3IUHm3xTTjCiotm6kcbhhzQPKCqueoOgkee4Dcl2I1oHwWGoPY9UxxhL8+Vr5jnxMbNvkeFWyjS2w=="
+  "resolved" "https://registry.npmjs.org/react-simple-keyboard/-/react-simple-keyboard-3.7.52.tgz"
+  "version" "3.7.52"
+
+"react-speech-recognition@^3.10.0":
+  "integrity" "sha512-EVSr4Ik8l9urwdPiK2r0+ADrLyDDrjB0qBRdUWO+w2MfwEBrj6NuRmy1GD3x7BU/V6/hab0pl8Lupen0zwlJyw=="
+  "resolved" "https://registry.npmjs.org/react-speech-recognition/-/react-speech-recognition-3.10.0.tgz"
+  "version" "3.10.0"
+
 "react-spring@^9.7.3":
   "integrity" "sha512-oTxDpFV5gzq7jQX6+bU0SVq+vX8VnuuT5c8Zwn6CpDErOPvCmV+DRkPiEBtaL3Ozgzwiy5yFx83N0h303j/r3A=="
   "resolved" "https://registry.npmjs.org/react-spring/-/react-spring-9.7.3.tgz"
@@ -2790,6 +2807,11 @@
   "integrity" "sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg=="
   "resolved" "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz"
   "version" "0.13.11"
+
+"regenerator-runtime@^0.14.1":
+  "integrity" "sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw=="
+  "resolved" "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz"
+  "version" "0.14.1"
 
 "regexp-to-ast@0.5.0":
   "integrity" "sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw=="
@@ -2964,6 +2986,11 @@
     "decompress-response" "^6.0.0"
     "once" "^1.3.1"
     "simple-concat" "^1.0.0"
+
+"simple-keyboard-layouts@^3.3.44":
+  "integrity" "sha512-d6SjGec0fP0LJR+l3OFycVWaXKWzl08J79qQJLPMcLxcmG9Vkexh2VJ599BqBV8ZfIqraaD/NkusN4JbaEsmHQ=="
+  "resolved" "https://registry.npmjs.org/simple-keyboard-layouts/-/simple-keyboard-layouts-3.3.44.tgz"
+  "version" "3.3.44"
 
 "simple-swizzle@^0.2.2":
   "integrity" "sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg=="

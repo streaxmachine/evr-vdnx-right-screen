@@ -1,46 +1,46 @@
 import React, { useState } from "react";
 
 import s from "../aiChat.module.scss";
+import KeyboardReact from "react-simple-keyboard";
+import "react-simple-keyboard/build/css/index.css";
+import { layout } from "./layout";
 
-export default function Input({ onSend, setShowHelper, setInputVisible }) {
-  const [text, setText] = useState("");
-
-  const handleInputChange = e => {
+export default function Input({
+  onSend,
+  setShowHelper,
+  handleClearInput,
+  text,
+  setText,
+  handleSendFromTemplate,
+  handleSendFromMic,
+}) {
+  const handleInputChange = (e) => {
     setText(e.target.value);
   };
 
-  const handleSend = e => {
-    e.preventDefault();
+  const handleSend = (e) => {
+    console.log("hrer");
     onSend(text);
-    setText("");
+    handleClearInput();
     setShowHelper(false);
-    setInputVisible(false)
   };
+
+  React.useEffect(() => {
+    if (handleSendFromMic) {
+      handleSend();
+    }
+  }, [handleSendFromMic]);
 
   return (
     <div className={s.input}>
-      <form onSubmit={handleSend}>
-        <input
-          type="text"
-          onChange={handleInputChange}
-          value={text}
-          placeholder="Enter your message here"
-        />
-        <button>
-          <svg
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 500 500"
-          >
-            <g>
-              <g>
-                <polygon points="0,497.25 535.5,267.75 0,38.25 0,216.75 382.5,267.75 0,318.75" />
-              </g>
-            </g>
-          </svg>
-        </button>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSend();
+        }}
+      >
+        <input type="text" onChange={handleInputChange} value={text} />
+        <button type="submit">Отправить</button>
       </form>
     </div>
   );

@@ -24,7 +24,7 @@ export const cards = [
     picSrc: "/images/QuizCards/b364b2dcb07b219f03cbb4cc67d8fbdc.png",
     alt: "Внутри ноутбука Aquarius",
     cardGlobalState: "5",
-    // info: { installation: "right", type: "mode", data: "game" },
+    info: { installation: "right", type: "mode", data: "puzzle" },
   },
   {
     preTitle: "Квест для истинных любителей истории",

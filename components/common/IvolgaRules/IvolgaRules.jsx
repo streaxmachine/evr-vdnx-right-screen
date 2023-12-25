@@ -14,13 +14,13 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
             className={s.backBtn}
             onClick={() => {
               setGlobalState("firstPage");
-              socket.send(
-                JSON.stringify({
-                  installation: "right",
-                  type: "mode",
-                  data: "victorina_start",
-                })
-              );
+              // socket.send(
+              //   JSON.stringify({
+              //     installation: "right",
+              //     type: "mode",
+              //     data: "victorina_start",
+              //   })
+              // );
             }}
           >
             <img src="/images/arrow.png" alt="Назад" />
@@ -50,7 +50,6 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
           </div>
 
           <div className={s.imgContainer}>
-
             <img
               className={s.ivolgaImg}
               src="/images/IvolgaDetails/04W_alpha.png"
@@ -60,7 +59,7 @@ const IvolgaRules = ({ setGlobalState, socket }) => {
 
           <div className={s.containerBtn}>
             <Link href={"/"}>
-              <button className={s.playBtn} >Все понятно! Я в игре</button>
+              <button className={s.playBtn}>Все понятно! Я в игре</button>
             </Link>
           </div>
         </div>

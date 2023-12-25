@@ -4,12 +4,26 @@ import Head from "next/head";
 import useStore from "hooks/useStore";
 
 import s from "./QuizFirstPage.module.scss";
+// import { TouchFree, TouchFreeRequest } from "public/dist/TouchFree_Tooling";
 
-const Guide = ({ setGlobalState, socket }) => {
+const Guide = ({ setGlobalState, socket, isConnected }) => {
   const { setScenario } = useStore();
   React.useEffect(() => {
     setScenario({ type: "menu", place: "hello" });
   }, []);
+
+  React.useEffect(() => {
+    if (isConnected) {
+      socket.send(
+        JSON.stringify({
+          installation: "right",
+          type: "mode",
+          data: "victorina_start",
+        })
+      );
+    }
+    console.log(isConnected);
+  }, [isConnected]);
 
   return (
     <>
@@ -40,7 +54,7 @@ const Guide = ({ setGlobalState, socket }) => {
               >
                 Выбрать игру
               </button>
-              {/* <button
+              <button
                 onClick={() => {
                   setGlobalState("aiChat");
                   // socket.send(
@@ -54,7 +68,7 @@ const Guide = ({ setGlobalState, socket }) => {
                 className={s.button}
               >
                 Виртуальный помощник
-              </button> */}
+              </button>
             </div>
           </div>
           <section className={s.imgContainer}>

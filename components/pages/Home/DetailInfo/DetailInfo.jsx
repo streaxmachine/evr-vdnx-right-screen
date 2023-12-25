@@ -41,7 +41,7 @@ const DetailInfo = React.memo(
       // setShow(true);
       setPauseTimer(true);
 
-      console.log("detailNumber", detailNumber);
+      console.log("detailNumber", detailNumber, count);
 
       if (Number(detailNumber) !== Number(count - 1)) {
         if (Number(detailNumber) >= 11) {
@@ -140,10 +140,6 @@ const DetailInfo = React.memo(
                   )}
                 </>
               )}
-              {/* 
-              {Number(detailNumber) >= 11 && (
-                <div className={s.wrongDetailHelp}></div>
-              )} */}
 
               <button
                 onClick={() => {

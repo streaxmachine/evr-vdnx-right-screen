@@ -1,0 +1,120 @@
+.fake {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: gray;
+    pointer-events: all;
+    opacity: 0.01;
+    z-index: 1;
+    top: 0;
+  
+    .kyzov {
+      position: absolute;
+      bottom: 350rem;
+      transform: rotate(20deg);
+      left: 530rem;
+      width: 400rem;
+      height: 120rem;
+      background-color: black;
+    }
+  
+    .telegi {
+      position: absolute;
+      bottom: 420rem;
+      transform: rotate(83deg);
+      right: 230rem;
+      width: 200rem;
+      height: 70rem;
+      background-color: black;
+    }
+  
+    .telegi {
+      position: absolute;
+      bottom: 420rem;
+      transform: rotate(83deg);
+      right: 230rem;
+      width: 200rem;
+      height: 70rem;
+      background-color: black;
+    }
+  
+    .kraska {
+      position: absolute;
+      bottom: 380rem;
+      transform: rotate(83deg);
+      right: 500rem;
+      width: 70rem;
+      height: 70rem;
+      background-color: black;
+    }
+  
+    .electroob {
+      position: absolute;
+      bottom: 210rem;
+      transform: rotate(-7deg);
+      right: 250rem;
+      width: 350rem;
+      height: 80rem;
+      background-color: black;
+    }
+    
+    .insideob {
+      position: absolute;
+      top: 270rem;
+      transform: rotate(-35deg);
+      left: 320rem;
+      width: 300rem;
+      height: 80rem;
+      background-color: black;
+    }
+  
+    .dveriOkna {
+      position: absolute;
+      top: 220rem;
+      transform: rotate(-35deg);
+      left: 190rem;
+      width: 300rem;
+      height: 80rem;
+      background-color: black;
+    }
+  
+    .firstOperation {
+      position: absolute;
+      top: 320rem;
+      transform: rotate(20deg);
+      left: 740rem;
+      width: 380rem;
+      height: 80rem;
+      background-color: black;
+    }
+  
+    .montajInt {
+      position: absolute;
+      top: 200rem;
+      transform: rotate(20deg);
+      left: 790rem;
+      width: 320rem;
+      height: 80rem;
+      background-color: black;
+    }
+  
+    .crashSystem {
+      position: absolute;
+      top: 380rem;
+      transform: rotate(-37deg);
+      left: 330rem;
+      width: 330rem;
+      height: 50rem;
+      background-color: black;
+    }
+  
+    .podvogonOb {
+      position: absolute;
+      bottom: 300rem;
+      transform: rotate(20deg);
+      left: 470rem;
+      width: 230rem;
+      height: 60rem;
+      background-color: black;
+    }
+  }

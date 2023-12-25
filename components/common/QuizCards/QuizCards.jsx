@@ -29,13 +29,13 @@ const QuizCards = ({ setGlobalState, socket }) => {
             onClick={() => {
               SoundsEmmitter.send("return-menu");
               setGlobalState("firstPage");
-              socket.send(
-                JSON.stringify({
-                  installation: "right",
-                  type: "mode",
-                  data: "victorina_start",
-                })
-              );
+              // socket.send(
+              //   JSON.stringify({
+              //     installation: "right",
+              //     type: "mode",
+              //     data: "victorina_start",
+              //   })
+              // );
             }}
           >
             <img src="/images/arrow.png" alt="Назад" />
@@ -75,9 +75,9 @@ function Card({ setGlobalState, card, socket, setScenario }) {
     // setIsClicked(!isClicked);
     // setGlobalState(card.cardGlobalState)};
 
-    if (!isThirdCard) {
-      socket.send(JSON.stringify(card.info));
-    }
+    // if (!isThirdCard) {
+    socket.send(JSON.stringify(card.info));
+    // }
   };
 
   return (
