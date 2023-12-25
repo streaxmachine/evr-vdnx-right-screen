@@ -88,7 +88,7 @@ const LastStep = ({
   }, [inactiveTime]);
 
   useEffect(() => {
-    if (inactiveTime >= 40) {
+    if (inactiveTime >= 80) {
       console.log("nobody`s here");
       setisBack(true);
       setState("progressBar");
