@@ -67,20 +67,6 @@ const Home = () => {
     }
   }, [count]);
 
-  React.useEffect(() => {
-    const element1 = document.getElementsByClassName("touchfreecursor")[0];
-    const element2 = document.getElementsByClassName("touchfreecursor")[1];
-
-    if (isLeap) {
-      element1.style.display = "block";
-      element2.style.display = "block";
-      console.log("leap", isLeap);
-    } else {
-      element1.style.display = "none";
-      element2.style.display = "none";
-      console.log("leap", isLeap);
-    }
-  }, [isLeap]);
   return (
     <>
       {isLeap && (
@@ -331,7 +317,8 @@ const HandAnimation = React.memo(({ isTimeEndGame, currentState }) => {
   }, [currentState, isTimeEndGame]);
 
   return (
-    isAnimationVisible && !isLeap && (
+    isAnimationVisible &&
+    !isLeap && (
       <Lottie
         className={s.handZoom}
         animationData={handZoom}
